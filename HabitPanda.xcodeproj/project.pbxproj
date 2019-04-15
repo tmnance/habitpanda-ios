@@ -14,6 +14,7 @@
 		1C12735C22610DCA0058D942 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C12735A22610DCA0058D942 /* LaunchScreen.storyboard */; };
 		1CB9F7A1226244C4005D1FFC /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CB9F79F226244C4005D1FFC /* DataModel.xcdatamodeld */; };
 		1CDB388F22624BBE00C86277 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB388E22624BBE00C86277 /* Habit.swift */; };
+		1CDB38912262979400C86277 /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB38902262979400C86277 /* AddHabitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		1C12735D22610DCA0058D942 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CB9F7A0226244C4005D1FFC /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		1CDB388E22624BBE00C86277 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		1CDB38902262979400C86277 /* AddHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				1C12735322610DC80058D942 /* HabitViewController.swift */,
+				1CDB38902262979400C86277 /* AddHabitViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			files = (
 				1CB9F7A1226244C4005D1FFC /* DataModel.xcdatamodeld in Sources */,
 				1C12735422610DC80058D942 /* HabitViewController.swift in Sources */,
+				1CDB38912262979400C86277 /* AddHabitViewController.swift in Sources */,
 				1CDB388F22624BBE00C86277 /* Habit.swift in Sources */,
 				1C12735222610DC80058D942 /* AppDelegate.swift in Sources */,
 			);

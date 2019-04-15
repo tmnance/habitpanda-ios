@@ -1,5 +1,5 @@
 //
-//  HabitViewController.swift
+//  HabitListViewController.swift
 //  HabitPanda
 //
 //  Created by Tim Nance on 4/12/19.
@@ -9,25 +9,28 @@
 import UIKit
 import CoreData
 
-class HabitViewController: UITableViewController {
+class HabitListViewController: UITableViewController {
 
-    var habitArray = [Habit]()
+    var habitList = [Habit]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        loadData()
+//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
+        loadData()
+    }
 
 
     // Mark: - TableView Dataousrce Methods
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell", for: indexPath)
-        let habit = habitArray[indexPath.row]
+        let habit = habitList[indexPath.row]
 
         cell.textLabel?.text = habit.name
 
@@ -35,14 +38,14 @@ class HabitViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return habitArray.count
+        return habitList.count
     }
 
 
     // Mark: - TableView Delegate Methods
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let habit = habitArray[indexPath.row]
+        let habit = habitList[indexPath.row]
         print("Clicked on habit \(habit.name!)")
 
 //        performSegue(withIdentifier: "goToItems", sender: self)
@@ -56,63 +59,16 @@ class HabitViewController: UITableViewController {
 //    }
 
 
-
-
-
-
-    // MARK: - Add Data Methods
-
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(
-            title: "Add New Habit",
-            message: "",
-            preferredStyle: .alert
-        )
-        var addTextField = UITextField()
-
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Add a new category"
-            addTextField = alertTextField
-        }
-        alert.addAction(UIAlertAction(title: "Add", style: .default) { (action) in
-            self.addHabit(addTextField.text!)
-        })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        present(alert, animated: true, completion: nil)
-    }
-
-    func addHabit(_ text: String) {
-        if text == "" {
-            return
-        }
-        print("Wanting to add habit \(text)")
-
-        let newHabit = Habit(context: context)
-        newHabit.name = text
-        newHabit.createdAt = Date()
-        newHabit.uuid = UUID()
-
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context, \(error)")
-        }
-
-        loadData()
-    }
-
-
     // MARK: - Load Data Methods
 
     func loadData() {
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
         do {
-            habitArray = try context.fetch(request)
+            habitList = try context.fetch(request)
         } catch {
             print("Error fetching data from context, \(error)")
         }
-        print(habitArray)
+        print(habitList)
 
         tableView.reloadData()
     }

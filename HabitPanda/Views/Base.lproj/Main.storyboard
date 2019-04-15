@@ -6,13 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--HabitPanda 🐼-->
         <scene sceneID="34w-rJ-l6H">
             <objects>
-                <tableViewController id="NXb-wB-u2h" customClass="HabitViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="NXb-wB-u2h" customClass="HabitListViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QCF-YR-A7d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +45,9 @@
                     <navigationItem key="navigationItem" title="HabitPanda 🐼" id="SMv-0Z-C89">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="kcc-Kr-nKv">
                             <connections>
-                                <action selector="addButtonPressed:" destination="NXb-wB-u2h" id="J1a-WK-piJ"/>
+                                <segue destination="q3o-ZB-uWy" kind="popoverPresentation" identifier="cancelAddHabit" popoverAnchorBarButtonItem="kcc-Kr-nKv" id="0ED-2v-cTw">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -53,12 +56,79 @@
             </objects>
             <point key="canvasLocation" x="-274" y="112"/>
         </scene>
+        <!--Create a New Habit-->
+        <scene sceneID="Kbl-OX-QVO">
+            <objects>
+                <viewController id="Aa1-59-79r" customClass="AddHabitViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Kh-t9-od2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pew-uE-jIJ" userLabel="Name Input View">
+                                <rect key="frame" x="20" y="84" width="335" height="96"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8X-yC-SLy">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="BDz-hr-Dwi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="36C-KM-kEN">
+                                        <rect key="frame" x="0.0" y="44" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="l8X-yC-SLy" secondAttribute="trailing" id="2Zj-2A-nxG"/>
+                                    <constraint firstItem="l8X-yC-SLy" firstAttribute="leading" secondItem="pew-uE-jIJ" secondAttribute="leading" id="EQK-eO-4T0"/>
+                                    <constraint firstItem="36C-KM-kEN" firstAttribute="leading" secondItem="pew-uE-jIJ" secondAttribute="leading" id="Rn9-dt-HgI"/>
+                                    <constraint firstItem="l8X-yC-SLy" firstAttribute="top" secondItem="pew-uE-jIJ" secondAttribute="top" id="UZx-Nk-btX"/>
+                                    <constraint firstItem="36C-KM-kEN" firstAttribute="top" secondItem="l8X-yC-SLy" secondAttribute="bottom" constant="8" id="cYH-P4-xuL"/>
+                                    <constraint firstAttribute="trailing" secondItem="36C-KM-kEN" secondAttribute="trailing" id="hxU-JG-KL4"/>
+                                    <constraint firstAttribute="height" constant="96" id="yht-Ni-QVd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pew-uE-jIJ" firstAttribute="leading" secondItem="Cws-Y4-UrX" secondAttribute="leading" constant="20" id="34A-ck-MBO"/>
+                            <constraint firstItem="pew-uE-jIJ" firstAttribute="top" secondItem="Cws-Y4-UrX" secondAttribute="top" constant="20" id="7vd-Iy-NK6"/>
+                            <constraint firstItem="Cws-Y4-UrX" firstAttribute="trailing" secondItem="pew-uE-jIJ" secondAttribute="trailing" constant="20" id="Sky-UZ-Xnb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Cws-Y4-UrX"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create a New Habit" id="QK9-Zx-lXm">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Kfj-Fy-Evk">
+                            <connections>
+                                <action selector="cancelPressed:" destination="Aa1-59-79r" id="OkR-ap-3Gm"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="U43-Az-Hy7">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="Aa1-59-79r" id="3xM-ON-9Z5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameInputField" destination="36C-KM-kEN" id="DNQ-3b-GpG"/>
+                        <outlet property="saveButton" destination="U43-Az-Hy7" id="vL5-yT-lNy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CpD-zy-3cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1748" y="111.99400299850076"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="syE-8d-nsE">
             <objects>
                 <navigationController id="XX6-db-Tp7" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GeO-mJ-Yy1">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -68,6 +138,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYO-gs-HpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1226" y="112"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LaR-CF-R1N">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q3o-ZB-uWy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fpn-zF-Sup">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Aa1-59-79r" kind="relationship" relationship="rootViewController" id="gWw-tf-Y37"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3sl-nS-iW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="808.79999999999995" y="111.99400299850076"/>
         </scene>
     </scenes>
 </document>
