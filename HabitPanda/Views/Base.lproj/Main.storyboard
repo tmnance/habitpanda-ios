@@ -61,45 +61,326 @@
             <objects>
                 <viewController id="Aa1-59-79r" customClass="AddHabitViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Kh-t9-od2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pew-uE-jIJ" userLabel="Name Input View">
-                                <rect key="frame" x="20" y="84" width="335" height="96"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSY-Mv-gpm">
+                                <rect key="frame" x="0.0" y="64" width="320" height="1136"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8X-yC-SLy">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="36"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYm-IF-smp" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1136"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pew-uE-jIJ" userLabel="Name Input View">
+                                                <rect key="frame" x="20" y="20" width="280" height="80"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habit name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8X-yC-SLy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="36"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="BDz-hr-Dwi"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="36C-KM-kEN">
+                                                        <rect key="frame" x="0.0" y="44" width="280" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="l8X-yC-SLy" secondAttribute="trailing" id="2P3-Wj-BFv"/>
+                                                    <constraint firstItem="36C-KM-kEN" firstAttribute="leading" secondItem="pew-uE-jIJ" secondAttribute="leading" id="FKE-mB-liD"/>
+                                                    <constraint firstAttribute="height" constant="80" id="JOf-Hh-ozw"/>
+                                                    <constraint firstAttribute="trailing" secondItem="36C-KM-kEN" secondAttribute="trailing" id="MJ6-iq-TiT"/>
+                                                    <constraint firstItem="l8X-yC-SLy" firstAttribute="top" secondItem="pew-uE-jIJ" secondAttribute="top" id="NK3-IN-9mp"/>
+                                                    <constraint firstItem="l8X-yC-SLy" firstAttribute="leading" secondItem="pew-uE-jIJ" secondAttribute="leading" id="VFn-YF-Tm2"/>
+                                                    <constraint firstItem="36C-KM-kEN" firstAttribute="top" secondItem="l8X-yC-SLy" secondAttribute="bottom" constant="8" id="cYH-P4-xuL"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZC-XE-i16">
+                                                <rect key="frame" x="132" y="1107.5" width="56" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04a-hQ-2HX" userLabel="Frequency Input View">
+                                                <rect key="frame" x="20" y="126" width="280" height="296"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shi-QH-GcA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="36"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="4s8-BU-jnA"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFY-h0-Ua4" userLabel="Horiz Spacer 1">
+                                                        <rect key="frame" x="0.0" y="44" width="280" height="1"/>
+                                                        <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="dyO-68-fgQ"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IoF-pe-gFt" userLabel="Frequency Options">
+                                                        <rect key="frame" x="0.0" y="45" width="280" height="46"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNy-nq-rXj" userLabel="Vert Spacer 1">
+                                                                <rect key="frame" x="0.0" y="0.0" width="1" height="46"/>
+                                                                <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="1" id="J10-GQ-OR9"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvK-sD-olc" customClass="SingleSelectButton" customModule="HabitPanda" customModuleProvider="target">
+                                                                <rect key="frame" x="1" y="0.0" width="92" height="46"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="46" id="Uix-eu-0sN"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <state key="normal" title="Daily">
+                                                                    <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="frequencyOptionButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="dPx-IR-zXw"/>
+                                                                </connections>
+                                                            </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkx-KO-aZr" userLabel="Vert Spacer 2">
+                                                                <rect key="frame" x="93" y="0.0" width="1" height="46"/>
+                                                                <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="1" id="q16-1t-jki"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsl-0j-TUo" customClass="SingleSelectButton" customModule="HabitPanda" customModuleProvider="target">
+                                                                <rect key="frame" x="94" y="0.0" width="92" height="46"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="46" id="KIx-oA-YpZ"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <state key="normal" title="Weekdays">
+                                                                    <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="frequencyOptionButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="Flo-tt-Nu9"/>
+                                                                </connections>
+                                                            </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZu-W5-IaQ" userLabel="Vert Spacer 3">
+                                                                <rect key="frame" x="186" y="0.0" width="1" height="46"/>
+                                                                <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="1" id="9Yt-Cy-tSz"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZS-Hp-oiC" customClass="SingleSelectButton" customModule="HabitPanda" customModuleProvider="target">
+                                                                <rect key="frame" x="187" y="0.0" width="92" height="46"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="46" id="3ML-mp-fMv"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <state key="normal" title="Custom">
+                                                                    <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="frequencyOptionButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="Hov-ro-W3p"/>
+                                                                </connections>
+                                                            </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmB-Rf-IYk" userLabel="Vert Spacer 4">
+                                                                <rect key="frame" x="279" y="0.0" width="1" height="46"/>
+                                                                <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="1" id="Ree-cj-yEf"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="Wsl-0j-TUo" firstAttribute="width" secondItem="PvK-sD-olc" secondAttribute="width" id="pcj-m5-D5U"/>
+                                                            <constraint firstItem="NZS-Hp-oiC" firstAttribute="width" secondItem="PvK-sD-olc" secondAttribute="width" id="uuF-LL-5fi"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QMR-k6-AJJ" userLabel="Horiz Spacer 2">
+                                                        <rect key="frame" x="0.0" y="91" width="280" height="1"/>
+                                                        <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="Fns-jG-vav"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YV4-Mm-K40" userLabel="Frequency Days">
+                                                        <rect key="frame" x="0.0" y="100" width="280" height="100"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wLj-Ht-u1K" userLabel="Day Row 1">
+                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="46"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ya5-wc-zml" customClass="MultiSelectButton" customModule="HabitPanda" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="46"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="46" id="li1-xX-UEc"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <state key="normal" title="Sun">
+                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="frequencyDayButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="JP0-eI-c0D"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5T-T6-rbb" customClass="MultiSelectButton" customModule="HabitPanda" customModuleProvider="target">
+                                                                        <rect key="frame" x="72" y="0.0" width="64" height="46"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="46" id="4yL-KE-rqI"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <state key="normal" title="Mon">
+                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="frequencyDayButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="ECw-7c-2dB"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBS-et-DVb" customClass="MultiSelectButton" customModule="HabitPanda" customModuleProvider="target">
+                                                                        <rect key="frame" x="144" y="0.0" width="64" height="46"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="46" id="e4A-us-zuf"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <state key="normal" title="Tue">
+                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="frequencyDayButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="2pF-oB-IX0"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuE-GJ-DO2" customClass="MultiSelectButton" customModule="HabitPanda" customModuleProvider="target">
+                                                                        <rect key="frame" x="216" y="0.0" width="64" height="46"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="46" id="onf-ew-ovJ"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <state key="normal" title="Wed">
+                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="frequencyDayButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="jrK-wX-b7D"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="o3c-Vd-V5n" userLabel="Day Row 2">
+                                                                <rect key="frame" x="0.0" y="54" width="280" height="46"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A10-QM-sSs" customClass="MultiSelectButton" customModule="HabitPanda" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="46"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="46" id="73w-59-0Cx"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <state key="normal" title="Thu">
+                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="frequencyDayButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="Drl-jA-eaQ"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neK-PI-dCJ" customClass="MultiSelectButton" customModule="HabitPanda" customModuleProvider="target">
+                                                                        <rect key="frame" x="72" y="0.0" width="64" height="46"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="46" id="Pqe-1a-2B8"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <state key="normal" title="Fri">
+                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="frequencyDayButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="8hq-bu-uG6"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Lg-CH-3gP" customClass="MultiSelectButton" customModule="HabitPanda" customModuleProvider="target">
+                                                                        <rect key="frame" x="144" y="0.0" width="64" height="46"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="46" id="MgF-l3-qdW"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <state key="normal" title="Sat">
+                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="frequencyDayButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="P7K-3J-Lr1"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" tag="7" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-C3-EkF" userLabel="Hidden Spacer">
+                                                                        <rect key="frame" x="216" y="0.0" width="64" height="46"/>
+                                                                        <accessibility key="accessibilityConfiguration">
+                                                                            <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
+                                                                            <bool key="isElement" value="NO"/>
+                                                                        </accessibility>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="46" id="96Y-Nl-1VZ"/>
+                                                                        </constraints>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="wLj-Ht-u1K" firstAttribute="leading" secondItem="YV4-Mm-K40" secondAttribute="leading" id="Nyv-MN-vjC"/>
+                                                            <constraint firstItem="wLj-Ht-u1K" firstAttribute="top" secondItem="YV4-Mm-K40" secondAttribute="top" id="jbo-so-r73"/>
+                                                            <constraint firstAttribute="trailing" secondItem="wLj-Ht-u1K" secondAttribute="trailing" id="r8A-Ze-6lj"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="AFY-h0-Ua4" firstAttribute="top" secondItem="shi-QH-GcA" secondAttribute="bottom" constant="8" id="8M5-iK-At2"/>
+                                                    <constraint firstItem="QMR-k6-AJJ" firstAttribute="top" secondItem="IoF-pe-gFt" secondAttribute="bottom" id="FwU-oJ-e11"/>
+                                                    <constraint firstAttribute="trailing" secondItem="YV4-Mm-K40" secondAttribute="trailing" id="Iek-Gu-nqp"/>
+                                                    <constraint firstItem="IoF-pe-gFt" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="J7B-2U-Ud3"/>
+                                                    <constraint firstAttribute="height" constant="296" id="LvT-gf-Iqg"/>
+                                                    <constraint firstItem="QMR-k6-AJJ" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="OLy-dh-vO5"/>
+                                                    <constraint firstAttribute="trailing" secondItem="IoF-pe-gFt" secondAttribute="trailing" id="ReX-fP-yb4"/>
+                                                    <constraint firstItem="YV4-Mm-K40" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="TNY-SA-hqS"/>
+                                                    <constraint firstItem="shi-QH-GcA" firstAttribute="top" secondItem="04a-hQ-2HX" secondAttribute="top" id="YEA-rE-k1J"/>
+                                                    <constraint firstAttribute="trailing" secondItem="QMR-k6-AJJ" secondAttribute="trailing" id="ZbE-gR-XBw"/>
+                                                    <constraint firstItem="IoF-pe-gFt" firstAttribute="top" secondItem="AFY-h0-Ua4" secondAttribute="bottom" id="aPR-hb-tMg"/>
+                                                    <constraint firstItem="AFY-h0-Ua4" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="eRw-VF-Iin"/>
+                                                    <constraint firstItem="YV4-Mm-K40" firstAttribute="top" secondItem="QMR-k6-AJJ" secondAttribute="bottom" constant="8" id="eTE-hh-hhv"/>
+                                                    <constraint firstAttribute="trailing" secondItem="AFY-h0-Ua4" secondAttribute="trailing" id="gP1-Xh-rFg"/>
+                                                    <constraint firstItem="shi-QH-GcA" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="gUK-w8-ZK2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="shi-QH-GcA" secondAttribute="trailing" id="vpI-bx-2Tg"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="BDz-hr-Dwi"/>
+                                            <constraint firstItem="04a-hQ-2HX" firstAttribute="leading" secondItem="IYm-IF-smp" secondAttribute="leading" constant="20" id="3bz-F5-Mnj"/>
+                                            <constraint firstItem="pew-uE-jIJ" firstAttribute="leading" secondItem="IYm-IF-smp" secondAttribute="leading" constant="20" id="6eG-zm-ypT"/>
+                                            <constraint firstItem="04a-hQ-2HX" firstAttribute="top" secondItem="pew-uE-jIJ" secondAttribute="bottom" constant="26" id="ENE-Yf-ts3"/>
+                                            <constraint firstAttribute="trailing" secondItem="pew-uE-jIJ" secondAttribute="trailing" constant="20" id="J6F-LW-JE4"/>
+                                            <constraint firstAttribute="trailing" secondItem="04a-hQ-2HX" secondAttribute="trailing" constant="20" id="TY8-FQ-hXH"/>
+                                            <constraint firstItem="0ZC-XE-i16" firstAttribute="centerX" secondItem="IYm-IF-smp" secondAttribute="centerX" id="WRf-Xh-84n"/>
+                                            <constraint firstItem="pew-uE-jIJ" firstAttribute="top" secondItem="IYm-IF-smp" secondAttribute="top" constant="20" id="ZgG-6R-p6F"/>
+                                            <constraint firstAttribute="bottom" secondItem="0ZC-XE-i16" secondAttribute="bottom" constant="8" id="aTn-W5-9PW"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="36C-KM-kEN">
-                                        <rect key="frame" x="0.0" y="44" width="335" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="l8X-yC-SLy" secondAttribute="trailing" id="2Zj-2A-nxG"/>
-                                    <constraint firstItem="l8X-yC-SLy" firstAttribute="leading" secondItem="pew-uE-jIJ" secondAttribute="leading" id="EQK-eO-4T0"/>
-                                    <constraint firstItem="36C-KM-kEN" firstAttribute="leading" secondItem="pew-uE-jIJ" secondAttribute="leading" id="Rn9-dt-HgI"/>
-                                    <constraint firstItem="l8X-yC-SLy" firstAttribute="top" secondItem="pew-uE-jIJ" secondAttribute="top" id="UZx-Nk-btX"/>
-                                    <constraint firstItem="36C-KM-kEN" firstAttribute="top" secondItem="l8X-yC-SLy" secondAttribute="bottom" constant="8" id="cYH-P4-xuL"/>
-                                    <constraint firstAttribute="trailing" secondItem="36C-KM-kEN" secondAttribute="trailing" id="hxU-JG-KL4"/>
-                                    <constraint firstAttribute="height" constant="96" id="yht-Ni-QVd"/>
+                                    <constraint firstItem="IYm-IF-smp" firstAttribute="width" secondItem="oSY-Mv-gpm" secondAttribute="width" id="JGV-Gb-n6b"/>
+                                    <constraint firstItem="IYm-IF-smp" firstAttribute="top" secondItem="oSY-Mv-gpm" secondAttribute="top" id="JLm-5A-F0O"/>
+                                    <constraint firstItem="IYm-IF-smp" firstAttribute="leading" secondItem="oSY-Mv-gpm" secondAttribute="leading" id="Wb1-xC-6yi"/>
+                                    <constraint firstAttribute="trailing" secondItem="IYm-IF-smp" secondAttribute="trailing" id="gik-cy-KDf"/>
+                                    <constraint firstItem="IYm-IF-smp" firstAttribute="height" secondItem="oSY-Mv-gpm" secondAttribute="height" priority="250" id="phH-0j-ObD"/>
+                                    <constraint firstAttribute="bottom" secondItem="IYm-IF-smp" secondAttribute="bottom" id="yOo-lE-dUQ"/>
                                 </constraints>
-                            </view>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pew-uE-jIJ" firstAttribute="leading" secondItem="Cws-Y4-UrX" secondAttribute="leading" constant="20" id="34A-ck-MBO"/>
-                            <constraint firstItem="pew-uE-jIJ" firstAttribute="top" secondItem="Cws-Y4-UrX" secondAttribute="top" constant="20" id="7vd-Iy-NK6"/>
-                            <constraint firstItem="Cws-Y4-UrX" firstAttribute="trailing" secondItem="pew-uE-jIJ" secondAttribute="trailing" constant="20" id="Sky-UZ-Xnb"/>
+                            <constraint firstItem="Cws-Y4-UrX" firstAttribute="trailing" secondItem="oSY-Mv-gpm" secondAttribute="trailing" id="1c8-qv-81X"/>
+                            <constraint firstItem="oSY-Mv-gpm" firstAttribute="leading" secondItem="Cws-Y4-UrX" secondAttribute="leading" id="BFm-Bx-Plx"/>
+                            <constraint firstItem="Cws-Y4-UrX" firstAttribute="bottom" secondItem="oSY-Mv-gpm" secondAttribute="bottom" id="RPa-GO-GHg"/>
+                            <constraint firstItem="oSY-Mv-gpm" firstAttribute="top" secondItem="Cws-Y4-UrX" secondAttribute="top" id="Yx9-C8-Fuq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cws-Y4-UrX"/>
                     </view>
@@ -115,20 +396,25 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <size key="freeformSize" width="320" height="1200"/>
                     <connections>
+                        <outlet property="frequencyDaysView" destination="YV4-Mm-K40" id="JTw-DE-6ES"/>
+                        <outlet property="frequencyOptionsView" destination="IoF-pe-gFt" id="g9V-Qe-EkJ"/>
                         <outlet property="nameInputField" destination="36C-KM-kEN" id="DNQ-3b-GpG"/>
+                        <outlet property="parentScrollView" destination="oSY-Mv-gpm" id="Yzi-UW-RJr"/>
                         <outlet property="saveButton" destination="U43-Az-Hy7" id="vL5-yT-lNy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CpD-zy-3cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1748" y="111.99400299850076"/>
+            <point key="canvasLocation" x="1747.5" y="111.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="syE-8d-nsE">
             <objects>
                 <navigationController id="XX6-db-Tp7" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GeO-mJ-Yy1">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -145,6 +431,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q3o-ZB-uWy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fpn-zF-Sup">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -157,4 +444,5 @@
             <point key="canvasLocation" x="808.79999999999995" y="111.99400299850076"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.058823529411764705" green="0.45882352941176469" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
