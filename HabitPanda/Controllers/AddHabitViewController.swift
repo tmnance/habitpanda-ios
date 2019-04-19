@@ -22,9 +22,14 @@ class AddHabitViewController: UIViewController {
     @IBOutlet weak var frequencyOptionsView: UIStackView!
     @IBOutlet weak var frequencyDaysView: UIStackView!
 
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameInputField: UITextField!
+
+    @IBOutlet weak var reminderTimesTableView: UITableView!
+    @IBOutlet weak var reminderTableViewHeightLayout: NSLayoutConstraint!
+
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var reminderTimes:[ReminderTime] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +43,17 @@ class AddHabitViewController: UIViewController {
         )
 
         setupKeyboardDismissalWhenTapOutside()
+
+        reminderTimesTableView.delegate = self
+        reminderTimesTableView.dataSource = self
+        reminderTimesTableView.separatorStyle = .none
+
+        reminderTimesTableView.register(
+            UINib(nibName: "EditableTimeCell", bundle: nil),
+            forCellReuseIdentifier: "editableTimeCell"
+        )
+
+        updateReminderTimes()
     }
 
 
@@ -50,6 +66,10 @@ class AddHabitViewController: UIViewController {
         newHabit.name = text
         newHabit.createdAt = Date()
         newHabit.uuid = UUID()
+
+        reminderTimes.forEach { (reminder) in
+            reminder.habit = newHabit
+        }
 
         do {
             try context.save()
@@ -118,7 +138,7 @@ class AddHabitViewController: UIViewController {
 
         if selectedDays.count == 7 {
             newOption = .Daily
-        } else if selectedDays.count == 5 && (selectedDays.filter{ ![.Sat, .Sun].contains($0) }).count == 5 {
+        } else if selectedDays.count == 5 && (selectedDays.filter { ![.Sat, .Sun].contains($0) }).count == 5 {
             // exactly 5 items selected and they are all weekdays
             newOption = .Weekdays
         }
@@ -132,17 +152,17 @@ class AddHabitViewController: UIViewController {
         if let selectedOption = getSelectedFrequencyOption() {
             switch selectedOption {
             case .Daily:
-                getFrequencyDayUIButtons().forEach{ $0.isSelected = true }
+                getFrequencyDayUIButtons().forEach { $0.isSelected = true }
                 break
             case .Weekdays:
                 // select non-weekend buttons
-                getFrequencyDayUIButtons().forEach{
+                getFrequencyDayUIButtons().forEach {
                     $0.isSelected = ![.Sat, .Sun].contains(FrequencyDay(rawValue: $0.tag)!)
                 }
                 break
             case .Custom:
                 // clear all selected
-                getFrequencyDayUIButtons().forEach{ $0.isSelected = false }
+                getFrequencyDayUIButtons().forEach { $0.isSelected = false }
                 break
             }
         }
@@ -154,7 +174,7 @@ class AddHabitViewController: UIViewController {
     func setSelectedFrequencyOption(to value: FrequencyOption) {
         // select new value and unselect the rest
         getFrequencyOptionUIButtons()
-            .forEach{ $0.isSelected = FrequencyOption(rawValue: $0.tag) == value }
+            .forEach { $0.isSelected = FrequencyOption(rawValue: $0.tag) == value }
     }
 
 
@@ -187,15 +207,15 @@ class AddHabitViewController: UIViewController {
 
     func getSelectedFrequencyOption() -> FrequencyOption? {
         return getFrequencyOptionUIButtons()
-            .filter{ $0.isSelected }
-            .compactMap{ FrequencyOption(rawValue: $0.tag) }
+            .filter { $0.isSelected }
+            .compactMap { FrequencyOption(rawValue: $0.tag) }
             .first
     }
 
     func getSelectedFrequencyDays() -> [FrequencyDay] {
         return getFrequencyDayUIButtons()
-            .filter{ $0.isSelected }
-            .compactMap{ FrequencyDay(rawValue: $0.tag) }
+            .filter { $0.isSelected }
+            .compactMap { FrequencyDay(rawValue: $0.tag) }
     }
 
 
@@ -227,6 +247,144 @@ class AddHabitViewController: UIViewController {
         }
 
         parentScrollView.scrollIndicatorInsets = parentScrollView.contentInset
+    }
+
+
+    // MARK: - Add Reminder Time Button Pressed Methods
+
+    @IBAction func addReminderButtonPressed(_ sender: UIButton) {
+        showSelectReminderTimePopup() { (_ hour: Int, _ minute: Int) in
+            if self.findReminderTimeIndex(withHour: hour, withMinute: minute) != nil {
+                // a reminder already exists with this time, keep it and ignore this one
+                return
+            }
+            let newReminder = ReminderTime(context: self.context)
+            newReminder.hour = Int32(hour)
+            newReminder.minute = Int32(minute)
+            newReminder.habit = nil
+            self.reminderTimes.append(newReminder)
+            self.updateReminderTimes()
+        }
+    }
+
+    func updateReminderTimes() {
+        reminderTimes.sort {$0.hour < $1.hour || ($0.hour == $1.hour && $0.minute < $1.minute) }
+        reminderTimesTableView.reloadData()
+
+        reminderTableViewHeightLayout.constant = CGFloat(
+            tableView(self.reminderTimesTableView, numberOfRowsInSection: 0) * 46
+        )
+    }
+
+    func showSelectReminderTimePopup(
+        hour: Int? = nil,
+        minute: Int? = nil,
+        completion: @escaping (_ hour: Int, _ minute: Int) -> ()
+    ) {
+        let vc = UIViewController()
+        vc.preferredContentSize = CGSize(width: 250, height: 300)
+
+        let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 250, height: 300))
+        datePicker.datePickerMode = .time
+        datePicker.minuteInterval = 5
+        // set initial value if present
+        if let editHour = hour, let editMinute = minute {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat =  "HH:mm"
+            if let date = dateFormatter.date(from: "\(editHour):\(editMinute)") {
+                datePicker.setDate(date, animated: false)
+            }
+        }
+        vc.view.addSubview(datePicker)
+
+        let alert = UIAlertController(
+            title: "Choose a reminder time",
+            message: "",
+            preferredStyle: .alert
+        )
+
+        // TODO: This call is potentially problematic since it exploits an undocumented API and is
+        // causing the following warning: "A constraint factory method was passed a nil layout
+        // anchor. This is not allowed, and may cause confusing exceptions."
+        alert.setValue(vc, forKey: "contentViewController")
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { (action) in
+            let components = Calendar.current.dateComponents(
+                [.hour, .minute],
+                from: datePicker.date
+            )
+            completion(components.hour!, components.minute!)
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        if self.presentedViewController == nil {
+            // only present if any no other alert is already shown
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+
+    func findReminderTimeIndex(withHour hour: Int, withMinute minute: Int) -> Int? {
+        return reminderTimes.indices
+            .filter { reminderTimes[$0].hour == hour && reminderTimes[$0].minute == minute }
+            .first
+    }
+
+    func removeReminderTime(atIndex index: Int) {
+        context.delete(self.reminderTimes[index])
+        reminderTimes.remove(at: index)
+    }
+}
+
+
+extension AddHabitViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reminderTimes.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "editableTimeCell",
+            for: indexPath
+        ) as! EditableTimeCell
+        cell.hour = Int(reminderTimes[indexPath.row].hour)
+        cell.minute = Int(reminderTimes[indexPath.row].minute)
+
+        cell.onEditButtonPressed = {
+            self.showSelectReminderTimePopup(
+                hour: cell.hour,
+                minute: cell.minute
+            ) { (_ hour: Int, _ minute: Int) in
+                let reminder = self.reminderTimes[indexPath.row]
+                if hour == reminder.hour && minute == reminder.minute {
+                    // nothing changed, do nothing
+                    return
+                } else if self.findReminderTimeIndex(withHour: hour, withMinute: minute) != nil {
+                    // a reminder already exists with new time, keep it and discard this one
+                    self.removeReminderTime(atIndex: indexPath.row)
+                    self.updateReminderTimes()
+                    return
+                }
+
+                reminder.hour = Int32(hour)
+                reminder.minute = Int32(minute)
+                self.updateReminderTimes()
+            }
+        }
+        cell.onRemoveButtonPressed = {
+            self.removeReminderTime(atIndex: indexPath.row)
+            self.updateReminderTimes()
+        }
+
+        cell.updateTimeDisplay()
+
+        cell.selectionStyle = .none
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 
 }

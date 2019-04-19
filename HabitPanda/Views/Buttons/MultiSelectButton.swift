@@ -8,11 +8,10 @@
 
 import UIKit
 
-class MultiSelectButton: SingleSelectButton {
+@IBDesignable class MultiSelectButton: SingleSelectButton {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
+    override func sharedInit() {
+        super.sharedInit()
         layer.cornerRadius = frame.height / 3
     }
 

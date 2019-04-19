@@ -1,8 +1,8 @@
 //
-//  Habit.swift
+//  ReminderTime.swift
 //  HabitPanda
 //
-//  Created by Tim Nance on 4/13/19.
+//  Created by Tim Nance on 4/19/19.
 //  Copyright © 2019 Tim Nance. All rights reserved.
 //
 
@@ -10,5 +10,5 @@ import Foundation
 import CoreData
 
 //@objc(Habit)
-public class Habit: NSManagedObject {
+public class ReminderTime: NSManagedObject {
 }
