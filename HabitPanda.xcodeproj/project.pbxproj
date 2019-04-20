@@ -15,6 +15,7 @@
 		1C90EB90226A8CDF007065D1 /* EditableTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB8F226A8CDF007065D1 /* EditableTimeCell.swift */; };
 		1C90EB92226A8E6A007065D1 /* EditableTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C90EB91226A8E6A007065D1 /* EditableTimeCell.xib */; };
 		1C90EB94226A92A7007065D1 /* ReminderTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB93226A92A7007065D1 /* ReminderTime.swift */; };
+		1C90EB9A226B87D8007065D1 /* UITextField+MaxLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB99226B87D8007065D1 /* UITextField+MaxLength.swift */; };
 		1C9FE64B2267C47F00354933 /* MultiSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9FE64A2267C47E00354933 /* MultiSelectButton.swift */; };
 		1C9FE64D2267C53000354933 /* SingleSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9FE64C2267C53000354933 /* SingleSelectButton.swift */; };
 		1CB9F7A1226244C4005D1FFC /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CB9F79F226244C4005D1FFC /* DataModel.xcdatamodeld */; };
@@ -33,6 +34,7 @@
 		1C90EB8F226A8CDF007065D1 /* EditableTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTimeCell.swift; sourceTree = "<group>"; };
 		1C90EB91226A8E6A007065D1 /* EditableTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditableTimeCell.xib; sourceTree = "<group>"; };
 		1C90EB93226A92A7007065D1 /* ReminderTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTime.swift; sourceTree = "<group>"; };
+		1C90EB99226B87D8007065D1 /* UITextField+MaxLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+MaxLength.swift"; sourceTree = "<group>"; };
 		1C9FE64A2267C47E00354933 /* MultiSelectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSelectButton.swift; sourceTree = "<group>"; };
 		1C9FE64C2267C53000354933 /* SingleSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectButton.swift; sourceTree = "<group>"; };
 		1CB9F7A0226244C4005D1FFC /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		1C8B27EA22621C77005DDE03 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				1C90EB98226B87AE007065D1 /* Extensions */,
 				1C12735122610DC80058D942 /* AppDelegate.swift */,
 				1C12735822610DCA0058D942 /* Assets.xcassets */,
 			);
@@ -134,6 +137,14 @@
 				1C90EB91226A8E6A007065D1 /* EditableTimeCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		1C90EB98226B87AE007065D1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1C90EB99226B87D8007065D1 /* UITextField+MaxLength.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +227,7 @@
 				1CDB38912262979400C86277 /* AddHabitViewController.swift in Sources */,
 				1CDB388F22624BBE00C86277 /* Habit.swift in Sources */,
 				1C12735222610DC80058D942 /* AppDelegate.swift in Sources */,
+				1C90EB9A226B87D8007065D1 /* UITextField+MaxLength.swift in Sources */,
 				1C9FE64B2267C47F00354933 /* MultiSelectButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
