@@ -9,6 +9,6 @@
 import Foundation
 import CoreData
 
-//@objc(Habit)
+@objc(ReminderTime)
 public class ReminderTime: NSManagedObject {
 }
