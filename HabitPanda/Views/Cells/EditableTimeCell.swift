@@ -9,11 +9,10 @@
 import UIKit
 
 class EditableTimeCell: UITableViewCell {
-
-    var hour:Int?
-    var minute:Int?
-    var onEditButtonPressed:(()->())? = nil
-    var onRemoveButtonPressed:(()->())? = nil
+    var hour: Int?
+    var minute: Int?
+    var onEditButtonPressed: (() -> ())? = nil
+    var onRemoveButtonPressed: (() -> ())? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,8 +20,7 @@ class EditableTimeCell: UITableViewCell {
         updateTimeDisplay()
     }
 
-
-    // MARK: - Button Pressed Methods
+    // MARK: Button Pressed Methods
 
     @IBAction func editButtonPressed(_ sender: UIButton) {
         onEditButtonPressed?()
@@ -32,23 +30,13 @@ class EditableTimeCell: UITableViewCell {
         onRemoveButtonPressed?()
     }
 
-
-    // MARK: - Value Changed Methods
+    // MARK: Value Changed Methods
 
     @IBOutlet weak var timeValueLabel: UILabel!
     func updateTimeDisplay() {
         if let hour = hour, let minute = minute {
-            timeValueLabel.text = getDisplayDate(hour: hour, minute: minute)
+            timeValueLabel.text = TimeOfDay.getDisplayDate(hour: hour, minute: minute)
         }
     }
-
-    func getDisplayDate(hour:Int, minute:Int) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat =  "HH:mm"
-        let date = dateFormatter.date(from: "\(hour):\(minute)")
-        dateFormatter.dateFormat = "h:mm a"
-        return dateFormatter.string(from: date!)
-    }
-
 }
 

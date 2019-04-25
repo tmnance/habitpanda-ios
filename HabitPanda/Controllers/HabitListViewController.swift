@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 class HabitListViewController: UITableViewController {
-
     var habitList = [Habit]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -24,10 +23,11 @@ class HabitListViewController: UITableViewController {
 
         loadData()
     }
+}
 
 
-    // Mark: - TableView Datasource Methods
-
+// MARK: - Tableview Datasource Methods
+extension HabitListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell", for: indexPath)
         let habit = habitList[indexPath.row]
@@ -40,27 +40,28 @@ class HabitListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return habitList.count
     }
+}
 
 
-    // Mark: - TableView Delegate Methods
-
+// MARK: - Tableview Delegate Methods
+extension HabitListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let habit = habitList[indexPath.row]
         print("Clicked on habit \(habit.name!)")
-
-//        performSegue(withIdentifier: "goToItems", sender: self)
+        performSegue(withIdentifier: "goToHabitDetails", sender: self)
     }
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let destinationVC = segue.destination as! TodoListViewController
-//        if let indexPath = tableView.indexPathForSelectedRow {
-//            destinationVC.selectedCategory = categoryList[indexPath.row]
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! HabitDetailsViewController
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedHabit = habitList[indexPath.row]
+        }
+    }
+}
 
 
-    // MARK: - Load Data Methods
-
+// MARK: - Load Data Methods
+extension HabitListViewController {
     func loadData() {
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
         do {
@@ -73,4 +74,3 @@ class HabitListViewController: UITableViewController {
         tableView.reloadData()
     }
 }
-

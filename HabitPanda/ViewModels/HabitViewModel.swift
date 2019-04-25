@@ -14,11 +14,6 @@ struct HabitViewModelConstants {
 }
 
 class HabitViewModel {
-    struct TimeHourMinute {
-        var hour: Int
-        var minute: Int
-    }
-
     typealias FrequencyOption = Habit.FrequencyOption
     typealias FrequencyDay = Habit.FrequencyDay
 
@@ -26,7 +21,7 @@ class HabitViewModel {
 
     var name: Box<String> = Box("")
     var frequencyDays: Box<[FrequencyDay]> = Box([])
-    var reminderTimes: Box<[TimeHourMinute]> = Box([])
+    var reminderTimes: Box<[TimeOfDay]> = Box([])
 
 
     init() {
@@ -117,7 +112,7 @@ extension HabitViewModel {
             return
         }
 
-        let newReminder = TimeHourMinute(hour: hour, minute: minute)
+        let newReminder = TimeOfDay(hour: hour, minute: minute)
         self.reminderTimes.value.append(newReminder)
         reminderTimes.value.sort {$0.hour < $1.hour || ($0.hour == $1.hour && $0.minute < $1.minute) }
     }

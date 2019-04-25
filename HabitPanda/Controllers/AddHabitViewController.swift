@@ -114,15 +114,6 @@ extension AddHabitViewController {
 }
 
 
-
-
-
-
-
-
-
-
-
 // MARK: - Keyboard Dismissal Methods
 extension AddHabitViewController {
     func setupKeyboardDismissalWhenTapOutside() {
