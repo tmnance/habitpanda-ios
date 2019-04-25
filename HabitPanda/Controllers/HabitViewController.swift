@@ -26,13 +26,13 @@ class HabitListViewController: UITableViewController {
     }
 
 
-    // Mark: - TableView Dataousrce Methods
+    // Mark: - TableView Datasource Methods
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell", for: indexPath)
         let habit = habitList[indexPath.row]
 
-        cell.textLabel?.text = habit.name
+        cell.textLabel?.text = "\(habit.name!) (\(habit.reminderTimes?.count ?? 0))"
 
         return cell
     }

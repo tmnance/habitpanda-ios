@@ -14,6 +14,11 @@ struct HabitViewModelConstants {
 }
 
 class HabitViewModel {
+    struct TimeHourMinute {
+        var hour: Int
+        var minute: Int
+    }
+
     typealias FrequencyOption = Habit.FrequencyOption
     typealias FrequencyDay = Habit.FrequencyDay
 
@@ -21,7 +26,12 @@ class HabitViewModel {
 
     var name: Box<String> = Box("")
     var frequencyDays: Box<[FrequencyDay]> = Box([])
-    var reminderTimes: Box<[ReminderTime]> = Box([])
+    var reminderTimes: Box<[TimeHourMinute]> = Box([])
+
+
+    init() {
+        print("HabitViewModel.init()")
+    }
 }
 
 
@@ -36,7 +46,12 @@ extension HabitViewModel {
         newHabit.uuid = UUID()
 
         reminderTimes.value.forEach { (reminder) in
-            reminder.habit = newHabit
+            let newReminder = ReminderTime(context: self.context)
+            newReminder.hour = Int32(reminder.hour)
+            newReminder.minute = Int32(reminder.minute)
+            newReminder.habit = newHabit
+//            context.delete(self.reminderTimes.value[index])
+//            reminder.habit = newHabit
         }
 
         do {
@@ -102,16 +117,12 @@ extension HabitViewModel {
             return
         }
 
-        let newReminder = ReminderTime(context: self.context)
-        newReminder.hour = Int32(hour)
-        newReminder.minute = Int32(minute)
-        newReminder.habit = nil
+        let newReminder = TimeHourMinute(hour: hour, minute: minute)
         self.reminderTimes.value.append(newReminder)
         reminderTimes.value.sort {$0.hour < $1.hour || ($0.hour == $1.hour && $0.minute < $1.minute) }
     }
 
     func removeReminderTime(atIndex index: Int) {
-        context.delete(self.reminderTimes.value[index])
         reminderTimes.value.remove(at: index)
     }
 
