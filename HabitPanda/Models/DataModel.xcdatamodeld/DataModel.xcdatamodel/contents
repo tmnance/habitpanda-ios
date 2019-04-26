@@ -4,12 +4,12 @@
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="reminderTimes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ReminderTime" inverseName="habit" inverseEntity="ReminderTime" syncable="YES"/>
+        <relationship name="reminderTimes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ReminderTime" inverseName="habit" inverseEntity="ReminderTime" syncable="YES"/>
     </entity>
     <entity name="ReminderTime" representedClassName=".ReminderTime" syncable="YES" codeGenerationType="category">
         <attribute name="hour" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="minute" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="habit" maxCount="1" deletionRule="Cascade" destinationEntity="Habit" inverseName="reminderTimes" inverseEntity="Habit" syncable="YES"/>
+        <relationship name="habit" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="reminderTimes" inverseEntity="Habit" syncable="YES"/>
     </entity>
     <elements>
         <element name="Habit" positionX="-63" positionY="-18" width="128" height="105"/>

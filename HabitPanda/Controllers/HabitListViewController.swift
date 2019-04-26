@@ -46,15 +46,15 @@ extension HabitListViewController {
 // MARK: - Tableview Delegate Methods
 extension HabitListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let habit = habitList[indexPath.row]
-        print("Clicked on habit \(habit.name!)")
         performSegue(withIdentifier: "goToHabitDetails", sender: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! HabitDetailsViewController
-        if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedHabit = habitList[indexPath.row]
+        if segue.identifier == "goToHabitDetails" {
+            let destinationVC = segue.destination as! HabitDetailsViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.selectedHabit = habitList[indexPath.row]
+            }
         }
     }
 }
@@ -69,7 +69,6 @@ extension HabitListViewController {
         } catch {
             print("Error fetching data from context, \(error)")
         }
-        print(habitList)
 
         tableView.reloadData()
     }

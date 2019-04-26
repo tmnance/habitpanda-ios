@@ -1,5 +1,5 @@
 //
-//  AddHabitViewController.swift
+//  AddEditHabitViewController.swift
 //  HabitPanda
 //
 //  Created by Tim Nance on 4/13/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddHabitViewController: UIViewController {
+class AddEditHabitViewController: UIViewController {
     typealias FrequencyOption = Habit.FrequencyOption
     typealias FrequencyDay = Habit.FrequencyDay
 
@@ -45,7 +45,6 @@ class AddHabitViewController: UIViewController {
         return buttons
     }()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,6 +61,10 @@ class AddHabitViewController: UIViewController {
         reminderTimesTableView.delegate = self
         reminderTimesTableView.dataSource = self
         reminderTimesTableView.separatorStyle = .none
+
+        viewModel.interactionMode.bind { [unowned self] (_) in
+            self.updateInteractionMode()
+        }
 
         reminderTimesTableView.register(
             UINib(nibName: "EditableTimeCell", bundle: nil),
@@ -82,23 +85,43 @@ class AddHabitViewController: UIViewController {
             self.updateReminderTimes()
         }
     }
+}
 
+
+// MARK: - Add/Edit Mode Context Methods
+extension AddEditHabitViewController {
+    func setSelectedHabit(_ habit: Habit) {
+        viewModel.selectedHabit = habit
+    }
+
+    func updateInteractionMode() {
+        switch viewModel.interactionMode.value {
+        case .Add:
+            title = "Create a New Habit"
+            break
+        case .Edit:
+            title = "Edit Habit"
+            break
+        default:
+            break
+        }
+    }
 }
 
 
 // MARK: - Top Nav Bar Methods
-extension AddHabitViewController {
+extension AddEditHabitViewController {
     // MARK: Top Nav Button Pressed Methods
 
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         if !isValidInput() {
             return
         }
-        viewModel.addHabit(nameInputField.text!)
+        viewModel.saveHabit(nameInputField.text!)
         dismiss(animated: true)
     }
 
-    @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
 
@@ -115,7 +138,7 @@ extension AddHabitViewController {
 
 
 // MARK: - Keyboard Dismissal Methods
-extension AddHabitViewController {
+extension AddEditHabitViewController {
     func setupKeyboardDismissalWhenTapOutside() {
         // keyboard stuff
         let notificationCenter = NotificationCenter.default
@@ -147,7 +170,7 @@ extension AddHabitViewController {
 
 
 // MARK: - Frequency Methods
-extension AddHabitViewController {
+extension AddEditHabitViewController {
     // MARK: Frequency Button Pressed Methods
 
     @IBAction func frequencyOptionButtonPressed(_ sender: MultiSelectButton) {
@@ -183,7 +206,7 @@ extension AddHabitViewController {
 
 
 // MARK: - Reminder Methods
-extension AddHabitViewController {
+extension AddEditHabitViewController {
     func updateReminderTimes() {
         reminderTimesTableView.reloadData()
         reminderTableViewHeightLayout.constant = CGFloat(
@@ -264,7 +287,7 @@ extension AddHabitViewController {
 
 
 // MARK: - Tableview Datasource Methods
-extension AddHabitViewController: UITableViewDelegate, UITableViewDataSource {
+extension AddEditHabitViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.reminderTimes.value.count
     }

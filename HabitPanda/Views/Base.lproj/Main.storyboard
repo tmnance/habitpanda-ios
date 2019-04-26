@@ -59,10 +59,10 @@
             </objects>
             <point key="canvasLocation" x="-274" y="112"/>
         </scene>
-        <!--Create a New Habit-->
+        <!--Add/Edit Habit-->
         <scene sceneID="Kbl-OX-QVO">
             <objects>
-                <viewController id="Aa1-59-79r" customClass="AddHabitViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Aa1-59-79r" customClass="AddEditHabitViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Kh-t9-od2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -481,10 +481,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cws-Y4-UrX"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create a New Habit" id="QK9-Zx-lXm">
+                    <navigationItem key="navigationItem" title="Add/Edit Habit" id="QK9-Zx-lXm">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Kfj-Fy-Evk">
                             <connections>
-                                <action selector="cancelPressed:" destination="Aa1-59-79r" id="OkR-ap-3Gm"/>
+                                <action selector="cancelButtonPressed:" destination="Aa1-59-79r" id="OkR-ap-3Gm"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="U43-Az-Hy7">
@@ -527,6 +527,7 @@
         <!--Navigation Controller-->
         <scene sceneID="LaR-CF-R1N">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3sl-nS-iW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q3o-ZB-uWy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fpn-zF-Sup">
@@ -538,7 +539,6 @@
                         <segue destination="Aa1-59-79r" kind="relationship" relationship="rootViewController" id="gWw-tf-Y37"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3sl-nS-iW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="808.79999999999995" y="111.99400299850076"/>
         </scene>
@@ -565,7 +565,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walk the dog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLK-aN-m57">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walk the dog" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLK-aN-m57">
                                                         <rect key="frame" x="0.0" y="37" width="280" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
@@ -592,7 +592,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7I-hZ-Tec">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7I-hZ-Tec">
                                                         <rect key="frame" x="0.0" y="37" width="280" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
@@ -613,13 +613,13 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KjU-Tl-ZsA" userLabel="Reminder Times Container">
                                                 <rect key="frame" x="20" y="238" width="280" height="69"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Times" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Jw-yD-fCe">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Times" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Jw-yD-fCe">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBw-h0-STe">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:22 AM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBw-h0-STe">
                                                         <rect key="frame" x="0.0" y="37" width="280" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
@@ -681,17 +681,28 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lz8-OO-UFb"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Habit Details" id="flD-GF-5m8">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="6Rq-Bs-H6H">
+                            <connections>
+                                <action selector="editButtonPressed:" destination="dIF-3Q-H7c" id="hrq-ZQ-2zE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="320" height="1200"/>
                     <connections>
                         <outlet property="frequencyLabel" destination="F7I-hZ-Tec" id="iFh-0F-De8"/>
                         <outlet property="nameLabel" destination="PLK-aN-m57" id="Hrm-g6-Nrh"/>
                         <outlet property="reminderTimesLabel" destination="aBw-h0-STe" id="Jh9-dJ-zgI"/>
+                        <segue destination="q3o-ZB-uWy" kind="show" identifier="goToEditHabit" id="amN-ro-xZK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZe-ih-LzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="389" y="1100"/>
+            <point key="canvasLocation" x="216" y="1185"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="amN-ro-xZK"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.058823529411764705" green="0.45882352941176469" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
