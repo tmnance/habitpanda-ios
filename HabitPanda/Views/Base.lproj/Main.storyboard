@@ -437,7 +437,7 @@
                                                     <constraint firstItem="tiv-4r-Otd" firstAttribute="leading" secondItem="Zic-cY-asb" secondAttribute="leading" id="pbQ-qh-ih8"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZC-XE-i16">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZC-XE-i16">
                                                 <rect key="frame" x="132" y="1107.5" width="56" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -527,7 +527,6 @@
         <!--Navigation Controller-->
         <scene sceneID="LaR-CF-R1N">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3sl-nS-iW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q3o-ZB-uWy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fpn-zF-Sup">
@@ -539,6 +538,7 @@
                         <segue destination="Aa1-59-79r" kind="relationship" relationship="rootViewController" id="gWw-tf-Y37"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3sl-nS-iW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="808.79999999999995" y="111.99400299850076"/>
         </scene>
@@ -637,7 +637,32 @@
                                                     <constraint firstAttribute="trailing" secondItem="aBw-h0-STe" secondAttribute="trailing" id="q4s-c8-Zdj"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65A-q4-yJ1">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gye-QS-Rlr" customClass="DesignableButton" customModule="HabitPanda" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="347" width="280" height="46"/>
+                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="46" id="3az-9w-vIH"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                                <state key="normal" title="Delete Habit">
+                                                    <color key="titleColor" red="0.91545593738555908" green="0.29308891296386719" blue="0.20751205086708069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.91545593738555908" green="0.29308891296386719" blue="0.20751205086708069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="deleteHabitButtonPressed:" destination="dIF-3Q-H7c" eventType="touchUpInside" id="Nnk-yW-e6S"/>
+                                                </connections>
+                                            </button>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65A-q4-yJ1">
                                                 <rect key="frame" x="132" y="1107.5" width="56" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -654,10 +679,13 @@
                                             <constraint firstAttribute="trailing" secondItem="SwW-Jk-myy" secondAttribute="trailing" constant="20" id="V3E-xf-fPw"/>
                                             <constraint firstAttribute="trailing" secondItem="pRI-iq-RYH" secondAttribute="trailing" constant="20" id="VkU-uF-yT0"/>
                                             <constraint firstItem="pRI-iq-RYH" firstAttribute="top" secondItem="rug-Ml-QVe" secondAttribute="top" constant="20" id="fJp-rI-qA4"/>
+                                            <constraint firstAttribute="trailing" secondItem="gye-QS-Rlr" secondAttribute="trailing" constant="20" id="iJU-oc-6B8"/>
+                                            <constraint firstItem="gye-QS-Rlr" firstAttribute="leading" secondItem="rug-Ml-QVe" secondAttribute="leading" constant="20" id="kep-4Y-RVl"/>
                                             <constraint firstItem="SwW-Jk-myy" firstAttribute="leading" secondItem="rug-Ml-QVe" secondAttribute="leading" constant="20" id="lLl-pz-3fp"/>
                                             <constraint firstAttribute="trailing" secondItem="KjU-Tl-ZsA" secondAttribute="trailing" constant="20" id="vFx-Lg-dUi"/>
+                                            <constraint firstItem="gye-QS-Rlr" firstAttribute="top" secondItem="KjU-Tl-ZsA" secondAttribute="bottom" constant="40" id="vUu-dp-Bsv"/>
                                             <constraint firstAttribute="bottom" secondItem="65A-q4-yJ1" secondAttribute="bottom" constant="8" id="wiy-ZJ-EvC"/>
-                                            <constraint firstItem="65A-q4-yJ1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KjU-Tl-ZsA" secondAttribute="bottom" constant="40" id="yKa-WQ-JZo"/>
+                                            <constraint firstItem="65A-q4-yJ1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gye-QS-Rlr" secondAttribute="bottom" constant="40" id="yKa-WQ-JZo"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -682,7 +710,7 @@
                         <viewLayoutGuide key="safeArea" id="lz8-OO-UFb"/>
                     </view>
                     <navigationItem key="navigationItem" title="Habit Details" id="flD-GF-5m8">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="6Rq-Bs-H6H">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="6Rq-Bs-H6H">
                             <connections>
                                 <action selector="editButtonPressed:" destination="dIF-3Q-H7c" id="hrq-ZQ-2zE"/>
                             </connections>

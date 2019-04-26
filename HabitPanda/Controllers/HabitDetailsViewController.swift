@@ -89,3 +89,28 @@ extension HabitDetailsViewController {
         destinationVC.setSelectedHabit(selectedHabit!)
     }
 }
+
+// MARK: - Delete Habit Methods
+extension HabitDetailsViewController {
+    @IBAction func deleteHabitButtonPressed(_ sender: UIButton) {
+        showDeleteHabitPopup()
+    }
+
+    func showDeleteHabitPopup() {
+        if let habit = selectedHabit {
+            let alert = UIAlertController(
+                title: "Confirm Delete",
+                message: "Are you sure you want to delete your habit named \"\(habit.name!)\"?",
+                preferredStyle: .alert
+            )
+
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
+                self.viewModel.deleteHabit()
+                self.navigationController?.popViewController(animated: true)
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+            present(alert, animated: true, completion: nil)
+        }
+    }
+}

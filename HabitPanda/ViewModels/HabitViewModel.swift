@@ -96,6 +96,20 @@ extension HabitViewModel {
         newReminder.minute = Int32(timeOfDay.minute)
         newReminder.habit = habit
     }
+
+    func deleteHabit() {
+        guard let habit = selectedHabit else {
+            return
+        }
+
+        context.delete(habit)
+
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context, \(error)")
+        }
+    }
 }
 
 
