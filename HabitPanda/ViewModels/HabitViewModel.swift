@@ -30,6 +30,8 @@ class HabitViewModel {
         didSet {
             if let habit = selectedHabit {
                 name.value = habit.name!
+                frequencyDays.value = (habit.frequencyDays ?? [])
+                    .compactMap{ FrequencyDay(rawValue: $0.intValue) }
                 loadReminderTimesData()
             }
             interactionMode.value = selectedHabit == nil ? .Add : .Edit
@@ -46,6 +48,7 @@ extension HabitViewModel {
         habitToSave.name = text
         habitToSave.createdAt = Date()
         habitToSave.uuid = UUID()
+        habitToSave.frequencyDays = frequencyDays.value.map{ $0.rawValue as NSNumber }
 
         if interactionMode.value == .Add {
             // all reminders are new

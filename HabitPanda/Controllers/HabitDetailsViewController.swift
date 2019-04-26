@@ -46,7 +46,7 @@ extension HabitDetailsViewController {
     func updateUI() {
         nameLabel?.text = viewModel.name.value
         frequencyLabel?.text = viewModel.frequencyDays.value
-            .map{ String($0.rawValue) }
+            .map{ $0.description }
             .joined(separator: ", ")
         reminderTimesLabel?.text = viewModel.reminderTimes.value
             .map {

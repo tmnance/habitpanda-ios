@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Habit" representedClassName=".Habit" syncable="YES" codeGenerationType="category">
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="frequencyDays" optional="YES" attributeType="Transformable" customClassName="[NSNumber]" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="reminderTimes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ReminderTime" inverseName="habit" inverseEntity="ReminderTime" syncable="YES"/>
@@ -12,7 +13,7 @@
         <relationship name="habit" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="reminderTimes" inverseEntity="Habit" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Habit" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Habit" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="ReminderTime" positionX="-63" positionY="9" width="128" height="90"/>
     </elements>
 </model>

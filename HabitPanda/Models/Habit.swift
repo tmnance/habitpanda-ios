@@ -16,5 +16,25 @@ public class Habit: NSManagedObject {
     }
     enum FrequencyDay: Int {
         case Sun = 0, Mon = 1, Tue = 2, Wed = 3, Thu = 4, Fri = 5, Sat = 6
+        var description: String {
+            var str: String
+            switch self {
+            case .Sun:
+                str = "Sun"
+            case .Mon:
+                str = "Mon"
+            case .Tue:
+                str = "Tue"
+            case .Wed:
+                str = "Wed"
+            case .Thu:
+                str = "Thu"
+            case .Fri:
+                str = "Fri"
+            case .Sat:
+                str = "Sat"
+            }
+            return str
+        }
     }
 }
