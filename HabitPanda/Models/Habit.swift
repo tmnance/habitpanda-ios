@@ -13,6 +13,18 @@ import CoreData
 public class Habit: NSManagedObject {
     enum FrequencyOption: Int {
         case Daily = 0, Weekdays = 1, Custom = 2
+        var description: String {
+            var str: String
+            switch self {
+            case .Daily:
+                str = "Daily"
+            case .Weekdays:
+                str = "Weekdays"
+            case .Custom:
+                str = "Custom"
+            }
+            return str
+        }
     }
     enum FrequencyDay: Int {
         case Sun = 0, Mon = 1, Tue = 2, Wed = 3, Thu = 4, Fri = 5, Sat = 6

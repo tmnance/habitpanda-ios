@@ -45,14 +45,34 @@ class HabitDetailsViewController: UIViewController {
 extension HabitDetailsViewController {
     func updateUI() {
         nameLabel?.text = viewModel.name.value
-        frequencyLabel?.text = viewModel.frequencyDays.value
-            .map{ $0.description }
-            .joined(separator: ", ")
-        reminderTimesLabel?.text = viewModel.reminderTimes.value
+        frequencyLabel?.text = getFrequencyDisplay() ?? "(none)"
+        reminderTimesLabel?.text = getReminderTimesDisplay() ?? "(none)"
+    }
+
+    func getFrequencyDisplay() -> String? {
+        guard viewModel.frequencyDays.value.count > 0 else {
+            return nil
+        }
+        let frequencyOption = viewModel.getFrequencyOption()
+        if frequencyOption == .Custom {
+            return frequencyOption.description + " - " +
+                viewModel.frequencyDays.value
+                    .map{ $0.description }
+                    .joined(separator: " / ")
+        } else {
+            return frequencyOption.description
+        }
+    }
+
+    func getReminderTimesDisplay() -> String? {
+        guard viewModel.reminderTimes.value.count > 0 else {
+            return nil
+        }
+        return viewModel.reminderTimes.value
             .map {
                 TimeOfDay.getDisplayDate(hour: Int($0.hour), minute: Int($0.minute))
             }
-            .joined(separator: ", ")
+            .joined(separator: "\n")
     }
 }
 
