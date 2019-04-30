@@ -13,7 +13,7 @@ class AddEditHabitViewController: UIViewController {
     typealias FrequencyDay = Habit.FrequencyDay
 
     @IBOutlet weak var parentScrollView: UIScrollView!
-    @IBOutlet weak var frequencyOptionsView: UIStackView!
+    @IBOutlet weak var frequencyOptionsSegmentedControl: UISegmentedControl!
     @IBOutlet weak var frequencyDaysView: UIStackView!
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -24,15 +24,6 @@ class AddEditHabitViewController: UIViewController {
 
     private var viewModel = HabitViewModel()
 
-    lazy var frequencyOptionUIButtons: [UIButton] = {
-        var buttons: [UIButton] = []
-        for case let button as UIButton in frequencyOptionsView.subviews {
-            if let _ = FrequencyOption(rawValue: button.tag) {
-                buttons.append(button)
-            }
-        }
-        return buttons
-    }()
     lazy var frequencyDayUIButtons: [UIButton] = {
         var buttons: [UIButton] = []
         for case let buttonRow as UIStackView in frequencyDaysView.subviews {
@@ -58,9 +49,15 @@ class AddEditHabitViewController: UIViewController {
 
         setupKeyboardDismissalWhenTapOutside()
 
+        frequencyOptionsSegmentedControl.setTitleTextAttributes(
+            [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)],
+            for: .normal
+        )
+
         reminderTimesTableView.delegate = self
         reminderTimesTableView.dataSource = self
         reminderTimesTableView.separatorStyle = .none
+
 
         viewModel.interactionMode.bind { [unowned self] (_) in
             self.updateInteractionMode()
@@ -142,10 +139,23 @@ extension AddEditHabitViewController {
     func setupKeyboardDismissalWhenTapOutside() {
         // keyboard stuff
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(adjustForKeyboard),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(adjustForKeyboard),
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil
+        )
 
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        let tap = UITapGestureRecognizer(
+            target: self.view,
+            action: #selector(UIView.endEditing(_:))
+        )
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
 
@@ -153,7 +163,10 @@ extension AddEditHabitViewController {
     }
 
     @objc func adjustForKeyboard(notification: Notification) {
-        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        guard let keyboardValue =
+            notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+                return
+            }
 
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
@@ -161,7 +174,12 @@ extension AddEditHabitViewController {
         if notification.name == UIResponder.keyboardWillHideNotification {
             parentScrollView.contentInset = .zero
         } else {
-            parentScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+            parentScrollView.contentInset = UIEdgeInsets(
+                top: 0,
+                left: 0,
+                bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom,
+                right: 0
+            )
         }
 
         parentScrollView.scrollIndicatorInsets = parentScrollView.contentInset
@@ -173,13 +191,10 @@ extension AddEditHabitViewController {
 extension AddEditHabitViewController {
     // MARK: Frequency Button Pressed Methods
 
-    @IBAction func frequencyOptionButtonPressed(_ sender: MultiSelectButton) {
-        if sender.isSelected {
-            // already selected, no need to do anything
-            return
-        }
-
-        let option = FrequencyOption(rawValue: sender.tag)!
+    @IBAction func frequencyOptionsSegmentedControlIndexChanged(_ sender: UISegmentedControl) {
+        let option = FrequencyOption(
+            rawValue: sender.selectedSegmentIndex
+        )!
         viewModel.updateFrequencyDays(forOption: option)
     }
 
@@ -196,11 +211,7 @@ extension AddEditHabitViewController {
             }
 
         let correctOption = viewModel.getFrequencyOption()
-        frequencyOptionUIButtons
-            .forEach {
-                let option = FrequencyOption(rawValue: $0.tag)!
-                $0.isSelected = option == correctOption
-            }
+        frequencyOptionsSegmentedControl.selectedSegmentIndex = correctOption.rawValue
     }
 }
 

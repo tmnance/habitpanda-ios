@@ -115,7 +115,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04a-hQ-2HX" userLabel="Frequency Container">
-                                                <rect key="frame" x="20" y="156" width="280" height="222"/>
+                                                <rect key="frame" x="20" y="156" width="280" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shi-QH-GcA">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="29"/>
@@ -129,98 +129,22 @@
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFY-h0-Ua4" userLabel="Horiz Spacer 1">
-                                                        <rect key="frame" x="0.0" y="58" width="280" height="1"/>
-                                                        <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="OyL-8b-Z2l" userLabel="Frequency Option Segmented Control">
+                                                        <rect key="frame" x="0.0" y="58" width="280" height="47"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="dyO-68-fgQ"/>
+                                                            <constraint firstAttribute="height" constant="46" id="mj4-f1-Mru"/>
                                                         </constraints>
-                                                    </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IoF-pe-gFt" userLabel="Frequency Options">
-                                                        <rect key="frame" x="0.0" y="59" width="280" height="46"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNy-nq-rXj" userLabel="Vert Spacer 1">
-                                                                <rect key="frame" x="0.0" y="0.0" width="1" height="46"/>
-                                                                <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="1" id="J10-GQ-OR9"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvK-sD-olc" customClass="SingleSelectButton" customModule="HabitPanda" customModuleProvider="target">
-                                                                <rect key="frame" x="1" y="0.0" width="92" height="46"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="46" id="Uix-eu-0sN"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <state key="normal" title="Daily">
-                                                                    <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="frequencyOptionButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="dPx-IR-zXw"/>
-                                                                </connections>
-                                                            </button>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkx-KO-aZr" userLabel="Vert Spacer 2">
-                                                                <rect key="frame" x="93" y="0.0" width="1" height="46"/>
-                                                                <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="1" id="q16-1t-jki"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsl-0j-TUo" customClass="SingleSelectButton" customModule="HabitPanda" customModuleProvider="target">
-                                                                <rect key="frame" x="94" y="0.0" width="92" height="46"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="46" id="KIx-oA-YpZ"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <state key="normal" title="Weekdays">
-                                                                    <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="frequencyOptionButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="Flo-tt-Nu9"/>
-                                                                </connections>
-                                                            </button>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZu-W5-IaQ" userLabel="Vert Spacer 3">
-                                                                <rect key="frame" x="186" y="0.0" width="1" height="46"/>
-                                                                <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="1" id="9Yt-Cy-tSz"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZS-Hp-oiC" customClass="SingleSelectButton" customModule="HabitPanda" customModuleProvider="target">
-                                                                <rect key="frame" x="187" y="0.0" width="92" height="46"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="46" id="3ML-mp-fMv"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <state key="normal" title="Custom">
-                                                                    <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="frequencyOptionButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="Hov-ro-W3p"/>
-                                                                </connections>
-                                                            </button>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmB-Rf-IYk" userLabel="Vert Spacer 4">
-                                                                <rect key="frame" x="279" y="0.0" width="1" height="46"/>
-                                                                <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="1" id="Ree-cj-yEf"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="Wsl-0j-TUo" firstAttribute="width" secondItem="PvK-sD-olc" secondAttribute="width" id="pcj-m5-D5U"/>
-                                                            <constraint firstItem="NZS-Hp-oiC" firstAttribute="width" secondItem="PvK-sD-olc" secondAttribute="width" id="uuF-LL-5fi"/>
-                                                        </constraints>
-                                                    </stackView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QMR-k6-AJJ" userLabel="Horiz Spacer 2">
-                                                        <rect key="frame" x="0.0" y="105" width="280" height="1"/>
-                                                        <color key="backgroundColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="Fns-jG-vav"/>
-                                                        </constraints>
-                                                    </view>
+                                                        <segments>
+                                                            <segment title="Daily"/>
+                                                            <segment title="Weekdays"/>
+                                                            <segment title="Custom"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="frequencyOptionsSegmentedControlIndexChanged:" destination="Aa1-59-79r" eventType="valueChanged" id="6l5-gY-qAZ"/>
+                                                        </connections>
+                                                    </segmentedControl>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YV4-Mm-K40" userLabel="Frequency Days">
-                                                        <rect key="frame" x="0.0" y="114" width="280" height="100"/>
+                                                        <rect key="frame" x="0.0" y="112" width="280" height="100"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wLj-Ht-u1K" userLabel="Day Row 1">
                                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="46"/>
@@ -343,29 +267,23 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="AFY-h0-Ua4" firstAttribute="top" secondItem="k8g-I2-Agl" secondAttribute="bottom" constant="8" id="8M5-iK-At2"/>
-                                                    <constraint firstItem="QMR-k6-AJJ" firstAttribute="top" secondItem="IoF-pe-gFt" secondAttribute="bottom" id="FwU-oJ-e11"/>
+                                                    <constraint firstItem="OyL-8b-Z2l" firstAttribute="bottom" secondItem="YV4-Mm-K40" secondAttribute="top" constant="-8" id="I8t-xh-PRW"/>
                                                     <constraint firstAttribute="trailing" secondItem="YV4-Mm-K40" secondAttribute="trailing" id="Iek-Gu-nqp"/>
-                                                    <constraint firstItem="IoF-pe-gFt" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="J7B-2U-Ud3"/>
                                                     <constraint firstItem="k8g-I2-Agl" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="JZ8-Zk-SfR"/>
-                                                    <constraint firstItem="QMR-k6-AJJ" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="OLy-dh-vO5"/>
                                                     <constraint firstAttribute="bottom" secondItem="YV4-Mm-K40" secondAttribute="bottom" constant="8" id="PSN-3O-Mdd"/>
-                                                    <constraint firstAttribute="trailing" secondItem="IoF-pe-gFt" secondAttribute="trailing" id="ReX-fP-yb4"/>
+                                                    <constraint firstAttribute="trailing" secondItem="OyL-8b-Z2l" secondAttribute="trailing" id="R9j-Td-Frs"/>
                                                     <constraint firstItem="YV4-Mm-K40" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="TNY-SA-hqS"/>
                                                     <constraint firstItem="shi-QH-GcA" firstAttribute="top" secondItem="04a-hQ-2HX" secondAttribute="top" id="YEA-rE-k1J"/>
-                                                    <constraint firstAttribute="trailing" secondItem="QMR-k6-AJJ" secondAttribute="trailing" id="ZbE-gR-XBw"/>
-                                                    <constraint firstItem="IoF-pe-gFt" firstAttribute="top" secondItem="AFY-h0-Ua4" secondAttribute="bottom" id="aPR-hb-tMg"/>
-                                                    <constraint firstItem="AFY-h0-Ua4" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="eRw-VF-Iin"/>
-                                                    <constraint firstItem="YV4-Mm-K40" firstAttribute="top" secondItem="QMR-k6-AJJ" secondAttribute="bottom" constant="8" id="eTE-hh-hhv"/>
                                                     <constraint firstItem="k8g-I2-Agl" firstAttribute="top" secondItem="shi-QH-GcA" secondAttribute="bottom" constant="4" id="eWP-LN-NSi"/>
-                                                    <constraint firstAttribute="trailing" secondItem="AFY-h0-Ua4" secondAttribute="trailing" id="gP1-Xh-rFg"/>
                                                     <constraint firstItem="shi-QH-GcA" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="gUK-w8-ZK2"/>
                                                     <constraint firstAttribute="trailing" secondItem="k8g-I2-Agl" secondAttribute="trailing" id="qNQ-C6-w4D"/>
+                                                    <constraint firstItem="OyL-8b-Z2l" firstAttribute="top" secondItem="k8g-I2-Agl" secondAttribute="bottom" constant="8" id="uEr-zA-Ebz"/>
+                                                    <constraint firstItem="OyL-8b-Z2l" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="ugB-yJ-QJa"/>
                                                     <constraint firstAttribute="trailing" secondItem="shi-QH-GcA" secondAttribute="trailing" id="vpI-bx-2Tg"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zic-cY-asb" userLabel="Reminder Times Container">
-                                                <rect key="frame" x="20" y="418" width="280" height="237.5"/>
+                                                <rect key="frame" x="20" y="416" width="280" height="237.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Times" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiv-4r-Otd">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="29"/>
@@ -496,7 +414,7 @@
                     <size key="freeformSize" width="320" height="1200"/>
                     <connections>
                         <outlet property="frequencyDaysView" destination="YV4-Mm-K40" id="JTw-DE-6ES"/>
-                        <outlet property="frequencyOptionsView" destination="IoF-pe-gFt" id="g9V-Qe-EkJ"/>
+                        <outlet property="frequencyOptionsSegmentedControl" destination="OyL-8b-Z2l" id="aop-JV-RZv"/>
                         <outlet property="nameInputField" destination="36C-KM-kEN" id="DNQ-3b-GpG"/>
                         <outlet property="parentScrollView" destination="oSY-Mv-gpm" id="Yzi-UW-RJr"/>
                         <outlet property="reminderTableViewHeightLayout" destination="cry-C1-GpR" id="nPE-PC-mB5"/>
