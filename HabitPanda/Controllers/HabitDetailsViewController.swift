@@ -11,8 +11,26 @@ import CoreData
 
 class HabitDetailsViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var frequencyLabel: UILabel!
-    @IBOutlet weak var reminderTimesLabel: UILabel!
+    @IBOutlet weak var contentTabsSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var tabContentContainerView: UIView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var tabContentContainerHeightConstraint: NSLayoutConstraint!
+
+    var currentTabVC: UIViewController?
+    lazy var summaryTabVC: HabitSummaryViewController? = {
+        let vc = self.storyboard?.instantiateViewController(
+            withIdentifier: "HabitSummaryViewController"
+        ) as? HabitSummaryViewController
+        vc?.delegateViewModel = self.viewModel
+        return vc
+    }()
+    lazy var remindersTabVC : HabitRemindersViewController? = {
+        let vc = self.storyboard?.instantiateViewController(
+            withIdentifier: "HabitRemindersViewController"
+        ) as? HabitRemindersViewController
+        vc?.delegateViewModel = self.viewModel
+        return vc
+    }()
 
     private var viewModel = HabitViewModel()
 
@@ -25,10 +43,8 @@ class HabitDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        viewModel.reminderTimes.bind { [unowned self] (_) in
-            self.updateUI()
-        }
+        setupSegmentedControl()
+        displayCurrentTab(0)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +54,20 @@ class HabitDetailsViewController: UIViewController {
 
         updateUI()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let vc = currentTabVC {
+            vc.viewWillDisappear(animated)
+        }
+    }
+
+    override func preferredContentSizeDidChange(forChildContentContainer container: UIContentContainer) {
+        super.preferredContentSizeDidChange(forChildContentContainer: container)
+
+        tabContentContainerHeightConstraint.constant = container.preferredContentSize.height
+        tabContentContainerView.updateConstraints()
+    }
 }
 
 
@@ -45,34 +75,60 @@ class HabitDetailsViewController: UIViewController {
 extension HabitDetailsViewController {
     func updateUI() {
         nameLabel?.text = viewModel.name.value
-        frequencyLabel?.text = getFrequencyDisplay() ?? "(none)"
-        reminderTimesLabel?.text = getReminderTimesDisplay() ?? "(none)"
+    }
+}
+
+
+// MARK: - Segmented Control / Tab Methods
+extension HabitDetailsViewController {
+    func setupSegmentedControl() {
+        contentTabsSegmentedControl.setTitleTextAttributes(
+            [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)],
+            for: .normal
+        )
+
+        contentTabsSegmentedControl.tintColor = Constants.Colors.tintColor
+        contentTabsSegmentedControl.backgroundColor = UIColor.clear
+        contentTabsSegmentedControl.removeBorders()
+        contentTabsSegmentedControl.superview?.setBorders(
+            toEdges: [.top, .bottom],
+            withColor: Constants.Colors.tintColor,
+            andThickness: 1
+        )
     }
 
-    func getFrequencyDisplay() -> String? {
-        guard viewModel.frequencyDays.value.count > 0 else {
-            return nil
-        }
-        let frequencyOption = viewModel.getFrequencyOption()
-        if frequencyOption == .Custom {
-            return frequencyOption.description + " - " +
-                viewModel.frequencyDays.value
-                    .map{ $0.description }
-                    .joined(separator: " / ")
-        } else {
-            return frequencyOption.description
+    // MARK: Switching Tabs Functions
+    @IBAction func contentTabIndexChanged(_ sender: UISegmentedControl) {
+        self.currentTabVC!.view.removeFromSuperview()
+        self.currentTabVC!.removeFromParent()
+
+        displayCurrentTab(sender.selectedSegmentIndex)
+    }
+
+    func displayCurrentTab(_ tabIndex: Int) {
+        if let vc = getSelectedSegmentVC(tabIndex) {
+            self.addChild(vc)
+            vc.didMove(toParent: self)
+
+            vc.view.frame = tabContentContainerView.bounds
+            tabContentContainerView.addSubview(vc.view)
+            currentTabVC = vc
+            preferredContentSizeDidChange(forChildContentContainer: vc)
         }
     }
 
-    func getReminderTimesDisplay() -> String? {
-        guard viewModel.reminderTimes.value.count > 0 else {
+    func getSelectedSegmentVC(_ index: Int) -> UIViewController? {
+        var vc: UIViewController?
+        switch index {
+        case 0:
+            vc = summaryTabVC
+        case 1:
+            vc = remindersTabVC
+        default:
             return nil
         }
-        return viewModel.reminderTimes.value
-            .map {
-                TimeOfDay.getDisplayDate(hour: Int($0.hour), minute: Int($0.minute))
-            }
-            .joined(separator: "\n")
+
+        return vc
     }
 }
 
@@ -87,30 +143,5 @@ extension HabitDetailsViewController {
         let destinationNavigationVC = segue.destination as! UINavigationController
         let destinationVC = destinationNavigationVC.topViewController as! AddEditHabitViewController
         destinationVC.setSelectedHabit(selectedHabit!)
-    }
-}
-
-// MARK: - Delete Habit Methods
-extension HabitDetailsViewController {
-    @IBAction func deleteHabitButtonPressed(_ sender: UIButton) {
-        showDeleteHabitPopup()
-    }
-
-    func showDeleteHabitPopup() {
-        if let habit = selectedHabit {
-            let alert = UIAlertController(
-                title: "Confirm Delete",
-                message: "Are you sure you want to delete your habit named \"\(habit.name!)\"?",
-                preferredStyle: .alert
-            )
-
-            alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
-                self.viewModel.deleteHabit()
-                self.navigationController?.popViewController(animated: true)
-            })
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-            present(alert, animated: true, completion: nil)
-        }
     }
 }

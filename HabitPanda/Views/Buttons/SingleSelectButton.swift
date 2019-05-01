@@ -9,9 +9,6 @@
 import UIKit
 
 @IBDesignable class SingleSelectButton: UIButton {
-
-    let buttonTintColor = UIColor(red: 0.06, green: 0.46, blue: 0.51, alpha: 1.0) // 0F7583
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         sharedInit()
@@ -27,7 +24,7 @@ import UIKit
     }
 
     func sharedInit() {
-        setTitleColor(buttonTintColor, for: .normal)
+        setTitleColor(Constants.Colors.tintColor, for: .normal)
         setTitleColor(UIColor.white, for: .selected)
     }
 
@@ -35,7 +32,7 @@ import UIKit
         didSet {
             switch isSelected {
             case true:
-                layer.backgroundColor = buttonTintColor.cgColor
+                layer.backgroundColor = Constants.Colors.tintColor.cgColor
             case false:
                 layer.backgroundColor = UIColor.clear.cgColor
             }
@@ -45,5 +42,4 @@ import UIKit
     override var isHighlighted: Bool {
         didSet { if isHighlighted { isHighlighted = false } }
     }
-
 }

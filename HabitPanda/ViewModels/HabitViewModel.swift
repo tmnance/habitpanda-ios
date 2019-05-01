@@ -9,10 +9,6 @@
 import UIKit
 import CoreData
 
-struct HabitViewModelConstants {
-    static let timePickerMinuteInterval = 5
-}
-
 class HabitViewModel {
     typealias FrequencyOption = Habit.FrequencyOption
     typealias FrequencyDay = Habit.FrequencyDay
@@ -48,7 +44,9 @@ extension HabitViewModel {
         habitToSave.name = text
         habitToSave.createdAt = Date()
         habitToSave.uuid = UUID()
-        habitToSave.frequencyDays = frequencyDays.value.map{ $0.rawValue as NSNumber }
+        habitToSave.frequencyDays = frequencyDays.value
+            .sorted{ $0.rawValue < $1.rawValue }
+            .map{ $0.rawValue as NSNumber }
 
         if interactionMode.value == .Add {
             // all reminders are new

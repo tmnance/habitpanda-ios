@@ -237,10 +237,10 @@ extension AddEditHabitViewController {
     ) -> UIDatePicker {
         let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 250, height: 300))
         datePicker.datePickerMode = .time
-        datePicker.minuteInterval = HabitViewModelConstants.timePickerMinuteInterval
+        datePicker.minuteInterval = Constants.TimePicker.minuteInterval
         datePicker.setDate(
             Date().rounded(
-                minutes: TimeInterval(HabitViewModelConstants.timePickerMinuteInterval),
+                minutes: TimeInterval(Constants.TimePicker.minuteInterval),
                 rounding: .floor
             ),
             animated: false
