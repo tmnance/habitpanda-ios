@@ -1,5 +1,5 @@
 //
-//  AddEditHabitViewController.swift
+//  HabitAddEditViewController.swift
 //  HabitPanda
 //
 //  Created by Tim Nance on 4/13/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddEditHabitViewController: UIViewController {
+class HabitAddEditViewController: UIViewController {
     typealias FrequencyOption = Habit.FrequencyOption
     typealias FrequencyDay = Habit.FrequencyDay
 
@@ -86,7 +86,7 @@ class AddEditHabitViewController: UIViewController {
 
 
 // MARK: - Add/Edit Mode Context Methods
-extension AddEditHabitViewController {
+extension HabitAddEditViewController {
     func setSelectedHabit(_ habit: Habit) {
         viewModel.selectedHabit = habit
     }
@@ -107,7 +107,7 @@ extension AddEditHabitViewController {
 
 
 // MARK: - Top Nav Bar Methods
-extension AddEditHabitViewController {
+extension HabitAddEditViewController {
     // MARK: Top Nav Button Pressed Methods
 
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
@@ -135,7 +135,7 @@ extension AddEditHabitViewController {
 
 
 // MARK: - Keyboard Dismissal Methods
-extension AddEditHabitViewController {
+extension HabitAddEditViewController {
     func setupKeyboardDismissalWhenTapOutside() {
         // keyboard stuff
         let notificationCenter = NotificationCenter.default
@@ -188,7 +188,7 @@ extension AddEditHabitViewController {
 
 
 // MARK: - Frequency Methods
-extension AddEditHabitViewController {
+extension HabitAddEditViewController {
     // MARK: Frequency Button Pressed Methods
 
     @IBAction func frequencyOptionsSegmentedControlIndexChanged(_ sender: UISegmentedControl) {
@@ -217,7 +217,7 @@ extension AddEditHabitViewController {
 
 
 // MARK: - Reminder Methods
-extension AddEditHabitViewController {
+extension HabitAddEditViewController {
     func updateReminderTimes() {
         reminderTimesTableView.reloadData()
         reminderTableViewHeightLayout.constant = CGFloat(
@@ -298,7 +298,7 @@ extension AddEditHabitViewController {
 
 
 // MARK: - Tableview Datasource Methods
-extension AddEditHabitViewController: UITableViewDelegate, UITableViewDataSource {
+extension HabitAddEditViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.reminderTimes.value.count
     }

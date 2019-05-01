@@ -62,7 +62,7 @@
         <!--Add/Edit Habit-->
         <scene sceneID="Kbl-OX-QVO">
             <objects>
-                <viewController id="Aa1-59-79r" customClass="AddEditHabitViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Aa1-59-79r" customClass="HabitAddEditViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Kh-t9-od2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

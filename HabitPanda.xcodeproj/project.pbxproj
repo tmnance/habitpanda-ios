@@ -23,13 +23,13 @@
 		1CAC6795226FDEE500B41338 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC6794226FDEE500B41338 /* Box.swift */; };
 		1CAC679D22725D3600B41338 /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC679C22725D3600B41338 /* HabitDetailsViewController.swift */; };
 		1CAC67A02272694800B41338 /* TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC679F2272694700B41338 /* TimeOfDay.swift */; };
-		1CAC67A2227279D400B41338 /* AddEditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC67A1227279D400B41338 /* AddEditHabitViewController.swift */; };
 		1CAC67A42273869900B41338 /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC67A32273869900B41338 /* UIView+Border.swift */; };
 		1CB9F7A1226244C4005D1FFC /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CB9F79F226244C4005D1FFC /* DataModel.xcdatamodeld */; };
 		1CBBABCB2279195D00DB8F8E /* HabitSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABCA2279195D00DB8F8E /* HabitSummaryViewController.swift */; };
 		1CBBABCD227919C700DB8F8E /* HabitRemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABCC227919C700DB8F8E /* HabitRemindersViewController.swift */; };
 		1CBBABD1227921C400DB8F8E /* UISegmentedControl+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABD0227921C400DB8F8E /* UISegmentedControl+Border.swift */; };
 		1CBBABD32279297500DB8F8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABD22279297500DB8F8E /* Constants.swift */; };
+		1CBBABD6227A4F4400DB8F8E /* HabitAddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABD5227A4F4300DB8F8E /* HabitAddEditViewController.swift */; };
 		1CDB388F22624BBE00C86277 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB388E22624BBE00C86277 /* Habit.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,13 +52,13 @@
 		1CAC6794226FDEE500B41338 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		1CAC679C22725D3600B41338 /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
 		1CAC679F2272694700B41338 /* TimeOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
-		1CAC67A1227279D400B41338 /* AddEditHabitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditHabitViewController.swift; sourceTree = "<group>"; };
 		1CAC67A32273869900B41338 /* UIView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
 		1CB9F7A0226244C4005D1FFC /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		1CBBABCA2279195D00DB8F8E /* HabitSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitSummaryViewController.swift; sourceTree = "<group>"; };
 		1CBBABCC227919C700DB8F8E /* HabitRemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRemindersViewController.swift; sourceTree = "<group>"; };
 		1CBBABD0227921C400DB8F8E /* UISegmentedControl+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Border.swift"; sourceTree = "<group>"; };
 		1CBBABD22279297500DB8F8E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1CBBABD5227A4F4300DB8F8E /* HabitAddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitAddEditViewController.swift; sourceTree = "<group>"; };
 		1CDB388E22624BBE00C86277 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,11 +105,11 @@
 		1C8B27E722621C55005DDE03 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1CAC67A1227279D400B41338 /* AddEditHabitViewController.swift */,
-				1C12735322610DC80058D942 /* HabitListViewController.swift */,
+				1CBBABD5227A4F4300DB8F8E /* HabitAddEditViewController.swift */,
 				1CAC679C22725D3600B41338 /* HabitDetailsViewController.swift */,
-				1CBBABCA2279195D00DB8F8E /* HabitSummaryViewController.swift */,
+				1C12735322610DC80058D942 /* HabitListViewController.swift */,
 				1CBBABCC227919C700DB8F8E /* HabitRemindersViewController.swift */,
+				1CBBABCA2279195D00DB8F8E /* HabitSummaryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -267,10 +267,10 @@
 			files = (
 				1C90EB94226A92A7007065D1 /* ReminderTime.swift in Sources */,
 				1CB9F7A1226244C4005D1FFC /* DataModel.xcdatamodeld in Sources */,
-				1CAC67A2227279D400B41338 /* AddEditHabitViewController.swift in Sources */,
 				1C12735422610DC80058D942 /* HabitListViewController.swift in Sources */,
 				1C90EB90226A8CDF007065D1 /* EditableTimeCell.swift in Sources */,
 				1C9FE64D2267C53000354933 /* SingleSelectButton.swift in Sources */,
+				1CBBABD6227A4F4400DB8F8E /* HabitAddEditViewController.swift in Sources */,
 				1CAC6791226FD51400B41338 /* HabitViewModel.swift in Sources */,
 				1CBBABCD227919C700DB8F8E /* HabitRemindersViewController.swift in Sources */,
 				1CBBABD1227921C400DB8F8E /* UISegmentedControl+Border.swift in Sources */,
