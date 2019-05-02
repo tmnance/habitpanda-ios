@@ -19,9 +19,6 @@ class HabitAddEditViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameInputField: UITextField!
 
-    @IBOutlet weak var reminderTimesTableView: UITableView!
-    @IBOutlet weak var reminderTableViewHeightLayout: NSLayoutConstraint!
-
     private var viewModel = HabitViewModel()
 
     lazy var frequencyDayUIButtons: [UIButton] = {
@@ -39,34 +36,31 @@ class HabitAddEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupFieldStylesAndBindings()
+        setupKeyboardDismissalWhenTapOutside()
+    }
+}
+
+
+// MARK: - Field Setup Methods
+extension HabitAddEditViewController {
+    func setupFieldStylesAndBindings() {
         saveButton.isEnabled = false
 
         nameInputField.addTarget(
             self,
-            action: #selector(self.validateInput),
+            action: #selector(self.updateName),
             for: UIControl.Event.editingChanged
         )
-
-        setupKeyboardDismissalWhenTapOutside()
 
         frequencyOptionsSegmentedControl.setTitleTextAttributes(
             [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)],
             for: .normal
         )
 
-        reminderTimesTableView.delegate = self
-        reminderTimesTableView.dataSource = self
-        reminderTimesTableView.separatorStyle = .none
-
-
         viewModel.interactionMode.bind { [unowned self] (_) in
             self.updateInteractionMode()
         }
-
-        reminderTimesTableView.register(
-            UINib(nibName: "EditableTimeCell", bundle: nil),
-            forCellReuseIdentifier: "editableTimeCell"
-        )
 
         viewModel.name.bind { [unowned self] in
             self.nameInputField.text = $0
@@ -76,10 +70,6 @@ class HabitAddEditViewController: UIViewController {
         viewModel.frequencyDays.bind { [unowned self] (_) in
             self.updateFrequencyDays()
             self.validateInput()
-        }
-
-        viewModel.reminderTimes.bind { [unowned self] (_) in
-            self.updateReminderTimes()
         }
     }
 }
@@ -114,7 +104,7 @@ extension HabitAddEditViewController {
         if !isValidInput() {
             return
         }
-        viewModel.saveHabit(nameInputField.text!)
+        viewModel.saveHabit()
         dismiss(animated: true)
     }
 
@@ -124,12 +114,12 @@ extension HabitAddEditViewController {
 
     // MARK: Validation Methods
 
-    @objc func validateInput() {
+    func validateInput() {
         saveButton.isEnabled = isValidInput()
     }
 
     func isValidInput() -> Bool {
-        return nameInputField.text!.count > 0 && viewModel.frequencyDays.value.count > 0
+        return viewModel.name.value.count > 0 && viewModel.frequencyDays.value.count > 0
     }
 }
 
@@ -187,6 +177,14 @@ extension HabitAddEditViewController {
 }
 
 
+// MARK: - Name Methods
+extension HabitAddEditViewController {
+    @objc func updateName() {
+        viewModel.name.value = nameInputField.text!
+    }
+}
+
+
 // MARK: - Frequency Methods
 extension HabitAddEditViewController {
     // MARK: Frequency Button Pressed Methods
@@ -212,131 +210,5 @@ extension HabitAddEditViewController {
 
         let correctOption = viewModel.getFrequencyOption()
         frequencyOptionsSegmentedControl.selectedSegmentIndex = correctOption.rawValue
-    }
-}
-
-
-// MARK: - Reminder Methods
-extension HabitAddEditViewController {
-    func updateReminderTimes() {
-        reminderTimesTableView.reloadData()
-        reminderTableViewHeightLayout.constant = CGFloat(
-            tableView(reminderTimesTableView, numberOfRowsInSection: 0) * 46
-        )
-    }
-
-    @IBAction func addReminderButtonPressed(_ sender: UIButton) {
-        showSelectReminderTimePopup() { (_ hour: Int, _ minute: Int) in
-            self.viewModel.addReminderTime(hour: hour, minute: minute)
-        }
-    }
-
-    func createReminderDatePicker(
-        hour: Int? = nil,
-        minute: Int? = nil
-    ) -> UIDatePicker {
-        let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 250, height: 300))
-        datePicker.datePickerMode = .time
-        datePicker.minuteInterval = Constants.TimePicker.minuteInterval
-        datePicker.setDate(
-            Date().rounded(
-                minutes: TimeInterval(Constants.TimePicker.minuteInterval),
-                rounding: .floor
-            ),
-            animated: false
-        )
-
-        // set initial value if present
-        if let editHour = hour, let editMinute = minute {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat =  "HH:mm"
-            if let date = dateFormatter.date(from: "\(editHour):\(editMinute)") {
-                datePicker.setDate(date, animated: false)
-            }
-        }
-
-        return datePicker
-    }
-
-    func showSelectReminderTimePopup(
-        hour: Int? = nil,
-        minute: Int? = nil,
-        completion: @escaping (_ hour: Int, _ minute: Int) -> ()
-    ) {
-        let vc = UIViewController()
-        vc.preferredContentSize = CGSize(width: 250, height: 300)
-
-        let datePicker = createReminderDatePicker(hour: hour, minute: minute)
-        vc.view.addSubview(datePicker)
-
-        let alert = UIAlertController(
-            title: "Choose a reminder time",
-            message: "",
-            preferredStyle: .alert
-        )
-
-        // TODO: This call is potentially problematic since it exploits an undocumented API and is
-        // causing the following warning: "A constraint factory method was passed a nil layout
-        // anchor. This is not allowed, and may cause confusing exceptions."
-        alert.setValue(vc, forKey: "contentViewController")
-
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { (action) in
-            let components = Calendar.current.dateComponents(
-                [.hour, .minute],
-                from: datePicker.date
-            )
-            completion(components.hour!, components.minute!)
-        })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        if presentedViewController == nil {
-            // only present if any no other alert is already shown
-            present(alert, animated: true, completion: nil)
-        }
-    }
-}
-
-
-// MARK: - Tableview Datasource Methods
-extension HabitAddEditViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.reminderTimes.value.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: "editableTimeCell",
-            for: indexPath
-        ) as! EditableTimeCell
-        let reminder = viewModel.reminderTimes.value[indexPath.row]
-        cell.hour = Int(reminder.hour)
-        cell.minute = Int(reminder.minute)
-
-        cell.onEditButtonPressed = {
-            self.showSelectReminderTimePopup(
-                hour: cell.hour,
-                minute: cell.minute
-            ) { (_ hour: Int, _ minute: Int) in
-                if hour == reminder.hour && minute == reminder.minute {
-                    // nothing changed, do nothing
-                    return
-                }
-                // simpler to just remove and re-add to prevent duplicates
-                self.viewModel.removeReminderTime(atIndex: indexPath.row)
-                self.viewModel.addReminderTime(hour: hour, minute: minute)
-            }
-        }
-        cell.onRemoveButtonPressed = {
-            self.viewModel.removeReminderTime(atIndex: indexPath.row)
-        }
-
-        cell.updateTimeDisplay()
-        cell.selectionStyle = .none
-
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
     }
 }

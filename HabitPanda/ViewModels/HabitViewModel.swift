@@ -20,7 +20,6 @@ class HabitViewModel {
 
     var name: Box<String> = Box("")
     var frequencyDays: Box<[FrequencyDay]> = Box([])
-    var reminderTimes: Box<[TimeOfDay]> = Box([])
     var interactionMode: Box<ViewInteractionMode> = Box(.Add)
     var selectedHabit: Habit? {
         didSet {
@@ -28,71 +27,29 @@ class HabitViewModel {
                 name.value = habit.name!
                 frequencyDays.value = (habit.frequencyDays ?? [])
                     .compactMap{ FrequencyDay(rawValue: $0.intValue) }
-                loadReminderTimesData()
             }
             interactionMode.value = selectedHabit == nil ? .Add : .Edit
         }
     }
-    var selectedHabitReminderTimes: [ReminderTime] = []
 }
 
 
 // MARK: - Save Data Methods
 extension HabitViewModel {
-    func saveHabit(_ text: String) {
+    func saveHabit() {
         let habitToSave = interactionMode.value == .Add ? Habit(context: context) : selectedHabit!
-        habitToSave.name = text
+        habitToSave.name = name.value
         habitToSave.createdAt = Date()
         habitToSave.uuid = UUID()
         habitToSave.frequencyDays = frequencyDays.value
             .sorted{ $0.rawValue < $1.rawValue }
             .map{ $0.rawValue as NSNumber }
 
-        if interactionMode.value == .Add {
-            // all reminders are new
-            reminderTimes.value.forEach{ (reminder) in
-                createReminderTime(fromTimeOfDay: reminder, forHabit: habitToSave)
-            }
-        } else {
-            // need to reconcile added and removed reminders
-
-            // get reminders added while editing that are not in the original habit
-            reminderTimes.value
-                .filter{
-                    let updatedReminder = $0
-                    return !selectedHabitReminderTimes.contains{
-                        updatedReminder.hour == $0.hour && updatedReminder.minute == $0.minute
-                    }
-                }
-                .forEach{ (reminder) in
-                    createReminderTime(fromTimeOfDay: reminder, forHabit: habitToSave)
-                }
-
-            // get reminders removed while editing that are in the original habit
-
-            for (index, origReminder) in selectedHabitReminderTimes.enumerated().reversed() {
-                let isRemoved = !reminderTimes.value.contains{
-                    origReminder.hour == $0.hour && origReminder.minute == $0.minute
-                }
-                if isRemoved {
-                    context.delete(selectedHabitReminderTimes[index])
-                    selectedHabitReminderTimes.remove(at: index)
-                }
-            }
-        }
-
         do {
             try context.save()
         } catch {
             print("Error saving context, \(error)")
         }
-    }
-
-    func createReminderTime(fromTimeOfDay timeOfDay: TimeOfDay, forHabit habit: Habit) {
-        let newReminder = ReminderTime(context: self.context)
-        newReminder.hour = Int32(timeOfDay.hour)
-        newReminder.minute = Int32(timeOfDay.minute)
-        newReminder.habit = habit
     }
 
     func deleteHabit() {
@@ -125,33 +82,6 @@ extension HabitViewModel {
                 print("Error fetching data from context, \(error)")
             }
         }
-    }
-
-    func loadReminderTimesData() {
-        if let habit = selectedHabit {
-            let request: NSFetchRequest<ReminderTime> = ReminderTime.fetchRequest()
-            let predicates = [NSPredicate(format: "habit = %@", habit)]
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-
-            do {
-                selectedHabitReminderTimes = try context.fetch(request)
-                reminderTimes.value = convertSelectedReminderTimesToTimeOfDay()
-            } catch {
-                print("Error fetching data from context, \(error)")
-            }
-        } else {
-            selectedHabitReminderTimes = []
-        }
-//        tableView.reloadData()
-    }
-
-}
-
-
-// MARK: - Name Methods
-extension HabitViewModel {
-    func updateName(name: String) {
-        self.name.value = name
     }
 }
 
@@ -193,48 +123,5 @@ extension HabitViewModel {
             frequencyDays.value = []
             break
         }
-    }
-}
-
-
-// MARK: - Reminder Methods
-extension HabitViewModel {
-    func convertSelectedReminderTimesToTimeOfDay() -> [TimeOfDay] {
-        return selectedHabitReminderTimes
-            .map {
-                let reminderTime = $0
-                return TimeOfDay(
-                    hour: Int(reminderTime.hour),
-                    minute: Int(reminderTime.minute)
-                )
-            }
-            .sorted {
-                $0.hour < $1.hour || ($0.hour == $1.hour && $0.minute < $1.minute)
-            }
-    }
-
-    func addReminderTime(hour: Int, minute: Int) {
-        if findReminderTimeIndex(withHour: hour, withMinute: minute) != nil {
-            // a reminder already exists with this time, keep it and ignore this one
-            return
-        }
-
-        let newReminder = TimeOfDay(hour: hour, minute: minute)
-        self.reminderTimes.value.append(newReminder)
-        reminderTimes.value.sort {
-            $0.hour < $1.hour || ($0.hour == $1.hour && $0.minute < $1.minute)
-        }
-    }
-
-    func removeReminderTime(atIndex index: Int) {
-        reminderTimes.value.remove(at: index)
-    }
-
-    func findReminderTimeIndex(withHour hour: Int, withMinute minute: Int) -> Int? {
-        return reminderTimes.value.indices
-            .filter {
-                reminderTimes.value[$0].hour == hour && reminderTimes.value[$0].minute == minute
-            }
-            .first
     }
 }

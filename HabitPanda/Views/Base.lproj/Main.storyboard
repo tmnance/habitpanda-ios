@@ -282,79 +282,6 @@
                                                     <constraint firstAttribute="trailing" secondItem="shi-QH-GcA" secondAttribute="trailing" id="vpI-bx-2Tg"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zic-cY-asb" userLabel="Reminder Times Container">
-                                                <rect key="frame" x="20" y="416" width="280" height="237.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Times" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiv-4r-Otd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="29"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(when would you like a notification to serve as a reminder or to check if the habit behavior has been done or not)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9W-cF-VsS">
-                                                        <rect key="frame" x="0.0" y="33" width="280" height="50.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vAe-GC-FwV" userLabel="Reminder Times Table View">
-                                                        <rect key="frame" x="0.0" y="83.5" width="280" height="100"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="100" id="cry-C1-GpR"/>
-                                                        </constraints>
-                                                        <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="editableTimeCell" id="hjU-jG-b8U" customClass="EditableTimeCell" customModule="HabitPanda" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="28" width="280" height="44"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hjU-jG-b8U" id="BXh-1l-qSG">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="43.5"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                </tableViewCellContentView>
-                                                            </tableViewCell>
-                                                        </prototypes>
-                                                    </tableView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5e-o0-gJY" userLabel="Add Reminder View">
-                                                        <rect key="frame" x="0.0" y="183.5" width="280" height="46"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZZ-Wv-ASo" userLabel="Add reminder">
-                                                                <rect key="frame" x="0.0" y="0.0" width="109" height="46"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="46" id="idu-Wi-P36"/>
-                                                                </constraints>
-                                                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                                                <state key="normal" title="Add reminder"/>
-                                                                <connections>
-                                                                    <action selector="addReminderButtonPressed:" destination="Aa1-59-79r" eventType="touchUpInside" id="7mq-7f-a53"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UZZ-Wv-ASo" secondAttribute="trailing" id="001-8R-kQV"/>
-                                                            <constraint firstAttribute="bottom" secondItem="UZZ-Wv-ASo" secondAttribute="bottom" id="IqM-6b-XdT"/>
-                                                            <constraint firstItem="UZZ-Wv-ASo" firstAttribute="top" secondItem="y5e-o0-gJY" secondAttribute="top" id="Scw-Da-ulB"/>
-                                                            <constraint firstItem="UZZ-Wv-ASo" firstAttribute="leading" secondItem="y5e-o0-gJY" secondAttribute="leading" id="VbJ-vY-ii3"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="g9W-cF-VsS" firstAttribute="top" secondItem="tiv-4r-Otd" secondAttribute="bottom" constant="4" id="4CX-tf-2x4"/>
-                                                    <constraint firstItem="vAe-GC-FwV" firstAttribute="top" secondItem="g9W-cF-VsS" secondAttribute="bottom" id="Gax-yT-kS9"/>
-                                                    <constraint firstItem="vAe-GC-FwV" firstAttribute="leading" secondItem="Zic-cY-asb" secondAttribute="leading" id="O6y-hV-YF4"/>
-                                                    <constraint firstAttribute="bottom" secondItem="y5e-o0-gJY" secondAttribute="bottom" constant="8" id="S6f-jI-XI6"/>
-                                                    <constraint firstAttribute="trailing" secondItem="g9W-cF-VsS" secondAttribute="trailing" id="Sdt-wx-TO8"/>
-                                                    <constraint firstAttribute="trailing" secondItem="y5e-o0-gJY" secondAttribute="trailing" id="avC-Bn-PaT"/>
-                                                    <constraint firstAttribute="trailing" secondItem="tiv-4r-Otd" secondAttribute="trailing" id="ewY-4a-RgB"/>
-                                                    <constraint firstAttribute="trailing" secondItem="vAe-GC-FwV" secondAttribute="trailing" id="gmo-F6-FTK"/>
-                                                    <constraint firstItem="y5e-o0-gJY" firstAttribute="top" secondItem="vAe-GC-FwV" secondAttribute="bottom" id="j9O-eF-qZs"/>
-                                                    <constraint firstItem="y5e-o0-gJY" firstAttribute="leading" secondItem="Zic-cY-asb" secondAttribute="leading" id="kUi-n5-2fw"/>
-                                                    <constraint firstItem="g9W-cF-VsS" firstAttribute="leading" secondItem="Zic-cY-asb" secondAttribute="leading" id="mXU-sL-bBj"/>
-                                                    <constraint firstItem="tiv-4r-Otd" firstAttribute="top" secondItem="Zic-cY-asb" secondAttribute="top" id="mqM-8A-XrX"/>
-                                                    <constraint firstItem="tiv-4r-Otd" firstAttribute="leading" secondItem="Zic-cY-asb" secondAttribute="leading" id="pbQ-qh-ih8"/>
-                                                </constraints>
-                                            </view>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZC-XE-i16">
                                                 <rect key="frame" x="132" y="1107.5" width="56" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -366,16 +293,13 @@
                                         <constraints>
                                             <constraint firstItem="04a-hQ-2HX" firstAttribute="leading" secondItem="IYm-IF-smp" secondAttribute="leading" constant="20" id="3bz-F5-Mnj"/>
                                             <constraint firstItem="pew-uE-jIJ" firstAttribute="leading" secondItem="IYm-IF-smp" secondAttribute="leading" constant="20" id="6eG-zm-ypT"/>
-                                            <constraint firstAttribute="trailing" secondItem="Zic-cY-asb" secondAttribute="trailing" constant="20" id="8OJ-d6-63K"/>
-                                            <constraint firstItem="Zic-cY-asb" firstAttribute="top" secondItem="04a-hQ-2HX" secondAttribute="bottom" constant="40" id="8oP-YF-jTt"/>
                                             <constraint firstItem="04a-hQ-2HX" firstAttribute="top" secondItem="pew-uE-jIJ" secondAttribute="bottom" constant="40" id="ENE-Yf-ts3"/>
                                             <constraint firstAttribute="trailing" secondItem="pew-uE-jIJ" secondAttribute="trailing" constant="20" id="J6F-LW-JE4"/>
-                                            <constraint firstItem="0ZC-XE-i16" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Zic-cY-asb" secondAttribute="bottom" constant="40" id="QZK-SL-ZPl"/>
                                             <constraint firstAttribute="trailing" secondItem="04a-hQ-2HX" secondAttribute="trailing" constant="20" id="TY8-FQ-hXH"/>
-                                            <constraint firstItem="Zic-cY-asb" firstAttribute="leading" secondItem="IYm-IF-smp" secondAttribute="leading" constant="20" id="Tr6-S8-3vk"/>
                                             <constraint firstItem="0ZC-XE-i16" firstAttribute="centerX" secondItem="IYm-IF-smp" secondAttribute="centerX" id="WRf-Xh-84n"/>
                                             <constraint firstItem="pew-uE-jIJ" firstAttribute="top" secondItem="IYm-IF-smp" secondAttribute="top" constant="20" id="ZgG-6R-p6F"/>
                                             <constraint firstAttribute="bottom" secondItem="0ZC-XE-i16" secondAttribute="bottom" constant="8" id="aTn-W5-9PW"/>
+                                            <constraint firstItem="0ZC-XE-i16" firstAttribute="top" relation="greaterThanOrEqual" secondItem="04a-hQ-2HX" secondAttribute="bottom" constant="40" id="iJ9-Y4-Bvv"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -417,8 +341,6 @@
                         <outlet property="frequencyOptionsSegmentedControl" destination="OyL-8b-Z2l" id="aop-JV-RZv"/>
                         <outlet property="nameInputField" destination="36C-KM-kEN" id="DNQ-3b-GpG"/>
                         <outlet property="parentScrollView" destination="oSY-Mv-gpm" id="Yzi-UW-RJr"/>
-                        <outlet property="reminderTableViewHeightLayout" destination="cry-C1-GpR" id="nPE-PC-mB5"/>
-                        <outlet property="reminderTimesTableView" destination="vAe-GC-FwV" id="57Z-s5-paF"/>
                         <outlet property="saveButton" destination="U43-Az-Hy7" id="vL5-yT-lNy"/>
                     </connections>
                 </viewController>
@@ -682,54 +604,101 @@
             <objects>
                 <viewController storyboardIdentifier="HabitRemindersViewController" id="zrn-T3-4Wb" customClass="HabitRemindersViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Ht-4c-xk1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJI-sh-gP8" userLabel="Reminder Times Container">
-                                <rect key="frame" x="20" y="20" width="335" height="69"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1VE-n8-ImE" userLabel="Reminder Times Container">
+                                <rect key="frame" x="20" y="20" width="335" height="237.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Times" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E27-rw-Idn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Times" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zas-O5-SIc">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:22 AM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZ0-UH-bp9">
-                                        <rect key="frame" x="0.0" y="37" width="335" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(when would you like a notification to serve as a reminder or to check if the habit behavior has been done or not)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ya2-Z8-7r6">
+                                        <rect key="frame" x="0.0" y="33" width="335" height="50.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AKw-mv-ZNd" userLabel="Reminder Times Table View">
+                                        <rect key="frame" x="0.0" y="83.5" width="335" height="100"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Okn-KL-mhl"/>
+                                        </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="editableTimeCell" id="0hz-zV-4iT" customClass="EditableTimeCell" customModule="HabitPanda" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="335" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0hz-zV-4iT" id="yEx-MT-Xqx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AX-2p-lps" userLabel="Add Reminder View">
+                                        <rect key="frame" x="0.0" y="183.5" width="335" height="46"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0n6-RU-Py7" userLabel="Add reminder">
+                                                <rect key="frame" x="0.0" y="0.0" width="109" height="46"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="46" id="2he-hH-azz"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                                <state key="normal" title="Add reminder"/>
+                                                <connections>
+                                                    <action selector="addReminderButtonPressed:" destination="zrn-T3-4Wb" eventType="touchUpInside" id="0xQ-f4-GoG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="0n6-RU-Py7" firstAttribute="top" secondItem="8AX-2p-lps" secondAttribute="top" id="Wn3-bw-q4R"/>
+                                            <constraint firstItem="0n6-RU-Py7" firstAttribute="leading" secondItem="8AX-2p-lps" secondAttribute="leading" id="b6D-TK-Xps"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0n6-RU-Py7" secondAttribute="trailing" id="ccX-YI-yii"/>
+                                            <constraint firstAttribute="bottom" secondItem="0n6-RU-Py7" secondAttribute="bottom" id="rt6-Gq-vMS"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="E27-rw-Idn" firstAttribute="top" secondItem="VJI-sh-gP8" secondAttribute="top" id="74T-qb-Ptf"/>
-                                    <constraint firstAttribute="trailing" secondItem="XZ0-UH-bp9" secondAttribute="trailing" id="BRX-6S-3Q4"/>
-                                    <constraint firstItem="XZ0-UH-bp9" firstAttribute="leading" secondItem="VJI-sh-gP8" secondAttribute="leading" id="FbV-fy-kxR"/>
-                                    <constraint firstItem="XZ0-UH-bp9" firstAttribute="top" secondItem="E27-rw-Idn" secondAttribute="bottom" constant="8" id="HAR-m7-v7A"/>
-                                    <constraint firstAttribute="bottom" secondItem="XZ0-UH-bp9" secondAttribute="bottom" constant="8" id="MLg-qC-8iq"/>
-                                    <constraint firstItem="E27-rw-Idn" firstAttribute="leading" secondItem="VJI-sh-gP8" secondAttribute="leading" id="mXh-1n-07s"/>
-                                    <constraint firstAttribute="trailing" secondItem="E27-rw-Idn" secondAttribute="trailing" id="q5p-JG-D3O"/>
+                                    <constraint firstItem="8AX-2p-lps" firstAttribute="top" secondItem="AKw-mv-ZNd" secondAttribute="bottom" id="0Dy-xg-UIZ"/>
+                                    <constraint firstItem="AKw-mv-ZNd" firstAttribute="leading" secondItem="1VE-n8-ImE" secondAttribute="leading" id="2Pf-Bx-FFH"/>
+                                    <constraint firstAttribute="trailing" secondItem="zas-O5-SIc" secondAttribute="trailing" id="4O3-25-Wrh"/>
+                                    <constraint firstAttribute="trailing" secondItem="ya2-Z8-7r6" secondAttribute="trailing" id="DMy-eg-ahW"/>
+                                    <constraint firstItem="ya2-Z8-7r6" firstAttribute="leading" secondItem="1VE-n8-ImE" secondAttribute="leading" id="DTn-Jp-8uI"/>
+                                    <constraint firstItem="ya2-Z8-7r6" firstAttribute="top" secondItem="zas-O5-SIc" secondAttribute="bottom" constant="4" id="QAq-fk-cRZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="AKw-mv-ZNd" secondAttribute="trailing" id="V0q-xl-dvB"/>
+                                    <constraint firstItem="zas-O5-SIc" firstAttribute="leading" secondItem="1VE-n8-ImE" secondAttribute="leading" id="ZyD-Fc-TQ9"/>
+                                    <constraint firstAttribute="trailing" secondItem="8AX-2p-lps" secondAttribute="trailing" id="gOk-aV-pPP"/>
+                                    <constraint firstItem="zas-O5-SIc" firstAttribute="top" secondItem="1VE-n8-ImE" secondAttribute="top" id="oTg-gy-3xv"/>
+                                    <constraint firstItem="8AX-2p-lps" firstAttribute="leading" secondItem="1VE-n8-ImE" secondAttribute="leading" id="phN-ci-QrP"/>
+                                    <constraint firstAttribute="bottom" secondItem="8AX-2p-lps" secondAttribute="bottom" constant="8" id="wd3-R6-rYf"/>
+                                    <constraint firstItem="AKw-mv-ZNd" firstAttribute="top" secondItem="ya2-Z8-7r6" secondAttribute="bottom" id="zB7-zU-r1j"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VJI-sh-gP8" firstAttribute="top" secondItem="4Ht-4c-xk1" secondAttribute="top" constant="20" id="2sa-O1-EEK"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="VJI-sh-gP8" secondAttribute="bottom" priority="500" constant="20" id="d58-gg-3zT"/>
-                            <constraint firstItem="VJI-sh-gP8" firstAttribute="leading" secondItem="zgv-3N-3Yo" secondAttribute="leading" constant="20" id="lBU-5J-BS6"/>
-                            <constraint firstItem="zgv-3N-3Yo" firstAttribute="trailing" secondItem="VJI-sh-gP8" secondAttribute="trailing" constant="20" id="nWx-0L-qhP"/>
+                            <constraint firstItem="zgv-3N-3Yo" firstAttribute="trailing" secondItem="1VE-n8-ImE" secondAttribute="trailing" constant="20" id="Xnw-nR-QvS"/>
+                            <constraint firstItem="1VE-n8-ImE" firstAttribute="leading" secondItem="zgv-3N-3Yo" secondAttribute="leading" constant="20" id="i39-Ez-xMS"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1VE-n8-ImE" secondAttribute="bottom" priority="500" constant="20" id="kNj-Zf-aqn"/>
+                            <constraint firstItem="1VE-n8-ImE" firstAttribute="top" secondItem="4Ht-4c-xk1" secondAttribute="topMargin" constant="20" id="zSt-Md-cuz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zgv-3N-3Yo"/>
                     </view>
-                    <size key="freeformSize" width="375" height="200"/>
+                    <size key="freeformSize" width="375" height="300"/>
                     <connections>
-                        <outlet property="reminderTimesLabel" destination="XZ0-UH-bp9" id="N7h-rr-f9X"/>
+                        <outlet property="reminderTableViewHeightLayout" destination="Okn-KL-mhl" id="1NB-7W-MvR"/>
+                        <outlet property="reminderTimesTableView" destination="AKw-mv-ZNd" id="1yM-nr-Vyv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ktv-PN-J7w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="727" y="1239"/>
+            <point key="canvasLocation" x="726" y="1404"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
