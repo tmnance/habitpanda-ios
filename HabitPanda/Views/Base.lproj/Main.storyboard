@@ -10,6 +10,50 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Admin-->
+        <scene sceneID="TX3-wH-vEk">
+            <objects>
+                <viewController title="Admin" id="ap1-1x-sUg" customClass="AdminViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lOz-lb-Tqj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZA-A7-2II">
+                                <rect key="frame" x="20" y="84" width="335" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications report" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jiw-td-eRs">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="jiw-td-eRs" secondAttribute="bottom" id="3pS-jQ-P4L"/>
+                                    <constraint firstAttribute="trailing" secondItem="jiw-td-eRs" secondAttribute="trailing" id="X5i-sg-oh6"/>
+                                    <constraint firstItem="jiw-td-eRs" firstAttribute="leading" secondItem="uZA-A7-2II" secondAttribute="leading" id="gSh-wR-z1g"/>
+                                    <constraint firstItem="jiw-td-eRs" firstAttribute="top" secondItem="uZA-A7-2II" secondAttribute="top" id="hbC-U3-7O7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uZA-A7-2II" firstAttribute="top" secondItem="z4F-4g-3z2" secondAttribute="top" constant="20" id="6Az-yx-jlY"/>
+                            <constraint firstItem="z4F-4g-3z2" firstAttribute="trailing" secondItem="uZA-A7-2II" secondAttribute="trailing" constant="20" id="hxh-28-zmw"/>
+                            <constraint firstItem="uZA-A7-2II" firstAttribute="leading" secondItem="z4F-4g-3z2" secondAttribute="leading" constant="20" id="lMF-c6-5hp"/>
+                            <constraint firstItem="z4F-4g-3z2" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uZA-A7-2II" secondAttribute="bottom" constant="20" id="n81-uf-ktZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="z4F-4g-3z2"/>
+                    </view>
+                    <connections>
+                        <outlet property="notificationsReportText" destination="jiw-td-eRs" id="mAU-LD-2PP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kkp-gX-Pg5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-277.60000000000002" y="-619.34032983508246"/>
+        </scene>
         <!--HabitPanda 🐼-->
         <scene sceneID="34w-rJ-l6H">
             <objects>
@@ -43,6 +87,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="HabitPanda 🐼" id="SMv-0Z-C89">
+                        <barButtonItem key="leftBarButtonItem" title="Admin" id="M9o-5Z-Ld6">
+                            <connections>
+                                <segue destination="ap1-1x-sUg" kind="show" id="6AE-uR-PQd"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="kcc-Kr-nKv">
                             <connections>
                                 <segue destination="q3o-ZB-uWy" kind="popoverPresentation" identifier="goToAddHabit" popoverAnchorBarButtonItem="kcc-Kr-nKv" id="0ED-2v-cTw">
@@ -702,7 +751,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="amN-ro-xZK"/>
+        <segue reference="0ED-2v-cTw"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.058823529411764705" green="0.45882352941176469" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

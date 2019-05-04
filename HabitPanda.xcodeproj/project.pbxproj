@@ -31,6 +31,8 @@
 		1CBBABD32279297500DB8F8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABD22279297500DB8F8E /* Constants.swift */; };
 		1CBBABD6227A4F4400DB8F8E /* HabitAddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABD5227A4F4300DB8F8E /* HabitAddEditViewController.swift */; };
 		1CBBABDA227A555300DB8F8E /* ReminderTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABD9227A555300DB8F8E /* ReminderTimeViewModel.swift */; };
+		1CBBABDC227CAD0B00DB8F8E /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABDB227CAD0B00DB8F8E /* NotificationHelper.swift */; };
+		1CBBABDE227CC7D200DB8F8E /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABDD227CC7D200DB8F8E /* AdminViewController.swift */; };
 		1CDB388F22624BBE00C86277 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB388E22624BBE00C86277 /* Habit.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		1CBBABD22279297500DB8F8E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1CBBABD5227A4F4300DB8F8E /* HabitAddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitAddEditViewController.swift; sourceTree = "<group>"; };
 		1CBBABD9227A555300DB8F8E /* ReminderTimeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTimeViewModel.swift; sourceTree = "<group>"; };
+		1CBBABDB227CAD0B00DB8F8E /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
+		1CBBABDD227CC7D200DB8F8E /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		1CDB388E22624BBE00C86277 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +111,7 @@
 		1C8B27E722621C55005DDE03 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1CBBABDD227CC7D200DB8F8E /* AdminViewController.swift */,
 				1CBBABD5227A4F4300DB8F8E /* HabitAddEditViewController.swift */,
 				1CAC679C22725D3600B41338 /* HabitDetailsViewController.swift */,
 				1C12735322610DC80058D942 /* HabitListViewController.swift */,
@@ -192,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				1CAC679F2272694700B41338 /* TimeOfDay.swift */,
+				1CBBABDB227CAD0B00DB8F8E /* NotificationHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -278,7 +284,9 @@
 				1CAC6791226FD51400B41338 /* HabitViewModel.swift in Sources */,
 				1CBBABCD227919C700DB8F8E /* HabitRemindersViewController.swift in Sources */,
 				1CBBABD1227921C400DB8F8E /* UISegmentedControl+Border.swift in Sources */,
+				1CBBABDC227CAD0B00DB8F8E /* NotificationHelper.swift in Sources */,
 				1CAC6795226FDEE500B41338 /* Box.swift in Sources */,
+				1CBBABDE227CC7D200DB8F8E /* AdminViewController.swift in Sources */,
 				1CDB388F22624BBE00C86277 /* Habit.swift in Sources */,
 				1C12735222610DC80058D942 /* AppDelegate.swift in Sources */,
 				1CAC679D22725D3600B41338 /* HabitDetailsViewController.swift in Sources */,

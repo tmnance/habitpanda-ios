@@ -72,8 +72,11 @@ extension AppDelegate {
         UNUserNotificationCenter.current().requestAuthorization(
             options: [.alert, .badge, .sound]
         ) { (granted, error) in
+            NotificationHelper.isGranted = true
             print("granted: \(granted)")
         }
+        NotificationHelper.setCategories()
+        NotificationHelper.cleanRepeatingNotifications()
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -82,9 +85,18 @@ extension AppDelegate {
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        NotificationHelper.cleanRepeatingNotifications()
+        print("Did recieve response: \(response.actionIdentifier)")
+        
         if response.notification.request.identifier == "testIdentifier" {
             print("handling testIdentifier")
         }
+        if response.actionIdentifier == "clear.repeat.action"{
+            UNUserNotificationCenter.current().removePendingNotificationRequests(
+                withIdentifiers: [response.notification.request.identifier]
+            )
+        }
+
         completionHandler()
     }
 }

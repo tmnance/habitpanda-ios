@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import UserNotifications
 
 class HabitListViewController: UITableViewController {
     var habitList = [Habit]()
@@ -16,33 +15,11 @@ class HabitListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-//        sendPushNotification()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         loadData()
-    }
-
-    func sendPushNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Notif Title"
-        content.body = "Notif Body"
-        content.sound = UNNotificationSound.default
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
-//        let trigger2 = UNCalendarNotificationTrigger(dateMatching: <#T##DateComponents#>, repeats: false)
-
-        let request = UNNotificationRequest(
-            identifier: "testIdentifier", // old notifications requests will be overridden when new ones are setup
-            content: content,
-            trigger: trigger)
-
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 }
 
