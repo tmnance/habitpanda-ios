@@ -1,5 +1,5 @@
 //
-//  ReminderTimeViewModel.swift
+//  ReminderViewModel.swift
 //  HabitPanda
 //
 //  Created by Tim Nance on 4/23/19.
@@ -9,24 +9,24 @@
 import UIKit
 import CoreData
 
-class ReminderTimeViewModel {
+class ReminderViewModel {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-    var reminderTimes: Box<[TimeOfDay]> = Box([])
+    var reminders: Box<[TimeOfDay]> = Box([])
     var selectedHabit: Habit? {
         didSet {
             if selectedHabit != nil {
-                loadReminderTimesData()
+                loadRemindersData()
             }
         }
     }
-    var selectedHabitReminderTimes: [ReminderTime] = []
+    var selectedHabitReminders: [Reminder] = []
 }
 
 
 // MARK: - Save Data Methods
-extension ReminderTimeViewModel {
-    func saveReminderTimes() {
+extension ReminderViewModel {
+    func saveReminders() {
         guard let habit = selectedHabit else {
             return
         }
@@ -34,26 +34,26 @@ extension ReminderTimeViewModel {
         // need to reconcile added and removed reminders
 
         // add any reminders not yet in the habit
-        reminderTimes.value
+        reminders.value
             .filter{
                 let updatedReminder = $0
-                return !selectedHabitReminderTimes.contains{
+                return !selectedHabitReminders.contains{
                     updatedReminder.hour == $0.hour && updatedReminder.minute == $0.minute
                 }
             }
             .forEach{ (reminder) in
-                createReminderTime(fromTimeOfDay: reminder, forHabit: habit)
+                createReminder(fromTimeOfDay: reminder, forHabit: habit)
                 anyChanged = true
             }
 
         // remove any reminders from the habit that no longer exist
-        for (index, origReminder) in selectedHabitReminderTimes.enumerated().reversed() {
-            let isRemoved = !reminderTimes.value.contains{
+        for (index, origReminder) in selectedHabitReminders.enumerated().reversed() {
+            let isRemoved = !reminders.value.contains{
                 origReminder.hour == $0.hour && origReminder.minute == $0.minute
             }
             if isRemoved {
-                context.delete(selectedHabitReminderTimes[index])
-                selectedHabitReminderTimes.remove(at: index)
+                context.delete(selectedHabitReminders[index])
+                selectedHabitReminders.remove(at: index)
                 anyChanged = true
             }
         }
@@ -64,12 +64,12 @@ extension ReminderTimeViewModel {
             } catch {
                 print("Error saving context, \(error)")
             }
-            loadReminderTimesData()
+            loadRemindersData()
         }
     }
 
-    func createReminderTime(fromTimeOfDay timeOfDay: TimeOfDay, forHabit habit: Habit) {
-        let newReminder = ReminderTime(context: self.context)
+    func createReminder(fromTimeOfDay timeOfDay: TimeOfDay, forHabit habit: Habit) {
+        let newReminder = Reminder(context: self.context)
         newReminder.hour = Int32(timeOfDay.hour)
         newReminder.minute = Int32(timeOfDay.minute)
         newReminder.habit = habit
@@ -78,21 +78,21 @@ extension ReminderTimeViewModel {
 
 
 // MARK: - Load Data Methods
-extension ReminderTimeViewModel {
-    func loadReminderTimesData() {
+extension ReminderViewModel {
+    func loadRemindersData() {
         if let habit = selectedHabit {
-            let request: NSFetchRequest<ReminderTime> = ReminderTime.fetchRequest()
+            let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
             let predicates = [NSPredicate(format: "habit = %@", habit)]
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
 
             do {
-                selectedHabitReminderTimes = try context.fetch(request)
-                reminderTimes.value = convertSelectedReminderTimesToTimeOfDay()
+                selectedHabitReminders = try context.fetch(request)
+                reminders.value = convertSelectedRemindersToTimeOfDay()
             } catch {
                 print("Error fetching data from context, \(error)")
             }
         } else {
-            selectedHabitReminderTimes = []
+            selectedHabitReminders = []
         }
     }
 
@@ -100,14 +100,14 @@ extension ReminderTimeViewModel {
 
 
 // MARK: - Reminder Methods
-extension ReminderTimeViewModel {
-    func convertSelectedReminderTimesToTimeOfDay() -> [TimeOfDay] {
-        return selectedHabitReminderTimes
+extension ReminderViewModel {
+    func convertSelectedRemindersToTimeOfDay() -> [TimeOfDay] {
+        return selectedHabitReminders
             .map {
-                let reminderTime = $0
+                let reminder = $0
                 return TimeOfDay(
-                    hour: Int(reminderTime.hour),
-                    minute: Int(reminderTime.minute)
+                    hour: Int(reminder.hour),
+                    minute: Int(reminder.minute)
                 )
             }
             .sorted {
@@ -115,27 +115,27 @@ extension ReminderTimeViewModel {
             }
     }
 
-    func addReminderTime(hour: Int, minute: Int) {
-        if findReminderTimeIndex(withHour: hour, withMinute: minute) != nil {
+    func addReminder(hour: Int, minute: Int) {
+        if findReminderIndex(withHour: hour, withMinute: minute) != nil {
             // a reminder already exists with this time, keep it and ignore this one
             return
         }
 
         let newReminder = TimeOfDay(hour: hour, minute: minute)
-        self.reminderTimes.value.append(newReminder)
-        reminderTimes.value.sort {
+        self.reminders.value.append(newReminder)
+        reminders.value.sort {
             $0.hour < $1.hour || ($0.hour == $1.hour && $0.minute < $1.minute)
         }
     }
 
-    func removeReminderTime(atIndex index: Int) {
-        reminderTimes.value.remove(at: index)
+    func removeReminder(atIndex index: Int) {
+        reminders.value.remove(at: index)
     }
 
-    func findReminderTimeIndex(withHour hour: Int, withMinute minute: Int) -> Int? {
-        return reminderTimes.value.indices
+    func findReminderIndex(withHour hour: Int, withMinute minute: Int) -> Int? {
+        return reminders.value.indices
             .filter {
-                reminderTimes.value[$0].hour == hour && reminderTimes.value[$0].minute == minute
+                reminders.value[$0].hour == hour && reminders.value[$0].minute == minute
             }
             .first
     }

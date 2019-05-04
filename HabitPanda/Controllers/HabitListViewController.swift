@@ -30,7 +30,7 @@ extension HabitListViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell", for: indexPath)
         let habit = habitList[indexPath.row]
 
-        cell.textLabel?.text = "\(habit.name!) (\(habit.reminderTimes?.count ?? 0))"
+        cell.textLabel?.text = "\(habit.name!) (\(habit.reminders?.count ?? 0))"
 
         return cell
     }

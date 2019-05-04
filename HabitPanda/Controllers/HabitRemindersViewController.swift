@@ -9,15 +9,15 @@
 import UIKit
 
 class HabitRemindersViewController: UIViewController {
-    @IBOutlet weak var reminderTimesTableView: UITableView!
-    @IBOutlet weak var reminderTableViewHeightLayout: NSLayoutConstraint!
+    @IBOutlet weak var remindersTableView: UITableView!
+    @IBOutlet weak var remindersTableViewHeightLayout: NSLayoutConstraint!
 
     var delegateViewModel = HabitViewModel() {
         didSet {
             viewModel.selectedHabit = delegateViewModel.selectedHabit
         }
     }
-    private var viewModel = ReminderTimeViewModel()
+    private var viewModel = ReminderViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class HabitRemindersViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateReminderTimes()
+        self.updateReminders()
     }
 
     override func viewDidLayoutSubviews() {
@@ -42,50 +42,35 @@ class HabitRemindersViewController: UIViewController {
 // MARK: - Field Setup Methods
 extension HabitRemindersViewController {
     func setupFieldStylesAndBindings() {
-        reminderTimesTableView.delegate = self
-        reminderTimesTableView.dataSource = self
-        reminderTimesTableView.separatorStyle = .none
+        remindersTableView.delegate = self
+        remindersTableView.dataSource = self
+        remindersTableView.separatorStyle = .none
 
-        reminderTimesTableView.register(
+        remindersTableView.register(
             UINib(nibName: "EditableTimeCell", bundle: nil),
             forCellReuseIdentifier: "editableTimeCell"
         )
 
-        viewModel.reminderTimes.bind { [unowned self] (_) in
-            self.updateReminderTimes()
+        viewModel.reminders.bind { [unowned self] (_) in
+            self.updateReminders()
         }
-    }
-}
-
-
-// MARK: - UI Update Methods
-extension HabitRemindersViewController {
-    func getReminderTimesDisplay() -> String? {
-        guard viewModel.reminderTimes.value.count > 0 else {
-            return nil
-        }
-        return viewModel.reminderTimes.value
-            .map {
-                TimeOfDay.getDisplayDate(hour: Int($0.hour), minute: Int($0.minute))
-            }
-            .joined(separator: "\n")
     }
 }
 
 
 // MARK: - Reminder Methods
 extension HabitRemindersViewController {
-    func updateReminderTimes() {
-        reminderTimesTableView.reloadData()
-        reminderTableViewHeightLayout.constant = CGFloat(
-            tableView(reminderTimesTableView, numberOfRowsInSection: 0) * 46
+    func updateReminders() {
+        remindersTableView.reloadData()
+        remindersTableViewHeightLayout.constant = CGFloat(
+            tableView(remindersTableView, numberOfRowsInSection: 0) * 46
         )
     }
 
     @IBAction func addReminderButtonPressed(_ sender: UIButton) {
-        showSelectReminderTimePopup() { (_ hour: Int, _ minute: Int) in
-            self.viewModel.addReminderTime(hour: hour, minute: minute)
-            self.viewModel.saveReminderTimes()
+        showSelectReminderPopup() { (_ hour: Int, _ minute: Int) in
+            self.viewModel.addReminder(hour: hour, minute: minute)
+            self.viewModel.saveReminders()
         }
     }
 
@@ -116,7 +101,7 @@ extension HabitRemindersViewController {
         return datePicker
     }
 
-    func showSelectReminderTimePopup(
+    func showSelectReminderPopup(
         hour: Int? = nil,
         minute: Int? = nil,
         completion: @escaping (_ hour: Int, _ minute: Int) -> ()
@@ -158,7 +143,7 @@ extension HabitRemindersViewController {
 // MARK: - Tableview Datasource Methods
 extension HabitRemindersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.reminderTimes.value.count
+        return viewModel.reminders.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -166,12 +151,12 @@ extension HabitRemindersViewController: UITableViewDelegate, UITableViewDataSour
             withIdentifier: "editableTimeCell",
             for: indexPath
             ) as! EditableTimeCell
-        let reminder = viewModel.reminderTimes.value[indexPath.row]
+        let reminder = viewModel.reminders.value[indexPath.row]
         cell.hour = Int(reminder.hour)
         cell.minute = Int(reminder.minute)
 
         cell.onEditButtonPressed = {
-            self.showSelectReminderTimePopup(
+            self.showSelectReminderPopup(
                 hour: cell.hour,
                 minute: cell.minute
             ) { (_ hour: Int, _ minute: Int) in
@@ -180,14 +165,14 @@ extension HabitRemindersViewController: UITableViewDelegate, UITableViewDataSour
                     return
                 }
                 // simpler to just remove and re-add to prevent duplicates
-                self.viewModel.removeReminderTime(atIndex: indexPath.row)
-                self.viewModel.addReminderTime(hour: hour, minute: minute)
-                self.viewModel.saveReminderTimes()
+                self.viewModel.removeReminder(atIndex: indexPath.row)
+                self.viewModel.addReminder(hour: hour, minute: minute)
+                self.viewModel.saveReminders()
             }
         }
         cell.onRemoveButtonPressed = {
-            self.viewModel.removeReminderTime(atIndex: indexPath.row)
-            self.viewModel.saveReminderTimes()
+            self.viewModel.removeReminder(atIndex: indexPath.row)
+            self.viewModel.saveReminders()
         }
 
         cell.updateTimeDisplay()

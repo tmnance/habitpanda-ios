@@ -741,8 +741,8 @@
                     </view>
                     <size key="freeformSize" width="375" height="300"/>
                     <connections>
-                        <outlet property="reminderTableViewHeightLayout" destination="Okn-KL-mhl" id="1NB-7W-MvR"/>
-                        <outlet property="reminderTimesTableView" destination="AKw-mv-ZNd" id="1yM-nr-Vyv"/>
+                        <outlet property="remindersTableView" destination="AKw-mv-ZNd" id="1yM-nr-Vyv"/>
+                        <outlet property="remindersTableViewHeightLayout" destination="Okn-KL-mhl" id="1NB-7W-MvR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ktv-PN-J7w" userLabel="First Responder" sceneMemberID="firstResponder"/>
