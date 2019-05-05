@@ -23,4 +23,19 @@ struct TimeOfDay {
         dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: date!)
     }
+
+    static func generateFromCurrentTime(witMinuteRounding minuteRounding: Int? = nil) -> TimeOfDay {
+        var now = Date()
+        if minuteRounding != nil {
+            now = now.rounded(
+                minutes: TimeInterval(minuteRounding!),
+                rounding: .floor
+            )
+        }
+        let components = Calendar.current.dateComponents(
+            [.hour, .minute],
+            from: now
+        )
+        return TimeOfDay(hour: components.hour!, minute: components.minute!)
+    }
 }

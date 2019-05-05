@@ -11,7 +11,7 @@ import UIKit
 class HabitSummaryViewController: UIViewController {
     @IBOutlet weak var frequencyLabel: UILabel!
 
-    var delegateViewModel = HabitViewModel()
+    var delegateViewModel = HabitDetailsViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

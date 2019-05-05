@@ -1,5 +1,5 @@
 //
-//  HabitViewModel.swift
+//  HabitDetailsViewModel.swift
 //  HabitPanda
 //
 //  Created by Tim Nance on 4/23/19.
@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-class HabitViewModel {
-    typealias FrequencyOption = Habit.FrequencyOption
-    typealias FrequencyDay = Habit.FrequencyDay
+class HabitDetailsViewModel {
+    typealias FrequencyOption = DayOfWeek.WeekSubsetType
+    typealias FrequencyDay = DayOfWeek.Day
     enum ViewInteractionMode {
         case Add, Edit, View
     }
@@ -35,7 +35,7 @@ class HabitViewModel {
 
 
 // MARK: - Save Data Methods
-extension HabitViewModel {
+extension HabitDetailsViewModel {
     func saveHabit() {
         let habitToSave = interactionMode.value == .Add ? Habit(context: context) : selectedHabit!
         habitToSave.name = name.value
@@ -69,7 +69,7 @@ extension HabitViewModel {
 
 
 // MARK: - Load Data Methods
-extension HabitViewModel {
+extension HabitDetailsViewModel {
     func reloadHabitData() {
         if let habit = selectedHabit {
             let request: NSFetchRequest<Habit> = Habit.fetchRequest()
@@ -87,7 +87,7 @@ extension HabitViewModel {
 
 
 // MARK: - Frequency Methods
-extension HabitViewModel {
+extension HabitDetailsViewModel {
     func toggleFrequencyDay(_ day: FrequencyDay) {
         if let index = frequencyDays.value.firstIndex(of: day) {
             frequencyDays.value.remove(at: index)

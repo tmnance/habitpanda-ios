@@ -1,14 +1,14 @@
 //
-//  HabitAddEditViewController.swift
+//  ReminderAddEditViewController.swift
 //  HabitPanda
 //
-//  Created by Tim Nance on 4/13/19.
+//  Created by Tim Nance on 5/4/19.
 //  Copyright © 2019 Tim Nance. All rights reserved.
 //
 
 import UIKit
 
-class HabitAddEditViewController: UIViewController {
+class ReminderAddEditViewController: UIViewController {
     typealias FrequencyOption = DayOfWeek.WeekSubsetType
     typealias FrequencyDay = DayOfWeek.Day
 
@@ -17,9 +17,15 @@ class HabitAddEditViewController: UIViewController {
     @IBOutlet weak var frequencyDaysView: UIStackView!
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var nameInputField: UITextField!
+    @IBOutlet weak var timePicker: UIDatePicker!
 
-    private var viewModel = HabitDetailsViewModel()
+    var parentHabit: Habit? {
+        didSet {
+            self.viewModel.parentHabit = parentHabit
+        }
+    }
+
+    private var viewModel = ReminderDetailsViewModel()
 
     lazy var frequencyDayUIButtons: [UIButton] = {
         var buttons: [UIButton] = []
@@ -37,21 +43,17 @@ class HabitAddEditViewController: UIViewController {
         super.viewDidLoad()
 
         setupFieldStylesAndBindings()
-        setupKeyboardDismissalWhenTapOutside()
     }
 }
 
 
 // MARK: - Field Setup Methods
-extension HabitAddEditViewController {
+extension ReminderAddEditViewController {
     func setupFieldStylesAndBindings() {
         saveButton.isEnabled = false
 
-        nameInputField.addTarget(
-            self,
-            action: #selector(self.updateName),
-            for: UIControl.Event.editingChanged
-        )
+        timePicker.datePickerMode = .time
+        timePicker.minuteInterval = Constants.TimePicker.minuteInterval
 
         frequencyOptionsSegmentedControl.setTitleTextAttributes(
             [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)],
@@ -62,9 +64,14 @@ extension HabitAddEditViewController {
             self.updateInteractionMode()
         }
 
-        viewModel.name.bind { [unowned self] in
-            self.nameInputField.text = $0
-            self.validateInput()
+        viewModel.time.bind { [unowned self] (value) in
+            let hour = value.hour
+            let minute = value.minute
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat =  "HH:mm"
+            if let date = dateFormatter.date(from: "\(hour):\(minute)") {
+                self.timePicker.setDate(date, animated: false)
+            }
         }
 
         viewModel.frequencyDays.bind { [unowned self] (_) in
@@ -76,18 +83,22 @@ extension HabitAddEditViewController {
 
 
 // MARK: - Add/Edit Mode Context Methods
-extension HabitAddEditViewController {
-    func setSelectedHabit(_ habit: Habit) {
-        viewModel.selectedHabit = habit
+extension ReminderAddEditViewController {
+    func setParentHabit(_ habit: Habit) {
+        viewModel.parentHabit = habit
+    }
+
+    func setSelectedReminder(_ reminder: Reminder) {
+        viewModel.selectedReminder = reminder
     }
 
     func updateInteractionMode() {
         switch viewModel.interactionMode.value {
         case .Add:
-            title = "Create a New Habit"
+            title = "Add a New Reminder"
             break
         case .Edit:
-            title = "Edit Habit"
+            title = "Edit Reminder"
             break
         default:
             break
@@ -97,14 +108,14 @@ extension HabitAddEditViewController {
 
 
 // MARK: - Top Nav Bar Methods
-extension HabitAddEditViewController {
+extension ReminderAddEditViewController {
     // MARK: Top Nav Button Pressed Methods
 
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         if !isValidInput() {
             return
         }
-        viewModel.saveHabit()
+        viewModel.saveReminder()
         dismiss(animated: true)
     }
 
@@ -119,80 +130,29 @@ extension HabitAddEditViewController {
     }
 
     func isValidInput() -> Bool {
-        return viewModel.name.value.count > 0 && viewModel.frequencyDays.value.count > 0
+        return viewModel.frequencyDays.value.count > 0
     }
 }
 
 
-// MARK: - Keyboard Dismissal Methods
-extension HabitAddEditViewController {
-    func setupKeyboardDismissalWhenTapOutside() {
-        // keyboard stuff
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(
-            self,
-            selector: #selector(adjustForKeyboard),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
+// MARK: - Time Methods
+extension ReminderAddEditViewController {
+    @IBAction func timePickerChanged(_ sender: UIDatePicker) {
+        let components = Calendar.current.dateComponents(
+            [.hour, .minute],
+            from: sender.date
         )
-        notificationCenter.addObserver(
-            self,
-            selector: #selector(adjustForKeyboard),
-            name: UIResponder.keyboardWillChangeFrameNotification,
-            object: nil
-        )
-
-        let tap = UITapGestureRecognizer(
-            target: self.view,
-            action: #selector(UIView.endEditing(_:))
-        )
-        tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
-
-        parentScrollView.keyboardDismissMode = .onDrag // .interactive
-    }
-
-    @objc func adjustForKeyboard(notification: Notification) {
-        guard let keyboardValue =
-            notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
-                return
-            }
-
-        let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-
-        if notification.name == UIResponder.keyboardWillHideNotification {
-            parentScrollView.contentInset = .zero
-        } else {
-            parentScrollView.contentInset = UIEdgeInsets(
-                top: 0,
-                left: 0,
-                bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom,
-                right: 0
-            )
-        }
-
-        parentScrollView.scrollIndicatorInsets = parentScrollView.contentInset
-    }
-}
-
-
-// MARK: - Name Methods
-extension HabitAddEditViewController {
-    @objc func updateName() {
-        viewModel.name.value = nameInputField.text!
+        viewModel.time.value = TimeOfDay(hour: components.hour!, minute: components.minute!)
     }
 }
 
 
 // MARK: - Frequency Methods
-extension HabitAddEditViewController {
-    // MARK: Frequency Button Pressed Methods
-
+extension ReminderAddEditViewController {
     @IBAction func frequencyOptionsSegmentedControlIndexChanged(_ sender: UISegmentedControl) {
         let option = FrequencyOption(
             rawValue: sender.selectedSegmentIndex
-        )!
+            )!
         viewModel.updateFrequencyDays(forOption: option)
     }
 
@@ -206,7 +166,7 @@ extension HabitAddEditViewController {
             .forEach {
                 let day = FrequencyDay(rawValue: $0.tag)!
                 $0.isSelected = self.viewModel.frequencyDays.value.contains(day)
-            }
+        }
 
         let correctOption = viewModel.getFrequencyOption()
         frequencyOptionsSegmentedControl.selectedSegmentIndex = correctOption.rawValue

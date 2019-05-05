@@ -12,12 +12,12 @@ class HabitRemindersViewController: UIViewController {
     @IBOutlet weak var remindersTableView: UITableView!
     @IBOutlet weak var remindersTableViewHeightLayout: NSLayoutConstraint!
 
-    var delegateViewModel = HabitViewModel() {
+    var delegateViewModel = HabitDetailsViewModel() {
         didSet {
             viewModel.selectedHabit = delegateViewModel.selectedHabit
         }
     }
-    private var viewModel = ReminderViewModel()
+    private var viewModel = ReminderListViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,8 @@ class HabitRemindersViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // TODO: probably a better way of handling this
+        self.viewModel.reloadRemindersData()
         self.updateReminders()
     }
 
@@ -66,77 +68,6 @@ extension HabitRemindersViewController {
             tableView(remindersTableView, numberOfRowsInSection: 0) * 46
         )
     }
-
-    @IBAction func addReminderButtonPressed(_ sender: UIButton) {
-        showSelectReminderPopup() { (_ hour: Int, _ minute: Int) in
-            self.viewModel.addReminder(hour: hour, minute: minute)
-            self.viewModel.saveReminders()
-        }
-    }
-
-    func createReminderDatePicker(
-        hour: Int? = nil,
-        minute: Int? = nil
-        ) -> UIDatePicker {
-        let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 250, height: 300))
-        datePicker.datePickerMode = .time
-        datePicker.minuteInterval = Constants.TimePicker.minuteInterval
-        datePicker.setDate(
-            Date().rounded(
-                minutes: TimeInterval(Constants.TimePicker.minuteInterval),
-                rounding: .floor
-            ),
-            animated: false
-        )
-
-        // set initial value if present
-        if let editHour = hour, let editMinute = minute {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat =  "HH:mm"
-            if let date = dateFormatter.date(from: "\(editHour):\(editMinute)") {
-                datePicker.setDate(date, animated: false)
-            }
-        }
-
-        return datePicker
-    }
-
-    func showSelectReminderPopup(
-        hour: Int? = nil,
-        minute: Int? = nil,
-        completion: @escaping (_ hour: Int, _ minute: Int) -> ()
-        ) {
-        let vc = UIViewController()
-        vc.preferredContentSize = CGSize(width: 250, height: 300)
-
-        let datePicker = createReminderDatePicker(hour: hour, minute: minute)
-        vc.view.addSubview(datePicker)
-
-        let alert = UIAlertController(
-            title: "Choose a reminder time",
-            message: "",
-            preferredStyle: .alert
-        )
-
-        // TODO: This call is potentially problematic since it exploits an undocumented API and is
-        // causing the following warning: "A constraint factory method was passed a nil layout
-        // anchor. This is not allowed, and may cause confusing exceptions."
-        alert.setValue(vc, forKey: "contentViewController")
-
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { (action) in
-            let components = Calendar.current.dateComponents(
-                [.hour, .minute],
-                from: datePicker.date
-            )
-            completion(components.hour!, components.minute!)
-        })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        if presentedViewController == nil {
-            // only present if any no other alert is already shown
-            present(alert, animated: true, completion: nil)
-        }
-    }
 }
 
 
@@ -156,23 +87,11 @@ extension HabitRemindersViewController: UITableViewDelegate, UITableViewDataSour
         cell.minute = Int(reminder.minute)
 
         cell.onEditButtonPressed = {
-            self.showSelectReminderPopup(
-                hour: cell.hour,
-                minute: cell.minute
-            ) { (_ hour: Int, _ minute: Int) in
-                if hour == reminder.hour && minute == reminder.minute {
-                    // nothing changed, do nothing
-                    return
-                }
-                // simpler to just remove and re-add to prevent duplicates
-                self.viewModel.removeReminder(atIndex: indexPath.row)
-                self.viewModel.addReminder(hour: hour, minute: minute)
-                self.viewModel.saveReminders()
-            }
+            self.performSegue(withIdentifier: "goToEditReminder", sender: indexPath)
         }
         cell.onRemoveButtonPressed = {
+            // TODO: add confirm delete alert
             self.viewModel.removeReminder(atIndex: indexPath.row)
-            self.viewModel.saveReminders()
         }
 
         cell.updateTimeDisplay()
@@ -183,5 +102,21 @@ extension HabitRemindersViewController: UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+
+// MARK: - Segue Methods
+extension HabitRemindersViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationNavigationVC = segue.destination as! UINavigationController
+        let destinationVC =
+            destinationNavigationVC.topViewController as! ReminderAddEditViewController
+        if segue.identifier == "goToEditReminder" {
+            if let indexPath = sender as? IndexPath {
+                destinationVC.setSelectedReminder(viewModel.reminders.value[indexPath.row])
+            }
+        }
+        destinationVC.setParentHabit(viewModel.selectedHabit!)
     }
 }

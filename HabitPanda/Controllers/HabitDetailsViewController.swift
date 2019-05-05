@@ -32,7 +32,7 @@ class HabitDetailsViewController: UIViewController {
         return vc
     }()
 
-    private var viewModel = HabitViewModel()
+    private var viewModel = HabitDetailsViewModel()
 
     var selectedHabit: Habit? {
         didSet {
