@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfR-jn-q4D" userLabel="Edit">
-                        <rect key="frame" x="90" y="0.0" width="43" height="46.5"/>
+                        <rect key="frame" x="163" y="0.0" width="43" height="46.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="46" id="Vh5-xd-qoV"/>
                         </constraints>
@@ -40,7 +40,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ued-O3-29x" userLabel="Remove">
-                        <rect key="frame" x="143" y="0.0" width="71" height="46.5"/>
+                        <rect key="frame" x="206" y="0.0" width="71" height="46.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="46" id="r2X-NF-9Od"/>
                         </constraints>
@@ -50,22 +50,36 @@
                             <action selector="removeButtonPressed:" destination="F77-BB-gRd" eventType="touchUpInside" id="lXe-wT-Fmv"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMTWTFS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0Z-kv-LFN" userLabel="Frequency Days Label">
+                        <rect key="frame" x="80" y="0.0" width="73" height="46.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="5Xu-Xp-V4u"/>
+                            <constraint firstAttribute="height" constant="46" id="H1M-4m-gFR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="ued-O3-29x" secondAttribute="bottom" id="27c-gF-7un"/>
-                    <constraint firstItem="ued-O3-29x" firstAttribute="leading" secondItem="OfR-jn-q4D" secondAttribute="trailing" constant="10" id="3Gf-bt-mhZ"/>
+                    <constraint firstItem="ued-O3-29x" firstAttribute="leading" secondItem="OfR-jn-q4D" secondAttribute="trailing" id="3Gf-bt-mhZ"/>
                     <constraint firstItem="iF3-8u-j8w" firstAttribute="leading" secondItem="OlI-7n-Tm1" secondAttribute="leading" id="9Rk-Em-fVT"/>
+                    <constraint firstItem="h0Z-kv-LFN" firstAttribute="top" secondItem="OlI-7n-Tm1" secondAttribute="top" id="FYU-3m-svz"/>
+                    <constraint firstAttribute="bottom" secondItem="h0Z-kv-LFN" secondAttribute="bottom" id="Hun-o7-XQI"/>
                     <constraint firstItem="ued-O3-29x" firstAttribute="top" secondItem="OlI-7n-Tm1" secondAttribute="top" id="N9z-0V-bWR"/>
                     <constraint firstItem="iF3-8u-j8w" firstAttribute="top" secondItem="OlI-7n-Tm1" secondAttribute="top" id="PRt-HJ-FEO"/>
                     <constraint firstItem="OfR-jn-q4D" firstAttribute="top" secondItem="OlI-7n-Tm1" secondAttribute="top" id="V3N-vr-zR4"/>
+                    <constraint firstItem="h0Z-kv-LFN" firstAttribute="leading" secondItem="iF3-8u-j8w" secondAttribute="trailing" id="c2g-lc-Y6C"/>
                     <constraint firstAttribute="bottom" secondItem="OfR-jn-q4D" secondAttribute="bottom" id="k3t-Ig-wqD"/>
-                    <constraint firstItem="OfR-jn-q4D" firstAttribute="leading" secondItem="iF3-8u-j8w" secondAttribute="trailing" constant="10" id="luU-AZ-kSl"/>
+                    <constraint firstItem="OfR-jn-q4D" firstAttribute="leading" secondItem="h0Z-kv-LFN" secondAttribute="trailing" constant="10" id="luU-AZ-kSl"/>
                     <constraint firstAttribute="bottom" secondItem="iF3-8u-j8w" secondAttribute="bottom" id="n8G-vb-p98"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ued-O3-29x" secondAttribute="trailing" id="y0C-9K-feZ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="timeValueLabel" destination="iF3-8u-j8w" id="CfU-2D-l2q"/>
+                <outlet property="frequencyDaysLabel" destination="h0Z-kv-LFN" id="D2d-pR-Fsf"/>
+                <outlet property="timeLabel" destination="iF3-8u-j8w" id="CfU-2D-l2q"/>
             </connections>
             <point key="canvasLocation" x="-266.66666666666669" y="127.90178571428571"/>
         </tableViewCell>

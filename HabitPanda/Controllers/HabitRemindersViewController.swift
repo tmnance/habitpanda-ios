@@ -47,6 +47,7 @@ extension HabitRemindersViewController {
         remindersTableView.delegate = self
         remindersTableView.dataSource = self
         remindersTableView.separatorStyle = .none
+        remindersTableView.isScrollEnabled = false
 
         remindersTableView.register(
             UINib(nibName: "EditableTimeCell", bundle: nil),
@@ -85,6 +86,7 @@ extension HabitRemindersViewController: UITableViewDelegate, UITableViewDataSour
         let reminder = viewModel.reminders.value[indexPath.row]
         cell.hour = Int(reminder.hour)
         cell.minute = Int(reminder.minute)
+        cell.frequencyDays = (reminder.frequencyDays ?? []).compactMap{ $0.intValue }
 
         cell.onEditButtonPressed = {
             self.performSegue(withIdentifier: "goToEditReminder", sender: indexPath)
@@ -94,7 +96,7 @@ extension HabitRemindersViewController: UITableViewDelegate, UITableViewDataSour
             self.viewModel.removeReminder(atIndex: indexPath.row)
         }
 
-        cell.updateTimeDisplay()
+        cell.updateUI()
         cell.selectionStyle = .none
 
         return cell
