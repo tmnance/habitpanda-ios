@@ -11,4 +11,11 @@ import CoreData
 
 @objc(ReminderTime)
 public class Reminder: NSManagedObject {
+    public func getTimeOfDay() -> TimeOfDay {
+        return TimeOfDay(hour: Int(hour), minute: Int(minute))
+    }
+
+    public func getTimeInMinutes() -> Int {
+        return Int(hour * 60) + Int(minute)
+    }
 }

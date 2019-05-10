@@ -30,9 +30,6 @@ class NotificationHelper {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 
-
-
-
     static func setCategories() {
         let clearRepeatAction = UNNotificationAction(
             identifier: "clear.repeat.action",
@@ -45,7 +42,6 @@ class NotificationHelper {
             options: [])
         UNUserNotificationCenter.current().setNotificationCategories([pizzaCategory])
     }
-
 
     static func cleanRepeatingNotifications() {
         // cleans notification with a userInfo key endDate which have expired.
@@ -68,9 +64,9 @@ class NotificationHelper {
         }
     }
 
-    static func getPendingNotificationCount() -> Int? {
-//        return UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
-//        }
-        return nil
+    static func removeAllNotifications() {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllDeliveredNotifications() // To remove all delivered notifications
+        center.removeAllPendingNotificationRequests() // To remove all pending notifications which are not delivered yet but scheduled.
     }
 }

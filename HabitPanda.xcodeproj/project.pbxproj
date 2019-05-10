@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0315C02285010A00B1E6F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0315BE2285010A00B1E6F4 /* LaunchScreen.storyboard */; };
+		1C0315C12285010A00B1E6F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0315BF2285010A00B1E6F4 /* Main.storyboard */; };
+		1C0315C42285025A00B1E6F4 /* ReminderNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0315C32285025A00B1E6F4 /* ReminderNotificationService.swift */; };
 		1C12735222610DC80058D942 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12735122610DC80058D942 /* AppDelegate.swift */; };
 		1C12735422610DC80058D942 /* HabitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12735322610DC80058D942 /* HabitListViewController.swift */; };
-		1C12735722610DC80058D942 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C12735522610DC80058D942 /* Main.storyboard */; };
 		1C12735922610DCA0058D942 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C12735822610DCA0058D942 /* Assets.xcassets */; };
-		1C12735C22610DCA0058D942 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C12735A22610DCA0058D942 /* LaunchScreen.storyboard */; };
 		1C47C9F9227DEDF800985F1C /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9F8227DEDF800985F1C /* DayOfWeek.swift */; };
 		1C47C9FB227E4B8E00985F1C /* ReminderAddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */; };
 		1C47C9FD227F211700985F1C /* ReminderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9FC227F211700985F1C /* ReminderDetailsViewModel.swift */; };
@@ -40,13 +41,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C0315BE2285010A00B1E6F4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1C0315BF2285010A00B1E6F4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1C0315C32285025A00B1E6F4 /* ReminderNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderNotificationService.swift; sourceTree = "<group>"; };
 		1C12734E22610DC80058D942 /* HabitPanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitPanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C12735122610DC80058D942 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C12735322610DC80058D942 /* HabitListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewController.swift; sourceTree = "<group>"; };
-		1C12735622610DC80058D942 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C12735822610DCA0058D942 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1C12735B22610DCA0058D942 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1C12735D22610DCA0058D942 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C12735D22610DCA0058D942 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		1C47C9F8227DEDF800985F1C /* DayOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderAddEditViewController.swift; sourceTree = "<group>"; };
 		1C47C9FC227F211700985F1C /* ReminderDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -85,6 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C0315B9228500D300B1E6F4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				1C0315BE2285010A00B1E6F4 /* LaunchScreen.storyboard */,
+				1C0315BF2285010A00B1E6F4 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		1C0315C22285022F00B1E6F4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1C0315C32285025A00B1E6F4 /* ReminderNotificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		1C12734522610DC80058D942 = {
 			isa = PBXGroup;
 			children = (
@@ -108,8 +127,9 @@
 				1C8B27E822621C5F005DDE03 /* Views */,
 				1C8B27E922621C69005DDE03 /* Models */,
 				1CAC678F226FD4CC00B41338 /* ViewModels */,
+				1C0315C22285022F00B1E6F4 /* Services */,
+				1C0315B9228500D300B1E6F4 /* Storyboards */,
 				1C8B27EA22621C77005DDE03 /* SupportFiles */,
-				1C12735D22610DCA0058D942 /* Info.plist */,
 			);
 			path = HabitPanda;
 			sourceTree = "<group>";
@@ -133,8 +153,6 @@
 			children = (
 				1C90EB89226A899E007065D1 /* Buttons */,
 				1C90EB8C226A8B7D007065D1 /* Cells */,
-				1C12735A22610DCA0058D942 /* LaunchScreen.storyboard */,
-				1C12735522610DC80058D942 /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,10 +172,11 @@
 			children = (
 				1C90EB98226B87AE007065D1 /* Extensions */,
 				1CAC679E227268A600B41338 /* Helpers */,
+				1C12735D22610DCA0058D942 /* Info.plist */,
 				1C12735122610DC80058D942 /* AppDelegate.swift */,
-				1C12735822610DCA0058D942 /* Assets.xcassets */,
 				1CAC6794226FDEE500B41338 /* Box.swift */,
 				1CBBABD22279297500DB8F8E /* Constants.swift */,
+				1C12735822610DCA0058D942 /* Assets.xcassets */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -269,10 +288,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C12735C22610DCA0058D942 /* LaunchScreen.storyboard in Resources */,
+				1C0315C02285010A00B1E6F4 /* LaunchScreen.storyboard in Resources */,
 				1C12735922610DCA0058D942 /* Assets.xcassets in Resources */,
 				1C90EB92226A8E6A007065D1 /* EditableTimeCell.xib in Resources */,
-				1C12735722610DC80058D942 /* Main.storyboard in Resources */,
+				1C0315C12285010A00B1E6F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +323,7 @@
 				1CAC6793226FDC7900B41338 /* Date+Rounding.swift in Sources */,
 				1CAC67A42273869900B41338 /* UIView+Border.swift in Sources */,
 				1CBBABD32279297500DB8F8E /* Constants.swift in Sources */,
+				1C0315C42285025A00B1E6F4 /* ReminderNotificationService.swift in Sources */,
 				1C47C9FB227E4B8E00985F1C /* ReminderAddEditViewController.swift in Sources */,
 				1CAC67A02272694800B41338 /* TimeOfDay.swift in Sources */,
 				1CBBABCB2279195D00DB8F8E /* HabitSummaryViewController.swift in Sources */,
@@ -313,25 +333,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		1C12735522610DC80058D942 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1C12735622610DC80058D942 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1C12735A22610DCA0058D942 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1C12735B22610DCA0058D942 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1C12735E22610DCA0058D942 /* Debug */ = {

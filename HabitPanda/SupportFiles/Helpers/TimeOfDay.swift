@@ -8,12 +8,16 @@
 
 import Foundation
 
-struct TimeOfDay {
+public struct TimeOfDay {
     var hour: Int
     var minute: Int
 
     func getDisplayDate() -> String {
         return TimeOfDay.getDisplayDate(hour: hour, minute: minute)
+    }
+
+    func getTimeInMinutes() -> Int {
+        return hour * 60 + minute
     }
 
     static func getDisplayDate(hour: Int, minute: Int) -> String {

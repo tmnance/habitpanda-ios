@@ -16,18 +16,32 @@ class AdminViewController: UIViewController {
 
     var isLoading = false
     var pendingRequests: [UNNotificationRequest] = []
+    var reminders: [Reminder] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         loadNotificationData()
+        loadRemindersData()
 
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         print("NotificationHelper.isGranted = \(NotificationHelper.isGranted)")
-        NotificationHelper.sendPushNotification()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    @IBAction func adminButtonPressed(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            NotificationHelper.removeAllNotifications()
+        case 1:
+            print("Reset all notifications")
+        case 2:
+            NotificationHelper.sendPushNotification()
+        default:
+            print("Unrecognized")
+        }
+        updateUI()
     }
 }
 
@@ -47,14 +61,47 @@ extension AdminViewController {
     }
 
     func updateUI() {
-        var text = ""
         if isLoading {
-            text = "Loading..."
-        } else {
-            text = "Notifications: \(pendingRequests.count)"
-//            text += "\nNext notification: Today at 2:00 PM"
+            notificationsReportText.text = "Loading..."
+            return
         }
 
-        notificationsReportText.text = text
+        notificationsReportText.text = "Report:\n" +
+            "\(getRemindersReportString())\n" +
+            "\(getNotificationsReportString())"
+    }
+
+    func getNotificationsReportString() -> String {
+        return "Notifications:\n" +
+            "- \(pendingRequests.count) pending notification(s) set"
+    }
+}
+
+
+extension AdminViewController {
+    private func loadRemindersData() {
+        let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+//        let predicates = [NSPredicate(format: "habit = %@", habit)]
+//        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "hour", ascending: true),
+            NSSortDescriptor(key: "minute", ascending: true),
+            NSSortDescriptor(key: "frequencyDays", ascending: true)
+        ]
+
+        do {
+            reminders = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context, \(error)")
+        }
+        updateUI()
+    }
+
+    func getRemindersReportString() -> String {
+        let returnCounts =
+            ReminderNotificationService.setupNotificationsForReminders(reminders)
+
+        return "Reminders:\n" +
+            "- \(returnCounts.0) notification(s) will be needed across \(returnCounts.1) habit(s)"
     }
 }
