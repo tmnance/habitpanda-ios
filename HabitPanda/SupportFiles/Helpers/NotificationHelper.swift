@@ -12,7 +12,7 @@ import UserNotifications
 class NotificationHelper {
     static var isGranted = false
 
-    static func sendPushNotification() {
+    static func sendTestPushNotification() {
         let content = UNMutableNotificationContent()
         content.title = "Notif Title"
         content.body = "Notif Body"
@@ -25,7 +25,8 @@ class NotificationHelper {
         let request = UNNotificationRequest(
             identifier: "testIdentifier", // old notifications requests will be overridden when new ones are setup
             content: content,
-            trigger: trigger)
+            trigger: trigger
+        )
 
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
@@ -64,9 +65,13 @@ class NotificationHelper {
         }
     }
 
-    static func removeAllNotifications() {
+    static func removeAllPendingNotifications() {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests() // To remove all pending notifications which are not delivered yet but scheduled.
+    }
+
+    static func removeAllDeliveredNotifications() {
         let center = UNUserNotificationCenter.current()
         center.removeAllDeliveredNotifications() // To remove all delivered notifications
-        center.removeAllPendingNotificationRequests() // To remove all pending notifications which are not delivered yet but scheduled.
     }
 }

@@ -18,29 +18,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZA-A7-2II" userLabel="Report Text">
-                                <rect key="frame" x="20" y="84" width="335" height="20.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZA-A7-2II" userLabel="Report View">
+                                <rect key="frame" x="20" y="84" width="335" height="52.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications report" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jiw-td-eRs">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ti8-4y-E92" userLabel="Report Title">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report Text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jiw-td-eRs" userLabel="Report Text">
+                                        <rect key="frame" x="0.0" y="32" width="335" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="QqN-kt-q8s"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Ti8-4y-E92" firstAttribute="leading" secondItem="uZA-A7-2II" secondAttribute="leading" id="18Q-en-SC0"/>
+                                    <constraint firstItem="Ti8-4y-E92" firstAttribute="top" secondItem="uZA-A7-2II" secondAttribute="top" id="BzB-Bi-QDb"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ti8-4y-E92" secondAttribute="trailing" id="I39-uX-ck9"/>
                                     <constraint firstAttribute="trailing" secondItem="jiw-td-eRs" secondAttribute="trailing" id="X5i-sg-oh6"/>
+                                    <constraint firstItem="jiw-td-eRs" firstAttribute="top" secondItem="Ti8-4y-E92" secondAttribute="bottom" constant="8" id="eus-j4-daV"/>
                                     <constraint firstItem="jiw-td-eRs" firstAttribute="leading" secondItem="uZA-A7-2II" secondAttribute="leading" id="gSh-wR-z1g"/>
-                                    <constraint firstItem="jiw-td-eRs" firstAttribute="top" secondItem="uZA-A7-2II" secondAttribute="top" id="hbC-U3-7O7"/>
                                     <constraint firstAttribute="bottom" secondItem="jiw-td-eRs" secondAttribute="bottom" id="u2t-Hs-RkQ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Osh-nF-aDO" userLabel="Buttons">
-                                <rect key="frame" x="20" y="124.5" width="335" height="118"/>
+                                <rect key="frame" x="20" y="156.5" width="335" height="160"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mg-Zm-CcH">
                                         <rect key="frame" x="0.0" y="0.0" width="238" height="34"/>
@@ -50,34 +59,45 @@
                                             <action selector="adminButtonPressed:" destination="ap1-1x-sUg" eventType="touchUpInside" id="Rm5-zj-lCV"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRF-CL-XWA">
-                                        <rect key="frame" x="0.0" y="42" width="174" height="34"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRF-CL-XWA" userLabel="Remove all sent notifications">
+                                        <rect key="frame" x="0.0" y="42" width="212" height="34"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                        <state key="normal" title="(Re)set all notifications"/>
+                                        <state key="normal" title="Remove all sent notifications"/>
                                         <connections>
                                             <action selector="adminButtonPressed:" destination="ap1-1x-sUg" eventType="touchUpInside" id="0R4-Ub-DFN"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gT-35-bbp">
-                                        <rect key="frame" x="0.0" y="84" width="162" height="34"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gT-35-bbp" userLabel="(Re)set all notifications">
+                                        <rect key="frame" x="0.0" y="84" width="174" height="34"/>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" title="(Re)set all notifications"/>
+                                        <connections>
+                                            <action selector="adminButtonPressed:" destination="ap1-1x-sUg" eventType="touchUpInside" id="VOU-ay-nAr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Isj-Kq-2bB">
+                                        <rect key="frame" x="0.0" y="126" width="162" height="34"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                         <state key="normal" title="Send test notification"/>
                                         <connections>
-                                            <action selector="adminButtonPressed:" destination="ap1-1x-sUg" eventType="touchUpInside" id="VOU-ay-nAr"/>
+                                            <action selector="adminButtonPressed:" destination="ap1-1x-sUg" eventType="touchUpInside" id="dfd-Oa-ZtZ"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Isj-Kq-2bB" firstAttribute="leading" secondItem="Osh-nF-aDO" secondAttribute="leading" id="1dt-22-etJ"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8mg-Zm-CcH" secondAttribute="trailing" id="3Gz-8p-Ud1"/>
                                     <constraint firstItem="dRF-CL-XWA" firstAttribute="top" secondItem="8mg-Zm-CcH" secondAttribute="bottom" constant="8" id="3ZZ-hi-jMm"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Isj-Kq-2bB" secondAttribute="trailing" id="Gsa-Iq-gAP"/>
                                     <constraint firstItem="8mg-Zm-CcH" firstAttribute="leading" secondItem="Osh-nF-aDO" secondAttribute="leading" id="KW0-v5-9R9"/>
                                     <constraint firstItem="3gT-35-bbp" firstAttribute="top" secondItem="dRF-CL-XWA" secondAttribute="bottom" constant="8" id="Kfs-aX-9Op"/>
                                     <constraint firstItem="8mg-Zm-CcH" firstAttribute="top" secondItem="Osh-nF-aDO" secondAttribute="top" id="Q3C-Ye-fCf"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dRF-CL-XWA" secondAttribute="trailing" id="iGm-za-SNo"/>
                                     <constraint firstItem="dRF-CL-XWA" firstAttribute="leading" secondItem="Osh-nF-aDO" secondAttribute="leading" id="joB-1U-SQb"/>
+                                    <constraint firstItem="Isj-Kq-2bB" firstAttribute="top" secondItem="3gT-35-bbp" secondAttribute="bottom" constant="8" id="mxk-OZ-CkN"/>
+                                    <constraint firstAttribute="bottom" secondItem="Isj-Kq-2bB" secondAttribute="bottom" id="qmA-rd-8ju"/>
                                     <constraint firstItem="3gT-35-bbp" firstAttribute="leading" secondItem="Osh-nF-aDO" secondAttribute="leading" id="qmw-Na-KLh"/>
-                                    <constraint firstAttribute="bottom" secondItem="3gT-35-bbp" secondAttribute="bottom" id="rFe-zh-3Vg"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3gT-35-bbp" secondAttribute="trailing" id="zT6-mn-pEj"/>
                                 </constraints>
                             </view>

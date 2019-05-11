@@ -33,11 +33,16 @@ class AdminViewController: UIViewController {
     @IBAction func adminButtonPressed(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            NotificationHelper.removeAllNotifications()
+            NotificationHelper.removeAllPendingNotifications()
+            loadNotificationData()
         case 1:
-            print("Reset all notifications")
+            NotificationHelper.removeAllDeliveredNotifications()
+            loadNotificationData()
         case 2:
-            NotificationHelper.sendPushNotification()
+            ReminderNotificationService.setupNotificationsForReminders(reminders)
+            loadNotificationData()
+        case 3:
+            NotificationHelper.sendTestPushNotification()
         default:
             print("Unrecognized")
         }
@@ -66,8 +71,7 @@ extension AdminViewController {
             return
         }
 
-        notificationsReportText.text = "Report:\n" +
-            "\(getRemindersReportString())\n" +
+        notificationsReportText.text = "\(getRemindersReportString())\n\n" +
             "\(getNotificationsReportString())"
     }
 
@@ -98,10 +102,36 @@ extension AdminViewController {
     }
 
     func getRemindersReportString() -> String {
-        let returnCounts =
-            ReminderNotificationService.setupNotificationsForReminders(reminders)
+        var notificationCount = 0
+        var habitUUIDs = Set<UUID>()
+
+        let remindersByDay = ReminderNotificationService.RemindersForWeek(forReminders: reminders)
+
+        let currentWeekdayIndex = ReminderNotificationService.getCurrentWeekdayIndex()
+        let weekdayIndexLoop = ReminderNotificationService.getNext7DayWeekdayIndexLoop()
+        let currentTimeInMinutes = TimeOfDay.generateFromCurrentTime().getTimeInMinutes()
+
+        for (i, weekdayIndex) in weekdayIndexLoop.enumerated() {
+            let remindersForDay = remindersByDay.getForWeekdayIndex(weekdayIndex)
+            let sortedTimes = remindersForDay.getSortedTimes()
+
+            for time in sortedTimes {
+                if i == 0 && weekdayIndex == currentWeekdayIndex && time <= currentTimeInMinutes {
+                    continue
+                }
+                let remindersForDayAndTime = remindersForDay.getForTime(time)
+                for reminder in remindersForDayAndTime {
+                    notificationCount += 1
+                    habitUUIDs.insert(reminder.habit!.uuid!)
+                }
+            }
+        }
 
         return "Reminders:\n" +
-            "- \(returnCounts.0) notification(s) will be needed across \(returnCounts.1) habit(s)"
+            "- currentWeekdayIndex = \(currentWeekdayIndex)\n" +
+            "- weekdayIndexLoop = \(weekdayIndexLoop)\n" +
+            "- currentTimeInMinutes = \(currentTimeInMinutes)\n" +
+            "- \(notificationCount) notification\(notificationCount == 1 ? "" : "s") " +
+            "will be needed across \(habitUUIDs.count) habit\(habitUUIDs.count == 1 ? "" : "s")"
     }
 }

@@ -72,16 +72,14 @@ extension ReminderNotificationService {
 
 // Mark: - Setup methods
 extension ReminderNotificationService {
-    static func setupNotificationsForReminders(_ reminders: [Reminder]) -> (Int, Int) {
+    static func setupNotificationsForReminders(_ reminders: [Reminder]) {
         var notificationCount = 0
         var habitUUIDs = Set<UUID>()
 
         let remindersByDay = RemindersForWeek(forReminders: reminders)
 
         let currentWeekdayIndex = getCurrentWeekdayIndex()
-        print("currentWeekdayIndex = \(currentWeekdayIndex)")
         let weekdayIndexLoop = getNext7DayWeekdayIndexLoop()
-        print("dayOfWeekLoop = \(weekdayIndexLoop)")
         let currentTimeInMinutes = TimeOfDay.generateFromCurrentTime().getTimeInMinutes()
 
         for (i, weekdayIndex) in weekdayIndexLoop.enumerated() {
@@ -100,8 +98,6 @@ extension ReminderNotificationService {
                 }
             }
         }
-
-        return (notificationCount, habitUUIDs.count)
     }
 
     static func setupNotificationForReminder(
@@ -109,6 +105,38 @@ extension ReminderNotificationService {
         forWeekdayIndex weekdayIndex: WeekdayIndex
     ) {
         let time = reminder.getTimeInMinutes()
+        let habit = reminder.habit!
+
+        var dateComponents = DateComponents()
+        dateComponents.calendar = Calendar.current
+        dateComponents.weekday = weekdayIndex + 1
+        dateComponents.hour = Int(reminder.hour)
+        dateComponents.minute = Int(reminder.minute)
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+
+        let content = UNMutableNotificationContent()
+
+        //adding title, subtitle, body and badge
+        content.title = "Reminder for \(habit.name!)"
+        content.subtitle = "Friendly reminder to check-in scheduled for \(reminder.getTimeOfDay().getDisplayDate())"
+        content.body = "Notification body!"
+        content.userInfo = [
+            "reminderUUID": reminder.uuid!.uuidString
+        ]
+
+        let request = UNNotificationRequest(
+            identifier: "\(reminder.uuid!).\(weekdayIndex).\(time)",
+            content: content,
+            trigger: trigger
+        )
+
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error != nil {
+                print("Error scheduling notification for (\"\(reminder.habit!.name!)\", \(weekdayIndex):\(time))")
+            }
+        }
+
         print("  - setupNotificationForReminder(\"\(reminder.habit!.name!)\", \(weekdayIndex):\(time))")
     }
 }
