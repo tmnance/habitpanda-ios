@@ -67,11 +67,12 @@ class NotificationHelper {
 
     static func removeAllPendingNotifications() {
         let center = UNUserNotificationCenter.current()
-        center.removeAllPendingNotificationRequests() // To remove all pending notifications which are not delivered yet but scheduled.
+        // remove all pending notifications which are scheduled but not yet delivered
+        center.removeAllPendingNotificationRequests()
     }
 
     static func removeAllDeliveredNotifications() {
         let center = UNUserNotificationCenter.current()
-        center.removeAllDeliveredNotifications() // To remove all delivered notifications
+        center.removeAllDeliveredNotifications()
     }
 }

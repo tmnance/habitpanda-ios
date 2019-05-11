@@ -39,7 +39,7 @@ class AdminViewController: UIViewController {
             NotificationHelper.removeAllDeliveredNotifications()
             loadNotificationData()
         case 2:
-            ReminderNotificationService.setupNotificationsForReminders(reminders)
+            ReminderNotificationService.refreshNotificationsForAllReminders()
             loadNotificationData()
         case 3:
             NotificationHelper.sendTestPushNotification()
@@ -84,20 +84,7 @@ extension AdminViewController {
 
 extension AdminViewController {
     private func loadRemindersData() {
-        let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
-//        let predicates = [NSPredicate(format: "habit = %@", habit)]
-//        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-        request.sortDescriptors = [
-            NSSortDescriptor(key: "hour", ascending: true),
-            NSSortDescriptor(key: "minute", ascending: true),
-            NSSortDescriptor(key: "frequencyDays", ascending: true)
-        ]
-
-        do {
-            reminders = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context, \(error)")
-        }
+        reminders = Reminder.getAll()
         updateUI()
     }
 

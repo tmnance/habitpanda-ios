@@ -31,6 +31,7 @@ extension ReminderListViewModel {
 
         do {
             try context.save()
+            ReminderNotificationService.refreshNotificationsForAllReminders()
         } catch {
             print("Error saving context, \(error)")
         }

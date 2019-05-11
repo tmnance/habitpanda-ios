@@ -18,6 +18,10 @@ struct Constants {
         static let disabledTextColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
     }
 
+    struct Reminders {
+        static let maxReminderNotificationCount = 50
+    }
+
     struct TimePicker {
         static let minuteInterval = 5
     }

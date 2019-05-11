@@ -23,6 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //        self.saveContext()
     }
 
+    func applicationWillResignActive(_ application: UIApplication) {
+        ReminderNotificationService.refreshNotificationsForAllReminders()
+    }
+
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {

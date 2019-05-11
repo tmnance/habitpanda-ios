@@ -59,6 +59,7 @@ extension ReminderDetailsViewModel {
 
         do {
             try context.save()
+            ReminderNotificationService.refreshNotificationsForAllReminders()
         } catch {
             print("Error saving context, \(error)")
         }

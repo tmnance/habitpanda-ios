@@ -72,6 +72,13 @@ extension ReminderNotificationService {
 
 // Mark: - Setup methods
 extension ReminderNotificationService {
+    static func refreshNotificationsForAllReminders() {
+        // TODO: may eventually have other non-reminder notifications that shouldn't be cleared
+        NotificationHelper.removeAllPendingNotifications()
+
+        setupNotificationsForReminders(Reminder.getAll())
+    }
+
     static func setupNotificationsForReminders(_ reminders: [Reminder]) {
         var notificationCount = 0
         var habitUUIDs = Set<UUID>()
@@ -82,7 +89,7 @@ extension ReminderNotificationService {
         let weekdayIndexLoop = getNext7DayWeekdayIndexLoop()
         let currentTimeInMinutes = TimeOfDay.generateFromCurrentTime().getTimeInMinutes()
 
-        for (i, weekdayIndex) in weekdayIndexLoop.enumerated() {
+        outerLoop: for (i, weekdayIndex) in weekdayIndexLoop.enumerated() {
             let remindersForDay = remindersByDay.getForWeekdayIndex(weekdayIndex)
             let sortedTimes = remindersForDay.getSortedTimes()
 
@@ -93,8 +100,11 @@ extension ReminderNotificationService {
                 let remindersForDayAndTime = remindersForDay.getForTime(time)
                 for reminder in remindersForDayAndTime {
                     setupNotificationForReminder(reminder, forWeekdayIndex: weekdayIndex)
-                    notificationCount += 1
                     habitUUIDs.insert(reminder.habit!.uuid!)
+                    notificationCount += 1
+                    if notificationCount >= Constants.Reminders.maxReminderNotificationCount {
+                        break outerLoop
+                    }
                 }
             }
         }
