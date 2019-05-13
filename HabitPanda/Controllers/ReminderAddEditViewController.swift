@@ -56,7 +56,7 @@ extension ReminderAddEditViewController {
         timePicker.minuteInterval = Constants.TimePicker.minuteInterval
 
         frequencyOptionsSegmentedControl.setTitleTextAttributes(
-            [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)],
+            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)],
             for: .normal
         )
 

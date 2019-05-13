@@ -45,7 +45,7 @@ extension CGSize {
 }
 
 extension UIImage {
-    static func imageWithSize(size : CGSize, color : UIColor = UIColor.white) -> UIImage? {
+    static func imageWithSize(size: CGSize, color: UIColor = UIColor.white) -> UIImage? {
         var image: UIImage? = nil
         UIGraphicsBeginImageContext(size)
         if let context = UIGraphicsGetCurrentContext() {

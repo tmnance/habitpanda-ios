@@ -24,10 +24,17 @@ class HabitDetailsViewController: UIViewController {
         vc?.delegateViewModel = self.viewModel
         return vc
     }()
-    lazy var remindersTabVC : HabitRemindersViewController? = {
+    lazy var checkInsTabVC: HabitSummaryViewController? = {
+        let vc = self.storyboard?.instantiateViewController(
+            withIdentifier: "HabitSummaryViewController"
+            ) as? HabitSummaryViewController
+        vc?.delegateViewModel = self.viewModel
+        return vc
+    }()
+    lazy var remindersTabVC: HabitRemindersViewController? = {
         let vc = self.storyboard?.instantiateViewController(
             withIdentifier: "HabitRemindersViewController"
-        ) as? HabitRemindersViewController
+            ) as? HabitRemindersViewController
         vc?.delegateViewModel = self.viewModel
         return vc
     }()
@@ -83,7 +90,7 @@ extension HabitDetailsViewController {
 extension HabitDetailsViewController {
     func setupSegmentedControl() {
         contentTabsSegmentedControl.setTitleTextAttributes(
-            [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)],
+            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)],
             for: .normal
         )
 
@@ -123,6 +130,8 @@ extension HabitDetailsViewController {
         case 0:
             vc = summaryTabVC
         case 1:
+            vc = checkInsTabVC
+        case 2:
             vc = remindersTabVC
         default:
             return nil
@@ -143,5 +152,13 @@ extension HabitDetailsViewController {
         let destinationNavigationVC = segue.destination as! UINavigationController
         let destinationVC = destinationNavigationVC.topViewController as! HabitAddEditViewController
         destinationVC.setSelectedHabit(selectedHabit!)
+    }
+}
+
+
+// MARK: - Check In Button Methods
+extension HabitDetailsViewController {
+    @IBAction func checkInButtonPressed(_ sender: UIButton) {
+        print("Check in button pressed!")
     }
 }

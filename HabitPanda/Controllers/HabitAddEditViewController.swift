@@ -54,7 +54,7 @@ extension HabitAddEditViewController {
         )
 
         frequencyOptionsSegmentedControl.setTitleTextAttributes(
-            [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)],
+            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)],
             for: .normal
         )
 
