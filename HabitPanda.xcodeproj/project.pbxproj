@@ -20,6 +20,7 @@
 		1C90EB92226A8E6A007065D1 /* EditableTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C90EB91226A8E6A007065D1 /* EditableTimeCell.xib */; };
 		1C90EB94226A92A7007065D1 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB93226A92A7007065D1 /* Reminder.swift */; };
 		1C90EB9A226B87D8007065D1 /* UITextField+MaxLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB99226B87D8007065D1 /* UITextField+MaxLength.swift */; };
+		1C93DEB0228A14C500C65BEB /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C93DEAF228A14C500C65BEB /* CheckIn.swift */; };
 		1C9FE64B2267C47F00354933 /* MultiSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9FE64A2267C47E00354933 /* MultiSelectButton.swift */; };
 		1C9FE64D2267C53000354933 /* SingleSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9FE64C2267C53000354933 /* SingleSelectButton.swift */; };
 		1CAC6791226FD51400B41338 /* HabitDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC6790226FD51400B41338 /* HabitDetailsViewModel.swift */; };
@@ -56,6 +57,7 @@
 		1C90EB91226A8E6A007065D1 /* EditableTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditableTimeCell.xib; sourceTree = "<group>"; };
 		1C90EB93226A92A7007065D1 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		1C90EB99226B87D8007065D1 /* UITextField+MaxLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+MaxLength.swift"; sourceTree = "<group>"; };
+		1C93DEAF228A14C500C65BEB /* CheckIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
 		1C9FE64A2267C47E00354933 /* MultiSelectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSelectButton.swift; sourceTree = "<group>"; };
 		1C9FE64C2267C53000354933 /* SingleSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectButton.swift; sourceTree = "<group>"; };
 		1CAC6790226FD51400B41338 /* HabitDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				1CB9F79F226244C4005D1FFC /* DataModel.xcdatamodeld */,
 				1CDB388E22624BBE00C86277 /* Habit.swift */,
+				1C93DEAF228A14C500C65BEB /* CheckIn.swift */,
 				1C90EB93226A92A7007065D1 /* Reminder.swift */,
 			);
 			path = Models;
@@ -307,6 +310,7 @@
 				1C12735422610DC80058D942 /* HabitListViewController.swift in Sources */,
 				1C90EB90226A8CDF007065D1 /* EditableTimeCell.swift in Sources */,
 				1C9FE64D2267C53000354933 /* SingleSelectButton.swift in Sources */,
+				1C93DEB0228A14C500C65BEB /* CheckIn.swift in Sources */,
 				1CBBABD6227A4F4400DB8F8E /* HabitAddEditViewController.swift in Sources */,
 				1CBBABDA227A555300DB8F8E /* ReminderListViewModel.swift in Sources */,
 				1CAC6791226FD51400B41338 /* HabitDetailsViewModel.swift in Sources */,
