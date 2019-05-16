@@ -793,6 +793,54 @@
             </objects>
             <point key="canvasLocation" x="808.79999999999995" y="111.99400299850076"/>
         </scene>
+        <!--Habit Check In View Controller-->
+        <scene sceneID="vjB-dY-UqL">
+            <objects>
+                <viewController storyboardIdentifier="HabitCheckInViewController" id="Jex-wo-p0Y" customClass="HabitCheckInViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kir-iH-jsT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0XT-jK-0S7">
+                                <rect key="frame" x="284" y="9" width="30" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="Jex-wo-p0Y" eventType="touchUpInside" id="62W-lw-a7l"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8p-px-UpE" userLabel="Picker Container">
+                                <rect key="frame" x="0.0" y="46" width="320" height="100"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lxb-Ra-NRJ" customClass="DateDayPicker" customModule="HabitPanda" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </pickerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Nxe-wp-53P"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D8p-px-UpE" firstAttribute="top" secondItem="dao-8c-CPD" secondAttribute="top" constant="46" id="9M4-86-waC"/>
+                            <constraint firstItem="D8p-px-UpE" firstAttribute="leading" secondItem="dao-8c-CPD" secondAttribute="leading" id="SN5-On-o8g"/>
+                            <constraint firstItem="dao-8c-CPD" firstAttribute="trailing" secondItem="D8p-px-UpE" secondAttribute="trailing" id="unU-0z-RYr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dao-8c-CPD"/>
+                    </view>
+                    <size key="freeformSize" width="320" height="220"/>
+                    <connections>
+                        <outlet property="checkInDayPicker" destination="lxb-Ra-NRJ" id="bdt-J4-ZZj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dvK-io-EW7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1096" y="1167"/>
+        </scene>
         <!--Habit Details-->
         <scene sceneID="gLO-d5-FgE">
             <objects>
@@ -851,6 +899,9 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="checkInButtonPressed:" destination="dIF-3Q-H7c" eventType="touchUpInside" id="JbX-EM-JQ0"/>
+                                                                    <segue destination="Jex-wo-p0Y" kind="popoverPresentation" identifier="goToHabitCheckIn" popoverAnchorView="1OB-iz-fUR" id="06a-ze-iDE">
+                                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                                    </segue>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -977,31 +1028,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oa2-Dx-AiQ" customClass="DesignableButton" customModule="HabitPanda" customModuleProvider="target">
-                                <rect key="frame" x="20" y="129" width="335" height="46"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="ZnJ-lM-E0q"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                <state key="normal" title="Delete Habit">
-                                    <color key="titleColor" red="0.91545593739999997" green="0.29308891300000001" blue="0.20751205089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.91545593739999997" green="0.29308891300000001" blue="0.20751205089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="deleteHabitButtonPressed:" destination="YLs-Y3-bmv" eventType="touchUpInside" id="o0D-Gv-XcF"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWk-Hf-ror" userLabel="Frequency Container">
                                 <rect key="frame" x="20" y="20" width="335" height="69"/>
                                 <subviews>
@@ -1029,6 +1055,31 @@
                                     <constraint firstItem="GMR-fa-JDW" firstAttribute="top" secondItem="zWk-Hf-ror" secondAttribute="top" id="t5N-6X-3gl"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oa2-Dx-AiQ" customClass="DesignableButton" customModule="HabitPanda" customModuleProvider="target">
+                                <rect key="frame" x="20" y="129" width="335" height="46"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="ZnJ-lM-E0q"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <state key="normal" title="Delete Habit">
+                                    <color key="titleColor" red="0.91545593739999997" green="0.29308891300000001" blue="0.20751205089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.91545593739999997" green="0.29308891300000001" blue="0.20751205089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteHabitButtonPressed:" destination="YLs-Y3-bmv" eventType="touchUpInside" id="o0D-Gv-XcF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

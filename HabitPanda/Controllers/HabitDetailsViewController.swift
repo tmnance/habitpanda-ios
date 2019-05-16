@@ -149,6 +149,9 @@ extension HabitDetailsViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToHabitCheckIn" {
+            return
+        }
         let destinationNavigationVC = segue.destination as! UINavigationController
         let destinationVC = destinationNavigationVC.topViewController as! HabitAddEditViewController
         destinationVC.setSelectedHabit(selectedHabit!)

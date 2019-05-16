@@ -38,6 +38,8 @@
 		1CBBABDA227A555300DB8F8E /* ReminderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABD9227A555300DB8F8E /* ReminderListViewModel.swift */; };
 		1CBBABDC227CAD0B00DB8F8E /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABDB227CAD0B00DB8F8E /* NotificationHelper.swift */; };
 		1CBBABDE227CC7D200DB8F8E /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABDD227CC7D200DB8F8E /* AdminViewController.swift */; };
+		1CC5A3B2228B36D400E5F6D8 /* HabitCheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5A3B1228B36D400E5F6D8 /* HabitCheckInViewController.swift */; };
+		1CC5A3B4228B4CD400E5F6D8 /* DateDayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */; };
 		1CDB388F22624BBE00C86277 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB388E22624BBE00C86277 /* Habit.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,8 @@
 		1CBBABD9227A555300DB8F8E /* ReminderListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderListViewModel.swift; sourceTree = "<group>"; };
 		1CBBABDB227CAD0B00DB8F8E /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		1CBBABDD227CC7D200DB8F8E /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
+		1CC5A3B1228B36D400E5F6D8 /* HabitCheckInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitCheckInViewController.swift; sourceTree = "<group>"; };
+		1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDayPicker.swift; sourceTree = "<group>"; };
 		1CDB388E22624BBE00C86277 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +148,7 @@
 				1CAC679C22725D3600B41338 /* HabitDetailsViewController.swift */,
 				1C12735322610DC80058D942 /* HabitListViewController.swift */,
 				1CBBABCC227919C700DB8F8E /* HabitRemindersViewController.swift */,
+				1CC5A3B1228B36D400E5F6D8 /* HabitCheckInViewController.swift */,
 				1CBBABCA2279195D00DB8F8E /* HabitSummaryViewController.swift */,
 				1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */,
 			);
@@ -155,6 +160,7 @@
 			children = (
 				1C90EB89226A899E007065D1 /* Buttons */,
 				1C90EB8C226A8B7D007065D1 /* Cells */,
+				1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -307,6 +313,7 @@
 			files = (
 				1C90EB94226A92A7007065D1 /* Reminder.swift in Sources */,
 				1CB9F7A1226244C4005D1FFC /* DataModel.xcdatamodeld in Sources */,
+				1CC5A3B4228B4CD400E5F6D8 /* DateDayPicker.swift in Sources */,
 				1C12735422610DC80058D942 /* HabitListViewController.swift in Sources */,
 				1C90EB90226A8CDF007065D1 /* EditableTimeCell.swift in Sources */,
 				1C9FE64D2267C53000354933 /* SingleSelectButton.swift in Sources */,
@@ -329,6 +336,7 @@
 				1CBBABD32279297500DB8F8E /* Constants.swift in Sources */,
 				1C0315C42285025A00B1E6F4 /* ReminderNotificationService.swift in Sources */,
 				1C47C9FB227E4B8E00985F1C /* ReminderAddEditViewController.swift in Sources */,
+				1CC5A3B2228B36D400E5F6D8 /* HabitCheckInViewController.swift in Sources */,
 				1CAC67A02272694800B41338 /* TimeOfDay.swift in Sources */,
 				1CBBABCB2279195D00DB8F8E /* HabitSummaryViewController.swift in Sources */,
 				1C90EB9A226B87D8007065D1 /* UITextField+MaxLength.swift in Sources */,
