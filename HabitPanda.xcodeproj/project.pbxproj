@@ -41,9 +41,11 @@
 		1CC5A3B2228B36D400E5F6D8 /* HabitCheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5A3B1228B36D400E5F6D8 /* HabitCheckInViewController.swift */; };
 		1CC5A3B4228B4CD400E5F6D8 /* DateDayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */; };
 		1CDB388F22624BBE00C86277 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB388E22624BBE00C86277 /* Habit.swift */; };
+		4E62082982CE4D84B0901FBE /* Pods_HabitPanda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04892BB89431780B7C3882AE /* Pods_HabitPanda.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04892BB89431780B7C3882AE /* Pods_HabitPanda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitPanda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C0315BE2285010A00B1E6F4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C0315BF2285010A00B1E6F4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1C0315C32285025A00B1E6F4 /* ReminderNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderNotificationService.swift; sourceTree = "<group>"; };
@@ -80,6 +82,8 @@
 		1CC5A3B1228B36D400E5F6D8 /* HabitCheckInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitCheckInViewController.swift; sourceTree = "<group>"; };
 		1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDayPicker.swift; sourceTree = "<group>"; };
 		1CDB388E22624BBE00C86277 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		3CCD34975B17DB9A0E5FD317 /* Pods-HabitPanda.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPanda.debug.xcconfig"; path = "Target Support Files/Pods-HabitPanda/Pods-HabitPanda.debug.xcconfig"; sourceTree = "<group>"; };
+		C24FC85B23A11D916B95A4B6 /* Pods-HabitPanda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPanda.release.xcconfig"; path = "Target Support Files/Pods-HabitPanda/Pods-HabitPanda.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E62082982CE4D84B0901FBE /* Pods_HabitPanda.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +120,8 @@
 			children = (
 				1C12735022610DC80058D942 /* HabitPanda */,
 				1C12734F22610DC80058D942 /* Products */,
+				EE42AF9E19124127BB090C35 /* Pods */,
+				A5BEBC754349D0D3246BBB30 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,6 +246,24 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		A5BEBC754349D0D3246BBB30 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04892BB89431780B7C3882AE /* Pods_HabitPanda.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE42AF9E19124127BB090C35 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3CCD34975B17DB9A0E5FD317 /* Pods-HabitPanda.debug.xcconfig */,
+				C24FC85B23A11D916B95A4B6 /* Pods-HabitPanda.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,9 +271,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1C12736022610DCA0058D942 /* Build configuration list for PBXNativeTarget "HabitPanda" */;
 			buildPhases = (
+				142C575B387265E40AF198F6 /* [CP] Check Pods Manifest.lock */,
 				1C12734A22610DC80058D942 /* Sources */,
 				1C12734B22610DC80058D942 /* Frameworks */,
 				1C12734C22610DC80058D942 /* Resources */,
+				F79010CCBB9940DE091EF4EF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -305,6 +332,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		142C575B387265E40AF198F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HabitPanda-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F79010CCBB9940DE091EF4EF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HabitPanda/Pods-HabitPanda-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HabitPanda/Pods-HabitPanda-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1C12734A22610DC80058D942 /* Sources */ = {
@@ -465,6 +541,7 @@
 		};
 		1C12736122610DCA0058D942 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CCD34975B17DB9A0E5FD317 /* Pods-HabitPanda.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -483,6 +560,7 @@
 		};
 		1C12736222610DCA0058D942 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C24FC85B23A11D916B95A4B6 /* Pods-HabitPanda.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
