@@ -165,14 +165,17 @@ extension HabitDetailsViewController {
     @IBAction func checkInButtonPressed(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(
             withIdentifier: "HabitCheckInViewController"
-        ) as! HabitCheckInViewController
+        ) as! HabitAddCheckInViewController
         vc.delegateViewModel = self.viewModel
 
         let popup = PopupDialog(viewController: vc)
 
         let cancelButton = CancelButton(title: "CANCEL", action: nil)
         let confirmButton = DefaultButton(title: "CONFIRM") {
-            print("Check-in confirmed!")
+            if let selectedDate = vc.checkInDayPicker.getSelectedDate() {
+                self.viewModel.addCheckIn(forDate: selectedDate)
+                print("Added checkin with date \(selectedDate)")
+            }
         }
 
         popup.addButtons([confirmButton, cancelButton])

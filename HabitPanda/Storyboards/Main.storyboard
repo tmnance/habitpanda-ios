@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XX6-db-Tp7">
-    <device id="retina3_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,20 +11,20 @@
             <objects>
                 <viewController title="Admin" id="ap1-1x-sUg" customClass="AdminViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lOz-lb-Tqj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZA-A7-2II" userLabel="Report View">
-                                <rect key="frame" x="20" y="84" width="280" height="52.5"/>
+                                <rect key="frame" x="20" y="84" width="560" height="52.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ti8-4y-E92" userLabel="Report Title">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report Text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jiw-td-eRs" userLabel="Report Text">
-                                        <rect key="frame" x="0.0" y="32" width="280" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="32" width="560" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="QqN-kt-q8s"/>
                                         </constraints>
@@ -49,7 +45,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Osh-nF-aDO" userLabel="Buttons">
-                                <rect key="frame" x="20" y="156.5" width="280" height="160"/>
+                                <rect key="frame" x="20" y="156.5" width="560" height="160"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mg-Zm-CcH">
                                         <rect key="frame" x="0.0" y="0.0" width="238" height="34"/>
@@ -127,19 +123,19 @@
             <objects>
                 <tableViewController id="NXb-wB-u2h" customClass="HabitListViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QCF-YR-A7d">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HabitCell" textLabel="YDb-7u-cjl" style="IBUITableViewCellStyleDefault" id="qAJ-Kr-5Va" userLabel="HabitCell">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qAJ-Kr-5Va" id="xVv-zj-9yR">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YDb-7u-cjl">
-                                            <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                            <rect key="frame" x="20" y="0.0" width="560" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -793,10 +789,10 @@
             </objects>
             <point key="canvasLocation" x="808.79999999999995" y="111.99400299850076"/>
         </scene>
-        <!--Habit Check In View Controller-->
+        <!--Habit Add Check In View Controller-->
         <scene sceneID="vjB-dY-UqL">
             <objects>
-                <viewController storyboardIdentifier="HabitCheckInViewController" id="Jex-wo-p0Y" customClass="HabitCheckInViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HabitCheckInViewController" id="Jex-wo-p0Y" customClass="HabitAddCheckInViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kir-iH-jsT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -858,23 +854,23 @@
             <objects>
                 <viewController title="Habit Details" id="dIF-3Q-H7c" customClass="HabitDetailsViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eaI-Wx-K0O">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6q9-1E-NrY">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rug-Ml-QVe" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRI-iq-RYH" userLabel="Top Details Container">
-                                                <rect key="frame" x="10" y="10" width="300" height="44"/>
+                                                <rect key="frame" x="10" y="10" width="580" height="44"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3i-f7-za9" userLabel="Name Container">
-                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="44"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="479" height="44"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walk the dog" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLK-aN-m57">
-                                                                <rect key="frame" x="0.0" y="0.0" width="199" height="44"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="479" height="44"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -888,7 +884,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeO-xz-eWE" userLabel="Check In Container">
-                                                        <rect key="frame" x="199" y="0.0" width="101" height="44"/>
+                                                        <rect key="frame" x="479" y="0.0" width="101" height="44"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1OB-iz-fUR">
                                                                 <rect key="frame" x="20" y="0.0" width="81" height="44"/>
@@ -935,16 +931,16 @@
                                                 </constraints>
                                             </view>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65A-q4-yJ1">
-                                                <rect key="frame" x="132" y="387.5" width="56" height="20.5"/>
+                                                <rect key="frame" x="272" y="507.5" width="56" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfS-MM-C1e" userLabel="Content Tabs View">
-                                                <rect key="frame" x="0.0" y="64" width="320" height="46"/>
+                                                <rect key="frame" x="0.0" y="64" width="600" height="46"/>
                                                 <subviews>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dtr-pu-yCd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="47"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="NNa-dg-9uU"/>
                                                         </constraints>
@@ -966,7 +962,7 @@
                                                 </constraints>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ple-BK-PXE">
-                                                <rect key="frame" x="0.0" y="110" width="320" height="306"/>
+                                                <rect key="frame" x="0.0" y="110" width="600" height="426"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="jjF-UI-P4s"/>
                                                 </constraints>

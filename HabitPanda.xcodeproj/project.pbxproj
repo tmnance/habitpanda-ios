@@ -38,7 +38,7 @@
 		1CBBABDA227A555300DB8F8E /* ReminderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABD9227A555300DB8F8E /* ReminderListViewModel.swift */; };
 		1CBBABDC227CAD0B00DB8F8E /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABDB227CAD0B00DB8F8E /* NotificationHelper.swift */; };
 		1CBBABDE227CC7D200DB8F8E /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBABDD227CC7D200DB8F8E /* AdminViewController.swift */; };
-		1CC5A3B2228B36D400E5F6D8 /* HabitCheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5A3B1228B36D400E5F6D8 /* HabitCheckInViewController.swift */; };
+		1CC5A3B2228B36D400E5F6D8 /* HabitAddCheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5A3B1228B36D400E5F6D8 /* HabitAddCheckInViewController.swift */; };
 		1CC5A3B4228B4CD400E5F6D8 /* DateDayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */; };
 		1CDB388F22624BBE00C86277 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB388E22624BBE00C86277 /* Habit.swift */; };
 		4E62082982CE4D84B0901FBE /* Pods_HabitPanda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04892BB89431780B7C3882AE /* Pods_HabitPanda.framework */; };
@@ -79,7 +79,7 @@
 		1CBBABD9227A555300DB8F8E /* ReminderListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderListViewModel.swift; sourceTree = "<group>"; };
 		1CBBABDB227CAD0B00DB8F8E /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		1CBBABDD227CC7D200DB8F8E /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
-		1CC5A3B1228B36D400E5F6D8 /* HabitCheckInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitCheckInViewController.swift; sourceTree = "<group>"; };
+		1CC5A3B1228B36D400E5F6D8 /* HabitAddCheckInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitAddCheckInViewController.swift; sourceTree = "<group>"; };
 		1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDayPicker.swift; sourceTree = "<group>"; };
 		1CDB388E22624BBE00C86277 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		3CCD34975B17DB9A0E5FD317 /* Pods-HabitPanda.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPanda.debug.xcconfig"; path = "Target Support Files/Pods-HabitPanda/Pods-HabitPanda.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 				1CAC679C22725D3600B41338 /* HabitDetailsViewController.swift */,
 				1C12735322610DC80058D942 /* HabitListViewController.swift */,
 				1CBBABCC227919C700DB8F8E /* HabitRemindersViewController.swift */,
-				1CC5A3B1228B36D400E5F6D8 /* HabitCheckInViewController.swift */,
+				1CC5A3B1228B36D400E5F6D8 /* HabitAddCheckInViewController.swift */,
 				1CBBABCA2279195D00DB8F8E /* HabitSummaryViewController.swift */,
 				1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */,
 			);
@@ -260,7 +260,6 @@
 				3CCD34975B17DB9A0E5FD317 /* Pods-HabitPanda.debug.xcconfig */,
 				C24FC85B23A11D916B95A4B6 /* Pods-HabitPanda.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -412,7 +411,7 @@
 				1CBBABD32279297500DB8F8E /* Constants.swift in Sources */,
 				1C0315C42285025A00B1E6F4 /* ReminderNotificationService.swift in Sources */,
 				1C47C9FB227E4B8E00985F1C /* ReminderAddEditViewController.swift in Sources */,
-				1CC5A3B2228B36D400E5F6D8 /* HabitCheckInViewController.swift in Sources */,
+				1CC5A3B2228B36D400E5F6D8 /* HabitAddCheckInViewController.swift in Sources */,
 				1CAC67A02272694800B41338 /* TimeOfDay.swift in Sources */,
 				1CBBABCB2279195D00DB8F8E /* HabitSummaryViewController.swift in Sources */,
 				1C90EB9A226B87D8007065D1 /* UITextField+MaxLength.swift in Sources */,

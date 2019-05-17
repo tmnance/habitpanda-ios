@@ -47,6 +47,13 @@ extension DateDayPicker {
             height: pickerHeight
         )
     }
+
+    func getSelectedDate() -> Date? {
+        guard let dayDatePickerDelegate = self.delegate as? DateDayPicker else {
+            return nil
+        }
+        return dayDatePickerDelegate.pickerData[self.selectedRow(inComponent: 0)]
+    }
 }
 
 

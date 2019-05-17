@@ -4,6 +4,7 @@
         <attribute name="checkInDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="isSuccess" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="checkIns" inverseEntity="Habit" syncable="YES"/>
     </entity>
     <entity name="Habit" representedClassName=".Habit" syncable="YES" codeGenerationType="category">
@@ -24,8 +25,8 @@
         <relationship name="habit" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="reminders" inverseEntity="Habit" syncable="YES"/>
     </entity>
     <elements>
+        <element name="CheckIn" positionX="-54" positionY="54" width="128" height="30"/>
         <element name="Habit" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="Reminder" positionX="-63" positionY="9" width="128" height="150"/>
-        <element name="CheckIn" positionX="-54" positionY="54" width="128" height="105"/>
     </elements>
 </model>

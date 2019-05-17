@@ -67,6 +67,28 @@ extension HabitDetailsViewModel {
             print("Error saving context, \(error)")
         }
     }
+
+    func addCheckIn(forDate date: Date) {
+        guard let habit = selectedHabit else {
+            return
+        }
+
+        // TODO: will likely move this to its own VM once more functionality is added
+        let checkInToSave = CheckIn(context: context)
+
+        checkInToSave.createdAt = Date()
+        checkInToSave.uuid = UUID()
+        checkInToSave.habit = habit
+        checkInToSave.checkInDate = date
+        checkInToSave.isSuccess = true
+
+        do {
+            try context.save()
+            ReminderNotificationService.refreshNotificationsForAllReminders()
+        } catch {
+            print("Error saving context, \(error)")
+        }
+    }
 }
 
 
