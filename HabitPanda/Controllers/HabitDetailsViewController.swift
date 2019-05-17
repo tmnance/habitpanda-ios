@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import PopupDialog
 
 class HabitDetailsViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
@@ -162,6 +163,20 @@ extension HabitDetailsViewController {
 // MARK: - Check In Button Methods
 extension HabitDetailsViewController {
     @IBAction func checkInButtonPressed(_ sender: UIButton) {
-        print("Check in button pressed!")
+        let vc = self.storyboard?.instantiateViewController(
+            withIdentifier: "HabitCheckInViewController"
+        ) as! HabitCheckInViewController
+        vc.delegateViewModel = self.viewModel
+
+        let popup = PopupDialog(viewController: vc)
+
+        let cancelButton = CancelButton(title: "CANCEL", action: nil)
+        let confirmButton = DefaultButton(title: "CONFIRM") {
+            print("Check-in confirmed!")
+        }
+
+        popup.addButtons([confirmButton, cancelButton])
+
+        self.present(popup, animated: true, completion: nil)
     }
 }
