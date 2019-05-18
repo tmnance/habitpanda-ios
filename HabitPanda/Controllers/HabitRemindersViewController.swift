@@ -27,8 +27,7 @@ class HabitRemindersViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // TODO: probably a better way of handling this
-        self.viewModel.reloadRemindersData()
-        self.updateReminders()
+        self.viewModel.reloadData()
     }
 
     override func viewDidLayoutSubviews() {

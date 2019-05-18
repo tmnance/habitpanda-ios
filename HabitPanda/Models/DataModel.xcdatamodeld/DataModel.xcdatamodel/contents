@@ -5,14 +5,14 @@
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="isSuccess" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="checkIns" inverseEntity="Habit" syncable="YES"/>
+        <relationship name="habit" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="checkIns" inverseEntity="Habit" syncable="YES"/>
     </entity>
     <entity name="Habit" representedClassName=".Habit" syncable="YES" codeGenerationType="category">
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="frequencyDays" optional="YES" attributeType="Transformable" customClassName="[NSNumber]" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="checkIns" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CheckIn" inverseName="habit" inverseEntity="CheckIn" syncable="YES"/>
+        <relationship name="checkIns" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CheckIn" inverseName="habit" inverseEntity="CheckIn" syncable="YES"/>
         <relationship name="reminders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Reminder" inverseName="habit" inverseEntity="Reminder" syncable="YES"/>
     </entity>
     <entity name="Reminder" representedClassName=".Reminder" syncable="YES" codeGenerationType="category">
@@ -25,7 +25,7 @@
         <relationship name="habit" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="reminders" inverseEntity="Habit" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CheckIn" positionX="-54" positionY="54" width="128" height="30"/>
+        <element name="CheckIn" positionX="-54" positionY="54" width="128" height="120"/>
         <element name="Habit" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="Reminder" positionX="-63" positionY="9" width="128" height="150"/>
     </elements>

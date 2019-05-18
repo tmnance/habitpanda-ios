@@ -1,18 +1,18 @@
 //
-//  ReminderListViewModel.swift
+//  CheckInListViewModel.swift
 //  HabitPanda
 //
-//  Created by Tim Nance on 4/23/19.
+//  Created by Tim Nance on 5/17/19.
 //  Copyright © 2019 Tim Nance. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class ReminderListViewModel {
+class CheckInListViewModel {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-    var reminders: Box<[Reminder]> = Box([])
+    var checkIns: Box<[CheckIn]> = Box([])
     var selectedHabit: Habit? {
         didSet {
             if selectedHabit != nil {
@@ -24,10 +24,10 @@ class ReminderListViewModel {
 
 
 // MARK: - Save Data Methods
-extension ReminderListViewModel {
-    func removeReminder(atIndex index: Int) {
-        context.delete(reminders.value[index])
-        reminders.value.remove(at: index)
+extension CheckInListViewModel {
+    func removeCheckIn(atIndex index: Int) {
+        context.delete(checkIns.value[index])
+        checkIns.value.remove(at: index)
 
         do {
             try context.save()
@@ -40,29 +40,27 @@ extension ReminderListViewModel {
 
 
 // MARK: - Load Data Methods
-extension ReminderListViewModel {
+extension CheckInListViewModel {
     func reloadData() {
         loadData()
     }
 
     private func loadData() {
         if let habit = selectedHabit {
-            let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+            let request: NSFetchRequest<CheckIn> = CheckIn.fetchRequest()
             let predicates = [NSPredicate(format: "habit = %@", habit)]
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
             request.sortDescriptors = [
-                NSSortDescriptor(key: "hour", ascending: true),
-                NSSortDescriptor(key: "minute", ascending: true),
-                NSSortDescriptor(key: "frequencyDays", ascending: true)
+                NSSortDescriptor(key: "checkInDate", ascending: false)
             ]
 
             do {
-                reminders.value = try context.fetch(request)
+                checkIns.value = try context.fetch(request)
             } catch {
                 print("Error fetching data from context, \(error)")
             }
         } else {
-            reminders.value = []
+            checkIns.value = []
         }
     }
 }

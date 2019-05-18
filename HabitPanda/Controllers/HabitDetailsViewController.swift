@@ -25,10 +25,10 @@ class HabitDetailsViewController: UIViewController {
         vc?.delegateViewModel = self.viewModel
         return vc
     }()
-    lazy var checkInsTabVC: HabitSummaryViewController? = {
+    lazy var checkInsTabVC: HabitCheckInsViewController? = {
         let vc = self.storyboard?.instantiateViewController(
-            withIdentifier: "HabitSummaryViewController"
-            ) as? HabitSummaryViewController
+            withIdentifier: "HabitCheckInsViewController"
+            ) as? HabitCheckInsViewController
         vc?.delegateViewModel = self.viewModel
         return vc
     }()
@@ -174,6 +174,9 @@ extension HabitDetailsViewController {
         let confirmButton = DefaultButton(title: "CONFIRM") {
             if let selectedDate = vc.checkInDayPicker.getSelectedDate() {
                 self.viewModel.addCheckIn(forDate: selectedDate)
+                if self.currentTabVC == self.checkInsTabVC {
+                    self.checkInsTabVC?.reloadData()
+                }
                 print("Added checkin with date \(selectedDate)")
             }
         }
