@@ -9,29 +9,13 @@
 import UIKit
 
 class HabitAddEditViewController: UIViewController {
-    typealias FrequencyOption = DayOfWeek.WeekSubsetType
-    typealias FrequencyDay = DayOfWeek.Day
-
     @IBOutlet weak var parentScrollView: UIScrollView!
-    @IBOutlet weak var frequencyOptionsSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var frequencyDaysView: UIStackView!
-
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameInputField: UITextField!
+    @IBOutlet weak var frequencySliderLabel: UILabel!
+    @IBOutlet weak var frequencySlider: UISlider!
 
     private var viewModel = HabitDetailsViewModel()
-
-    lazy var frequencyDayUIButtons: [UIButton] = {
-        var buttons: [UIButton] = []
-        for case let buttonRow as UIStackView in frequencyDaysView.subviews {
-            for case let button as UIButton in buttonRow.subviews {
-                if let _ = FrequencyDay(rawValue: button.tag) {
-                    buttons.append(button)
-                }
-            }
-        }
-        return buttons
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +37,6 @@ extension HabitAddEditViewController {
             for: UIControl.Event.editingChanged
         )
 
-        frequencyOptionsSegmentedControl.setTitleTextAttributes(
-            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)],
-            for: .normal
-        )
-
         viewModel.interactionMode.bind { [unowned self] (_) in
             self.updateInteractionMode()
         }
@@ -67,9 +46,9 @@ extension HabitAddEditViewController {
             self.validateInput()
         }
 
-        viewModel.frequencyDays.bind { [unowned self] (_) in
-            self.updateFrequencyDays()
-            self.validateInput()
+        viewModel.frequencyPerWeek.bind { [unowned self] in
+            self.frequencySlider.value = Float($0)
+            self.frequencySliderLabel.text = self.viewModel.getFrequencyPerWeekDisplayText()
         }
     }
 }
@@ -119,7 +98,7 @@ extension HabitAddEditViewController {
     }
 
     func isValidInput() -> Bool {
-        return viewModel.name.value.count > 0 && viewModel.frequencyDays.value.count > 0
+        return viewModel.name.value.count > 0
     }
 }
 
@@ -187,28 +166,10 @@ extension HabitAddEditViewController {
 
 // MARK: - Frequency Methods
 extension HabitAddEditViewController {
-    // MARK: Frequency Button Pressed Methods
-
-    @IBAction func frequencyOptionsSegmentedControlIndexChanged(_ sender: UISegmentedControl) {
-        let option = FrequencyOption(
-            rawValue: sender.selectedSegmentIndex
-        )!
-        viewModel.updateFrequencyDays(forOption: option)
-    }
-
-    @IBAction func frequencyDayButtonPressed(_ sender: MultiSelectButton) {
-        let day = FrequencyDay(rawValue: sender.tag)!
-        viewModel.toggleFrequencyDay(day)
-    }
-
-    func updateFrequencyDays() {
-        frequencyDayUIButtons
-            .forEach {
-                let day = FrequencyDay(rawValue: $0.tag)!
-                $0.isSelected = self.viewModel.frequencyDays.value.contains(day)
-            }
-
-        let correctOption = viewModel.getFrequencyOption()
-        frequencyOptionsSegmentedControl.selectedSegmentIndex = correctOption.rawValue
+    @IBAction func frequencySliderChanged(_ sender: UISlider) {
+        let value = Int(sender.value)
+        // reassigning the value here causes the slider to snap to descrete integer values
+        sender.value = Float(value)
+        viewModel.frequencyPerWeek.value = value
     }
 }

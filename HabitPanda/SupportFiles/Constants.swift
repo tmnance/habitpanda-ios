@@ -18,7 +18,12 @@ struct Constants {
         static let disabledTextColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
     }
 
-    struct Reminders {
+    struct Habit {
+        // mirrors the default Habit.frequencyPerWeek attribute in DataModel.xcdatamodel
+        static let defaultFrequencyPerWeek = 1
+    }
+
+    struct Reminder {
         static let maxReminderNotificationCount = 50
     }
 

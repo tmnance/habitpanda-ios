@@ -102,7 +102,7 @@ extension ReminderNotificationService {
                     setupNotificationForReminder(reminder, forWeekdayIndex: weekdayIndex)
                     habitUUIDs.insert(reminder.habit!.uuid!)
                     notificationCount += 1
-                    if notificationCount >= Constants.Reminders.maxReminderNotificationCount {
+                    if notificationCount >= Constants.Reminder.maxReminderNotificationCount {
                         break outerLoop
                     }
                 }

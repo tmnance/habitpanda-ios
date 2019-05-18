@@ -35,22 +35,7 @@ class HabitSummaryViewController: UIViewController {
 // MARK: - UI Update Methods
 extension HabitSummaryViewController {
     func updateUI() {
-        frequencyLabel?.text = getFrequencyDisplay() ?? "(none)"
-    }
-
-    func getFrequencyDisplay() -> String? {
-        guard delegateViewModel.frequencyDays.value.count > 0 else {
-            return nil
-        }
-        let frequencyOption = delegateViewModel.getFrequencyOption()
-        if frequencyOption == .Custom {
-            return frequencyOption.description + " - " +
-                delegateViewModel.frequencyDays.value
-                    .map{ $0.description }
-                    .joined(separator: " / ")
-        } else {
-            return frequencyOption.description
-        }
+        frequencyLabel?.text = delegateViewModel.getFrequencyPerWeekDisplayText()
     }
 }
 
