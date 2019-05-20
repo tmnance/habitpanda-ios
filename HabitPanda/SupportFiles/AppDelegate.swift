@@ -91,7 +91,26 @@ extension AppDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         NotificationHelper.cleanRepeatingNotifications()
         print("Did recieve response: \(response.actionIdentifier)")
-        
+
+        let userInfo = response.notification.request.content.userInfo
+        if
+            let reminderUUID = UUID(uuidString: userInfo["reminderUUID"] as? String ?? ""),
+            let reminder = Reminder.get(withUUID: reminderUUID),
+            let habit = reminder.habit
+            {
+                print("clicked on notification with reminder")
+                print(reminder)
+                print(habit)
+                let rootViewController = self.window!.rootViewController as! UINavigationController
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let habitDetailsViewController =
+                    mainStoryboard.instantiateViewController(
+                        withIdentifier: "HabitDetailsViewController"
+                    ) as! HabitDetailsViewController
+                habitDetailsViewController.selectedHabit = habit
+                rootViewController.pushViewController(habitDetailsViewController, animated: false)
+            }
+
         if response.notification.request.identifier == "testIdentifier" {
             print("handling testIdentifier")
         }

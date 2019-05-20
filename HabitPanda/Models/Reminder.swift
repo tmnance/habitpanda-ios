@@ -40,4 +40,19 @@ public class Reminder: NSManagedObject {
 
         return reminders
     }
+
+    public static func get(withUUID uuid: UUID) -> Reminder? {
+        let context = (UIApplication.shared.delegate as! AppDelegate)
+            .persistentContainer.viewContext
+        var reminder: Reminder? = nil
+        let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+        request.predicate = NSPredicate(format: "uuid = %@", uuid as CVarArg)
+
+        do {
+            reminder = try context.fetch(request).first
+        } catch {
+            print("Error fetching data from context, \(error)")
+        }
+        return reminder
+    }
 }

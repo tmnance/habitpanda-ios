@@ -735,7 +735,7 @@
         <!--Habit Details-->
         <scene sceneID="gLO-d5-FgE">
             <objects>
-                <viewController title="Habit Details" id="dIF-3Q-H7c" customClass="HabitDetailsViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HabitDetailsViewController" title="Habit Details" id="dIF-3Q-H7c" customClass="HabitDetailsViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eaI-Wx-K0O">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
