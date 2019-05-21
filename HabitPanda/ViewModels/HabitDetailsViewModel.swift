@@ -58,6 +58,7 @@ extension HabitDetailsViewModel {
         do {
             try context.save()
             ReminderNotificationService.refreshNotificationsForAllReminders()
+            ReminderNotificationService.removeOrphanedDeliveredNotifications()
         } catch {
             print("Error saving context, \(error)")
         }

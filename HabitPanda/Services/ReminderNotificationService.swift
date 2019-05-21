@@ -149,4 +149,31 @@ extension ReminderNotificationService {
 
         print("  - setupNotificationForReminder(\"\(reminder.habit!.name!)\", \(weekdayIndex):\(time))")
     }
+
+    static func removeOrphanedDeliveredNotifications() {
+        UNUserNotificationCenter.current().getDeliveredNotifications { (notifications) in
+            // send to main thread
+            DispatchQueue.main.async {
+                var identifiersToRemove: [String] = []
+
+                notifications.forEach({ (notification) in
+                    let userInfo = notification.request.content.userInfo
+                    guard
+                        let reminderUUID = UUID(uuidString: userInfo["reminderUUID"] as? String ?? ""),
+                        let _ = Reminder.get(withUUID: reminderUUID)
+                        else {
+                            identifiersToRemove.append(notification.request.identifier)
+                            return
+                        }
+                })
+
+                if identifiersToRemove.count > 0 {
+                    UNUserNotificationCenter.current().removeDeliveredNotifications(
+                        withIdentifiers: identifiersToRemove
+                    )
+                }
+            }
+        }
+
+    }
 }

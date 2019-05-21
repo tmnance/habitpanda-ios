@@ -16,6 +16,7 @@ class AdminViewController: UIViewController {
 
     var isLoading = false
     var pendingRequests: [UNNotificationRequest] = []
+    var deliveredNotifications: [UNNotification] = []
     var reminders: [Reminder] = []
 
     override func viewDidLoad() {
@@ -39,9 +40,12 @@ class AdminViewController: UIViewController {
             NotificationHelper.removeAllDeliveredNotifications()
             loadNotificationData()
         case 2:
-            ReminderNotificationService.refreshNotificationsForAllReminders()
+            ReminderNotificationService.removeOrphanedDeliveredNotifications()
             loadNotificationData()
         case 3:
+            ReminderNotificationService.refreshNotificationsForAllReminders()
+            loadNotificationData()
+        case 4:
             NotificationHelper.sendTestPushNotification()
         default:
             print("Unrecognized")
@@ -53,14 +57,31 @@ class AdminViewController: UIViewController {
 
 extension AdminViewController {
     func loadNotificationData() {
+        var loadingNum = 2
+        let loadedCallback = {
+            loadingNum -= 1
+            if loadingNum == 0 {
+                self.isLoading = false
+                self.updateUI()
+            }
+        }
+
         isLoading = true
         updateUI()
+
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
             // send to main thread
-            DispatchQueue.main.async{
-                self.isLoading = false
+            DispatchQueue.main.async {
                 self.pendingRequests = requests
-                self.updateUI()
+                loadedCallback()
+            }
+        }
+
+        UNUserNotificationCenter.current().getDeliveredNotifications { (notifications) in
+            // send to main thread
+            DispatchQueue.main.async {
+                self.deliveredNotifications = notifications
+                loadedCallback()
             }
         }
     }
@@ -77,7 +98,8 @@ extension AdminViewController {
 
     func getNotificationsReportString() -> String {
         return "Notifications:\n" +
-            "- \(pendingRequests.count) pending notification(s) set"
+            "- \(pendingRequests.count) pending notification(s) set\n" +
+            "- \(deliveredNotifications.count) delivered notification(s)"
     }
 }
 
