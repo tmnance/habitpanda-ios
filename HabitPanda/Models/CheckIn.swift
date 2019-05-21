@@ -11,4 +11,15 @@ import CoreData
 
 @objc(CheckIn)
 public class CheckIn: NSManagedObject {
+    func getCheckInDisplayDate() -> String {
+        let date = checkInDate!
+        let df = DateFormatter()
+
+        df.dateFormat = "EEE, MMMM d"
+        let displayDate = df.string(from: date)
+
+        df.dateFormat = "h:mm a"
+        let displayTime = df.string(from: date)
+        return "\(displayDate) at \(displayTime)"
+    }
 }

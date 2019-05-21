@@ -10,6 +10,8 @@ import UIKit
 import SwipeCellKit
 
 class HabitCheckInsViewController: UIViewController {
+    let cellHeight: CGFloat = 70.0
+
     @IBOutlet weak var checkInsTableView: UITableView!
     @IBOutlet weak var checkInsTableViewHeightLayout: NSLayoutConstraint!
 
@@ -64,8 +66,8 @@ extension HabitCheckInsViewController {
     func updateCheckIns() {
         checkInsTableView.reloadData()
         checkInsTableViewHeightLayout.constant = CGFloat(
-            tableView(checkInsTableView, numberOfRowsInSection: 0) * 44
-        )
+            tableView(checkInsTableView, numberOfRowsInSection: 0)
+        ) * cellHeight
     }
 }
 
@@ -85,24 +87,14 @@ extension HabitCheckInsViewController: UITableViewDelegate, UITableViewDataSourc
 
         let checkIn = viewModel.checkIns.value[indexPath.row]
 
-        let date = checkIn.checkInDate!
-        let df = DateFormatter()
-
-        df.dateFormat = "EEE, MMMM d"
-        let displayDate = df.string(from: date)
-
-        df.dateFormat = "h:mm a"
-        let displayTime = df.string(from: date)
-
-
-        cell.textLabel?.text = "\(displayDate) at \(displayTime)"
+        cell.textLabel?.text = checkIn.getCheckInDisplayDate()
         cell.selectionStyle = .none
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return cellHeight
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -118,18 +110,41 @@ extension HabitCheckInsViewController: SwipeTableViewCellDelegate {
         guard orientation == .right else { return nil }
 
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            self.viewModel.removeCheckIn(atIndex: indexPath.row)
+            self.showDeleteCheckInPopup(forIndexPath: indexPath, withTableView: tableView)
         }
 
         deleteAction.image = UIImage(named: "delete-icon")
-        deleteAction.title = nil
 
         return [deleteAction]
     }
 
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         var options = SwipeOptions()
-        options.expansionStyle = .none
+        options.expansionStyle = .destructive(automaticallyDelete: false)
         return options
+    }
+}
+
+
+// MARK: - Delete Check-In Methods
+extension HabitCheckInsViewController {
+    func showDeleteCheckInPopup(forIndexPath indexPath: IndexPath, withTableView tableView: UITableView) {
+        let index = indexPath.row
+        let checkIn = viewModel.checkIns.value[index]
+        let alert = UIAlertController(
+            title: "Confirm Delete",
+            message: "Are you sure you want to delete the check-in for \(checkIn.getCheckInDisplayDate())?",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            self.viewModel.removeCheckIn(atIndex: index)
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+            cell.hideSwipe(animated: true, completion: nil)
+        })
+
+        present(alert, animated: true, completion: nil)
     }
 }

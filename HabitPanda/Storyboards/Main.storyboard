@@ -381,7 +381,7 @@
             <objects>
                 <navigationController id="bqm-N4-pAb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z8p-eL-9F4">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1001,7 +1001,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="oa2-Dx-AiQ" firstAttribute="top" secondItem="zWk-Hf-ror" secondAttribute="bottom" constant="40" id="F2n-0U-Eyq"/>
                             <constraint firstItem="2Ls-MC-kcp" firstAttribute="trailing" secondItem="oa2-Dx-AiQ" secondAttribute="trailing" constant="20" id="F4d-an-6ot"/>
@@ -1068,7 +1067,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="i7O-cj-wyM" firstAttribute="trailing" secondItem="3Uq-PI-DcE" secondAttribute="trailing" constant="20" id="7DV-ex-g3C"/>
                             <constraint firstItem="3Uq-PI-DcE" firstAttribute="top" secondItem="8JP-ns-MSE" secondAttribute="top" constant="20" id="A1g-79-Iu9"/>
@@ -1161,7 +1159,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zgv-3N-3Yo" firstAttribute="trailing" secondItem="1VE-n8-ImE" secondAttribute="trailing" constant="20" id="Xnw-nR-QvS"/>
                             <constraint firstItem="1VE-n8-ImE" firstAttribute="leading" secondItem="zgv-3N-3Yo" secondAttribute="leading" constant="20" id="i39-Ez-xMS"/>
