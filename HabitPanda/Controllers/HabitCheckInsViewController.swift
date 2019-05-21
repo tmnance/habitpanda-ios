@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 class HabitCheckInsViewController: UIViewController {
     @IBOutlet weak var checkInsTableView: UITableView!
@@ -49,13 +50,7 @@ extension HabitCheckInsViewController {
     func setupFieldStylesAndBindings() {
         checkInsTableView.delegate = self
         checkInsTableView.dataSource = self
-//        checkInsTableView.separatorStyle = .none
         checkInsTableView.isScrollEnabled = false
-
-//        checkInsTableView.register(
-//            UINib(nibName: "EditableTimeCell", bundle: nil),
-//            forCellReuseIdentifier: "editableTimeCell"
-//        )
 
         viewModel.checkIns.bind { [unowned self] (_) in
             self.updateCheckIns()
@@ -82,7 +77,12 @@ extension HabitCheckInsViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CheckInCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "CheckInCell",
+            for: indexPath
+            ) as! SwipeTableViewCell
+        cell.delegate = self
+
         let checkIn = viewModel.checkIns.value[indexPath.row]
 
         let date = checkIn.checkInDate!
@@ -103,5 +103,33 @@ extension HabitCheckInsViewController: UITableViewDelegate, UITableViewDataSourc
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+        cell.showSwipe(orientation: .right, animated: true, completion: nil)
+    }
+}
+
+
+// MARK: - SwipeCell Methods
+extension HabitCheckInsViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            self.viewModel.removeCheckIn(atIndex: indexPath.row)
+        }
+
+        deleteAction.image = UIImage(named: "delete-icon")
+        deleteAction.title = nil
+
+        return [deleteAction]
+    }
+
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .none
+        return options
     }
 }
