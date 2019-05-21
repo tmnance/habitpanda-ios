@@ -7,5 +7,6 @@ target 'HabitPanda' do
 
   # Pods for HabitPanda
   pod 'PopupDialog', '~> 1.1'
+  pod 'SwipeCellKit'
 
 end
