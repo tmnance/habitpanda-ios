@@ -92,7 +92,9 @@ extension AdminViewController {
             return
         }
 
-        notificationsReportText.text = "\(getRemindersReportString())\n\n" +
+        notificationsReportText.text =
+            "\(getAppVersionString())\n\n" +
+            "\(getRemindersReportString())\n\n" +
             "\(getNotificationsReportString())"
     }
 
@@ -142,5 +144,54 @@ extension AdminViewController {
             "- currentTimeInMinutes = \(currentTimeInMinutes)\n" +
             "- \(notificationCount) notification\(notificationCount == 1 ? "" : "s") " +
             "will be needed across \(habitUUIDs.count) habit\(habitUUIDs.count == 1 ? "" : "s")"
+    }
+}
+
+
+extension AdminViewController {
+    func getAppVersionString() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        let build = dictionary["CFBundleVersion"] as! String
+        let appName = dictionary["CFBundleName"] as! String
+
+        return "App version: \(appName) v\(version) (Build \(build))\n" +
+            "- buildDate = \(getDateAsString(buildDate))\n" +
+            "- compileDate = \(getDateAsString(compileDate))"
+    }
+
+    func getDateAsString(_ date: Date) -> String {
+        let df = DateFormatter()
+
+        df.dateFormat = "EEE, MMMM d"
+        let displayDate = df.string(from: date)
+
+        df.dateFormat = "h:mm a"
+        let displayTime = df.string(from: date)
+
+        return "\(displayDate) at \(displayTime)"
+    }
+
+    var buildDate:Date
+    {
+        if let infoPath = Bundle.main.path(forResource: "Info.plist", ofType: nil),
+            let infoAttr = try? FileManager.default.attributesOfItem(atPath: infoPath),
+            let infoDate = infoAttr[FileAttributeKey.creationDate] as? Date
+            {
+                return infoDate
+            }
+        return Date()
+    }
+
+    var compileDate:Date
+    {
+        let bundleName = Bundle.main.infoDictionary!["CFBundleName"] as? String ?? "Info.plist"
+        if let infoPath = Bundle.main.path(forResource: bundleName, ofType: nil),
+            let infoAttr = try? FileManager.default.attributesOfItem(atPath: infoPath),
+            let infoDate = infoAttr[FileAttributeKey.creationDate] as? Date
+            {
+                return infoDate
+            }
+        return Date()
     }
 }
