@@ -98,17 +98,7 @@ extension AppDelegate {
             let reminder = Reminder.get(withUUID: reminderUUID),
             let habit = reminder.habit
             {
-                print("clicked on notification with reminder")
-                print(reminder)
-                print(habit)
-                let rootViewController = self.window!.rootViewController as! UINavigationController
-                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let habitDetailsViewController =
-                    mainStoryboard.instantiateViewController(
-                        withIdentifier: "HabitDetailsViewController"
-                    ) as! HabitDetailsViewController
-                habitDetailsViewController.selectedHabit = habit
-                rootViewController.pushViewController(habitDetailsViewController, animated: false)
+                RoutingService.navigateToHabit(habit)
             }
 
         if response.notification.request.identifier == "testIdentifier" {

@@ -156,8 +156,7 @@ extension AdminViewController {
         let appName = dictionary["CFBundleName"] as! String
 
         return "App version: \(appName) v\(version) (Build \(build))\n" +
-            "- buildDate = \(getDateAsString(buildDate))\n" +
-            "- compileDate = \(getDateAsString(compileDate))"
+            "- buildDate = \(getDateAsString(buildDate))"
     }
 
     func getDateAsString(_ date: Date) -> String {
@@ -175,18 +174,6 @@ extension AdminViewController {
     var buildDate:Date
     {
         if let infoPath = Bundle.main.path(forResource: "Info.plist", ofType: nil),
-            let infoAttr = try? FileManager.default.attributesOfItem(atPath: infoPath),
-            let infoDate = infoAttr[FileAttributeKey.creationDate] as? Date
-            {
-                return infoDate
-            }
-        return Date()
-    }
-
-    var compileDate:Date
-    {
-        let bundleName = Bundle.main.infoDictionary!["CFBundleName"] as? String ?? "Info.plist"
-        if let infoPath = Bundle.main.path(forResource: bundleName, ofType: nil),
             let infoAttr = try? FileManager.default.attributesOfItem(atPath: infoPath),
             let infoDate = infoAttr[FileAttributeKey.creationDate] as? Date
             {

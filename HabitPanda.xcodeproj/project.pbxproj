@@ -21,6 +21,7 @@
 		1C90EB94226A92A7007065D1 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB93226A92A7007065D1 /* Reminder.swift */; };
 		1C90EB9A226B87D8007065D1 /* UITextField+MaxLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB99226B87D8007065D1 /* UITextField+MaxLength.swift */; };
 		1C93DEB0228A14C500C65BEB /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C93DEAF228A14C500C65BEB /* CheckIn.swift */; };
+		1C977B4E2295DECA006F3E6C /* RoutingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C977B4D2295DECA006F3E6C /* RoutingService.swift */; };
 		1C9FE64B2267C47F00354933 /* MultiSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9FE64A2267C47E00354933 /* MultiSelectButton.swift */; };
 		1C9FE64D2267C53000354933 /* SingleSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9FE64C2267C53000354933 /* SingleSelectButton.swift */; };
 		1CA300A8228F500A00F5D08C /* HabitCheckInsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA300A7228F500A00F5D08C /* HabitCheckInsViewController.swift */; };
@@ -64,6 +65,7 @@
 		1C90EB93226A92A7007065D1 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		1C90EB99226B87D8007065D1 /* UITextField+MaxLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+MaxLength.swift"; sourceTree = "<group>"; };
 		1C93DEAF228A14C500C65BEB /* CheckIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
+		1C977B4D2295DECA006F3E6C /* RoutingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingService.swift; sourceTree = "<group>"; };
 		1C9FE64A2267C47E00354933 /* MultiSelectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSelectButton.swift; sourceTree = "<group>"; };
 		1C9FE64C2267C53000354933 /* SingleSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectButton.swift; sourceTree = "<group>"; };
 		1CA300A7228F500A00F5D08C /* HabitCheckInsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitCheckInsViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				1C0315C32285025A00B1E6F4 /* ReminderNotificationService.swift */,
+				1C977B4D2295DECA006F3E6C /* RoutingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				1CAC6793226FDC7900B41338 /* Date+Rounding.swift in Sources */,
 				1CAC67A42273869900B41338 /* UIView+Border.swift in Sources */,
 				1CBBABD32279297500DB8F8E /* Constants.swift in Sources */,
+				1C977B4E2295DECA006F3E6C /* RoutingService.swift in Sources */,
 				1CA300A8228F500A00F5D08C /* HabitCheckInsViewController.swift in Sources */,
 				1C0315C42285025A00B1E6F4 /* ReminderNotificationService.swift in Sources */,
 				1C47C9FB227E4B8E00985F1C /* ReminderAddEditViewController.swift in Sources */,

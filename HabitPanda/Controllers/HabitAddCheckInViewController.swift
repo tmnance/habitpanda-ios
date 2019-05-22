@@ -9,7 +9,6 @@
 import UIKit
 
 class HabitAddCheckInViewController: UIViewController {
-    @IBOutlet weak var frequencyLabel: UILabel!
     @IBOutlet weak var checkInDayPicker: DateDayPicker!
 
     var delegateViewModel = HabitDetailsViewModel()
@@ -37,9 +36,5 @@ class HabitAddCheckInViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    }
-
-    @IBAction func closeButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true)
     }
 }
