@@ -81,15 +81,30 @@ extension DateDayPicker: UIPickerViewDelegate {
 
         df.dateFormat = "MMMM"
         let monthName = df.string(from: date)
-        let topLabel = UILabel(frame: CGRect(x: 0, y: 10, width: customWidth, height: 15))
+
+        df.dateFormat = "d"
+        let dayNumber = df.string(from: date)
+
+        df.dateFormat = "EEEE"
+        var dayName = df.string(from: date)
+
+        if calendar.isDateInToday(date) {
+            dayName = "Today"
+        } else if calendar.isDateInYesterday(date) {
+            dayName = "Yesterday"
+        }
+
+        let topBottomLabelHeight = CGFloat(30)
+
+        let topLabel = UILabel(
+            frame: CGRect(x: 0, y: 0, width: customWidth, height: topBottomLabelHeight)
+        )
         topLabel.text = monthName
         topLabel.textColor = .black
         topLabel.textAlignment = .center
         topLabel.font = UIFont.systemFont(ofSize: 14, weight: .thin)
         view.addSubview(topLabel)
 
-        df.dateFormat = "d"
-        let dayNumber = df.string(from: date)
         let middleLabel = UILabel(
             frame: CGRect(x: 0, y: 0, width: customWidth, height: customHeight)
         )
@@ -99,14 +114,14 @@ extension DateDayPicker: UIPickerViewDelegate {
         middleLabel.font = UIFont.systemFont(ofSize: 42, weight: .thin)
         view.addSubview(middleLabel)
 
-        df.dateFormat = "EEEE"
-        var dayName = df.string(from: date)
-        if calendar.isDateInToday(date) {
-            dayName = "Today"
-        } else if calendar.isDateInYesterday(date) {
-            dayName = "Yesterday"
-        }
-        let bottomLabel = UILabel(frame: CGRect(x: 0, y: 75, width: customWidth, height: 15))
+        let bottomLabel = UILabel(
+            frame: CGRect(
+                x: 0,
+                y: customHeight - topBottomLabelHeight,
+                width: customWidth,
+                height: topBottomLabelHeight
+            )
+        )
         bottomLabel.text = dayName
         bottomLabel.textColor = .black
         bottomLabel.textAlignment = .center
