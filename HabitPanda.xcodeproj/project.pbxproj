@@ -22,8 +22,7 @@
 		1C90EB9A226B87D8007065D1 /* UITextField+MaxLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB99226B87D8007065D1 /* UITextField+MaxLength.swift */; };
 		1C93DEB0228A14C500C65BEB /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C93DEAF228A14C500C65BEB /* CheckIn.swift */; };
 		1C977B4E2295DECA006F3E6C /* RoutingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C977B4D2295DECA006F3E6C /* RoutingService.swift */; };
-		1C9FE64B2267C47F00354933 /* MultiSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9FE64A2267C47E00354933 /* MultiSelectButton.swift */; };
-		1C9FE64D2267C53000354933 /* SingleSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9FE64C2267C53000354933 /* SingleSelectButton.swift */; };
+		1C9FE64B2267C47F00354933 /* OptionSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9FE64A2267C47E00354933 /* OptionSelectButton.swift */; };
 		1CA300A8228F500A00F5D08C /* HabitCheckInsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA300A7228F500A00F5D08C /* HabitCheckInsViewController.swift */; };
 		1CAC6791226FD51400B41338 /* HabitDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC6790226FD51400B41338 /* HabitDetailsViewModel.swift */; };
 		1CAC6793226FDC7900B41338 /* Date+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC6792226FDC7900B41338 /* Date+Rounding.swift */; };
@@ -66,8 +65,7 @@
 		1C90EB99226B87D8007065D1 /* UITextField+MaxLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+MaxLength.swift"; sourceTree = "<group>"; };
 		1C93DEAF228A14C500C65BEB /* CheckIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
 		1C977B4D2295DECA006F3E6C /* RoutingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingService.swift; sourceTree = "<group>"; };
-		1C9FE64A2267C47E00354933 /* MultiSelectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSelectButton.swift; sourceTree = "<group>"; };
-		1C9FE64C2267C53000354933 /* SingleSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectButton.swift; sourceTree = "<group>"; };
+		1C9FE64A2267C47E00354933 /* OptionSelectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionSelectButton.swift; sourceTree = "<group>"; };
 		1CA300A7228F500A00F5D08C /* HabitCheckInsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitCheckInsViewController.swift; sourceTree = "<group>"; };
 		1CAC6790226FD51400B41338 /* HabitDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewModel.swift; sourceTree = "<group>"; };
 		1CAC6792226FDC7900B41338 /* Date+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Rounding.swift"; sourceTree = "<group>"; };
@@ -208,8 +206,7 @@
 		1C90EB89226A899E007065D1 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				1C9FE64A2267C47E00354933 /* MultiSelectButton.swift */,
-				1C9FE64C2267C53000354933 /* SingleSelectButton.swift */,
+				1C9FE64A2267C47E00354933 /* OptionSelectButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -402,7 +399,6 @@
 				1CC5A3B4228B4CD400E5F6D8 /* DateDayPicker.swift in Sources */,
 				1C12735422610DC80058D942 /* HabitListViewController.swift in Sources */,
 				1C90EB90226A8CDF007065D1 /* EditableTimeCell.swift in Sources */,
-				1C9FE64D2267C53000354933 /* SingleSelectButton.swift in Sources */,
 				1C93DEB0228A14C500C65BEB /* CheckIn.swift in Sources */,
 				1CBBABD6227A4F4400DB8F8E /* HabitAddEditViewController.swift in Sources */,
 				1CBBABDA227A555300DB8F8E /* ReminderListViewModel.swift in Sources */,
@@ -429,7 +425,7 @@
 				1CAC67A02272694800B41338 /* TimeOfDay.swift in Sources */,
 				1CBBABCB2279195D00DB8F8E /* HabitSummaryViewController.swift in Sources */,
 				1C90EB9A226B87D8007065D1 /* UITextField+MaxLength.swift in Sources */,
-				1C9FE64B2267C47F00354933 /* MultiSelectButton.swift in Sources */,
+				1C9FE64B2267C47F00354933 /* OptionSelectButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

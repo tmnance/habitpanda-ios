@@ -1,5 +1,5 @@
 //
-//  SingleSelectButton.swift
+//  OptionSelectButton.swift
 //  HabitPanda
 //
 //  Created by Tim Nance on 4/17/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class SingleSelectButton: UIButton {
+@IBDesignable class OptionSelectButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         sharedInit()
@@ -26,6 +26,7 @@ import UIKit
     func sharedInit() {
         setTitleColor(Constants.Colors.tintColor, for: .normal)
         setTitleColor(UIColor.white, for: .selected)
+        layer.cornerRadius = frame.height / 3
     }
 
     override var isSelected: Bool {

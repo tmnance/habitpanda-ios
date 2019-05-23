@@ -156,7 +156,7 @@ extension ReminderAddEditViewController {
         viewModel.updateFrequencyDays(forOption: option)
     }
 
-    @IBAction func frequencyDayButtonPressed(_ sender: MultiSelectButton) {
+    @IBAction func frequencyDayButtonPressed(_ sender: OptionSelectButton) {
         let day = FrequencyDay(rawValue: sender.tag)!
         viewModel.toggleFrequencyDay(day)
     }
