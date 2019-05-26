@@ -9,13 +9,39 @@
 import UIKit
 
 class CheckGridRowTitleCell: UICollectionViewCell {
+    @IBOutlet weak var contentButton: UIButton!
+
 //    static let width = CGFloat(60)
     static let height = CGFloat(44)
 
-    @IBOutlet weak var contentLabel: UILabel!
+    var name: String?
+    var onRowNameButtonPressed: (() -> ())? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        updateUI()
+    }
+}
+
+
+// MARK: - UI Methods
+extension CheckGridRowTitleCell {
+    func updateUI() {
+        // prevents the button from flashing and momentarily seeing prior cell text when updating
+        UIView.performWithoutAnimation {
+            self.contentButton.setTitle(
+                self.name,
+                for: .normal
+            )
+            self.contentButton.layoutIfNeeded()
+        }
+    }
+}
+
+
+// MARK: - Button Pressed Methods
+extension CheckGridRowTitleCell {
+    @IBAction func rowNameButtonPressed(_ sender: UIButton) {
+        onRowNameButtonPressed?()
     }
 }

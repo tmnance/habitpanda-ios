@@ -11,11 +11,15 @@ import UIKit
 struct Constants {
     struct Colors {
         // 0F7583
-        static let tintColor = UIColor(red: 0.06, green: 0.46, blue: 0.51, alpha: 1.0)
-
+        static let tintColor = UIColor(red: 15/255.0, green: 117/255.0, blue: 131/255.0, alpha: 1.0)
+//        static let tintColor = UIColor(red: 0.06, green: 0.46, blue: 0.51, alpha: 1.0)
         static let tintColor2 = UIColor.orange
         // CCCCCC
         static let disabledTextColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
+
+        static let listAlternatingBgColor1 = UIColor(white: 230/255.0, alpha: 1)
+        static let listAlternatingBgColor2 = UIColor(white: 240/255.0, alpha: 1)
+        static let listRowOverlayBgColor = UIColor(white: 255/255.0, alpha: 0.60)
     }
 
     struct Habit {

@@ -18,22 +18,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title name 1" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys7-oy-BCy">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qgC-7b-OJd">
                         <rect key="frame" x="10" y="0.0" width="280" height="44"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <state key="normal" title="Habit name"/>
+                        <connections>
+                            <action selector="rowNameButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="FhU-nH-ros"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="ys7-oy-BCy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5V0-NU-LYd"/>
-                <constraint firstAttribute="bottom" secondItem="ys7-oy-BCy" secondAttribute="bottom" id="BQh-Fu-ELL"/>
-                <constraint firstItem="ys7-oy-BCy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="N61-pN-BBt"/>
-                <constraint firstAttribute="trailing" secondItem="ys7-oy-BCy" secondAttribute="trailing" constant="10" id="p2e-Os-sic"/>
+                <constraint firstItem="qgC-7b-OJd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FLf-MR-dUZ"/>
+                <constraint firstAttribute="bottom" secondItem="qgC-7b-OJd" secondAttribute="bottom" id="Kwk-Ob-S8U"/>
+                <constraint firstItem="qgC-7b-OJd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="sT0-Zf-XPm"/>
+                <constraint firstAttribute="trailing" secondItem="qgC-7b-OJd" secondAttribute="trailing" constant="10" id="tpG-cg-wHQ"/>
             </constraints>
             <connections>
-                <outlet property="contentLabel" destination="ys7-oy-BCy" id="gUa-DA-00Q"/>
+                <outlet property="contentButton" destination="qgC-7b-OJd" id="Clz-y2-7MQ"/>
             </connections>
             <point key="canvasLocation" x="41.600000000000001" y="46.776611694152926"/>
         </collectionViewCell>

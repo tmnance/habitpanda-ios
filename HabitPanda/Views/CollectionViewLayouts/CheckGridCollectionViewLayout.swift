@@ -28,9 +28,8 @@ class CheckGridCollectionViewLayout: UICollectionViewLayout {
         }
 
         if itemAttributes.count != collectionView.numberOfSections {
-            // first pass, generate initial values
+            // first pass or updated values
             generateItemAttributes(collectionView: collectionView)
-            return
         }
 
         // update pass, only need to update frozen rows/cols

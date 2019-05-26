@@ -20,6 +20,7 @@
 		1C3BD56E229B1398004AAA2B /* CheckGridHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C3BD568229B1398004AAA2B /* CheckGridHeaderCell.xib */; };
 		1C3BD56F229B1398004AAA2B /* CheckGridContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3BD569229B1398004AAA2B /* CheckGridContentCell.swift */; };
 		1C3BD570229B1398004AAA2B /* CheckGridRowTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3BD56A229B1398004AAA2B /* CheckGridRowTitleCell.swift */; };
+		1C3BD572229B22E4004AAA2B /* HabitListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3BD571229B22E4004AAA2B /* HabitListViewModel.swift */; };
 		1C47C9F9227DEDF800985F1C /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9F8227DEDF800985F1C /* DayOfWeek.swift */; };
 		1C47C9FB227E4B8E00985F1C /* ReminderAddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */; };
 		1C47C9FD227F211700985F1C /* ReminderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9FC227F211700985F1C /* ReminderDetailsViewModel.swift */; };
@@ -70,6 +71,7 @@
 		1C3BD568229B1398004AAA2B /* CheckGridHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckGridHeaderCell.xib; sourceTree = "<group>"; };
 		1C3BD569229B1398004AAA2B /* CheckGridContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckGridContentCell.swift; sourceTree = "<group>"; };
 		1C3BD56A229B1398004AAA2B /* CheckGridRowTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckGridRowTitleCell.swift; sourceTree = "<group>"; };
+		1C3BD571229B22E4004AAA2B /* HabitListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitListViewModel.swift; sourceTree = "<group>"; };
 		1C47C9F8227DEDF800985F1C /* DayOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderAddEditViewController.swift; sourceTree = "<group>"; };
 		1C47C9FC227F211700985F1C /* ReminderDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			children = (
 				1CBBEA07228F5F9E0053F534 /* CheckInListViewModel.swift */,
 				1CAC6790226FD51400B41338 /* HabitDetailsViewModel.swift */,
+				1C3BD571229B22E4004AAA2B /* HabitListViewModel.swift */,
 				1C47C9FC227F211700985F1C /* ReminderDetailsViewModel.swift */,
 				1CBBABD9227A555300DB8F8E /* ReminderListViewModel.swift */,
 			);
@@ -426,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C3BD572229B22E4004AAA2B /* HabitListViewModel.swift in Sources */,
 				1C90EB94226A92A7007065D1 /* Reminder.swift in Sources */,
 				1CB9F7A1226244C4005D1FFC /* DataModel.xcdatamodeld in Sources */,
 				1CC5A3B4228B4CD400E5F6D8 /* DateDayPicker.swift in Sources */,

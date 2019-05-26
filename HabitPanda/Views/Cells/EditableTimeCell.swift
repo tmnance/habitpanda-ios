@@ -51,20 +51,6 @@ extension EditableTimeCell {
                 range: range
             )
         }
-//        let attributedString = NSMutableAttributedString(
-//            string: "SMTWTFS"
-////             attributes: [
-////             NSAttributedString.Key.foregroundColor: Constants.Colors.disabledTextColor,
-////             ]
-//        )
-//        frequencyDays.forEach{ (index) in
-//            let range = NSRange(location:index, length:1)
-//            attributedString.addAttribute(
-//                NSAttributedString.Key.foregroundColor,
-//                value: Constants.Colors.tintColor2,
-//                range: range
-//            )
-//        }
 
         frequencyDaysLabel.attributedText = attributedString
     }
