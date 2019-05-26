@@ -13,6 +13,13 @@
 		1C12735222610DC80058D942 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12735122610DC80058D942 /* AppDelegate.swift */; };
 		1C12735422610DC80058D942 /* HabitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12735322610DC80058D942 /* HabitListViewController.swift */; };
 		1C12735922610DCA0058D942 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C12735822610DCA0058D942 /* Assets.xcassets */; };
+		1C3BD564229B11B2004AAA2B /* CheckGridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3BD563229B11B2004AAA2B /* CheckGridCollectionViewLayout.swift */; };
+		1C3BD56B229B1398004AAA2B /* CheckGridHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3BD565229B1398004AAA2B /* CheckGridHeaderCell.swift */; };
+		1C3BD56C229B1398004AAA2B /* CheckGridContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C3BD566229B1398004AAA2B /* CheckGridContentCell.xib */; };
+		1C3BD56D229B1398004AAA2B /* CheckGridRowTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C3BD567229B1398004AAA2B /* CheckGridRowTitleCell.xib */; };
+		1C3BD56E229B1398004AAA2B /* CheckGridHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C3BD568229B1398004AAA2B /* CheckGridHeaderCell.xib */; };
+		1C3BD56F229B1398004AAA2B /* CheckGridContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3BD569229B1398004AAA2B /* CheckGridContentCell.swift */; };
+		1C3BD570229B1398004AAA2B /* CheckGridRowTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3BD56A229B1398004AAA2B /* CheckGridRowTitleCell.swift */; };
 		1C47C9F9227DEDF800985F1C /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9F8227DEDF800985F1C /* DayOfWeek.swift */; };
 		1C47C9FB227E4B8E00985F1C /* ReminderAddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */; };
 		1C47C9FD227F211700985F1C /* ReminderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9FC227F211700985F1C /* ReminderDetailsViewModel.swift */; };
@@ -56,6 +63,13 @@
 		1C12735322610DC80058D942 /* HabitListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewController.swift; sourceTree = "<group>"; };
 		1C12735822610DCA0058D942 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C12735D22610DCA0058D942 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		1C3BD563229B11B2004AAA2B /* CheckGridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckGridCollectionViewLayout.swift; sourceTree = "<group>"; };
+		1C3BD565229B1398004AAA2B /* CheckGridHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckGridHeaderCell.swift; sourceTree = "<group>"; };
+		1C3BD566229B1398004AAA2B /* CheckGridContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckGridContentCell.xib; sourceTree = "<group>"; };
+		1C3BD567229B1398004AAA2B /* CheckGridRowTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckGridRowTitleCell.xib; sourceTree = "<group>"; };
+		1C3BD568229B1398004AAA2B /* CheckGridHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckGridHeaderCell.xib; sourceTree = "<group>"; };
+		1C3BD569229B1398004AAA2B /* CheckGridContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckGridContentCell.swift; sourceTree = "<group>"; };
+		1C3BD56A229B1398004AAA2B /* CheckGridRowTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckGridRowTitleCell.swift; sourceTree = "<group>"; };
 		1C47C9F8227DEDF800985F1C /* DayOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderAddEditViewController.swift; sourceTree = "<group>"; };
 		1C47C9FC227F211700985F1C /* ReminderDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -152,6 +166,14 @@
 			path = HabitPanda;
 			sourceTree = "<group>";
 		};
+		1C3BD562229B117C004AAA2B /* CollectionViewLayouts */ = {
+			isa = PBXGroup;
+			children = (
+				1C3BD563229B11B2004AAA2B /* CheckGridCollectionViewLayout.swift */,
+			);
+			path = CollectionViewLayouts;
+			sourceTree = "<group>";
+		};
 		1C8B27E722621C55005DDE03 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +195,7 @@
 			children = (
 				1C90EB89226A899E007065D1 /* Buttons */,
 				1C90EB8C226A8B7D007065D1 /* Cells */,
+				1C3BD562229B117C004AAA2B /* CollectionViewLayouts */,
 				1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */,
 			);
 			path = Views;
@@ -214,6 +237,12 @@
 		1C90EB8C226A8B7D007065D1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				1C3BD569229B1398004AAA2B /* CheckGridContentCell.swift */,
+				1C3BD566229B1398004AAA2B /* CheckGridContentCell.xib */,
+				1C3BD565229B1398004AAA2B /* CheckGridHeaderCell.swift */,
+				1C3BD568229B1398004AAA2B /* CheckGridHeaderCell.xib */,
+				1C3BD56A229B1398004AAA2B /* CheckGridRowTitleCell.swift */,
+				1C3BD567229B1398004AAA2B /* CheckGridRowTitleCell.xib */,
 				1C90EB8F226A8CDF007065D1 /* EditableTimeCell.swift */,
 				1C90EB91226A8E6A007065D1 /* EditableTimeCell.xib */,
 			);
@@ -330,8 +359,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C0315C02285010A00B1E6F4 /* LaunchScreen.storyboard in Resources */,
+				1C3BD56C229B1398004AAA2B /* CheckGridContentCell.xib in Resources */,
 				1C12735922610DCA0058D942 /* Assets.xcassets in Resources */,
+				1C3BD56E229B1398004AAA2B /* CheckGridHeaderCell.xib in Resources */,
 				1C90EB92226A8E6A007065D1 /* EditableTimeCell.xib in Resources */,
+				1C3BD56D229B1398004AAA2B /* CheckGridRowTitleCell.xib in Resources */,
 				1C0315C12285010A00B1E6F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,6 +434,7 @@
 				1C93DEB0228A14C500C65BEB /* CheckIn.swift in Sources */,
 				1CBBABD6227A4F4400DB8F8E /* HabitAddEditViewController.swift in Sources */,
 				1CBBABDA227A555300DB8F8E /* ReminderListViewModel.swift in Sources */,
+				1C3BD564229B11B2004AAA2B /* CheckGridCollectionViewLayout.swift in Sources */,
 				1CAC6791226FD51400B41338 /* HabitDetailsViewModel.swift in Sources */,
 				1CBBABCD227919C700DB8F8E /* HabitRemindersViewController.swift in Sources */,
 				1C47C9F9227DEDF800985F1C /* DayOfWeek.swift in Sources */,
@@ -413,13 +446,16 @@
 				1C12735222610DC80058D942 /* AppDelegate.swift in Sources */,
 				1CBBEA08228F5F9E0053F534 /* CheckInListViewModel.swift in Sources */,
 				1CAC679D22725D3600B41338 /* HabitDetailsViewController.swift in Sources */,
+				1C3BD570229B1398004AAA2B /* CheckGridRowTitleCell.swift in Sources */,
 				1C47C9FD227F211700985F1C /* ReminderDetailsViewModel.swift in Sources */,
 				1CAC6793226FDC7900B41338 /* Date+Rounding.swift in Sources */,
 				1CAC67A42273869900B41338 /* UIView+Border.swift in Sources */,
 				1CBBABD32279297500DB8F8E /* Constants.swift in Sources */,
 				1C977B4E2295DECA006F3E6C /* RoutingService.swift in Sources */,
 				1CA300A8228F500A00F5D08C /* HabitCheckInsViewController.swift in Sources */,
+				1C3BD56F229B1398004AAA2B /* CheckGridContentCell.swift in Sources */,
 				1C0315C42285025A00B1E6F4 /* ReminderNotificationService.swift in Sources */,
+				1C3BD56B229B1398004AAA2B /* CheckGridHeaderCell.swift in Sources */,
 				1C47C9FB227E4B8E00985F1C /* ReminderAddEditViewController.swift in Sources */,
 				1CC5A3B2228B36D400E5F6D8 /* HabitAddCheckInViewController.swift in Sources */,
 				1CAC67A02272694800B41338 /* TimeOfDay.swift in Sources */,
