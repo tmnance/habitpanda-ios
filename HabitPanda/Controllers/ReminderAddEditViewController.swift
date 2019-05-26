@@ -42,14 +42,14 @@ class ReminderAddEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupFieldStylesAndBindings()
+        setupStylesAndBindings()
     }
 }
 
 
-// MARK: - Field Setup Methods
+// MARK: - Setup Methods
 extension ReminderAddEditViewController {
-    func setupFieldStylesAndBindings() {
+    func setupStylesAndBindings() {
         saveButton.isEnabled = false
 
         timePicker.datePickerMode = .time

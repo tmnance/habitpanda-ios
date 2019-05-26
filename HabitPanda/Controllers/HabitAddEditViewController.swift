@@ -20,15 +20,15 @@ class HabitAddEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupFieldStylesAndBindings()
+        setupStylesAndBindings()
         setupKeyboardDismissalWhenTapOutside()
     }
 }
 
 
-// MARK: - Field Setup Methods
+// MARK: - Setup Methods
 extension HabitAddEditViewController {
-    func setupFieldStylesAndBindings() {
+    func setupStylesAndBindings() {
         saveButton.isEnabled = false
 
         nameInputField.addTarget(

@@ -147,7 +147,7 @@ extension ReminderNotificationService {
             }
         }
 
-        print("  - setupNotificationForReminder(\"\(reminder.habit!.name!)\", \(weekdayIndex):\(time))")
+//        print("  - setupNotificationForReminder(\"\(reminder.habit!.name!)\", \(weekdayIndex):\(time))")
     }
 
     static func removeOrphanedDeliveredNotifications() {

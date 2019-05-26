@@ -21,7 +21,7 @@ class HabitRemindersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupFieldStylesAndBindings()
+        setupStylesAndBindings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -40,9 +40,9 @@ class HabitRemindersViewController: UIViewController {
 }
 
 
-// MARK: - Field Setup Methods
+// MARK: - Setup Methods
 extension HabitRemindersViewController {
-    func setupFieldStylesAndBindings() {
+    func setupStylesAndBindings() {
         remindersTableView.delegate = self
         remindersTableView.dataSource = self
         remindersTableView.separatorStyle = .none

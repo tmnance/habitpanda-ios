@@ -24,7 +24,7 @@ class HabitCheckInsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupFieldStylesAndBindings()
+        setupStylesAndBindings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,9 +47,9 @@ class HabitCheckInsViewController: UIViewController {
 }
 
 
-// MARK: - Field Setup Methods
+// MARK: - Setup Methods
 extension HabitCheckInsViewController {
-    func setupFieldStylesAndBindings() {
+    func setupStylesAndBindings() {
         checkInsTableView.delegate = self
         checkInsTableView.dataSource = self
         checkInsTableView.isScrollEnabled = false

@@ -12,14 +12,14 @@ import CoreData
 
 @objc(Habit)
 public class Habit: NSManagedObject {
-    public static func getAll() -> [Habit] {
+    public static func getAll(sortedBy sortKey: String = "name") -> [Habit] {
         let context = (UIApplication.shared.delegate as! AppDelegate)
             .persistentContainer.viewContext
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
         var habits: [Habit] = []
 
         request.sortDescriptors = [
-            NSSortDescriptor(key: "name", ascending: true)
+            NSSortDescriptor(key: sortKey, ascending: true)
         ]
 
         do {
