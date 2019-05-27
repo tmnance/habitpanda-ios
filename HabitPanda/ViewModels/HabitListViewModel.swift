@@ -23,6 +23,7 @@ class HabitListViewModel {
 
     typealias CheckInGridOffsetMap = [Int: Int]
     var habitCheckInGridOffsetMap: [UUID: CheckInGridOffsetMap] = [:]
+    var habitMinOffsetMap: [UUID: Int] = [:]
 
     init() {
         loadData()
@@ -49,6 +50,14 @@ extension HabitListViewModel {
         )
 
         buildHabitCheckInGridOffsetMap(forCheckIns: allCheckIns)
+        allHabits.forEach{ (habit) in
+            let dateOffset = Calendar.current.dateComponents(
+                [.day],
+                from: startDate,
+                to: habit.createdAt!
+            ).day ?? 0
+            habitMinOffsetMap[habit.uuid!] = dateOffset - 1
+        }
 
         // trigger binding updates
         habits.value = allHabits
@@ -77,7 +86,11 @@ extension HabitListViewModel {
         }
     }
 
-    func getCheckInCount(forHabit habit: Habit, forDateOffset dateOffset: Int) -> Int {
-        return habitCheckInGridOffsetMap[habit.uuid!]?[dateOffset] ?? 0
+    func getCheckInCount(forHabit habit: Habit, forDateOffset dateOffset: Int) -> Int? {
+        let uuid = habit.uuid!
+        guard habitMinOffsetMap[uuid] ?? 0 < dateOffset else {
+            return nil
+        }
+        return habitCheckInGridOffsetMap[uuid]?[dateOffset] ?? 0
     }
 }

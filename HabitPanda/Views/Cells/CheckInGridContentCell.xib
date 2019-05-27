@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="88"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOz-MZ-hCQ">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOz-MZ-hCQ" userLabel="Content Container">
                         <rect key="frame" x="0.0" y="44" width="50" height="43"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsb-jb-AXN">
@@ -77,6 +77,7 @@
             <connections>
                 <outlet property="bottomBorder" destination="nxV-Kv-8sL" id="sV2-WM-PLP"/>
                 <outlet property="checkmarkLabel" destination="ys7-oy-BCy" id="gUa-DA-00Q"/>
+                <outlet property="contentContainer" destination="BOz-MZ-hCQ" id="NAt-nU-Z9T"/>
                 <outlet property="countLabel" destination="Los-lf-ElW" id="fwh-9s-haT"/>
             </connections>
             <point key="canvasLocation" x="41.600000000000001" y="46.776611694152926"/>

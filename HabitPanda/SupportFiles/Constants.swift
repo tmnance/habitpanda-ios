@@ -25,8 +25,12 @@ struct Constants {
             blue: 225/255,
             alpha: 1
         )
+        static let listCheckmarkColor = UIColor(white: 70/255, alpha: 1)
         static let listRowOverlayBgColor = UIColor(white: 255/255, alpha: 0.6)
         static let listBorderColor = UIColor(white: 60/255, alpha: 0.6)
+        static let listDisabledCellOverlayColor = UIColor(
+            patternImage: UIImage(named: "disabled-diag-stripe")!
+        ).withAlphaComponent(0.05)
     }
 
     struct Habit {

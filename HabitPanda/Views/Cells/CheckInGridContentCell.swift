@@ -12,6 +12,7 @@ class CheckInGridContentCell: UICollectionViewCell {
     static let width = CheckInGridHeaderCell.width
     static let height = CGFloat(88)
 
+    @IBOutlet weak var contentContainer: UIView!
     @IBOutlet weak var checkmarkLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var bottomBorder: UIView!

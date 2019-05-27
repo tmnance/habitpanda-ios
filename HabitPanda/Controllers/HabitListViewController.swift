@@ -175,12 +175,18 @@ extension HabitListViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! CheckInGridContentCell
 
+        let checkInCount = getCheckInCount(forIndexPath: indexPath)
+
+        cell.contentContainer.backgroundColor = checkInCount != nil ?
+            UIColor.clear :
+            Constants.Colors.listDisabledCellOverlayColor
+
         cell.backgroundColor = getCellBgColor(forIndexPath: indexPath)
-        cell.checkmarkLabel.textColor = Constants.Colors.tintColor
-        cell.countLabel.textColor = Constants.Colors.tintColor
+        cell.checkmarkLabel.textColor = Constants.Colors.listCheckmarkColor
+        cell.countLabel.textColor = Constants.Colors.listCheckmarkColor
         cell.bottomBorder.backgroundColor = Constants.Colors.listBorderColor
 
-        cell.checkInCount = getCheckInCount(forIndexPath: indexPath)
+        cell.checkInCount = checkInCount ?? 0
 
         cell.updateUI()
 
@@ -224,7 +230,7 @@ extension HabitListViewController {
         return dateLabels[index]
     }
 
-    func getCheckInCount(forIndexPath indexPath: IndexPath) -> Int {
+    func getCheckInCount(forIndexPath indexPath: IndexPath) -> Int? {
         let habit = getHabit(forIndexPath: indexPath)
         return viewModel.getCheckInCount(forHabit: habit, forDateOffset: indexPath.row - 1)
     }
