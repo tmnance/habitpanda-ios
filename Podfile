@@ -10,3 +10,13 @@ target 'HabitPanda' do
   pod 'SwipeCellKit'
 
 end
+
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      # Prevents warning "-pie being ignored. it is only used when linking a main executable"
+      config.build_settings['LD_NO_PIE'] = 'NO'
+    end
+  end
+end
