@@ -1063,7 +1063,7 @@
                         <constraints>
                             <constraint firstItem="i7O-cj-wyM" firstAttribute="trailing" secondItem="3Uq-PI-DcE" secondAttribute="trailing" constant="20" id="7DV-ex-g3C"/>
                             <constraint firstItem="3Uq-PI-DcE" firstAttribute="top" secondItem="8JP-ns-MSE" secondAttribute="top" constant="20" id="A1g-79-Iu9"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3Uq-PI-DcE" secondAttribute="bottom" constant="20" id="eL5-6k-sPT"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3Uq-PI-DcE" secondAttribute="bottom" priority="500" constant="20" id="eL5-6k-sPT"/>
                             <constraint firstItem="3Uq-PI-DcE" firstAttribute="leading" secondItem="i7O-cj-wyM" secondAttribute="leading" constant="20" id="xTm-fj-5tC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="i7O-cj-wyM"/>
