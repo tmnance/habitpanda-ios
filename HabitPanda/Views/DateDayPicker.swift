@@ -75,7 +75,6 @@ extension DateDayPicker: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: customWidth, height: customHeight))
 
-        let calendar = Calendar.current
         let date = pickerData[row]
         let df = DateFormatter()
 
@@ -86,13 +85,7 @@ extension DateDayPicker: UIPickerViewDelegate {
         let dayNumber = df.string(from: date)
 
         df.dateFormat = "EEEE"
-        var dayName = df.string(from: date)
-
-        if calendar.isDateInToday(date) {
-            dayName = "Today"
-        } else if calendar.isDateInYesterday(date) {
-            dayName = "Yesterday"
-        }
+        let dayName = df.string(from: date)
 
         let topBottomLabelHeight = CGFloat(30)
 
