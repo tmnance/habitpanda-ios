@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 import CoreData
 
 @objc(ReminderTime)
@@ -23,9 +22,9 @@ public class Reminder: NSManagedObject {
     public static func getAll() -> [Reminder] {
         let context = (UIApplication.shared.delegate as! AppDelegate)
             .persistentContainer.viewContext
-        let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
         var reminders: [Reminder] = []
 
+        let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
         request.sortDescriptors = [
             NSSortDescriptor(key: "hour", ascending: true),
             NSSortDescriptor(key: "minute", ascending: true),
@@ -45,6 +44,7 @@ public class Reminder: NSManagedObject {
         let context = (UIApplication.shared.delegate as! AppDelegate)
             .persistentContainer.viewContext
         var reminder: Reminder? = nil
+
         let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
         request.predicate = NSPredicate(format: "uuid = %@", uuid as CVarArg)
 

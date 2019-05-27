@@ -75,7 +75,7 @@ extension HabitDetailsViewModel {
         checkInToSave.createdAt = Date()
         checkInToSave.uuid = UUID()
         checkInToSave.habit = habit
-        checkInToSave.checkInDate = date
+        checkInToSave.checkInDate = date.stripTime()
         checkInToSave.isSuccess = true
 
         do {

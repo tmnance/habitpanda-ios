@@ -17,7 +17,7 @@ class HabitAddCheckInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let today = Date()
+        let today = Date().stripTime()
         var dateArray = [today]
         for i in 1...4 {
             let pastDay = Calendar.current.date(byAdding: .day, value: (-1 * i), to: today)!

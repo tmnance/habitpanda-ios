@@ -177,7 +177,6 @@ extension HabitDetailsViewController {
                 if self.currentTabVC == self.checkInsTabVC {
                     self.checkInsTabVC?.reloadData()
                 }
-                print("Added checkin with date \(selectedDate)")
             }
         }
 

@@ -14,7 +14,6 @@ class HabitListViewController: UIViewController {
 
     private var viewModel = HabitListViewModel()
 
-    let numDates = 30
     var dateLabels: [String] = []
     var isInitiallyScrolledToToday = false
     var dateListSaturdayOffset = 0
@@ -27,30 +26,6 @@ class HabitListViewController: UIViewController {
         super.viewDidLoad()
 
         setupStylesAndBindings()
-
-        for item in 0..<numDates {
-            let date = Calendar.current.date(
-                byAdding: .day,
-                value: -1 * (numDates - item - 2),
-                to: Date()
-            )!
-            let df = DateFormatter()
-
-            df.dateFormat = "M"
-            let monthNumber = df.string(from: date)
-
-            df.dateFormat = "d"
-            let dayNumber = df.string(from: date)
-
-            df.dateFormat = "EEE"
-            let dayName = df.string(from: date)
-            dateLabels.append("\(dayName)\n\(monthNumber)/\(dayNumber)")
-            if item == 0 {
-                dateListSaturdayOffset = Calendar.current.component(.weekday, from: date) % 7
-                print("first index day = \(dayName) -- \(date)")
-                print("daysFromSaturdayOffset = \(dateListSaturdayOffset)")
-            }
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -94,11 +69,15 @@ extension HabitListViewController {
         viewModel.habits.bind { [unowned self] (_) in
             self.updateHabits()
         }
+
+        viewModel.currentDate.bind { [unowned self] (_) in
+            self.updateDateRange()
+        }
     }
 }
 
 
-// MARK: - Habit Methods
+// MARK: - Data Update Callback Methods
 extension HabitListViewController {
     func updateHabits() {
         collectionView.reloadData()
@@ -111,35 +90,45 @@ extension HabitListViewController {
             }
         }
     }
+
+    func updateDateRange() {
+        let startDate = viewModel.startDate
+        for item in 0..<viewModel.numDates {
+            let date = Calendar.current.date(
+                byAdding: .day,
+                value: 1 * item,
+                to: startDate
+            )!
+            let df = DateFormatter()
+
+            df.dateFormat = "M"
+            let monthNumber = df.string(from: date)
+
+            df.dateFormat = "d"
+            let dayNumber = df.string(from: date)
+
+            df.dateFormat = "EEE"
+            let dayName = df.string(from: date)
+            dateLabels.append("\(dayName)\n\(monthNumber)/\(dayNumber)")
+            if item == 0 {
+                dateListSaturdayOffset = Calendar.current.component(.weekday, from: date) % 7
+            }
+        }
+    }
 }
 
 
 // MARK: - UICollectionViewDataSource
 extension HabitListViewController: UICollectionViewDataSource {
-    func getHabit(forIndexPath indexPath: IndexPath) -> Habit {
-        return viewModel.habits.value[indexPath.section - 1]
-    }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // add additional section for header row
         return viewModel.habits.value.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numDates
-    }
-
-    func getCellBgColor(forIndexPath indexPath: IndexPath) -> UIColor {
-        let index = indexPath.row - 1
-        let saturdayOffset = (index + dateListSaturdayOffset) % 7
-        let isWeekend = saturdayOffset <= 1
-
-        if isWeekend {
-            return Constants.Colors.listWeekendBgColor
-        }
-
-        return saturdayOffset % 2 == 1 ?
-            Constants.Colors.listWeekdayBgColor1 :
-            Constants.Colors.listWeekdayBgColor2
+        // add additional row for habit name column row
+        return viewModel.numDates + 1
     }
 
     func collectionViewHeader(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -148,7 +137,6 @@ extension HabitListViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! CheckGridHeaderCell
 
-        let index = indexPath.row - 1
         cell.backgroundColor = getCellBgColor(forIndexPath: indexPath)
         cell.bottomBorder.backgroundColor = Constants.Colors.listBorderColor
 
@@ -156,7 +144,7 @@ extension HabitListViewController: UICollectionViewDataSource {
         if indexPath.row == 0 {
             cell.isHidden = true
         } else {
-            cell.contentLabel.text = dateLabels[index]
+            cell.contentLabel.text = getDateLabel(forIndexPath: indexPath)
         }
 
         return cell
@@ -187,9 +175,11 @@ extension HabitListViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! CheckGridContentCell
 
+        let didCheckIn = getDidCheckIn(forIndexPath: indexPath)
+
         cell.backgroundColor = getCellBgColor(forIndexPath: indexPath)
 
-        cell.contentLabel.text = Int.random(in: 0...1) == 0 ? "✓" : ""
+        cell.contentLabel.text = didCheckIn ? "✓" : ""
         cell.contentLabel.textColor = Constants.Colors.tintColor
         cell.bottomBorder.backgroundColor = Constants.Colors.listBorderColor
 
@@ -204,6 +194,38 @@ extension HabitListViewController: UICollectionViewDataSource {
         } else {
             return collectionViewContent(collectionView, cellForItemAt: indexPath)
         }
+    }
+}
+
+
+// MARK: - Collection helper methods
+extension HabitListViewController {
+    func getHabit(forIndexPath indexPath: IndexPath) -> Habit {
+        return viewModel.habits.value[indexPath.section - 1]
+    }
+
+    func getCellBgColor(forIndexPath indexPath: IndexPath) -> UIColor {
+        let index = indexPath.row - 1
+        let saturdayOffset = (index + dateListSaturdayOffset) % 7
+        let isWeekend = saturdayOffset <= 1
+
+        if isWeekend {
+            return Constants.Colors.listWeekendBgColor
+        }
+
+        return saturdayOffset % 2 == 1 ?
+            Constants.Colors.listWeekdayBgColor1 :
+            Constants.Colors.listWeekdayBgColor2
+    }
+
+    func getDateLabel(forIndexPath indexPath: IndexPath) -> String {
+        let index = indexPath.row - 1
+        return dateLabels[index]
+    }
+
+    func getDidCheckIn(forIndexPath indexPath: IndexPath) -> Bool {
+        let habit = getHabit(forIndexPath: indexPath)
+        return viewModel.didCheckIn(forHabit: habit, forDateOffset: indexPath.row - 1)
     }
 }
 
