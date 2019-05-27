@@ -1,5 +1,5 @@
 //
-//  CheckGridCollectionViewLayout.swift
+//  CheckInGridCollectionViewLayout.swift
 //  HabitPanda
 //
 //  Created by Tim Nance on 5/26/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CheckGridCollectionViewLayout: UICollectionViewLayout {
+class CheckInGridCollectionViewLayout: UICollectionViewLayout {
     var itemAttributes = [[UICollectionViewLayoutAttributes]]()
     var contentSize: CGSize = .zero
 
@@ -90,7 +90,7 @@ class CheckGridCollectionViewLayout: UICollectionViewLayout {
 
 
 // MARK: - Boundary index methods
-extension CheckGridCollectionViewLayout {
+extension CheckInGridCollectionViewLayout {
     // TODO: make below methods more DRY without sacrificing performance
     func getRowIndexBoundaries(bypassCache: Bool = false) -> (Int, Int) {
         guard let collectionView = collectionView else {
@@ -185,7 +185,7 @@ extension CheckGridCollectionViewLayout {
 
 
 // MARK: - Helpers
-extension CheckGridCollectionViewLayout {
+extension CheckInGridCollectionViewLayout {
     func getItemSize(forRow rowIndex: Int, forCol colIndex: Int) -> CGSize {
         guard let collectionView = collectionView else {
             return .zero
@@ -196,13 +196,13 @@ extension CheckGridCollectionViewLayout {
 
         if colIndex == 0 {
             width = collectionView.frame.width
-            height = CheckGridRowTitleCell.height
+            height = CheckInGridRowTitleCell.height
         } else if rowIndex == 0 {
-            width = CheckGridHeaderCell.width
-            height = CheckGridHeaderCell.height
+            width = CheckInGridHeaderCell.width
+            height = CheckInGridHeaderCell.height
         } else {
-            width = CheckGridContentCell.width
-            height = CheckGridContentCell.height
+            width = CheckInGridContentCell.width
+            height = CheckInGridContentCell.height
         }
         return CGSize(width: width, height: height)
     }

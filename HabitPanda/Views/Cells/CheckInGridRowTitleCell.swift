@@ -1,5 +1,5 @@
 //
-//  CheckGridRowTitleCell.swift
+//  CheckInGridRowTitleCell.swift
 //  HabitPanda
 //
 //  Created by Tim Nance on 5/26/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CheckGridRowTitleCell: UICollectionViewCell {
+class CheckInGridRowTitleCell: UICollectionViewCell {
     @IBOutlet weak var contentButton: UIButton!
 
 //    static let width = CGFloat(60)
@@ -25,7 +25,7 @@ class CheckGridRowTitleCell: UICollectionViewCell {
 
 
 // MARK: - UI Methods
-extension CheckGridRowTitleCell {
+extension CheckInGridRowTitleCell {
     func updateUI() {
         // prevents the button from flashing and momentarily seeing prior cell text when updating
         UIView.performWithoutAnimation {
@@ -40,7 +40,7 @@ extension CheckGridRowTitleCell {
 
 
 // MARK: - Button Pressed Methods
-extension CheckGridRowTitleCell {
+extension CheckInGridRowTitleCell {
     @IBAction func rowNameButtonPressed(_ sender: UIButton) {
         onRowNameButtonPressed?()
     }

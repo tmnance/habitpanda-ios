@@ -18,9 +18,9 @@ class HabitListViewController: UIViewController {
     var isInitiallyScrolledToToday = false
     var dateListSaturdayOffset = 0
 
-    let checkGridHeaderCellIdentifier = "checkGridHeaderCell"
-    let checkGridRowTitleCellIdentifier = "checkGridRowTitleCell"
-    let checkGridContentCellIdentifier = "checkGridContentCell"
+    let checkInGridHeaderCellIdentifier = "checkInGridHeaderCell"
+    let checkInGridRowTitleCellIdentifier = "checkInGridRowTitleCell"
+    let checkInGridContentCellIdentifier = "checkInGridContentCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,16 +54,16 @@ extension HabitListViewController {
         collectionView.delegate = self
 
         collectionView.register(
-            UINib(nibName: "CheckGridHeaderCell", bundle: nil),
-            forCellWithReuseIdentifier: checkGridHeaderCellIdentifier
+            UINib(nibName: "CheckInGridHeaderCell", bundle: nil),
+            forCellWithReuseIdentifier: checkInGridHeaderCellIdentifier
         )
         collectionView.register(
-            UINib(nibName: "CheckGridRowTitleCell", bundle: nil),
-            forCellWithReuseIdentifier: checkGridRowTitleCellIdentifier
+            UINib(nibName: "CheckInGridRowTitleCell", bundle: nil),
+            forCellWithReuseIdentifier: checkInGridRowTitleCellIdentifier
         )
         collectionView.register(
-            UINib(nibName: "CheckGridContentCell", bundle: nil),
-            forCellWithReuseIdentifier: checkGridContentCellIdentifier
+            UINib(nibName: "CheckInGridContentCell", bundle: nil),
+            forCellWithReuseIdentifier: checkInGridContentCellIdentifier
         )
 
         viewModel.habits.bind { [unowned self] (_) in
@@ -81,7 +81,7 @@ extension HabitListViewController {
 extension HabitListViewController {
     func updateHabits() {
         collectionView.reloadData()
-        if let flowLayout = collectionView.collectionViewLayout as? CheckGridCollectionViewLayout {
+        if let flowLayout = collectionView.collectionViewLayout as? CheckInGridCollectionViewLayout {
             // unsure why but this appears to fix a bug with the sticky header positioning when
             // deleting a row
             DispatchQueue.main.async {
@@ -133,9 +133,9 @@ extension HabitListViewController: UICollectionViewDataSource {
 
     func collectionViewHeader(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: checkGridHeaderCellIdentifier,
+            withReuseIdentifier: checkInGridHeaderCellIdentifier,
             for: indexPath
-        ) as! CheckGridHeaderCell
+        ) as! CheckInGridHeaderCell
 
         cell.backgroundColor = getCellBgColor(forIndexPath: indexPath)
         cell.bottomBorder.backgroundColor = Constants.Colors.listBorderColor
@@ -152,9 +152,9 @@ extension HabitListViewController: UICollectionViewDataSource {
 
     func collectionViewRowTitle(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: checkGridRowTitleCellIdentifier,
+            withReuseIdentifier: checkInGridRowTitleCellIdentifier,
             for: indexPath
-        ) as! CheckGridRowTitleCell
+        ) as! CheckInGridRowTitleCell
 
         let habit = getHabit(forIndexPath: indexPath)
 
@@ -171,9 +171,9 @@ extension HabitListViewController: UICollectionViewDataSource {
 
     func collectionViewContent(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: checkGridContentCellIdentifier,
+            withReuseIdentifier: checkInGridContentCellIdentifier,
             for: indexPath
-        ) as! CheckGridContentCell
+        ) as! CheckInGridContentCell
 
         let didCheckIn = getDidCheckIn(forIndexPath: indexPath)
 

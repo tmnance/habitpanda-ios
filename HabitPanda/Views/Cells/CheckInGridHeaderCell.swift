@@ -1,5 +1,5 @@
 //
-//  CheckGridContentCell.swift
+//  CheckInGridHeaderCell.swift
 //  HabitPanda
 //
 //  Created by Tim Nance on 5/26/19.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CheckGridContentCell: UICollectionViewCell {
-    static let width = CheckGridHeaderCell.width
-    static let height = CGFloat(88)
+class CheckInGridHeaderCell: UICollectionViewCell {
+    static let width = CGFloat(50)
+    static let height = CGFloat(50)
 
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var bottomBorder: UIView!

@@ -37,9 +37,7 @@ public class CheckIn: NSManagedObject {
         var predicates: [NSPredicate] = []
 
         if let habitUUIDs = habitUUIDs {
-            print("filtering \(habitUUIDs)")
             let uuidArgs = habitUUIDs.map { $0.uuidString as CVarArg }
-            print("uuidArgs \(uuidArgs)")
             predicates.append(NSPredicate(format: "habit.uuid IN %@", uuidArgs))
         }
 

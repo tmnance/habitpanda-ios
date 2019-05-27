@@ -11,23 +11,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="checkGridHeaderCell" id="gTV-IL-0wX" customClass="CheckGridHeaderCell" customModule="HabitPanda" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="checkInGridContentCell" id="gTV-IL-0wX" customClass="CheckInGridContentCell" customModule="HabitPanda" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="88"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="50" height="88"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys7-oy-BCy">
-                        <rect key="frame" x="0.0" y="6" width="50" height="38.5"/>
-                        <string key="text">Wed
-12/24</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys7-oy-BCy">
+                        <rect key="frame" x="0.0" y="44" width="50" height="43"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nxV-Kv-8sL" userLabel="Bottom Border">
-                        <rect key="frame" x="0.0" y="49" width="50" height="1"/>
+                        <rect key="frame" x="0.0" y="87" width="50" height="1"/>
                         <color key="backgroundColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="bEO-Kx-DD0"/>
@@ -36,15 +34,16 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="nxV-Kv-8sL" firstAttribute="top" secondItem="ys7-oy-BCy" secondAttribute="bottom" id="59F-Rt-g0w"/>
                 <constraint firstAttribute="trailing" secondItem="nxV-Kv-8sL" secondAttribute="trailing" id="Bbh-xe-LK6"/>
-                <constraint firstAttribute="bottom" secondItem="nxV-Kv-8sL" secondAttribute="bottom" id="Dzz-2u-NSC"/>
                 <constraint firstItem="nxV-Kv-8sL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FrW-60-AC5"/>
                 <constraint firstItem="ys7-oy-BCy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="N61-pN-BBt"/>
+                <constraint firstAttribute="bottom" secondItem="nxV-Kv-8sL" secondAttribute="bottom" id="jKa-PK-h3G"/>
                 <constraint firstAttribute="trailing" secondItem="ys7-oy-BCy" secondAttribute="trailing" id="p2e-Os-sic"/>
-                <constraint firstAttribute="centerY" secondItem="ys7-oy-BCy" secondAttribute="centerY" id="pUy-Fo-GDT"/>
+                <constraint firstItem="ys7-oy-BCy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="44" id="vaE-IO-GZw"/>
             </constraints>
             <connections>
-                <outlet property="bottomBorder" destination="nxV-Kv-8sL" id="f4R-0S-U2s"/>
+                <outlet property="bottomBorder" destination="nxV-Kv-8sL" id="sV2-WM-PLP"/>
                 <outlet property="contentLabel" destination="ys7-oy-BCy" id="gUa-DA-00Q"/>
             </connections>
             <point key="canvasLocation" x="41.600000000000001" y="46.776611694152926"/>
