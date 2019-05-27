@@ -38,29 +38,28 @@ extension HabitListViewModel {
     }
 
     private func loadData() {
-        if currentDate.value != Date().stripTime() {
-            // only update when changed
-            currentDate.value = Date().stripTime()
+        BoxHelper.processBeforeListenerInvocation {
+            if currentDate.value != Date().stripTime() {
+                // only update when changed
+                currentDate.value = Date().stripTime()
+            }
+
+            habits.value = Habit.getAll(sortedBy: "createdAt")
+            let allCheckIns = CheckIn.getAll(
+                forHabitUUIDs: habits.value.map { $0.uuid! },
+                afterDate: startDate
+            )
+
+            buildHabitCheckInGridOffsetMap(forCheckIns: allCheckIns)
+            habits.value.forEach{ (habit) in
+                let dateOffset = Calendar.current.dateComponents(
+                    [.day],
+                    from: startDate,
+                    to: habit.createdAt!
+                ).day ?? 0
+                habitMinOffsetMap[habit.uuid!] = dateOffset - 1
+            }
         }
-
-        let allHabits = Habit.getAll(sortedBy: "createdAt")
-        let allCheckIns = CheckIn.getAll(
-            forHabitUUIDs: allHabits.map { $0.uuid! },
-            afterDate: startDate
-        )
-
-        buildHabitCheckInGridOffsetMap(forCheckIns: allCheckIns)
-        allHabits.forEach{ (habit) in
-            let dateOffset = Calendar.current.dateComponents(
-                [.day],
-                from: startDate,
-                to: habit.createdAt!
-            ).day ?? 0
-            habitMinOffsetMap[habit.uuid!] = dateOffset - 1
-        }
-
-        // trigger binding updates
-        habits.value = allHabits
     }
 }
 
