@@ -17,17 +17,11 @@ class HabitListViewController: UIViewController {
     let numDates = 30
     var dateLabels: [String] = []
     var isInitiallyScrolledToToday = false
+    var dateListSaturdayOffset = 0
 
     let checkGridHeaderCellIdentifier = "checkGridHeaderCell"
     let checkGridRowTitleCellIdentifier = "checkGridRowTitleCell"
     let checkGridContentCellIdentifier = "checkGridContentCell"
-
-    let colBgColor1 = Constants.Colors.listAlternatingBgColor1
-    let colBgColor2 = Constants.Colors.listAlternatingBgColor2
-    let rowTitleBgColor = Constants.Colors.listRowOverlayBgColor
-    let tintColor = Constants.Colors.tintColor
-    let checkboxColor = Constants.Colors.tintColor
-    let borderColor = Constants.Colors.tintColor
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +45,11 @@ class HabitListViewController: UIViewController {
             df.dateFormat = "EEE"
             let dayName = df.string(from: date)
             dateLabels.append("\(dayName)\n\(monthNumber)/\(dayNumber)")
+            if item == 0 {
+                dateListSaturdayOffset = Calendar.current.component(.weekday, from: date) % 7
+                print("first index day = \(dayName) -- \(date)")
+                print("daysFromSaturdayOffset = \(dateListSaturdayOffset)")
+            }
         }
     }
 
@@ -117,7 +116,7 @@ extension HabitListViewController {
 
 // MARK: - UICollectionViewDataSource
 extension HabitListViewController: UICollectionViewDataSource {
-    func getHabitForIndexPath(_ indexPath: IndexPath) -> Habit {
+    func getHabit(forIndexPath indexPath: IndexPath) -> Habit {
         return viewModel.habits.value[indexPath.section - 1]
     }
 
@@ -129,22 +128,35 @@ extension HabitListViewController: UICollectionViewDataSource {
         return numDates
     }
 
+    func getCellBgColor(forIndexPath indexPath: IndexPath) -> UIColor {
+        let index = indexPath.row - 1
+        let saturdayOffset = (index + dateListSaturdayOffset) % 7
+        let isWeekend = saturdayOffset <= 1
+
+        if isWeekend {
+            return Constants.Colors.listWeekendBgColor
+        }
+
+        return saturdayOffset % 2 == 1 ?
+            Constants.Colors.listWeekdayBgColor1 :
+            Constants.Colors.listWeekdayBgColor2
+    }
+
     func collectionViewHeader(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: checkGridHeaderCellIdentifier,
             for: indexPath
         ) as! CheckGridHeaderCell
 
-        cell.backgroundColor = indexPath.row % 2 == 0 ?
-            colBgColor1 :
-            colBgColor2
-        cell.bottomBorder.backgroundColor = borderColor
+        let index = indexPath.row - 1
+        cell.backgroundColor = getCellBgColor(forIndexPath: indexPath)
+        cell.bottomBorder.backgroundColor = Constants.Colors.listBorderColor
 
         cell.isHidden = false
         if indexPath.row == 0 {
             cell.isHidden = true
         } else {
-            cell.contentLabel.text = dateLabels[indexPath.row - 1]
+            cell.contentLabel.text = dateLabels[index]
         }
 
         return cell
@@ -156,9 +168,9 @@ extension HabitListViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! CheckGridRowTitleCell
 
-        let habit = getHabitForIndexPath(indexPath)
+        let habit = getHabit(forIndexPath: indexPath)
 
-        cell.backgroundColor = rowTitleBgColor
+        cell.backgroundColor = Constants.Colors.listRowOverlayBgColor
         cell.name = habit.name
         cell.onRowNameButtonPressed = {
             self.performSegue(withIdentifier: "goToHabitDetails", sender: indexPath)
@@ -175,13 +187,11 @@ extension HabitListViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! CheckGridContentCell
 
-        cell.backgroundColor = indexPath.row % 2 == 0 ?
-            colBgColor1 :
-            colBgColor2
+        cell.backgroundColor = getCellBgColor(forIndexPath: indexPath)
 
         cell.contentLabel.text = Int.random(in: 0...1) == 0 ? "✓" : ""
-        cell.contentLabel.textColor = checkboxColor
-        cell.bottomBorder.backgroundColor = borderColor
+        cell.contentLabel.textColor = Constants.Colors.tintColor
+        cell.bottomBorder.backgroundColor = Constants.Colors.listBorderColor
 
         return cell
     }
@@ -204,7 +214,7 @@ extension HabitListViewController: UICollectionViewDelegate {
         if segue.identifier == "goToHabitDetails" {
             let destinationVC = segue.destination as! HabitDetailsViewController
             if let indexPath = sender as? IndexPath {
-                destinationVC.selectedHabit = getHabitForIndexPath(indexPath)
+                destinationVC.selectedHabit = getHabit(forIndexPath: indexPath)
             }
         }
     }
