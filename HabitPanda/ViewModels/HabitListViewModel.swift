@@ -21,15 +21,11 @@ class HabitListViewModel {
         )!
     }
 
-    init() {
-        loadData()
-    }
-
-    typealias CheckInGridOffsetMap = [Int: Bool]
+    typealias CheckInGridOffsetMap = [Int: Int]
     var habitCheckInGridOffsetMap: [UUID: CheckInGridOffsetMap] = [:]
 
-    func didCheckIn(forHabit habit: Habit, forDateOffset dateOffset: Int) -> Bool {
-        return habitCheckInGridOffsetMap[habit.uuid!]?[dateOffset] ?? false
+    init() {
+        loadData()
     }
 }
 
@@ -52,7 +48,20 @@ extension HabitListViewModel {
             afterDate: startDate
         )
 
-        allCheckIns.forEach{ (checkIn) in
+        buildHabitCheckInGridOffsetMap(forCheckIns: allCheckIns)
+
+        // trigger binding updates
+        habits.value = allHabits
+    }
+}
+
+
+// MARK: - Check-In Grid Helper Methods
+extension HabitListViewModel {
+    func buildHabitCheckInGridOffsetMap(forCheckIns checkIns: [CheckIn]) {
+        habitCheckInGridOffsetMap = [:]
+
+        checkIns.forEach{ (checkIn) in
             let habitUUID = checkIn.habit!.uuid!
             let date = checkIn.checkInDate!.stripTime()
             let dateOffset = Calendar.current.dateComponents(
@@ -60,12 +69,15 @@ extension HabitListViewModel {
                 from: startDate,
                 to: date
             ).day ?? 0
+
             habitCheckInGridOffsetMap[habitUUID] =
                 habitCheckInGridOffsetMap[habitUUID] ?? [:]
-            habitCheckInGridOffsetMap[habitUUID]![dateOffset] = true
+            habitCheckInGridOffsetMap[habitUUID]![dateOffset] =
+                (habitCheckInGridOffsetMap[habitUUID]![dateOffset] ?? 0) + 1
         }
+    }
 
-        // trigger binding updates
-        habits.value = allHabits
+    func getCheckInCount(forHabit habit: Habit, forDateOffset dateOffset: Int) -> Int {
+        return habitCheckInGridOffsetMap[habit.uuid!]?[dateOffset] ?? 0
     }
 }

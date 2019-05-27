@@ -9,10 +9,10 @@
 import UIKit
 
 class CheckInGridRowTitleCell: UICollectionViewCell {
-    @IBOutlet weak var contentButton: UIButton!
-
 //    static let width = CGFloat(60)
     static let height = CGFloat(44)
+
+    @IBOutlet weak var contentButton: UIButton!
 
     var name: String?
     var onRowNameButtonPressed: (() -> ())? = nil
