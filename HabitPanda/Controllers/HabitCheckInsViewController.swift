@@ -82,12 +82,23 @@ extension HabitCheckInsViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "CheckInCell",
             for: indexPath
-            ) as! SwipeTableViewCell
+        ) as! SwipeTableViewCell
         cell.delegate = self
 
         let checkIn = viewModel.checkIns.value[indexPath.row]
 
-        cell.textLabel?.text = checkIn.getCheckInDisplayDate()
+        var subTitleText = ""
+        if checkIn.wasAddedForPriorDate() {
+            let dayOffset = checkIn.getAddedVsCheckInDateDayOffset()
+            subTitleText = "*\(checkIn.getCreatedDateString(withFormat: .timeOnly)) " +
+                "(added \(dayOffset) day\(dayOffset == 1 ? "" : "s") later)"
+        } else {
+            subTitleText = checkIn.getCreatedDateString(withFormat: .timeOnly)
+        }
+
+        cell.textLabel?.text = checkIn.getCheckInDateString(withFormat: .dateOnly)
+        cell.detailTextLabel?.textColor = Constants.Colors.subTextColor
+        cell.detailTextLabel?.text = subTitleText
         cell.selectionStyle = .none
 
         return cell
@@ -133,7 +144,7 @@ extension HabitCheckInsViewController {
         let checkIn = viewModel.checkIns.value[index]
         let alert = UIAlertController(
             title: "Confirm Delete",
-            message: "Are you sure you want to delete the check-in for \(checkIn.getCheckInDisplayDate())?",
+            message: "Are you sure you want to delete the check-in for \(checkIn.getCheckInDateString(withFormat: .dateOnly))?",
             preferredStyle: .alert
         )
 

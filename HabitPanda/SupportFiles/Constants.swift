@@ -16,6 +16,7 @@ struct Constants {
         static let tintColor2 = UIColor.orange
         // CCCCCC
         static let disabledTextColor = UIColor(white: 204/255, alpha: 1)
+        static let subTextColor = UIColor(white: 70/255, alpha: 1)
 
         static let listWeekdayBgColor1 = UIColor(white: 230/255, alpha: 1)
         static let listWeekdayBgColor2 = UIColor(white: 240/255, alpha: 1)

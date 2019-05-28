@@ -175,7 +175,7 @@ extension HabitDetailsViewController {
             if let selectedDate = vc.checkInDayPicker.getSelectedDate() {
                 self.viewModel.addCheckIn(forDate: selectedDate)
 
-                ToastHelper.makeToast("Check-in created", state: .entityCreated)
+                ToastHelper.makeToast("Check-in added", state: .entityCreated)
 
                 if self.currentTabVC == self.checkInsTabVC {
                     self.checkInsTabVC?.reloadData()

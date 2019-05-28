@@ -52,6 +52,7 @@
 		1CC5A3B4228B4CD400E5F6D8 /* DateDayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */; };
 		1CDB388F22624BBE00C86277 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB388E22624BBE00C86277 /* Habit.swift */; };
 		1CF697BD229C784200766011 /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF697BC229C784200766011 /* ToastHelper.swift */; };
+		1CF697BF229DC30800766011 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF697BE229DC30800766011 /* DateHelper.swift */; };
 		4E62082982CE4D84B0901FBE /* Pods_HabitPanda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04892BB89431780B7C3882AE /* Pods_HabitPanda.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDayPicker.swift; sourceTree = "<group>"; };
 		1CDB388E22624BBE00C86277 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		1CF697BC229C784200766011 /* ToastHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastHelper.swift; sourceTree = "<group>"; };
+		1CF697BE229DC30800766011 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		3CCD34975B17DB9A0E5FD317 /* Pods-HabitPanda.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPanda.debug.xcconfig"; path = "Target Support Files/Pods-HabitPanda/Pods-HabitPanda.debug.xcconfig"; sourceTree = "<group>"; };
 		C24FC85B23A11D916B95A4B6 /* Pods-HabitPanda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPanda.release.xcconfig"; path = "Target Support Files/Pods-HabitPanda/Pods-HabitPanda.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -279,9 +281,10 @@
 		1CAC679E227268A600B41338 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				1CAC679F2272694700B41338 /* TimeOfDay.swift */,
+				1CF697BE229DC30800766011 /* DateHelper.swift */,
 				1C47C9F8227DEDF800985F1C /* DayOfWeek.swift */,
 				1CBBABDB227CAD0B00DB8F8E /* NotificationHelper.swift */,
+				1CAC679F2272694700B41338 /* TimeOfDay.swift */,
 				1CF697BC229C784200766011 /* ToastHelper.swift */,
 			);
 			path = Helpers;
@@ -455,6 +458,7 @@
 				1CDB388F22624BBE00C86277 /* Habit.swift in Sources */,
 				1C12735222610DC80058D942 /* AppDelegate.swift in Sources */,
 				1CBBEA08228F5F9E0053F534 /* CheckInListViewModel.swift in Sources */,
+				1CF697BF229DC30800766011 /* DateHelper.swift in Sources */,
 				1CAC679D22725D3600B41338 /* HabitDetailsViewController.swift in Sources */,
 				1C3BD570229B1398004AAA2B /* CheckInGridRowTitleCell.swift in Sources */,
 				1C47C9FD227F211700985F1C /* ReminderDetailsViewModel.swift in Sources */,

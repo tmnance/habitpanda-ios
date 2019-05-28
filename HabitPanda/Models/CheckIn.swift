@@ -11,16 +11,23 @@ import CoreData
 
 @objc(CheckIn)
 public class CheckIn: NSManagedObject {
-    func getCheckInDisplayDate() -> String {
-        let date = checkInDate!
-        let df = DateFormatter()
+    func getCreatedDateString(withFormat format: DateHelper.DateFormat) -> String {
+        return DateHelper.getDateString(forDate: createdAt!, withFormat: format)
+    }
 
-        df.dateFormat = "EEE, MMMM d"
-        let displayDate = df.string(from: date)
+    func getCheckInDateString(withFormat format: DateHelper.DateFormat) -> String {
+        return DateHelper.getDateString(forDate: checkInDate!, withFormat: format)
+    }
 
-        df.dateFormat = "h:mm a"
-        let displayTime = df.string(from: date)
-        return "\(displayDate) at \(displayTime)"
+    func wasAddedForPriorDate() -> Bool {
+        return getAddedVsCheckInDateDayOffset() > 0
+    }
+    func getAddedVsCheckInDateDayOffset() -> Int {
+        return Calendar.current.dateComponents(
+            [.day],
+            from: checkInDate!,
+            to: createdAt!
+        ).day ?? 0
     }
 
     public static func getAll(
