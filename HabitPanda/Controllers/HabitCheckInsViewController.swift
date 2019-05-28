@@ -139,6 +139,8 @@ extension HabitCheckInsViewController {
 
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
             self.viewModel.removeCheckIn(atIndex: index)
+
+            ToastHelper.makeToast("Check-in deleted", state: .entityDeleted)
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell

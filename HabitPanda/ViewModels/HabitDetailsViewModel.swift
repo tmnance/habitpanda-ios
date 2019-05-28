@@ -34,9 +34,16 @@ class HabitDetailsViewModel {
 // MARK: - Save Data Methods
 extension HabitDetailsViewModel {
     func saveHabit() {
-        let habitToSave = interactionMode.value == .Add ? Habit(context: context) : selectedHabit!
-        habitToSave.createdAt = Date()
-        habitToSave.uuid = UUID()
+        let isNew = interactionMode.value == .Add
+        let habitToSave = isNew ?
+            Habit(context: context) :
+            selectedHabit!
+
+        if isNew {
+            habitToSave.createdAt = Date()
+            habitToSave.uuid = UUID()
+        }
+
         habitToSave.name = name.value
         habitToSave.frequencyPerWeek = Int32(frequencyPerWeek.value)
 

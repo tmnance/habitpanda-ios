@@ -56,6 +56,9 @@ extension HabitSummaryViewController {
 
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
                 self.delegateViewModel.deleteHabit()
+
+                ToastHelper.makeToast("Habit deleted", state: .entityDeleted)
+
                 self.navigationController?.popViewController(animated: true)
             })
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

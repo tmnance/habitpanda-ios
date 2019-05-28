@@ -115,7 +115,15 @@ extension ReminderAddEditViewController {
         if !isValidInput() {
             return
         }
+        let isNew = viewModel.interactionMode.value == .Add
+
         viewModel.saveReminder()
+        if isNew {
+            ToastHelper.makeToast("Reminder added", state: .entityCreated)
+        } else {
+            ToastHelper.makeToast("Reminder updated", state: .entityUpdated)
+        }
+
         dismiss(animated: true)
     }
 

@@ -174,6 +174,9 @@ extension HabitDetailsViewController {
         let confirmButton = DefaultButton(title: "CONFIRM") {
             if let selectedDate = vc.checkInDayPicker.getSelectedDate() {
                 self.viewModel.addCheckIn(forDate: selectedDate)
+
+                ToastHelper.makeToast("Check-in created", state: .entityCreated)
+
                 if self.currentTabVC == self.checkInsTabVC {
                     self.checkInsTabVC?.reloadData()
                 }

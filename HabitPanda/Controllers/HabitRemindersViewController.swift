@@ -93,6 +93,8 @@ extension HabitRemindersViewController: UITableViewDelegate, UITableViewDataSour
         cell.onRemoveButtonPressed = {
             // TODO: add confirm delete alert
             self.viewModel.removeReminder(atIndex: indexPath.row)
+
+            ToastHelper.makeToast("Reminder removed", state: .entityDeleted)
         }
 
         cell.updateUI()

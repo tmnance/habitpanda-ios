@@ -83,7 +83,15 @@ extension HabitAddEditViewController {
         if !isValidInput() {
             return
         }
+        let isNew = viewModel.interactionMode.value == .Add
+
         viewModel.saveHabit()
+        if isNew {
+            ToastHelper.makeToast("Habit added", state: .entityCreated)
+        } else {
+            ToastHelper.makeToast("Habit updated", state: .entityUpdated)
+        }
+
         dismiss(animated: true)
     }
 

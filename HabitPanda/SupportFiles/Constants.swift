@@ -31,6 +31,31 @@ struct Constants {
         static let listDisabledCellOverlayColor = UIColor(
             patternImage: UIImage(named: "disabled-diag-stripe")!
         ).withAlphaComponent(0.05)
+
+        static let toastSuccessBgColor = UIColor(
+            red: 76/255,
+            green: 209/255,
+            blue: 55/255,
+            alpha: 1
+        )
+        static let toastErrorBgColor = UIColor(
+            red: 232/255,
+            green: 65/255,
+            blue: 24/255,
+            alpha: 1
+        )
+        static let toastWarningBgColor = UIColor(
+            red: 251/255,
+            green: 197/255,
+            blue: 49/255,
+            alpha: 1
+        )
+        static let toastInfoBgColor = UIColor(
+            red: 53/255,
+            green: 59/255,
+            blue: 72/255,
+            alpha: 1
+        )
     }
 
     struct Habit {

@@ -43,14 +43,18 @@ class ReminderDetailsViewModel {
 // MARK: - Save Data Methods
 extension ReminderDetailsViewModel {
     func saveReminder() {
-        // TODO: add duplicate checking
-        let reminderToSave = interactionMode.value == .Add ?
+        // TODO: add duplicate checking?
+        let isNew = interactionMode.value == .Add
+        let reminderToSave = isNew ?
             Reminder(context: context) :
             selectedReminder!
 
-        reminderToSave.createdAt = Date()
-        reminderToSave.uuid = UUID()
-        reminderToSave.habit = parentHabit!
+        if isNew {
+            reminderToSave.createdAt = Date()
+            reminderToSave.uuid = UUID()
+            reminderToSave.habit = parentHabit!
+        }
+
         reminderToSave.hour = Int32(time.value.hour)
         reminderToSave.minute = Int32(time.value.minute)
         reminderToSave.frequencyDays = frequencyDays.value
