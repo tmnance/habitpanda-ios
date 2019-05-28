@@ -93,6 +93,8 @@ extension HabitListViewController {
 
     func updateDateRange() {
         let startDate = viewModel.startDate
+        dateLabels = []
+
         for item in 0..<viewModel.numDates {
             let date = Calendar.current.date(
                 byAdding: .day,
@@ -109,7 +111,9 @@ extension HabitListViewController {
 
             df.dateFormat = "EEE"
             let dayName = df.string(from: date)
+
             dateLabels.append("\(dayName)\n\(monthNumber)/\(dayNumber)")
+
             if item == 0 {
                 dateListSaturdayOffset = Calendar.current.component(.weekday, from: date) % 7
             }
@@ -120,7 +124,6 @@ extension HabitListViewController {
 
 // MARK: - UICollectionViewDataSource
 extension HabitListViewController: UICollectionViewDataSource {
-
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // add additional section for header row
         return viewModel.habits.value.count + 1

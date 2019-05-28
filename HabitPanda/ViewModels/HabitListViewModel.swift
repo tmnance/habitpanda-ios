@@ -37,13 +37,13 @@ extension HabitListViewModel {
         loadData()
     }
 
-    private func loadData() {
-        BoxHelper.processBeforeListenerInvocation {
-            if currentDate.value != Date().stripTime() {
-                // only update when changed
-                currentDate.value = Date().stripTime()
-            }
+    private func loadData(isTest: Bool? = false) {
+        if currentDate.value != Date().stripTime() {
+            // only update when changed
+            currentDate.value = Date().stripTime()
+        }
 
+        BoxHelper.processBeforeListenerInvocation {
             habits.value = Habit.getAll(sortedBy: "createdAt")
             let allCheckIns = CheckIn.getAll(
                 forHabitUUIDs: habits.value.map { $0.uuid! },
