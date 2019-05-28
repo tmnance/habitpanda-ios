@@ -36,17 +36,22 @@ class AdminViewController: UIViewController {
         case 0:
             NotificationHelper.removeAllPendingNotifications()
             loadNotificationData()
+            ToastHelper.makeToast("Pending notifications removed", state: .info)
         case 1:
             NotificationHelper.removeAllDeliveredNotifications()
             loadNotificationData()
+            ToastHelper.makeToast("Sent notifications removed", state: .info)
         case 2:
             ReminderNotificationService.removeOrphanedDeliveredNotifications()
             loadNotificationData()
+            ToastHelper.makeToast("Orphaned sent notifications removed", state: .info)
         case 3:
             ReminderNotificationService.refreshNotificationsForAllReminders()
             loadNotificationData()
+            ToastHelper.makeToast("All notifications refreshed", state: .info)
         case 4:
-            NotificationHelper.sendTestPushNotification()
+            ReminderNotificationService.sendTestNotification()
+            ToastHelper.makeToast("Test notification sent", state: .info)
         default:
             print("Unrecognized")
         }

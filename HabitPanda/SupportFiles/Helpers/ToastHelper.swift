@@ -14,12 +14,15 @@ struct ToastHelper {
         case entityCreated
         case entityUpdated
         case entityDeleted
+        case info
     }
 
     static func makeToast(_ message: String, state: State) {
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let view = appDelegate.window!
 
-        appDelegate.window!.makeToast(
+        view.hideAllToasts()
+        view.makeToast(
             message,
             duration: 2.0,
             position: .bottom,
@@ -36,6 +39,8 @@ struct ToastHelper {
         case .entityUpdated:
             style.backgroundColor = Constants.Colors.toastInfoBgColor
         case .entityDeleted:
+            style.backgroundColor = Constants.Colors.toastInfoBgColor
+        case .info:
             style.backgroundColor = Constants.Colors.toastInfoBgColor
         }
 

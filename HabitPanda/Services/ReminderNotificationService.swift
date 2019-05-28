@@ -196,3 +196,25 @@ extension ReminderNotificationService {
         }
     }
 }
+
+
+// Mark: - Testing methods
+extension ReminderNotificationService {
+    static func sendTestNotification() {
+        guard let reminder = Reminder.getAll(withLimit: 1).first else {
+            return
+        }
+
+        let identifier = "testIdentifier"
+        let content = getNotificationContentForReminder(reminder)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+
+        let request = UNNotificationRequest(
+            identifier: identifier,
+            content: content,
+            trigger: trigger
+        )
+
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+}

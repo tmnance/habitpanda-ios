@@ -12,25 +12,6 @@ import UserNotifications
 class NotificationHelper {
     static var isGranted = false
 
-    static func sendTestPushNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Notif Title"
-        content.body = "Notif Body"
-        content.sound = UNNotificationSound.default
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
-        //        let trigger2 = UNCalendarNotificationTrigger(dateMatching: <#T##DateComponents#>, repeats: false)
-
-        let request = UNNotificationRequest(
-            identifier: "testIdentifier", // old notifications requests will be overridden when new ones are setup
-            content: content,
-            trigger: trigger
-        )
-
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    }
-
     static func setCategories() {
         let clearRepeatAction = UNNotificationAction(
             identifier: "clear.repeat.action",

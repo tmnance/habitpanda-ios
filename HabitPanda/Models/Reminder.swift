@@ -19,7 +19,7 @@ public class Reminder: NSManagedObject {
         return Int(hour * 60) + Int(minute)
     }
 
-    public static func getAll() -> [Reminder] {
+    public static func getAll(withLimit limit: Int? = nil) -> [Reminder] {
         let context = (UIApplication.shared.delegate as! AppDelegate)
             .persistentContainer.viewContext
         var reminders: [Reminder] = []
@@ -30,6 +30,9 @@ public class Reminder: NSManagedObject {
             NSSortDescriptor(key: "minute", ascending: true),
             NSSortDescriptor(key: "frequencyDays", ascending: true)
         ]
+        if let limit = limit {
+            request.fetchLimit = limit
+        }
 
         do {
             reminders = try context.fetch(request)
