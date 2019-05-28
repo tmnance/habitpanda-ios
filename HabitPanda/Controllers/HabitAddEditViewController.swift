@@ -62,10 +62,10 @@ extension HabitAddEditViewController {
 
     func updateInteractionMode() {
         switch viewModel.interactionMode.value {
-        case .Add:
+        case .add:
             title = "Create a New Habit"
             break
-        case .Edit:
+        case .edit:
             title = "Edit Habit"
             break
         default:
@@ -83,7 +83,7 @@ extension HabitAddEditViewController {
         if !isValidInput() {
             return
         }
-        let isNew = viewModel.interactionMode.value == .Add
+        let isNew = viewModel.interactionMode.value == .add
 
         viewModel.saveHabit()
         if isNew {

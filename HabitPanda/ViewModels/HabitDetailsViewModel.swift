@@ -11,21 +11,21 @@ import CoreData
 
 class HabitDetailsViewModel {
     enum ViewInteractionMode {
-        case Add, Edit, View
+        case add, edit, view
     }
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     var name: Box<String> = Box("")
     var frequencyPerWeek: Box<Int> = Box(Constants.Habit.defaultFrequencyPerWeek)
-    var interactionMode: Box<ViewInteractionMode> = Box(.Add)
+    var interactionMode: Box<ViewInteractionMode> = Box(.add)
     var selectedHabit: Habit? {
         didSet {
             if let habit = selectedHabit {
                 name.value = habit.name!
                 frequencyPerWeek.value = Int(habit.frequencyPerWeek)
             }
-            interactionMode.value = selectedHabit == nil ? .Add : .Edit
+            interactionMode.value = selectedHabit == nil ? .add : .edit
         }
     }
 }
@@ -34,7 +34,7 @@ class HabitDetailsViewModel {
 // MARK: - Save Data Methods
 extension HabitDetailsViewModel {
     func saveHabit() {
-        let isNew = interactionMode.value == .Add
+        let isNew = interactionMode.value == .add
         let habitToSave = isNew ?
             Habit(context: context) :
             selectedHabit!

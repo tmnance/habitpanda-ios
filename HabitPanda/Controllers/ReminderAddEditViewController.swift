@@ -94,10 +94,10 @@ extension ReminderAddEditViewController {
 
     func updateInteractionMode() {
         switch viewModel.interactionMode.value {
-        case .Add:
+        case .add:
             title = "Add a New Reminder"
             break
-        case .Edit:
+        case .edit:
             title = "Edit Reminder"
             break
         default:
@@ -115,7 +115,7 @@ extension ReminderAddEditViewController {
         if !isValidInput() {
             return
         }
-        let isNew = viewModel.interactionMode.value == .Add
+        let isNew = viewModel.interactionMode.value == .add
 
         viewModel.saveReminder()
         if isNew {

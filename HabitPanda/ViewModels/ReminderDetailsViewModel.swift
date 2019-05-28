@@ -13,7 +13,7 @@ class ReminderDetailsViewModel {
     typealias FrequencyOption = DayOfWeek.WeekSubsetType
     typealias FrequencyDay = DayOfWeek.Day
     enum ViewInteractionMode {
-        case Add, Edit, View
+        case add, edit, view
     }
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -29,10 +29,10 @@ class ReminderDetailsViewModel {
                     minute: Int(reminder.minute)
                 )
             }
-            interactionMode.value = selectedReminder == nil ? .Add : .Edit
+            interactionMode.value = selectedReminder == nil ? .add : .edit
         }
     }
-    var interactionMode: Box<ViewInteractionMode> = Box(.Add)
+    var interactionMode: Box<ViewInteractionMode> = Box(.add)
     var time: Box<TimeOfDay> = Box(
         TimeOfDay.generateFromCurrentTime(witMinuteRounding: Constants.TimePicker.minuteInterval)
     )
@@ -44,7 +44,7 @@ class ReminderDetailsViewModel {
 extension ReminderDetailsViewModel {
     func saveReminder() {
         // TODO: add duplicate checking?
-        let isNew = interactionMode.value == .Add
+        let isNew = interactionMode.value == .add
         let reminderToSave = isNew ?
             Reminder(context: context) :
             selectedReminder!
@@ -82,29 +82,29 @@ extension ReminderDetailsViewModel {
     }
 
     func getFrequencyOption() -> FrequencyOption {
-        var option:FrequencyOption = .Custom
+        var option:FrequencyOption = .custom
 
         if frequencyDays.value.count == 7 {
-            option = .Daily
+            option = .daily
         } else if (
             frequencyDays.value.count == 5 &&
-                (frequencyDays.value.filter { ![.Sat, .Sun].contains($0) }).count == 5
+                (frequencyDays.value.filter { ![.sat, .sun].contains($0) }).count == 5
             ) {
             // exactly 5 items selected and they are all weekdays
-            option = .Weekdays
+            option = .weekdays
         }
         return option
     }
 
     func updateFrequencyDays(forOption option: FrequencyOption) {
         switch option {
-        case .Daily:
-            frequencyDays.value = [.Sun, .Mon, .Tue, .Wed, .Thu, .Fri, .Sat]
+        case .daily:
+            frequencyDays.value = [.sun, .mon, .tue, .wed, .thu, .fri, .sat]
             break
-        case .Weekdays:
-            frequencyDays.value = [.Mon, .Tue, .Wed, .Thu, .Fri]
+        case .weekdays:
+            frequencyDays.value = [.mon, .tue, .wed, .thu, .fri]
             break
-        case .Custom:
+        case .custom:
             frequencyDays.value = []
             break
         }
