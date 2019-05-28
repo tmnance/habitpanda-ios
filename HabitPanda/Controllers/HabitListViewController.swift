@@ -162,7 +162,9 @@ extension HabitListViewController: UICollectionViewDataSource {
         let habit = getHabit(forIndexPath: indexPath)
 
         cell.backgroundColor = Constants.Colors.listRowOverlayBgColor
+
         cell.name = habit.name
+        cell.additionalDetailsText = "🎯\n\(habit.frequencyPerWeek)x/wk"
         cell.onRowNameButtonPressed = {
             self.performSegue(withIdentifier: "goToHabitDetails", sender: indexPath)
         }

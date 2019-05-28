@@ -13,8 +13,10 @@ class CheckInGridRowTitleCell: UICollectionViewCell {
     static let height = CGFloat(44)
 
     @IBOutlet weak var contentButton: UIButton!
+    @IBOutlet weak var additionalDetailsLabel: UILabel!
 
     var name: String?
+    var additionalDetailsText: String?
     var onRowNameButtonPressed: (() -> ())? = nil
 
     override func awakeFromNib() {
@@ -27,6 +29,8 @@ class CheckInGridRowTitleCell: UICollectionViewCell {
 // MARK: - UI Methods
 extension CheckInGridRowTitleCell {
     func updateUI() {
+        contentButton.titleLabel!.numberOfLines = 2
+
         // prevents the button from flashing and momentarily seeing prior cell text when updating
         UIView.performWithoutAnimation {
             self.contentButton.setTitle(
@@ -35,6 +39,7 @@ extension CheckInGridRowTitleCell {
             )
             self.contentButton.layoutIfNeeded()
         }
+        additionalDetailsLabel.text = additionalDetailsText
     }
 }
 

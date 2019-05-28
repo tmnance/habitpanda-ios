@@ -18,22 +18,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qgC-7b-OJd">
-                        <rect key="frame" x="10" y="0.0" width="280" height="44"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgC-7b-OJd">
+                        <rect key="frame" x="10" y="0.0" width="234.5" height="44"/>
                         <state key="normal" title="Habit name"/>
                         <connections>
                             <action selector="rowNameButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="FhU-nH-ros"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAX-cd-Oz7">
+                        <rect key="frame" x="254.5" y="0.0" width="35.5" height="44"/>
+                        <string key="text">🎯
+5x/wk</string>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="qgC-7b-OJd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FLf-MR-dUZ"/>
+                <constraint firstAttribute="trailing" secondItem="SAX-cd-Oz7" secondAttribute="trailing" constant="10" id="GyF-VV-Bwj"/>
                 <constraint firstAttribute="bottom" secondItem="qgC-7b-OJd" secondAttribute="bottom" id="Kwk-Ob-S8U"/>
+                <constraint firstItem="SAX-cd-Oz7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LzM-oR-hve"/>
+                <constraint firstAttribute="bottom" secondItem="SAX-cd-Oz7" secondAttribute="bottom" id="bpl-es-V8c"/>
                 <constraint firstItem="qgC-7b-OJd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="sT0-Zf-XPm"/>
-                <constraint firstAttribute="trailing" secondItem="qgC-7b-OJd" secondAttribute="trailing" constant="10" id="tpG-cg-wHQ"/>
+                <constraint firstItem="SAX-cd-Oz7" firstAttribute="leading" secondItem="qgC-7b-OJd" secondAttribute="trailing" constant="10" id="tpG-cg-wHQ"/>
             </constraints>
             <connections>
+                <outlet property="additionalDetailsLabel" destination="SAX-cd-Oz7" id="ahg-KV-aXj"/>
                 <outlet property="contentButton" destination="qgC-7b-OJd" id="Clz-y2-7MQ"/>
             </connections>
             <point key="canvasLocation" x="41.600000000000001" y="46.776611694152926"/>
