@@ -225,6 +225,7 @@ No habits found</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="adminBarButton" destination="dD0-za-eLU" id="IPF-pR-h1t"/>
                         <outlet property="collectionView" destination="lP0-5K-fTF" id="VlB-Sa-50v"/>
                         <outlet property="noContentView" destination="jtG-Nm-bkM" id="AAe-cl-HT6"/>
                         <segue destination="dIF-3Q-H7c" kind="show" identifier="goToHabitDetails" id="QEM-QF-izY"/>

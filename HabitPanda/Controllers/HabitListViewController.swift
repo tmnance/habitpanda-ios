@@ -12,6 +12,7 @@ import CoreData
 class HabitListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var noContentView: UIView!
+    @IBOutlet weak var adminBarButton: UIBarButtonItem!
 
     private var viewModel = HabitListViewModel()
 
@@ -38,6 +39,12 @@ class HabitListViewController: UIViewController {
 
         noContentView.isHidden = hasAnyHabits
         collectionView.isHidden = !hasAnyHabits
+
+        // TODO: should create the button programmically if we are in DEBUG mode instead of hiding
+        #if !DEBUG
+            adminBarButton?.isEnabled = false
+            adminBarButton?.tintColor = UIColor.clear
+        #endif
     }
 
     override func viewDidLayoutSubviews() {
