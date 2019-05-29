@@ -168,13 +168,45 @@
                                 <collectionViewLayout key="collectionViewLayout" id="tHt-rH-1aI" customClass="CheckInGridCollectionViewLayout" customModule="HabitPanda" customModuleProvider="target"/>
                                 <cells/>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtG-Nm-bkM" userLabel="No Content View">
+                                <rect key="frame" x="20" y="84" width="335" height="563"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgL-fQ-1FT">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="57.5"/>
+                                        <string key="text">🥺
+No habits found</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the + button above to create your first habit!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPF-NP-FKv">
+                                        <rect key="frame" x="0.0" y="61.5" width="335" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xPF-NP-FKv" secondAttribute="trailing" id="Qjh-lY-tPB"/>
+                                    <constraint firstItem="xPF-NP-FKv" firstAttribute="top" secondItem="LgL-fQ-1FT" secondAttribute="bottom" constant="4" id="fOP-QT-a8X"/>
+                                    <constraint firstItem="LgL-fQ-1FT" firstAttribute="top" secondItem="jtG-Nm-bkM" secondAttribute="top" id="gP1-cv-x0G"/>
+                                    <constraint firstItem="LgL-fQ-1FT" firstAttribute="leading" secondItem="jtG-Nm-bkM" secondAttribute="leading" id="lO0-cX-Qhq"/>
+                                    <constraint firstAttribute="trailing" secondItem="LgL-fQ-1FT" secondAttribute="trailing" id="slh-mK-pSv"/>
+                                    <constraint firstItem="xPF-NP-FKv" firstAttribute="leading" secondItem="jtG-Nm-bkM" secondAttribute="leading" id="uJb-6D-PFu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0xe-lA-JWz" firstAttribute="bottom" secondItem="lP0-5K-fTF" secondAttribute="bottom" id="2Re-Ni-IN8"/>
+                            <constraint firstItem="jtG-Nm-bkM" firstAttribute="leading" secondItem="0xe-lA-JWz" secondAttribute="leading" constant="20" id="HPi-R4-1Kc"/>
                             <constraint firstItem="0xe-lA-JWz" firstAttribute="trailing" secondItem="lP0-5K-fTF" secondAttribute="trailing" id="Ihi-ys-67t"/>
+                            <constraint firstItem="jtG-Nm-bkM" firstAttribute="top" secondItem="0xe-lA-JWz" secondAttribute="top" constant="20" id="de7-Jp-Yiz"/>
+                            <constraint firstItem="0xe-lA-JWz" firstAttribute="trailing" secondItem="jtG-Nm-bkM" secondAttribute="trailing" constant="20" id="isE-Hw-e2S"/>
                             <constraint firstItem="lP0-5K-fTF" firstAttribute="leading" secondItem="0xe-lA-JWz" secondAttribute="leading" id="oWc-rK-NdT"/>
                             <constraint firstItem="lP0-5K-fTF" firstAttribute="top" secondItem="0xe-lA-JWz" secondAttribute="top" id="pZk-fw-fo1"/>
+                            <constraint firstItem="0xe-lA-JWz" firstAttribute="bottom" secondItem="jtG-Nm-bkM" secondAttribute="bottom" constant="20" id="wAL-xX-mUK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0xe-lA-JWz"/>
                     </view>
@@ -194,12 +226,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="lP0-5K-fTF" id="VlB-Sa-50v"/>
+                        <outlet property="noContentView" destination="jtG-Nm-bkM" id="AAe-cl-HT6"/>
                         <segue destination="dIF-3Q-H7c" kind="show" identifier="goToHabitDetails" id="QEM-QF-izY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cFj-FO-5KM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-278" y="112"/>
+            <point key="canvasLocation" x="-279.19999999999999" y="111.99400299850076"/>
         </scene>
         <!--Add/Edit Habit-->
         <scene sceneID="Kbl-OX-QVO">

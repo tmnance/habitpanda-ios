@@ -11,6 +11,7 @@ import CoreData
 
 class HabitListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var noContentView: UIView!
 
     private var viewModel = HabitListViewModel()
 
@@ -32,6 +33,11 @@ class HabitListViewController: UIViewController {
         super.viewWillAppear(animated)
 
         viewModel.reloadData()
+
+        let hasAnyHabits = viewModel.habits.value.count > 0
+
+        noContentView.isHidden = hasAnyHabits
+        collectionView.isHidden = !hasAnyHabits
     }
 
     override func viewDidLayoutSubviews() {
