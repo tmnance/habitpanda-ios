@@ -175,6 +175,7 @@ extension HabitListViewController: UICollectionViewDataSource {
         let habit = getHabit(forIndexPath: indexPath)
 
         cell.backgroundColor = Constants.Colors.listRowOverlayBgColor
+        cell.additionalDetailsLabel.textColor = Constants.Colors.subTextColor
 
         cell.name = habit.name
         cell.additionalDetailsText = "🎯\n\(habit.frequencyPerWeek)x/wk"

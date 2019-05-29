@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOz-MZ-hCQ" userLabel="Content Container">
-                        <rect key="frame" x="0.0" y="44" width="50" height="43"/>
+                        <rect key="frame" x="0.0" y="44" width="50" height="44"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsb-jb-AXN">
-                                <rect key="frame" x="13.5" y="5" width="23.5" height="33.5"/>
+                                <rect key="frame" x="13.5" y="5.5" width="23.5" height="33.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys7-oy-BCy" userLabel="Checkmark Label">
                                         <rect key="frame" x="0.0" y="0.0" width="23.5" height="33.5"/>
@@ -70,7 +70,7 @@
                 <constraint firstAttribute="trailing" secondItem="nxV-Kv-8sL" secondAttribute="trailing" id="Bbh-xe-LK6"/>
                 <constraint firstItem="nxV-Kv-8sL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FrW-60-AC5"/>
                 <constraint firstAttribute="bottom" secondItem="nxV-Kv-8sL" secondAttribute="bottom" id="jKa-PK-h3G"/>
-                <constraint firstAttribute="bottom" secondItem="BOz-MZ-hCQ" secondAttribute="bottom" constant="1" id="pg5-Sm-ASE"/>
+                <constraint firstAttribute="bottom" secondItem="BOz-MZ-hCQ" secondAttribute="bottom" id="pg5-Sm-ASE"/>
                 <constraint firstAttribute="trailing" secondItem="BOz-MZ-hCQ" secondAttribute="trailing" id="rxN-aY-QZT"/>
                 <constraint firstItem="BOz-MZ-hCQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ybA-Pc-Dal"/>
             </constraints>
