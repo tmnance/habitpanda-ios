@@ -20,11 +20,11 @@ class CheckInGridCollectionViewLayout: UICollectionViewLayout {
     var colIndexBoundaryCache: (Int, Int)? = nil
 
     override func prepare() {
-        guard let collectionView = collectionView else {
-            return
-        }
-        if collectionView.numberOfSections == 0 || numberOfColumns == 0 {
-            return
+        guard
+            let collectionView = collectionView,
+            collectionViewHasContent()
+            else {
+                return
         }
 
         if itemAttributes.count != collectionView.numberOfSections {
@@ -65,6 +65,10 @@ class CheckInGridCollectionViewLayout: UICollectionViewLayout {
     }
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        guard collectionViewHasContent() else {
+            return nil
+        }
+
         let colIndexBoundaries = getColIndexBoundaries()
         let rowIndexBoundaries = getRowIndexBoundaries()
 
@@ -186,6 +190,10 @@ extension CheckInGridCollectionViewLayout {
 
 // MARK: - Helpers
 extension CheckInGridCollectionViewLayout {
+    func collectionViewHasContent() -> Bool {
+        return (collectionView?.numberOfSections ?? 0) > 1 && numberOfColumns > 0
+    }
+
     func getItemSize(forRow rowIndex: Int, forCol colIndex: Int) -> CGSize {
         guard let collectionView = collectionView else {
             return .zero
