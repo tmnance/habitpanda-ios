@@ -9,7 +9,7 @@ target 'HabitPanda' do
   pod 'PopupDialog', '~> 1.1'
   pod 'SwipeCellKit'
   pod 'Toast-Swift', '~> 5.0.0'
-
+  pod 'Charts'
 end
 
 
