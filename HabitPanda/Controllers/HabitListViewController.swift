@@ -34,17 +34,6 @@ class HabitListViewController: UIViewController {
         super.viewWillAppear(animated)
 
         viewModel.reloadData()
-
-        let hasAnyHabits = viewModel.habits.value.count > 0
-
-        noContentView.isHidden = hasAnyHabits
-        collectionView.isHidden = !hasAnyHabits
-
-        // TODO: should create the button programmically if we are in DEBUG mode instead of hiding
-        #if !DEBUG
-            adminBarButton?.isEnabled = false
-            adminBarButton?.tintColor = UIColor.clear
-        #endif
     }
 
     override func viewDidLayoutSubviews() {
@@ -63,6 +52,12 @@ class HabitListViewController: UIViewController {
 // MARK: - Setup Methods
 extension HabitListViewController {
     func setupStylesAndBindings() {
+        // TODO: should create the button programmically if we are in DEBUG mode instead of hiding
+        #if !DEBUG
+            adminBarButton?.isEnabled = false
+            adminBarButton?.tintColor = UIColor.clear
+        #endif
+
         collectionView.dataSource = self
         collectionView.delegate = self
 
@@ -80,19 +75,35 @@ extension HabitListViewController {
         )
 
         viewModel.habits.bind { [unowned self] (_) in
-            self.updateHabits()
+            self.updateHabitsListDisplay()
         }
 
         viewModel.currentDate.bind { [unowned self] (_) in
             self.updateDateRange()
         }
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
+    }
+
+    @objc func willEnterForeground() {
+        viewModel.reloadData()
     }
 }
 
 
 // MARK: - Data Update Callback Methods
 extension HabitListViewController {
-    func updateHabits() {
+    func updateHabitsListDisplay() {
+        let hasAnyHabits = viewModel.habits.value.count > 0
+
+        noContentView.isHidden = hasAnyHabits
+        collectionView.isHidden = !hasAnyHabits
+
         collectionView.reloadData()
         if let flowLayout = collectionView.collectionViewLayout as? CheckInGridCollectionViewLayout {
             // unsure why but this appears to fix a bug with the sticky header positioning when
