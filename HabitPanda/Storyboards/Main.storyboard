@@ -975,35 +975,8 @@ No habits found</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWk-Hf-ror" userLabel="Frequency Container">
-                                <rect key="frame" x="20" y="20" width="335" height="69"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target Frequency 🎯" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMR-fa-JDW">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 times / week" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLZ-Qq-SB9">
-                                        <rect key="frame" x="0.0" y="37" width="335" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="GMR-fa-JDW" secondAttribute="trailing" id="GSE-9f-6d0"/>
-                                    <constraint firstAttribute="trailing" secondItem="CLZ-Qq-SB9" secondAttribute="trailing" id="U9P-gE-un8"/>
-                                    <constraint firstItem="CLZ-Qq-SB9" firstAttribute="leading" secondItem="zWk-Hf-ror" secondAttribute="leading" id="aPW-vd-TIn"/>
-                                    <constraint firstItem="GMR-fa-JDW" firstAttribute="leading" secondItem="zWk-Hf-ror" secondAttribute="leading" id="bNz-Im-BAJ"/>
-                                    <constraint firstItem="CLZ-Qq-SB9" firstAttribute="top" secondItem="GMR-fa-JDW" secondAttribute="bottom" constant="8" id="ldj-OX-K04"/>
-                                    <constraint firstAttribute="bottom" secondItem="CLZ-Qq-SB9" secondAttribute="bottom" constant="8" id="lur-VL-O1G"/>
-                                    <constraint firstItem="GMR-fa-JDW" firstAttribute="top" secondItem="zWk-Hf-ror" secondAttribute="top" id="t5N-6X-3gl"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oa2-Dx-AiQ" customClass="DesignableButton" customModule="HabitPanda" customModuleProvider="target">
-                                <rect key="frame" x="20" y="129" width="335" height="46"/>
+                                <rect key="frame" x="20" y="330" width="335" height="46"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="ZnJ-lM-E0q"/>
@@ -1027,20 +1000,44 @@ No habits found</string>
                                     <action selector="deleteHabitButtonPressed:" destination="YLs-Y3-bmv" eventType="touchUpInside" id="o0D-Gv-XcF"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ctg-iG-vqs" userLabel="Chart View Container">
+                                <rect key="frame" x="0.0" y="40" width="375" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7-Day Rolling Average" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMR-fa-JDW">
+                                        <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5E-uS-K8W" customClass="LineChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="34" width="375" height="216"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="2Vx-kn-xnF"/>
+                                    <constraint firstItem="r5E-uS-K8W" firstAttribute="leading" secondItem="Ctg-iG-vqs" secondAttribute="leading" id="5Ry-TT-GTa"/>
+                                    <constraint firstAttribute="bottom" secondItem="r5E-uS-K8W" secondAttribute="bottom" id="UZv-aO-A9u"/>
+                                    <constraint firstAttribute="trailing" secondItem="r5E-uS-K8W" secondAttribute="trailing" id="eWX-Mm-GrK"/>
+                                    <constraint firstItem="GMR-fa-JDW" firstAttribute="top" secondItem="Ctg-iG-vqs" secondAttribute="top" id="i9A-r9-lTJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="GMR-fa-JDW" secondAttribute="trailing" constant="20" id="qMg-oN-TzJ"/>
+                                    <constraint firstItem="GMR-fa-JDW" firstAttribute="leading" secondItem="Ctg-iG-vqs" secondAttribute="leading" constant="20" id="vvQ-7d-ra6"/>
+                                    <constraint firstItem="r5E-uS-K8W" firstAttribute="top" secondItem="GMR-fa-JDW" secondAttribute="bottom" constant="10" id="zaM-c3-aJq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="oa2-Dx-AiQ" firstAttribute="top" secondItem="zWk-Hf-ror" secondAttribute="bottom" constant="40" id="F2n-0U-Eyq"/>
+                            <constraint firstItem="Ctg-iG-vqs" firstAttribute="top" secondItem="2Ls-MC-kcp" secondAttribute="top" constant="20" id="5LP-Ux-ojf"/>
+                            <constraint firstItem="oa2-Dx-AiQ" firstAttribute="top" secondItem="Ctg-iG-vqs" secondAttribute="bottom" constant="40" id="F2n-0U-Eyq"/>
                             <constraint firstItem="2Ls-MC-kcp" firstAttribute="trailing" secondItem="oa2-Dx-AiQ" secondAttribute="trailing" constant="20" id="F4d-an-6ot"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="oa2-Dx-AiQ" secondAttribute="bottom" priority="200" constant="20" id="G8t-kg-1KV"/>
-                            <constraint firstItem="zWk-Hf-ror" firstAttribute="top" secondItem="6WE-R1-M0D" secondAttribute="top" constant="20" id="XAG-aX-d9k"/>
-                            <constraint firstItem="2Ls-MC-kcp" firstAttribute="trailing" secondItem="zWk-Hf-ror" secondAttribute="trailing" constant="20" id="ijK-Ke-wnl"/>
+                            <constraint firstItem="2Ls-MC-kcp" firstAttribute="trailing" secondItem="Ctg-iG-vqs" secondAttribute="trailing" id="VNp-Q9-LkQ"/>
                             <constraint firstItem="oa2-Dx-AiQ" firstAttribute="leading" secondItem="2Ls-MC-kcp" secondAttribute="leading" constant="20" id="k5L-1B-7Uu"/>
-                            <constraint firstItem="zWk-Hf-ror" firstAttribute="leading" secondItem="2Ls-MC-kcp" secondAttribute="leading" constant="20" id="rAR-ag-Rdl"/>
+                            <constraint firstItem="Ctg-iG-vqs" firstAttribute="leading" secondItem="2Ls-MC-kcp" secondAttribute="leading" id="zGd-Uf-DhA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Ls-MC-kcp"/>
                     </view>
                     <connections>
-                        <outlet property="frequencyLabel" destination="CLZ-Qq-SB9" id="R5n-9n-9lk"/>
+                        <outlet property="chartView" destination="r5E-uS-K8W" id="8EO-sA-hNd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kng-wp-nPM" userLabel="First Responder" sceneMemberID="firstResponder"/>

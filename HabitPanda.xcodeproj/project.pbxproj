@@ -50,6 +50,7 @@
 		1CBBEA08228F5F9E0053F534 /* CheckInListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBEA07228F5F9E0053F534 /* CheckInListViewModel.swift */; };
 		1CC5A3B2228B36D400E5F6D8 /* HabitAddCheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5A3B1228B36D400E5F6D8 /* HabitAddCheckInViewController.swift */; };
 		1CC5A3B4228B4CD400E5F6D8 /* DateDayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */; };
+		1CD554B222A07B3C004440B1 /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD554B122A07B3C004440B1 /* DateValueFormatter.swift */; };
 		1CDB388F22624BBE00C86277 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB388E22624BBE00C86277 /* Habit.swift */; };
 		1CF697BD229C784200766011 /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF697BC229C784200766011 /* ToastHelper.swift */; };
 		1CF697BF229DC30800766011 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF697BE229DC30800766011 /* DateHelper.swift */; };
@@ -103,6 +104,7 @@
 		1CBBEA07228F5F9E0053F534 /* CheckInListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInListViewModel.swift; sourceTree = "<group>"; };
 		1CC5A3B1228B36D400E5F6D8 /* HabitAddCheckInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitAddCheckInViewController.swift; sourceTree = "<group>"; };
 		1CC5A3B3228B4CD400E5F6D8 /* DateDayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDayPicker.swift; sourceTree = "<group>"; };
+		1CD554B122A07B3C004440B1 /* DateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
 		1CDB388E22624BBE00C86277 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		1CF697BC229C784200766011 /* ToastHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastHelper.swift; sourceTree = "<group>"; };
 		1CF697BE229DC30800766011 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				1C90EB98226B87AE007065D1 /* Extensions */,
+				1CD554B022A07B20004440B1 /* Formatters */,
 				1CAC679E227268A600B41338 /* Helpers */,
 				1C12735D22610DCA0058D942 /* Info.plist */,
 				1C12735122610DC80058D942 /* AppDelegate.swift */,
@@ -288,6 +291,14 @@
 				1CF697BC229C784200766011 /* ToastHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1CD554B022A07B20004440B1 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				1CD554B122A07B3C004440B1 /* DateValueFormatter.swift */,
+			);
+			path = Formatters;
 			sourceTree = "<group>";
 		};
 		A5BEBC754349D0D3246BBB30 /* Frameworks */ = {
@@ -465,6 +476,7 @@
 				1C3BD570229B1398004AAA2B /* CheckInGridRowTitleCell.swift in Sources */,
 				1C47C9FD227F211700985F1C /* ReminderDetailsViewModel.swift in Sources */,
 				1CAC6793226FDC7900B41338 /* Date+Rounding.swift in Sources */,
+				1CD554B222A07B3C004440B1 /* DateValueFormatter.swift in Sources */,
 				1CAC67A42273869900B41338 /* UIView+Border.swift in Sources */,
 				1CBBABD32279297500DB8F8E /* Constants.swift in Sources */,
 				1C977B4E2295DECA006F3E6C /* RoutingService.swift in Sources */,

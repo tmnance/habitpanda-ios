@@ -33,8 +33,9 @@ public class CheckIn: NSManagedObject {
     public static func getAll(
         sortedBy sortKey: String = "checkInDate",
         forHabitUUIDs habitUUIDs: [UUID]? = nil,
-        afterDate: Date? = nil,
-        beforeDate: Date? = nil
+        fromStartDate startDate: Date? = nil,
+        toEndDate endDate: Date? = nil,
+        withLimit limit: Int? = nil
     ) -> [CheckIn] {
         let context = (UIApplication.shared.delegate as! AppDelegate)
             .persistentContainer.viewContext
@@ -48,17 +49,21 @@ public class CheckIn: NSManagedObject {
             predicates.append(NSPredicate(format: "habit.uuid IN %@", uuidArgs))
         }
 
-        if let afterDate = afterDate {
-            predicates.append(NSPredicate(format: "checkInDate >= %@", afterDate as NSDate))
+        if let startDate = startDate {
+            predicates.append(NSPredicate(format: "checkInDate >= %@", startDate as NSDate))
         }
-        if let beforeDate = beforeDate {
-            predicates.append(NSPredicate(format: "checkInDate <= %@", beforeDate as NSDate))
+        if let endDate = endDate {
+            predicates.append(NSPredicate(format: "checkInDate <= %@", endDate as NSDate))
         }
 
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         request.sortDescriptors = [
             NSSortDescriptor(key: sortKey, ascending: true)
         ]
+
+        if let limit = limit {
+            request.fetchLimit = limit
+        }
 
         do {
             checkIns = try context.fetch(request)

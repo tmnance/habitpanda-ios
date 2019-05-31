@@ -177,7 +177,9 @@ extension HabitDetailsViewController {
 
                 ToastHelper.makeToast("Check-in added", state: .entityCreated)
 
-                if self.currentTabVC == self.checkInsTabVC {
+                if self.currentTabVC == self.summaryTabVC {
+                    self.summaryTabVC?.updateChartData()
+                } else if self.currentTabVC == self.checkInsTabVC {
                     self.checkInsTabVC?.reloadData()
                 }
             }

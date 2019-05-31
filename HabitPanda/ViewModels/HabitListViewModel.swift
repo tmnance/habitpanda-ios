@@ -37,7 +37,7 @@ extension HabitListViewModel {
         loadData()
     }
 
-    private func loadData(isTest: Bool? = false) {
+    private func loadData() {
         if currentDate.value != Date().stripTime() {
             // only update when changed
             currentDate.value = Date().stripTime()
@@ -45,12 +45,12 @@ extension HabitListViewModel {
 
         BoxHelper.processBeforeListenerInvocation {
             habits.value = Habit.getAll(sortedBy: "createdAt")
-            let allCheckIns = CheckIn.getAll(
+            let checkIns = CheckIn.getAll(
                 forHabitUUIDs: habits.value.map { $0.uuid! },
-                afterDate: startDate
+                fromStartDate: startDate
             )
 
-            buildHabitCheckInGridOffsetMap(forCheckIns: allCheckIns)
+            buildHabitCheckInGridOffsetMap(forCheckIns: checkIns)
             habits.value.forEach{ (habit) in
                 let dateOffset = Calendar.current.dateComponents(
                     [.day],
