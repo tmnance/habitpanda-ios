@@ -13,7 +13,6 @@ class HabitSummaryViewController: UIViewController {
     @IBOutlet weak var chartView: LineChartView!
 
     var delegateViewModel = HabitDetailsViewModel()
-    var numbers: [Double] = []
     let numDates = 14
 
     override func viewDidLoad() {
@@ -87,15 +86,15 @@ extension HabitSummaryViewController {
         xAxis.granularity = 1.0
     }
 
-    func updateChartSettings(withStartDate startDate: Date) {
+    func updateChartSettings(withStartDate startDate: Date, andChartData chartData: [Double]) {
         let targetFrequencyPerWeek = Double(delegateViewModel.frequencyPerWeek.value)
         let minY = max(
             0,
-            min(targetFrequencyPerWeek, numbers.min()!) - 1
+            min(targetFrequencyPerWeek, chartData.min()!) - 1
         )
         let maxY = min(
             7,
-            max(numbers.max()!, targetFrequencyPerWeek) + 1
+            max(chartData.max()!, targetFrequencyPerWeek) + 1
         )
 
         let targetLine = ChartLimitLine(
@@ -117,8 +116,8 @@ extension HabitSummaryViewController {
 
         let xAxis = chartView.xAxis
         xAxis.valueFormatter = DateValueFormatter(date: startDate)
-        xAxis.axisMinimum = Double(numbers.count - 14) - 0.5
-        xAxis.axisMaximum = Double(numbers.count - 1) + 0.5
+        xAxis.axisMinimum = Double(chartData.count - 14) - 0.5
+        xAxis.axisMaximum = Double(chartData.count - 1) + 0.5
     }
 
     func getLineChartDataSet(entries: [ChartDataEntry]) -> LineChartDataSet {
@@ -165,13 +164,15 @@ extension HabitSummaryViewController {
 
         // this is the Array that will eventually be displayed on the chart.
         var lineChartEntry = [ChartDataEntry]()
-        numbers = delegateViewModel.getCheckInFrequencyRollingAverageData(fromStartDate: startDate)
-        updateChartSettings(withStartDate: startDate)
+        let chartData = delegateViewModel.getCheckInFrequencyRollingAverageData(
+            fromStartDate: startDate
+        )
+        updateChartSettings(withStartDate: startDate, andChartData: chartData)
 
         //here is the for loop
-        for startDateOffset in max(firstCheckinOffset, 0)..<numbers.count {
+        for startDateOffset in max(firstCheckinOffset, 0)..<chartData.count {
             // here we set the X and Y status in a data chart entry
-            let value = ChartDataEntry(x: Double(startDateOffset), y: numbers[startDateOffset])
+            let value = ChartDataEntry(x: Double(startDateOffset), y: chartData[startDateOffset])
             // here we add it to the data set
             lineChartEntry.append(value)
         }
