@@ -116,30 +116,37 @@ extension HabitSummaryViewController {
 
         let xAxis = chartView.xAxis
         xAxis.valueFormatter = DateValueFormatter(date: startDate)
-        xAxis.axisMinimum = Double(chartData.count - 14) - 0.5
+        xAxis.axisMinimum = Double(chartData.count - numDates) - 0.5
         xAxis.axisMaximum = Double(chartData.count - 1) + 0.5
     }
 
-    func getLineChartDataSet(entries: [ChartDataEntry]) -> LineChartDataSet {
-        let line = LineChartDataSet(entries: entries, label: "Check-in 7-day rolling average")
+    func getLineChartDataSet(
+        fromChartData chartData: [Double],
+        withLabel label: String
+    ) -> LineChartDataSet {
+        var entries = [ChartDataEntry]()
+
+        for startDateOffset in 0..<chartData.count {
+            let value = ChartDataEntry(x: Double(startDateOffset), y: chartData[startDateOffset])
+            entries.append(value)
+        }
+
+        return LineChartDataSet(entries: entries, label: label)
+    }
+
+    func setupLineChartDataSetStyles(_ line: LineChartDataSet) {
         line.colors = [Constants.Colors.tintColor]
         line.lineWidth = 4
         line.drawValuesEnabled = false
         line.drawCirclesEnabled = true
         line.circleColors = [Constants.Colors.tintColor]
         line.circleRadius = 2
-
-        return line
     }
 }
 
 
 // MARK: - UI Update Methods
 extension HabitSummaryViewController {
-    func updateUI() {
-//        frequencyLabel?.text = delegateViewModel.getFrequencyPerWeekDisplayText()
-    }
-
     func updateChartData() {
         guard let firstCheckInDate = delegateViewModel.getFirstCheckIn()?.createdAt else {
             // no checkins found
@@ -154,36 +161,23 @@ extension HabitSummaryViewController {
                 byAdding: .day,
                 value: -1 * (numDates - 1),
                 to: currentDate
-                )!
-            ).stripTime()
-        let firstCheckinOffset = Calendar.current.dateComponents(
-            [.day],
-            from: startDate,
-            to: firstCheckInDate
-            ).day ?? 0
+            )!
+        ).stripTime()
 
-        // this is the Array that will eventually be displayed on the chart.
-        var lineChartEntry = [ChartDataEntry]()
         let chartData = delegateViewModel.getCheckInFrequencyRollingAverageData(
             fromStartDate: startDate
         )
         updateChartSettings(withStartDate: startDate, andChartData: chartData)
 
-        //here is the for loop
-        for startDateOffset in max(firstCheckinOffset, 0)..<chartData.count {
-            // here we set the X and Y status in a data chart entry
-            let value = ChartDataEntry(x: Double(startDateOffset), y: chartData[startDateOffset])
-            // here we add it to the data set
-            lineChartEntry.append(value)
-        }
+        let line1 = getLineChartDataSet(
+            fromChartData: chartData,
+            withLabel: "Check-in 7-day rolling average"
+        )
+        setupLineChartDataSetStyles(line1)
 
-        let line1 = getLineChartDataSet(entries: lineChartEntry)
-
-        // This is the object that will be added to the chart
         let data = LineChartData()
         data.addDataSet(line1)
 
-        // finally - it adds the chart data to the chart and causes an update
         chartView.data = data
     }
 }

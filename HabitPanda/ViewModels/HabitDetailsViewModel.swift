@@ -139,16 +139,15 @@ extension HabitDetailsViewModel {
 
     func getCheckInFrequencyRollingAverageData(
         fromStartDate startDate: Date? = nil,
-        toEndDate endDate: Date? = nil
+        toEndDate endDate: Date? = nil,
+        withDayWindow dayWindow: Int = 7
     ) -> [Double] {
         guard let selectedHabit = selectedHabit else {
             return []
         }
 
-        // window is one week
-        let dayWindow = 7
-        let startDate = startDate ?? selectedHabit.createdAt!
-        let endDate = endDate ?? Date().stripTime()
+        let startDate = (startDate ?? selectedHabit.createdAt!).stripTime()
+        let endDate = (endDate ?? Date()).stripTime()
         let intervalDayCount = (Calendar.current.dateComponents(
             [.day],
             from: startDate,
