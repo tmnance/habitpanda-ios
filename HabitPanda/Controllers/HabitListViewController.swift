@@ -12,17 +12,12 @@ import CoreData
 class HabitListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var noContentView: UIView!
-    @IBOutlet weak var adminBarButton: UIBarButtonItem!
 
     private var viewModel = HabitListViewModel()
 
     var dateLabels: [String] = []
     var isInitiallyScrolledToToday = false
     var dateListSaturdayOffset = 0
-
-    let checkInGridHeaderCellIdentifier = "checkInGridHeaderCell"
-    let checkInGridRowTitleCellIdentifier = "checkInGridRowTitleCell"
-    let checkInGridContentCellIdentifier = "checkInGridContentCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,26 +47,20 @@ class HabitListViewController: UIViewController {
 // MARK: - Setup Methods
 extension HabitListViewController {
     func setupStylesAndBindings() {
-        // TODO: should create the button programmically if we are in DEBUG mode instead of hiding
-        #if !DEBUG
-            adminBarButton?.isEnabled = false
-            adminBarButton?.tintColor = UIColor.clear
-        #endif
-
         collectionView.dataSource = self
         collectionView.delegate = self
 
         collectionView.register(
-            UINib(nibName: "CheckInGridHeaderCell", bundle: nil),
-            forCellWithReuseIdentifier: checkInGridHeaderCellIdentifier
+            UINib(nibName: "\(CheckInGridHeaderCell.self)", bundle: nil),
+            forCellWithReuseIdentifier: "\(CheckInGridHeaderCell.self)"
         )
         collectionView.register(
-            UINib(nibName: "CheckInGridRowTitleCell", bundle: nil),
-            forCellWithReuseIdentifier: checkInGridRowTitleCellIdentifier
+            UINib(nibName: "\(CheckInGridRowTitleCell.self)", bundle: nil),
+            forCellWithReuseIdentifier: "\(CheckInGridRowTitleCell.self)"
         )
         collectionView.register(
-            UINib(nibName: "CheckInGridContentCell", bundle: nil),
-            forCellWithReuseIdentifier: checkInGridContentCellIdentifier
+            UINib(nibName: "\(CheckInGridContentCell.self)", bundle: nil),
+            forCellWithReuseIdentifier: "\(CheckInGridContentCell.self)"
         )
 
         viewModel.habits.bind { [unowned self] (_) in
@@ -160,7 +149,8 @@ extension HabitListViewController: UICollectionViewDataSource {
 
     func collectionViewHeader(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: checkInGridHeaderCellIdentifier,
+//            withReuseIdentifier: "\(CheckInGridHeaderCell.self)",
+            withReuseIdentifier: "\(CheckInGridHeaderCell.self)",
             for: indexPath
         ) as! CheckInGridHeaderCell
 
@@ -179,7 +169,7 @@ extension HabitListViewController: UICollectionViewDataSource {
 
     func collectionViewRowTitle(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: checkInGridRowTitleCellIdentifier,
+            withReuseIdentifier: "\(CheckInGridRowTitleCell.self)",
             for: indexPath
         ) as! CheckInGridRowTitleCell
 
@@ -201,7 +191,7 @@ extension HabitListViewController: UICollectionViewDataSource {
 
     func collectionViewContent(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: checkInGridContentCellIdentifier,
+            withReuseIdentifier: "\(CheckInGridContentCell.self)",
             for: indexPath
         ) as! CheckInGridContentCell
 

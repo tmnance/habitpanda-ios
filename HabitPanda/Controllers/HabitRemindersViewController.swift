@@ -49,8 +49,8 @@ extension HabitRemindersViewController {
         remindersTableView.isScrollEnabled = false
 
         remindersTableView.register(
-            UINib(nibName: "EditableTimeCell", bundle: nil),
-            forCellReuseIdentifier: "editableTimeCell"
+            UINib(nibName: "\(EditableTimeCell.self)", bundle: nil),
+            forCellReuseIdentifier: "\(EditableTimeCell.self)"
         )
 
         viewModel.reminders.bind { [unowned self] (_) in
@@ -79,7 +79,7 @@ extension HabitRemindersViewController: UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: "editableTimeCell",
+            withIdentifier: "\(EditableTimeCell.self)",
             for: indexPath
             ) as! EditableTimeCell
         let reminder = viewModel.reminders.value[indexPath.row]

@@ -31,6 +31,7 @@ class AdminViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+
     @IBAction func adminButtonPressed(_ sender: UIButton) {
         switch sender.tag {
         case 0:

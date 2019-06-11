@@ -24,6 +24,7 @@
 		1C47C9F9227DEDF800985F1C /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9F8227DEDF800985F1C /* DayOfWeek.swift */; };
 		1C47C9FB227E4B8E00985F1C /* ReminderAddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */; };
 		1C47C9FD227F211700985F1C /* ReminderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9FC227F211700985F1C /* ReminderDetailsViewModel.swift */; };
+		1C5F464522B037D1003EBABE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5F464422B037D1003EBABE /* AboutViewController.swift */; };
 		1C90EB90226A8CDF007065D1 /* EditableTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB8F226A8CDF007065D1 /* EditableTimeCell.swift */; };
 		1C90EB92226A8E6A007065D1 /* EditableTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C90EB91226A8E6A007065D1 /* EditableTimeCell.xib */; };
 		1C90EB94226A92A7007065D1 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB93226A92A7007065D1 /* Reminder.swift */; };
@@ -78,6 +79,7 @@
 		1C47C9F8227DEDF800985F1C /* DayOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderAddEditViewController.swift; sourceTree = "<group>"; };
 		1C47C9FC227F211700985F1C /* ReminderDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDetailsViewModel.swift; sourceTree = "<group>"; };
+		1C5F464422B037D1003EBABE /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		1C90EB8F226A8CDF007065D1 /* EditableTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTimeCell.swift; sourceTree = "<group>"; };
 		1C90EB91226A8E6A007065D1 /* EditableTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditableTimeCell.xib; sourceTree = "<group>"; };
 		1C90EB93226A92A7007065D1 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		1C8B27E722621C55005DDE03 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1C5F464422B037D1003EBABE /* AboutViewController.swift */,
 				1CBBABDD227CC7D200DB8F8E /* AdminViewController.swift */,
 				1CC5A3B1228B36D400E5F6D8 /* HabitAddCheckInViewController.swift */,
 				1CBBABD5227A4F4300DB8F8E /* HabitAddEditViewController.swift */,
@@ -484,6 +487,7 @@
 				1C3BD56F229B1398004AAA2B /* CheckInGridContentCell.swift in Sources */,
 				1C0315C42285025A00B1E6F4 /* ReminderNotificationService.swift in Sources */,
 				1C3BD56B229B1398004AAA2B /* CheckInGridHeaderCell.swift in Sources */,
+				1C5F464522B037D1003EBABE /* AboutViewController.swift in Sources */,
 				1C47C9FB227E4B8E00985F1C /* ReminderAddEditViewController.swift in Sources */,
 				1CC5A3B2228B36D400E5F6D8 /* HabitAddCheckInViewController.swift in Sources */,
 				1CAC67A02272694800B41338 /* TimeOfDay.swift in Sources */,
