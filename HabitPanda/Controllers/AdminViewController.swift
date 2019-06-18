@@ -53,6 +53,8 @@ class AdminViewController: UIViewController {
         case 4:
             ReminderNotificationService.sendTestNotification()
             ToastHelper.makeToast("Test notification sent", state: .info)
+        case 5:
+            seedTestData()
         default:
             print("Unrecognized")
         }
@@ -186,5 +188,184 @@ extension AdminViewController {
                 return infoDate
             }
         return Date()
+    }
+}
+
+
+extension AdminViewController {
+    func seedTestData() {
+        let alert = UIAlertController(
+            title: "Confirm Seed Data",
+            message: "Warning: seeding test data will clear all existing data",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Confirm", style: .destructive) { (action) in
+            self.createSeedTestHabits()
+            ReminderNotificationService.refreshNotificationsForAllReminders()
+            ToastHelper.makeToast("Test data seeded", state: .info)
+        })
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alert, animated: true, completion: nil)
+    }
+
+    func createSeedTestHabits() {
+        deleteAllHabits()
+
+        let seedHabits:[[String:Any]] = [
+            [
+                "name": "Call mom",
+                "frequencyPerWeek": 1,
+                //                 98765432109876543210
+                "checkInHistory": "    X      X      X "
+            ],
+            [
+                "name": "Go for a morning walk",
+                "frequencyPerWeek": 5,
+                //                 98765432109876543210
+                "checkInHistory": " XXX X  X X X X X XX"
+            ],
+            [
+                "name": "Have a no-TV night",
+                "frequencyPerWeek": 2,
+                //                 98765432109876543210
+                "checkInHistory": " X  X      X      X "
+            ],
+            [
+                "name": "Make the bed every morning",
+                "frequencyPerWeek": 7,
+                //                 98765432109876543210
+                "checkInHistory": "XXXXXXXXXXXXXXXXXXXX",
+                "reminders": [
+                    [
+                        "hour": 8,
+                        "minute": 30,
+                        //                SMTWTFS
+                        "frequencyDays": "X     X",
+                    ],
+                    [
+                        "hour": 7,
+                        "minute": 30,
+                        //                SMTWTFS
+                        "frequencyDays": " XXXXX ",
+                    ],
+                ],
+            ],
+            [
+                "name": "Read for fun or growth 20 minutes",
+                "frequencyPerWeek": 5,
+                //                 98765432109876543210
+                "checkInHistory": " X X X X XXXX X XX X"
+            ],
+            [
+                "name": "Take daily vitamins",
+                "frequencyPerWeek": 7,
+                //                 98765432109876543210
+                "checkInHistory": "XX XXXXXXXXXX XXXXXX"
+            ],
+        ]
+
+        let createdAtDate = Calendar.current.date(
+            byAdding: .day,
+            value: -20,
+            to: Date()
+        )!
+
+        seedHabits.enumerated().forEach{ (i, seedHabit) in
+            let newHabit = createSeedHabit(
+                withName: seedHabit["name"] as? String ?? "",
+                withFrequencyPerWeek: seedHabit["frequencyPerWeek"] as? Int ?? 1,
+                forDate: Calendar.current.date(
+                    byAdding: .second,
+                    value: i,
+                    to: createdAtDate
+                )!
+            )
+
+            Array(seedHabit["checkInHistory"] as? String ?? "").reversed().enumerated()
+                .forEach{ (dayOffset, checkInState) in
+                    if checkInState != " " {
+                        let checkInDate = Calendar.current.date(
+                            byAdding: .day,
+                            value: -1 * dayOffset,
+                            to: Date()
+                        )!
+                        let _ = createSeedCheckIn(forHabit: newHabit, forDate: checkInDate)
+                    }
+                }
+
+            if let seedReminders = seedHabit["reminders"] as? [[String:Any]] {
+                seedReminders.forEach{ (seedReminder) in
+                    let _ = createSeedReminder(
+                        forHabit: newHabit,
+                        withHour: seedReminder["hour"] as? Int ?? 0,
+                        withMinute: seedReminder["minute"] as? Int ?? 0,
+                        withFrequencyDays: seedReminder["frequencyDays"] as? String ?? ""
+                    )
+                }
+            }
+        }
+
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context, \(error)")
+        }
+    }
+
+    func createSeedHabit(
+        withName name: String,
+        withFrequencyPerWeek frequencyPerWeek: Int,
+        forDate date: Date
+    ) -> Habit {
+        let habitToSave = Habit(context: context)
+        habitToSave.createdAt = date
+        habitToSave.uuid = UUID()
+        habitToSave.name = name
+        habitToSave.frequencyPerWeek = Int32(frequencyPerWeek)
+
+        return habitToSave
+    }
+
+    func createSeedCheckIn(forHabit habit: Habit, forDate date: Date) -> CheckIn {
+        let checkInToSave = CheckIn(context: context)
+        checkInToSave.createdAt = date
+        checkInToSave.uuid = UUID()
+        checkInToSave.habit = habit
+        checkInToSave.checkInDate = date.stripTime()
+        checkInToSave.isSuccess = true
+
+        return checkInToSave
+    }
+
+    func createSeedReminder(
+        forHabit habit: Habit,
+        withHour hour: Int,
+        withMinute minute: Int,
+        withFrequencyDays frequencyDays: String
+        ) -> Reminder {
+        let reminderToSave = Reminder(context: context)
+        reminderToSave.createdAt = Date()
+        reminderToSave.uuid = UUID()
+        reminderToSave.habit = habit
+
+        reminderToSave.hour = Int32(hour)
+        reminderToSave.minute = Int32(minute)
+        reminderToSave.frequencyDays =
+            Array(frequencyDays).enumerated().filter{ $0.1 != " " }.map{ $0.0 as NSNumber }
+
+        return reminderToSave
+    }
+
+    func deleteAllHabits() {
+        Habit.getAll().forEach({ context.delete($0) })
+
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context, \(error)")
+        }
     }
 }

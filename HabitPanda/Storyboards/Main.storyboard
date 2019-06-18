@@ -75,7 +75,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kl4-aY-p9Z" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="314.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="356.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZA-A7-2II" userLabel="Report View">
                                                 <rect key="frame" x="20" y="20" width="335" height="52.5"/>
@@ -107,7 +107,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Osh-nF-aDO" userLabel="Buttons">
-                                                <rect key="frame" x="20" y="92.5" width="335" height="202"/>
+                                                <rect key="frame" x="20" y="92.5" width="335" height="244"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mg-Zm-CcH">
                                                         <rect key="frame" x="0.0" y="0.0" width="238" height="34"/>
@@ -149,21 +149,32 @@
                                                             <action selector="adminButtonPressed:" destination="ap1-1x-sUg" eventType="touchUpInside" id="0jh-hV-ugL"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeo-aC-E2L" userLabel="Seed test data">
+                                                        <rect key="frame" x="0.0" y="210" width="116" height="34"/>
+                                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                                        <state key="normal" title="Seed test data"/>
+                                                        <connections>
+                                                            <action selector="adminButtonPressed:" destination="ap1-1x-sUg" eventType="touchUpInside" id="Yww-52-xBd"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="Isj-Kq-2bB" firstAttribute="leading" secondItem="Osh-nF-aDO" secondAttribute="leading" id="1dt-22-etJ"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8mg-Zm-CcH" secondAttribute="trailing" id="3Gz-8p-Ud1"/>
                                                     <constraint firstItem="dRF-CL-XWA" firstAttribute="top" secondItem="8mg-Zm-CcH" secondAttribute="bottom" constant="8" id="3ZZ-hi-jMm"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mtw-Zl-Rq1" secondAttribute="trailing" id="62p-7d-atw"/>
+                                                    <constraint firstItem="xeo-aC-E2L" firstAttribute="leading" secondItem="Osh-nF-aDO" secondAttribute="leading" id="E2B-ju-yfl"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Isj-Kq-2bB" secondAttribute="trailing" id="HLp-V9-2oX"/>
                                                     <constraint firstItem="8mg-Zm-CcH" firstAttribute="leading" secondItem="Osh-nF-aDO" secondAttribute="leading" id="KW0-v5-9R9"/>
                                                     <constraint firstItem="3gT-35-bbp" firstAttribute="top" secondItem="dRF-CL-XWA" secondAttribute="bottom" constant="8" id="Kfs-aX-9Op"/>
                                                     <constraint firstItem="mtw-Zl-Rq1" firstAttribute="leading" secondItem="Osh-nF-aDO" secondAttribute="leading" id="PXi-39-SQy"/>
                                                     <constraint firstItem="8mg-Zm-CcH" firstAttribute="top" secondItem="Osh-nF-aDO" secondAttribute="top" id="Q3C-Ye-fCf"/>
                                                     <constraint firstItem="mtw-Zl-Rq1" firstAttribute="top" secondItem="Isj-Kq-2bB" secondAttribute="bottom" constant="8" id="VRp-th-bdB"/>
-                                                    <constraint firstAttribute="bottom" secondItem="mtw-Zl-Rq1" secondAttribute="bottom" id="hrM-E8-lbq"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xeo-aC-E2L" secondAttribute="trailing" id="eAx-Fv-tDS"/>
+                                                    <constraint firstItem="xeo-aC-E2L" firstAttribute="top" secondItem="mtw-Zl-Rq1" secondAttribute="bottom" constant="8" id="hrM-E8-lbq"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dRF-CL-XWA" secondAttribute="trailing" id="iGm-za-SNo"/>
                                                     <constraint firstItem="dRF-CL-XWA" firstAttribute="leading" secondItem="Osh-nF-aDO" secondAttribute="leading" id="joB-1U-SQb"/>
+                                                    <constraint firstAttribute="bottom" secondItem="xeo-aC-E2L" secondAttribute="bottom" id="l3P-xh-HQJ"/>
                                                     <constraint firstItem="Isj-Kq-2bB" firstAttribute="top" secondItem="3gT-35-bbp" secondAttribute="bottom" constant="8" id="mxk-OZ-CkN"/>
                                                     <constraint firstItem="3gT-35-bbp" firstAttribute="leading" secondItem="Osh-nF-aDO" secondAttribute="leading" id="qmw-Na-KLh"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3gT-35-bbp" secondAttribute="trailing" id="zT6-mn-pEj"/>
