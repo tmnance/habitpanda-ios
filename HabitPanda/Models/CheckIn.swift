@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-@objc(CheckIn)
+//@objc(CheckIn)
 public class CheckIn: NSManagedObject {
     func getCreatedDateString(withFormat format: DateHelper.DateFormat) -> String {
         return DateHelper.getDateString(forDate: createdAt!, withFormat: format)

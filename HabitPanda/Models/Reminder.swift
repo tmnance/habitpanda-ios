@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-@objc(ReminderTime)
+//@objc(Reminder)
 public class Reminder: NSManagedObject {
     public func getTimeOfDay() -> TimeOfDay {
         return TimeOfDay(hour: Int(hour), minute: Int(minute))

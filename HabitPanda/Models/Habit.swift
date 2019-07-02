@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-@objc(Habit)
+//@objc(Habit)
 public class Habit: NSManagedObject {
     public static func getAll(sortedBy sortKey: String = "name") -> [Habit] {
         let context = (UIApplication.shared.delegate as! AppDelegate)
