@@ -44,16 +44,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0.1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s79-pV-edE">
+                                <rect key="frame" x="313" y="626" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="XuP-Ua-u4T" firstAttribute="trailing" secondItem="s79-pV-edE" secondAttribute="trailing" constant="20" id="Bjg-UW-b7b"/>
                             <constraint firstItem="XuP-Ua-u4T" firstAttribute="trailing" secondItem="jyr-tC-bAD" secondAttribute="trailing" id="Jv4-Jq-v1d"/>
                             <constraint firstItem="jyr-tC-bAD" firstAttribute="leading" secondItem="XuP-Ua-u4T" secondAttribute="leading" id="fba-MS-5vy"/>
                             <constraint firstItem="jyr-tC-bAD" firstAttribute="top" secondItem="XuP-Ua-u4T" secondAttribute="top" id="hBM-GG-TZv"/>
+                            <constraint firstItem="XuP-Ua-u4T" firstAttribute="bottom" secondItem="s79-pV-edE" secondAttribute="bottom" constant="20" id="zoB-t4-hhe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XuP-Ua-u4T"/>
                     </view>
                     <connections>
+                        <outlet property="appVersionLabel" destination="s79-pV-edE" id="M0l-hH-STs"/>
                         <outlet property="linksTableView" destination="jyr-tC-bAD" id="Iyr-lK-xMG"/>
                         <outlet property="linksTableViewHeightLayout" destination="DcI-mt-gl4" id="Vgw-J5-BRU"/>
                         <segue destination="ap1-1x-sUg" kind="show" identifier="goToAdmin" id="yTY-dP-tT0"/>

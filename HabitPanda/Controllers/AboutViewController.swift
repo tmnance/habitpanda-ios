@@ -23,6 +23,7 @@ class AboutViewController: UIViewController {
 
     @IBOutlet weak var linksTableView: UITableView!
     @IBOutlet weak var linksTableViewHeightLayout: NSLayoutConstraint!
+    @IBOutlet weak var appVersionLabel: UILabel!
 
     let cellHeight: CGFloat = 46.0
     var links = [
@@ -44,6 +45,11 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         setupStylesAndBindings()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateUI()
+    }
 }
 
 
@@ -63,6 +69,21 @@ extension AboutViewController {
 
         linksTableViewHeightLayout.constant =
             CGFloat(tableView(linksTableView, numberOfRowsInSection: 0)) * cellHeight
+    }
+}
+
+
+// MARK: - UI Update Methods
+extension AboutViewController {
+    func updateUI() {
+        appVersionLabel.text = getVersionText()
+    }
+
+    func getVersionText() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+
+        return "v\(version)"
     }
 }
 
