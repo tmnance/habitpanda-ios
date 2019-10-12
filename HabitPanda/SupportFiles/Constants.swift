@@ -12,6 +12,7 @@ struct Constants {
     struct Colors {
         // 0F7583
         static let tintColor = UIColor(red: 15/255, green: 117/255, blue: 131/255, alpha: 1)
+        static let textColorForTintBackground = UIColor(white: 255/255, alpha: 1)
 
         static let tintColor2 = UIColor.orange
         // CCCCCC

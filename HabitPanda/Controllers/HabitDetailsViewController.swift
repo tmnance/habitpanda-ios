@@ -91,8 +91,17 @@ extension HabitDetailsViewController {
 extension HabitDetailsViewController {
     func setupSegmentedControl() {
         contentTabsSegmentedControl.setTitleTextAttributes(
-            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)],
+            [
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15),
+                NSAttributedString.Key.foregroundColor: Constants.Colors.tintColor,
+            ],
             for: .normal
+        )
+        contentTabsSegmentedControl.setTitleTextAttributes(
+            [
+                NSAttributedString.Key.foregroundColor: Constants.Colors.textColorForTintBackground,
+            ],
+            for: .selected
         )
 
         contentTabsSegmentedControl.tintColor = Constants.Colors.tintColor

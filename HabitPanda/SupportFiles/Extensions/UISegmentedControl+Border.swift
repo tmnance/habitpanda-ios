@@ -35,6 +35,22 @@ extension UISegmentedControl {
                 barMetrics: .default
             )
         }
+
+        if #available(iOS 13, *) {
+            layer.masksToBounds = false
+
+            let borderView = UIView()
+            borderView.layer.borderWidth = 0
+            borderView.isUserInteractionEnabled = false
+            borderView.translatesAutoresizingMaskIntoConstraints = false
+
+            addSubview(borderView)
+
+            NSLayoutConstraint(item: borderView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+            NSLayoutConstraint(item: borderView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+            NSLayoutConstraint(item: borderView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant: 0).isActive = true
+            NSLayoutConstraint(item: borderView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0).isActive = true
+        }
     }
 }
 
