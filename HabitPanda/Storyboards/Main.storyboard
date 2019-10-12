@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XX6-db-Tp7">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XX6-db-Tp7">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,21 +17,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jyr-tC-bAD">
-                                <rect key="frame" x="0.0" y="64" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="DcI-mt-gl4"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LinkCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LinkCell" textLabel="EbM-tP-ISd" style="IBUITableViewCellStyleDefault" id="lZd-d7-a2C">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lZd-d7-a2C" id="Sdb-CT-k3c">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EbM-tP-ISd">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="326" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -81,7 +79,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Bq-Ye-pFD">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kl4-aY-p9Z" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="356.5"/>
@@ -236,13 +234,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lP0-5K-fTF">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="tHt-rH-1aI" customClass="CheckInGridCollectionViewLayout" customModule="HabitPanda" customModuleProvider="target"/>
                                 <cells/>
                             </collectionView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtG-Nm-bkM" userLabel="No Content View">
-                                <rect key="frame" x="20" y="84" width="335" height="563"/>
+                                <rect key="frame" x="20" y="64" width="335" height="583"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgL-fQ-1FT">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="57.5"/>
@@ -291,9 +289,7 @@ No habits found</string>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Maf-hO-ccE">
                             <connections>
-                                <segue destination="q3o-ZB-uWy" kind="popoverPresentation" identifier="goToAddHabit" popoverAnchorBarButtonItem="Maf-hO-ccE" id="JuT-O6-V0K">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="q3o-ZB-uWy" kind="presentation" identifier="goToAddHabit" modalPresentationStyle="fullScreen" id="JuT-O6-V0K"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -316,13 +312,13 @@ No habits found</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSY-Mv-gpm">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYm-IF-smp" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pew-uE-jIJ" userLabel="Name Container">
-                                                <rect key="frame" x="20" y="20" width="335" height="95"/>
+                                                <rect key="frame" x="20" y="20" width="335" height="99"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habit Activity / Behavior" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8X-yC-SLy">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="29"/>
@@ -337,8 +333,7 @@ No habits found</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36C-KM-kEN">
-                                                        <rect key="frame" x="0.0" y="57" width="335" height="30"/>
-                                                        <nil key="textColor"/>
+                                                        <rect key="frame" x="0.0" y="57" width="335" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         <userDefinedRuntimeAttributes>
@@ -363,7 +358,7 @@ No habits found</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04a-hQ-2HX" userLabel="Frequency Container">
-                                                <rect key="frame" x="20" y="155" width="335" height="131.5"/>
+                                                <rect key="frame" x="20" y="159" width="335" height="131.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habit Target Frequency 🎯" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shi-QH-GcA">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="29"/>
@@ -411,7 +406,7 @@ No habits found</string>
                                                 </constraints>
                                             </view>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZC-XE-i16">
-                                                <rect key="frame" x="159.5" y="574.5" width="56" height="20.5"/>
+                                                <rect key="frame" x="159.5" y="594.5" width="56" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -479,8 +474,9 @@ No habits found</string>
         <scene sceneID="uHC-4B-djM">
             <objects>
                 <navigationController id="bqm-N4-pAb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Ng1-44-KAo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z8p-eL-9F4">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -500,10 +496,10 @@ No habits found</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKj-YG-eQ8">
-                                <rect key="frame" x="0.0" y="64" width="320" height="1136"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="1156"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lW3-6M-MIr" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1136"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1156"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tyj-Gz-c9y" userLabel="Time Container">
                                                 <rect key="frame" x="20" y="20" width="280" height="245"/>
@@ -516,9 +512,6 @@ No habits found</string>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="XgR-zQ-QL2">
                                                         <rect key="frame" x="0.0" y="29" width="280" height="216"/>
-                                                        <date key="date" timeIntervalSinceReferenceDate="578704052.91684604">
-                                                            <!--2019-05-04 23:07:32 +0000-->
-                                                        </date>
                                                         <connections>
                                                             <action selector="timePickerChanged:" destination="i6e-vT-HmM" eventType="valueChanged" id="7rJ-kK-OBY"/>
                                                         </connections>
@@ -704,7 +697,7 @@ No habits found</string>
                                                 </constraints>
                                             </view>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzO-u2-Bkd">
-                                                <rect key="frame" x="132" y="1107.5" width="56" height="20.5"/>
+                                                <rect key="frame" x="132" y="1127.5" width="56" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -774,7 +767,7 @@ No habits found</string>
             <objects>
                 <navigationController id="XX6-db-Tp7" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GeO-mJ-Yy1">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -790,8 +783,9 @@ No habits found</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q3o-ZB-uWy" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="6Du-H0-kGl"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fpn-zF-Sup">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -872,10 +866,10 @@ No habits found</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6q9-1E-NrY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rug-Ml-QVe" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRI-iq-RYH" userLabel="Top Details Container">
                                                 <rect key="frame" x="10" y="10" width="355" height="44"/>
@@ -945,7 +939,7 @@ No habits found</string>
                                                 </constraints>
                                             </view>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65A-q4-yJ1">
-                                                <rect key="frame" x="159.5" y="574.5" width="56" height="20.5"/>
+                                                <rect key="frame" x="159.5" y="594.5" width="56" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -976,7 +970,7 @@ No habits found</string>
                                                 </constraints>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ple-BK-PXE">
-                                                <rect key="frame" x="0.0" y="110" width="375" height="493"/>
+                                                <rect key="frame" x="0.0" y="110" width="375" height="513"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="jjF-UI-P4s"/>
                                                 </constraints>
@@ -1032,7 +1026,7 @@ No habits found</string>
                         <outlet property="nameLabel" destination="PLK-aN-m57" id="Hrm-g6-Nrh"/>
                         <outlet property="tabContentContainerHeightConstraint" destination="jjF-UI-P4s" id="62h-Rc-ulP"/>
                         <outlet property="tabContentContainerView" destination="ple-BK-PXE" id="esC-zB-1wn"/>
-                        <segue destination="q3o-ZB-uWy" kind="show" identifier="goToEditHabit" id="amN-ro-xZK"/>
+                        <segue destination="q3o-ZB-uWy" kind="presentation" identifier="goToEditHabit" modalPresentationStyle="fullScreen" id="amN-ro-xZK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZe-ih-LzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1048,7 +1042,7 @@ No habits found</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oa2-Dx-AiQ" customClass="DesignableButton" customModule="HabitPanda" customModuleProvider="target">
-                                <rect key="frame" x="20" y="330" width="335" height="46"/>
+                                <rect key="frame" x="20" y="310" width="335" height="46"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="ZnJ-lM-E0q"/>
@@ -1073,7 +1067,7 @@ No habits found</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ctg-iG-vqs" userLabel="Chart View Container">
-                                <rect key="frame" x="0.0" y="40" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7-Day Rolling Average" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMR-fa-JDW">
                                         <rect key="frame" x="20" y="0.0" width="335" height="24"/>
@@ -1135,21 +1129,21 @@ No habits found</string>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckInCell" textLabel="3CH-Me-lf5" detailTextLabel="CcJ-Wx-Lce" style="IBUITableViewCellStyleSubtitle" id="P4u-kG-GLI" userLabel="CheckInCell" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
-                                                <rect key="frame" x="0.0" y="28" width="335" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="335" height="57.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P4u-kG-GLI" id="adP-JP-Y2J">
-                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="57.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3CH-Me-lf5">
-                                                            <rect key="frame" x="15" y="4" width="33.5" height="20.5"/>
+                                                            <rect key="frame" x="15" y="8" width="33.5" height="20.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CcJ-Wx-Lce">
-                                                            <rect key="frame" x="15" y="24.5" width="47" height="16"/>
+                                                            <rect key="frame" x="15" y="31.5" width="47" height="16"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
@@ -1196,7 +1190,7 @@ No habits found</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1VE-n8-ImE" userLabel="Reminder Times Container">
-                                <rect key="frame" x="20" y="40" width="335" height="185.5"/>
+                                <rect key="frame" x="20" y="20" width="335" height="185.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(reminders will trigger app notifications on the specified days and times)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ya2-Z8-7r6">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="31.5"/>
@@ -1212,7 +1206,7 @@ No habits found</string>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditableTimeCell" id="0hz-zV-4iT" customClass="EditableTimeCell" customModule="HabitPanda" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="335" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="335" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0hz-zV-4iT" id="yEx-MT-Xqx">
                                                     <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
@@ -1232,9 +1226,7 @@ No habits found</string>
                                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                                 <state key="normal" title="Add reminder"/>
                                                 <connections>
-                                                    <segue destination="bqm-N4-pAb" kind="popoverPresentation" identifier="goToAddReminder" popoverAnchorView="0n6-RU-Py7" id="SBj-D9-G6o">
-                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
-                                                    </segue>
+                                                    <segue destination="bqm-N4-pAb" kind="presentation" identifier="goToAddReminder" modalPresentationStyle="fullScreen" id="SBj-D9-G6o"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1273,7 +1265,7 @@ No habits found</string>
                     <connections>
                         <outlet property="remindersTableView" destination="AKw-mv-ZNd" id="1yM-nr-Vyv"/>
                         <outlet property="remindersTableViewHeightLayout" destination="Okn-KL-mhl" id="1NB-7W-MvR"/>
-                        <segue destination="bqm-N4-pAb" kind="show" identifier="goToEditReminder" id="6Ns-8H-oGp"/>
+                        <segue destination="bqm-N4-pAb" kind="presentation" identifier="goToEditReminder" modalPresentationStyle="fullScreen" id="6Ns-8H-oGp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ktv-PN-J7w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1282,7 +1274,7 @@ No habits found</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JuT-O6-V0K"/>
+        <segue reference="amN-ro-xZK"/>
         <segue reference="6Ns-8H-oGp"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.058823529411764705" green="0.45882352941176469" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
