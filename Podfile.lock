@@ -1,21 +1,21 @@
 PODS:
-  - Charts (3.3.0):
-    - Charts/Core (= 3.3.0)
-  - Charts/Core (3.3.0)
-  - DynamicBlurView (3.0.1)
-  - PopupDialog (1.1.0):
-    - DynamicBlurView (~> 3.0.1)
-  - SwipeCellKit (2.6.0)
+  - Charts (3.4.0):
+    - Charts/Core (= 3.4.0)
+  - Charts/Core (3.4.0)
+  - DynamicBlurView (4.0.0)
+  - PopupDialog (1.1.1):
+    - DynamicBlurView (~> 4.0)
+  - SwipeCellKit (2.7.1)
   - Toast-Swift (5.0.0)
 
 DEPENDENCIES:
-  - Charts
+  - Charts (~> 3.4)
   - PopupDialog (~> 1.1)
-  - SwipeCellKit
-  - Toast-Swift (~> 5.0.0)
+  - SwipeCellKit (~> 2.7)
+  - Toast-Swift (~> 5.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Charts
     - DynamicBlurView
     - PopupDialog
@@ -23,12 +23,12 @@ SPEC REPOS:
     - Toast-Swift
 
 SPEC CHECKSUMS:
-  Charts: ec1f57f9340054155691e84d4544a1d239d382c5
-  DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
-  PopupDialog: 42fb7a0bc4fafdf89fef8b5b2b127a6023f3e1cc
-  SwipeCellKit: 935ca28c187ec6e1ffb2b578cf8ddca842bfdcbb
+  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
+  DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
+  PopupDialog: 720c92befd8bc23c13442254945213db5612f149
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 4f0ca5f18c01f139e3d3e37d3351dbbdee8e0d77
+PODFILE CHECKSUM: f46b4c4452379b60d38db78a64822b1dfc7479c1
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.3
