@@ -13,7 +13,7 @@ class CheckInGridContentCell: UICollectionViewCell {
     static let height = CGFloat(88)
 
     @IBOutlet weak var contentContainer: UIView!
-    @IBOutlet weak var checkmarkLabel: UILabel!
+    @IBOutlet weak var checkmarkImageView: UIImageView!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var bottomBorder: UIView!
 
@@ -29,7 +29,7 @@ class CheckInGridContentCell: UICollectionViewCell {
 // MARK: - UI Methods
 extension CheckInGridContentCell {
     func updateUI() {
-        checkmarkLabel.text = checkInCount > 0 ? "✓" : ""
+        checkmarkImageView.image = checkInCount > 0 ? UIImage(named: "checkmark") : nil
         countLabel.text = checkInCount > 1 ? "\(checkInCount)" : ""
     }
 }

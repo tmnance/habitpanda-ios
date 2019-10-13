@@ -202,7 +202,6 @@ extension HabitListViewController: UICollectionViewDataSource {
             Constants.Colors.listDisabledCellOverlayColor
 
         cell.backgroundColor = getCellBgColor(forIndexPath: indexPath)
-        cell.checkmarkLabel.textColor = Constants.Colors.listCheckmarkColor
         cell.countLabel.textColor = Constants.Colors.listCheckmarkColor
         cell.bottomBorder.backgroundColor = Constants.Colors.listBorderColor
 
