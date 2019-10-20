@@ -77,6 +77,10 @@ extension HabitSummaryViewController {
         let leftAxis = chartView.leftAxis
         leftAxis.drawAxisLineEnabled = false
         leftAxis.granularity = 1.0
+        leftAxis.gridColor = Constants.Colors.chartGrid
+        if #available(iOS 13.0, *) {
+            leftAxis.labelTextColor = .label
+        }
 
         let xAxis = chartView.xAxis
         xAxis.gridLineDashLengths = [10, 10]
@@ -84,6 +88,10 @@ extension HabitSummaryViewController {
         xAxis.labelPosition = .bottom
         xAxis.drawAxisLineEnabled = false
         xAxis.granularity = 1.0
+        xAxis.gridColor = Constants.Colors.chartGrid
+        if #available(iOS 13.0, *) {
+            xAxis.labelTextColor = .label
+        }
     }
 
     func updateChartSettings(withStartDate startDate: Date, andChartData chartData: [Double]) {

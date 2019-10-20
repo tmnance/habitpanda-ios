@@ -93,7 +93,7 @@ extension DateDayPicker: UIPickerViewDelegate {
             frame: CGRect(x: 0, y: 0, width: customWidth, height: topBottomLabelHeight)
         )
         topLabel.text = monthName
-        topLabel.textColor = .black
+//        topLabel.textColor = Constants.Colors.label
         topLabel.textAlignment = .center
         topLabel.font = UIFont.systemFont(ofSize: 14, weight: .thin)
         view.addSubview(topLabel)
@@ -102,7 +102,7 @@ extension DateDayPicker: UIPickerViewDelegate {
             frame: CGRect(x: 0, y: 0, width: customWidth, height: customHeight)
         )
         middleLabel.text = dayNumber
-        middleLabel.textColor = .black
+//        middleLabel.textColor = Constants.Colors.label
         middleLabel.textAlignment = .center
         middleLabel.font = UIFont.systemFont(ofSize: 42, weight: .thin)
         view.addSubview(middleLabel)
@@ -116,7 +116,7 @@ extension DateDayPicker: UIPickerViewDelegate {
             )
         )
         bottomLabel.text = dayName
-        bottomLabel.textColor = .black
+//        bottomLabel.textColor = Constants.Colors.label
         bottomLabel.textAlignment = .center
         bottomLabel.font = UIFont.systemFont(ofSize: 14, weight: .thin)
         view.addSubview(bottomLabel)

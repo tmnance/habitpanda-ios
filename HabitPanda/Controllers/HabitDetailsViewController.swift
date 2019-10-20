@@ -52,6 +52,7 @@ class HabitDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSegmentedControl()
+        setupPopupDialogAppearance()
         displayCurrentTab(0)
     }
 
@@ -75,6 +76,14 @@ class HabitDetailsViewController: UIViewController {
 
         tabContentContainerHeightConstraint.constant = container.preferredContentSize.height
         tabContentContainerView.updateConstraints()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        // fixes an issue with contentTabsSegmentedControl styling overrides conflicting with
+        // light/dark mode transitions (old tintColors used due to the background being set as a
+        // generated image)
+        contentTabsSegmentedControl.removeBorders()
     }
 }
 
@@ -171,6 +180,16 @@ extension HabitDetailsViewController {
 
 // MARK: - Check In Button Methods
 extension HabitDetailsViewController {
+    func setupPopupDialogAppearance() {
+        let containerAppearance = PopupDialogContainerView.appearance()
+        containerAppearance.backgroundColor = Constants.Colors.mainViewBg
+        containerAppearance.shadowColor = Constants.Colors.listBorderColor
+
+        DefaultButton.appearance().titleColor = Constants.Colors.tintColor
+        DefaultButton.appearance().separatorColor = Constants.Colors.popupButtonSeparator
+        CancelButton.appearance().separatorColor = Constants.Colors.popupButtonSeparator
+    }
+
     @IBAction func checkInButtonPressed(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(
             withIdentifier: "HabitCheckInViewController"

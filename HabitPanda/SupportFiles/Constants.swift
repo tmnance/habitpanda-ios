@@ -11,6 +11,9 @@ import UIKit
 struct Constants {
     struct Colors {
         static let clear = UIColor.clear
+        static let label = UIColor(named: "label")!
+
+        static let mainViewBg = UIColor(named: "mainViewBg")!
 
         static let tintColor = UIColor(named: "tint")!
         static let textColorForTintBackground = UIColor(named: "textForTintBackground")!
@@ -18,6 +21,10 @@ struct Constants {
         static let tintColor2 = UIColor(named: "tint2")!
         static let disabledTextColor = UIColor(named: "disabledText")!
         static let subTextColor = UIColor(named: "subText")!
+
+        static let popupButtonSeparator = UIColor(named: "popupButtonSeparator")!
+
+        static let chartGrid = UIColor(named: "chartGrid")!
 
         static let listWeekdayBgColor1 = UIColor(named: "listWeekdayBg1")!
         static let listWeekdayBgColor2 = UIColor(named: "listWeekdayBg2")!
