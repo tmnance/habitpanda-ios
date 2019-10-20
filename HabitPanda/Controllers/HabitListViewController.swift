@@ -198,7 +198,7 @@ extension HabitListViewController: UICollectionViewDataSource {
         let checkInCount = getCheckInCount(forIndexPath: indexPath)
 
         cell.contentContainer.backgroundColor = checkInCount != nil ?
-            UIColor.clear :
+            Constants.Colors.clear :
             Constants.Colors.listDisabledCellOverlayColor
 
         cell.backgroundColor = getCellBgColor(forIndexPath: indexPath)

@@ -10,54 +10,29 @@ import UIKit
 
 struct Constants {
     struct Colors {
-        // 0F7583
-        static let tintColor = UIColor(red: 15/255, green: 117/255, blue: 131/255, alpha: 1)
-        static let textColorForTintBackground = UIColor(white: 255/255, alpha: 1)
+        static let clear = UIColor.clear
 
-        static let tintColor2 = UIColor.orange
-        // CCCCCC
-        static let disabledTextColor = UIColor(white: 204/255, alpha: 1)
-        static let subTextColor = UIColor(white: 70/255, alpha: 1)
+        static let tintColor = UIColor(named: "tint")!
+        static let textColorForTintBackground = UIColor(named: "textForTintBackground")!
 
-        static let listWeekdayBgColor1 = UIColor(white: 230/255, alpha: 1)
-        static let listWeekdayBgColor2 = UIColor(white: 240/255, alpha: 1)
-        static let listWeekendBgColor = UIColor(
-            red: 215/255,
-            green: 223/255,
-            blue: 225/255,
-            alpha: 1
-        )
-        static let listCheckmarkColor = UIColor(white: 70/255, alpha: 1)
-        static let listRowOverlayBgColor = UIColor(white: 255/255, alpha: 0.6)
-        static let listBorderColor = UIColor(white: 60/255, alpha: 0.6)
+        static let tintColor2 = UIColor(named: "tint2")!
+        static let disabledTextColor = UIColor(named: "disabledText")!
+        static let subTextColor = UIColor(named: "subText")!
+
+        static let listWeekdayBgColor1 = UIColor(named: "listWeekdayBg1")!
+        static let listWeekdayBgColor2 = UIColor(named: "listWeekdayBg2")!
+        static let listWeekendBgColor = UIColor(named: "listWeekendBg")!
+        static let listCheckmarkColor = UIColor(named: "listCheckmark")!
+        static let listRowOverlayBgColor = UIColor(named: "listRowOverlayBg")!
+        static let listBorderColor = UIColor(named: "listBorder")!
         static let listDisabledCellOverlayColor = UIColor(
             patternImage: UIImage(named: "disabled-diag-stripe")!
         ).withAlphaComponent(0.05)
 
-        static let toastSuccessBgColor = UIColor(
-            red: 76/255,
-            green: 209/255,
-            blue: 55/255,
-            alpha: 1
-        )
-        static let toastErrorBgColor = UIColor(
-            red: 232/255,
-            green: 65/255,
-            blue: 24/255,
-            alpha: 1
-        )
-        static let toastWarningBgColor = UIColor(
-            red: 251/255,
-            green: 197/255,
-            blue: 49/255,
-            alpha: 1
-        )
-        static let toastInfoBgColor = UIColor(
-            red: 53/255,
-            green: 59/255,
-            blue: 72/255,
-            alpha: 1
-        )
+        static let toastSuccessBgColor = UIColor(named: "toastSuccessBg")!
+        static let toastErrorBgColor = UIColor(named: "toastErrorBg")!
+        static let toastWarningBgColor = UIColor(named: "toastWarningBg")!
+        static let toastInfoBgColor = UIColor(named: "toastInfoBg")!
     }
 
     struct Habit {

@@ -105,7 +105,7 @@ extension HabitDetailsViewController {
         )
 
         contentTabsSegmentedControl.tintColor = Constants.Colors.tintColor
-        contentTabsSegmentedControl.backgroundColor = UIColor.clear
+        contentTabsSegmentedControl.backgroundColor = Constants.Colors.clear
         contentTabsSegmentedControl.removeBorders()
         contentTabsSegmentedControl.superview?.setBorders(
             toEdges: [.top, .bottom],
