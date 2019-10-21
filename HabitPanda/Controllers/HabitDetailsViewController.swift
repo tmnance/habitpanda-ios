@@ -102,23 +102,23 @@ extension HabitDetailsViewController {
         contentTabsSegmentedControl.setTitleTextAttributes(
             [
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15),
-                NSAttributedString.Key.foregroundColor: Constants.Colors.tintColor,
+                NSAttributedString.Key.foregroundColor: Constants.Colors.tint,
             ],
             for: .normal
         )
         contentTabsSegmentedControl.setTitleTextAttributes(
             [
-                NSAttributedString.Key.foregroundColor: Constants.Colors.textColorForTintBackground,
+                NSAttributedString.Key.foregroundColor: Constants.Colors.textForTintBackground,
             ],
             for: .selected
         )
 
-        contentTabsSegmentedControl.tintColor = Constants.Colors.tintColor
+        contentTabsSegmentedControl.tintColor = Constants.Colors.tint
         contentTabsSegmentedControl.backgroundColor = Constants.Colors.clear
         contentTabsSegmentedControl.removeBorders()
         contentTabsSegmentedControl.superview?.setBorders(
             toEdges: [.top, .bottom],
-            withColor: Constants.Colors.tintColor,
+            withColor: Constants.Colors.tint,
             andThickness: 1
         )
     }
@@ -183,9 +183,9 @@ extension HabitDetailsViewController {
     func setupPopupDialogAppearance() {
         let containerAppearance = PopupDialogContainerView.appearance()
         containerAppearance.backgroundColor = Constants.Colors.mainViewBg
-        containerAppearance.shadowColor = Constants.Colors.listBorderColor
+        containerAppearance.shadowColor = Constants.Colors.listBorder
 
-        DefaultButton.appearance().titleColor = Constants.Colors.tintColor
+        DefaultButton.appearance().titleColor = Constants.Colors.tint
         DefaultButton.appearance().separatorColor = Constants.Colors.popupButtonSeparator
         CancelButton.appearance().separatorColor = Constants.Colors.popupButtonSeparator
     }

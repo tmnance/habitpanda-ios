@@ -110,11 +110,11 @@ extension HabitSummaryViewController {
             label: "🎯\(Int(targetFrequencyPerWeek))x/wk"
         )
         targetLine.lineWidth = 2
-        targetLine.lineColor = Constants.Colors.tintColor2
+        targetLine.lineColor = Constants.Colors.tint2
         targetLine.lineDashLengths = [10, 10]
         targetLine.labelPosition = targetFrequencyPerWeek >= maxY ? .bottomRight : .topRight
         targetLine.valueFont = .systemFont(ofSize: 12)
-        targetLine.valueTextColor = Constants.Colors.subTextColor
+        targetLine.valueTextColor = Constants.Colors.subText
 
         let leftAxis = chartView.leftAxis
         leftAxis.removeAllLimitLines()
@@ -143,11 +143,11 @@ extension HabitSummaryViewController {
     }
 
     func setupLineChartDataSetStyles(_ line: LineChartDataSet) {
-        line.colors = [Constants.Colors.tintColor]
+        line.colors = [Constants.Colors.tint]
         line.lineWidth = 4
         line.drawValuesEnabled = false
         line.drawCirclesEnabled = true
-        line.circleColors = [Constants.Colors.tintColor]
+        line.circleColors = [Constants.Colors.tint]
         line.circleRadius = 2
     }
 }

@@ -47,7 +47,7 @@ extension EditableTimeCell {
             let range = NSRange(location:index, length:1)
             attributedString.addAttribute(
                 NSAttributedString.Key.foregroundColor,
-                value: Constants.Colors.disabledTextColor,
+                value: Constants.Colors.disabledText,
                 range: range
             )
         }

@@ -24,8 +24,8 @@ import UIKit
     }
 
     func sharedInit() {
-        setTitleColor(Constants.Colors.tintColor, for: .normal)
-        setTitleColor(Constants.Colors.textColorForTintBackground, for: .selected)
+        setTitleColor(Constants.Colors.tint, for: .normal)
+        setTitleColor(Constants.Colors.textForTintBackground, for: .selected)
         layer.cornerRadius = frame.height / 3
     }
 
@@ -33,7 +33,7 @@ import UIKit
         didSet {
             switch isSelected {
             case true:
-                layer.backgroundColor = Constants.Colors.tintColor.cgColor
+                layer.backgroundColor = Constants.Colors.tint.cgColor
             case false:
                 layer.backgroundColor = Constants.Colors.clear.cgColor
             }
