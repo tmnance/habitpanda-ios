@@ -68,6 +68,7 @@ extension HabitSummaryViewController {
         chartView.rightAxis.enabled = false
 
         chartView.noDataText = "No check-in data yet"
+        chartView.noDataTextColor = Constants.Colors.label
 
         chartView.resetZoom()
         chartView.zoomToCenter(scaleX: 0.1, scaleY: 0.1)
@@ -77,6 +78,8 @@ extension HabitSummaryViewController {
         let leftAxis = chartView.leftAxis
         leftAxis.drawAxisLineEnabled = false
         leftAxis.granularity = 1.0
+        leftAxis.gridColor = Constants.Colors.chartGrid
+        leftAxis.labelTextColor = Constants.Colors.label
 
         let xAxis = chartView.xAxis
         xAxis.gridLineDashLengths = [10, 10]
@@ -84,6 +87,8 @@ extension HabitSummaryViewController {
         xAxis.labelPosition = .bottom
         xAxis.drawAxisLineEnabled = false
         xAxis.granularity = 1.0
+        xAxis.gridColor = Constants.Colors.chartGrid
+        xAxis.labelTextColor = Constants.Colors.label
     }
 
     func updateChartSettings(withStartDate startDate: Date, andChartData chartData: [Double]) {
@@ -102,11 +107,11 @@ extension HabitSummaryViewController {
             label: "🎯\(Int(targetFrequencyPerWeek))x/wk"
         )
         targetLine.lineWidth = 2
-        targetLine.lineColor = Constants.Colors.tintColor2
+        targetLine.lineColor = Constants.Colors.tint2
         targetLine.lineDashLengths = [10, 10]
         targetLine.labelPosition = targetFrequencyPerWeek >= maxY ? .bottomRight : .topRight
         targetLine.valueFont = .systemFont(ofSize: 12)
-        targetLine.valueTextColor = Constants.Colors.subTextColor
+        targetLine.valueTextColor = Constants.Colors.subText
 
         let leftAxis = chartView.leftAxis
         leftAxis.removeAllLimitLines()
@@ -135,11 +140,11 @@ extension HabitSummaryViewController {
     }
 
     func setupLineChartDataSetStyles(_ line: LineChartDataSet) {
-        line.colors = [Constants.Colors.tintColor]
+        line.colors = [Constants.Colors.tint]
         line.lineWidth = 4
         line.drawValuesEnabled = false
         line.drawCirclesEnabled = true
-        line.circleColors = [Constants.Colors.tintColor]
+        line.circleColors = [Constants.Colors.tint]
         line.circleRadius = 2
     }
 }

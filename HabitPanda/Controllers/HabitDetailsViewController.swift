@@ -52,6 +52,7 @@ class HabitDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSegmentedControl()
+        setupPopupDialogAppearance()
         displayCurrentTab(0)
     }
 
@@ -76,6 +77,14 @@ class HabitDetailsViewController: UIViewController {
         tabContentContainerHeightConstraint.constant = container.preferredContentSize.height
         tabContentContainerView.updateConstraints()
     }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        // fixes an issue with contentTabsSegmentedControl styling overrides conflicting with
+        // light/dark mode transitions (old tintColors used due to the background being set as a
+        // generated image)
+        contentTabsSegmentedControl.removeBorders()
+    }
 }
 
 
@@ -93,23 +102,23 @@ extension HabitDetailsViewController {
         contentTabsSegmentedControl.setTitleTextAttributes(
             [
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15),
-                NSAttributedString.Key.foregroundColor: Constants.Colors.tintColor,
+                NSAttributedString.Key.foregroundColor: Constants.Colors.tint,
             ],
             for: .normal
         )
         contentTabsSegmentedControl.setTitleTextAttributes(
             [
-                NSAttributedString.Key.foregroundColor: Constants.Colors.textColorForTintBackground,
+                NSAttributedString.Key.foregroundColor: Constants.Colors.textForTintBackground,
             ],
             for: .selected
         )
 
-        contentTabsSegmentedControl.tintColor = Constants.Colors.tintColor
-        contentTabsSegmentedControl.backgroundColor = UIColor.clear
+        contentTabsSegmentedControl.tintColor = Constants.Colors.tint
+        contentTabsSegmentedControl.backgroundColor = Constants.Colors.clear
         contentTabsSegmentedControl.removeBorders()
         contentTabsSegmentedControl.superview?.setBorders(
             toEdges: [.top, .bottom],
-            withColor: Constants.Colors.tintColor,
+            withColor: Constants.Colors.tint,
             andThickness: 1
         )
     }
@@ -171,13 +180,36 @@ extension HabitDetailsViewController {
 
 // MARK: - Check In Button Methods
 extension HabitDetailsViewController {
+    func setupPopupDialogAppearance() {
+        let containerAppearance = PopupDialogContainerView.appearance()
+        containerAppearance.backgroundColor = Constants.Colors.mainViewBg
+        containerAppearance.shadowColor = Constants.Colors.listBorder
+
+        PopupDialogOverlayView.appearance().color = Constants.Colors.popupOverlayBg
+
+        DefaultButton.appearance().titleColor = Constants.Colors.tint
+        DefaultButton.appearance().separatorColor = Constants.Colors.popupButtonSeparator
+        CancelButton.appearance().separatorColor = Constants.Colors.popupButtonSeparator
+    }
+
     @IBAction func checkInButtonPressed(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(
             withIdentifier: "HabitCheckInViewController"
         ) as! HabitAddCheckInViewController
         vc.delegateViewModel = self.viewModel
 
-        let popup = PopupDialog(viewController: vc)
+        let popup = PopupDialog(viewController: vc) {
+            // redraw navbar after popup is dismissed due to an issue caused by switching
+            // light/dark mode while the popup is open
+            guard let navigation = self.navigationController,
+                  !(navigation.topViewController === self) else {
+                return
+            }
+            let bar = navigation.navigationBar
+            bar.setNeedsLayout()
+            bar.layoutIfNeeded()
+            bar.setNeedsDisplay()
+        }
 
         let cancelButton = CancelButton(title: "CANCEL", action: nil)
         let confirmButton = DefaultButton(title: "CONFIRM") {
