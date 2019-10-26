@@ -185,6 +185,8 @@ extension HabitDetailsViewController {
         containerAppearance.backgroundColor = Constants.Colors.mainViewBg
         containerAppearance.shadowColor = Constants.Colors.listBorder
 
+        PopupDialogOverlayView.appearance().color = Constants.Colors.popupOverlayBg
+
         DefaultButton.appearance().titleColor = Constants.Colors.tint
         DefaultButton.appearance().separatorColor = Constants.Colors.popupButtonSeparator
         CancelButton.appearance().separatorColor = Constants.Colors.popupButtonSeparator
@@ -196,7 +198,18 @@ extension HabitDetailsViewController {
         ) as! HabitAddCheckInViewController
         vc.delegateViewModel = self.viewModel
 
-        let popup = PopupDialog(viewController: vc)
+        let popup = PopupDialog(viewController: vc) {
+            // redraw navbar after popup is dismissed due to an issue caused by switching
+            // light/dark mode while the popup is open
+            guard let navigation = self.navigationController,
+                  !(navigation.topViewController === self) else {
+                return
+            }
+            let bar = navigation.navigationBar
+            bar.setNeedsLayout()
+            bar.layoutIfNeeded()
+            bar.setNeedsDisplay()
+        }
 
         let cancelButton = CancelButton(title: "CANCEL", action: nil)
         let confirmButton = DefaultButton(title: "CONFIRM") {

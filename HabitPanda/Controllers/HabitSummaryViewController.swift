@@ -68,6 +68,7 @@ extension HabitSummaryViewController {
         chartView.rightAxis.enabled = false
 
         chartView.noDataText = "No check-in data yet"
+        chartView.noDataTextColor = Constants.Colors.label
 
         chartView.resetZoom()
         chartView.zoomToCenter(scaleX: 0.1, scaleY: 0.1)
@@ -78,9 +79,7 @@ extension HabitSummaryViewController {
         leftAxis.drawAxisLineEnabled = false
         leftAxis.granularity = 1.0
         leftAxis.gridColor = Constants.Colors.chartGrid
-        if #available(iOS 13.0, *) {
-            leftAxis.labelTextColor = .label
-        }
+        leftAxis.labelTextColor = Constants.Colors.label
 
         let xAxis = chartView.xAxis
         xAxis.gridLineDashLengths = [10, 10]
@@ -89,9 +88,7 @@ extension HabitSummaryViewController {
         xAxis.drawAxisLineEnabled = false
         xAxis.granularity = 1.0
         xAxis.gridColor = Constants.Colors.chartGrid
-        if #available(iOS 13.0, *) {
-            xAxis.labelTextColor = .label
-        }
+        xAxis.labelTextColor = Constants.Colors.label
     }
 
     func updateChartSettings(withStartDate startDate: Date, andChartData chartData: [Double]) {

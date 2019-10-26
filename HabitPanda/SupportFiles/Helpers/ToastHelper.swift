@@ -32,6 +32,7 @@ struct ToastHelper {
 
     private static func getStyle(forState state: State) -> ToastStyle {
         var style = ToastStyle()
+        style.messageColor = Constants.Colors.toastText
 
         switch state {
         case .entityCreated:

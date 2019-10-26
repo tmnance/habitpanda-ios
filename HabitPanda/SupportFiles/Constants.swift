@@ -22,6 +22,7 @@ struct Constants {
         static let disabledText = UIColor(named: "disabledText")!
         static let subText = UIColor(named: "subText")!
 
+        static let popupOverlayBg = UIColor(named: "popupOverlayBg")!
         static let popupButtonSeparator = UIColor(named: "popupButtonSeparator")!
 
         static let chartGrid = UIColor(named: "chartGrid")!
@@ -36,6 +37,7 @@ struct Constants {
             patternImage: UIImage(named: "disabled-diag-stripe")!
         ).withAlphaComponent(0.05)
 
+        static let toastText = UIColor(named: "toastText")!
         static let toastSuccessBg = UIColor(named: "toastSuccessBg")!
         static let toastErrorBg = UIColor(named: "toastErrorBg")!
         static let toastWarningBg = UIColor(named: "toastWarningBg")!
