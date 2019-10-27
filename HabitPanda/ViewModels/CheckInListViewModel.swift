@@ -51,7 +51,8 @@ extension CheckInListViewModel {
             let predicates = [NSPredicate(format: "habit = %@", habit)]
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
             request.sortDescriptors = [
-                NSSortDescriptor(key: "checkInDate", ascending: false)
+                NSSortDescriptor(key: "checkInDate", ascending: false),
+                NSSortDescriptor(key: "createdAt", ascending: false)
             ]
 
             do {

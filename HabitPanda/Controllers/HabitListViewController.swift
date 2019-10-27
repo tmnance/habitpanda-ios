@@ -155,7 +155,7 @@ extension HabitListViewController: UICollectionViewDataSource {
         ) as! CheckInGridHeaderCell
 
         cell.backgroundColor = getCellBgColor(forIndexPath: indexPath)
-        cell.bottomBorder.backgroundColor = Constants.Colors.listBorderColor
+        cell.bottomBorder.backgroundColor = Constants.Colors.listBorder
 
         cell.isHidden = false
         if indexPath.row == 0 {
@@ -175,8 +175,8 @@ extension HabitListViewController: UICollectionViewDataSource {
 
         let habit = getHabit(forIndexPath: indexPath)
 
-        cell.backgroundColor = Constants.Colors.listRowOverlayBgColor
-        cell.additionalDetailsLabel.textColor = Constants.Colors.subTextColor
+        cell.backgroundColor = Constants.Colors.listRowOverlayBg
+        cell.additionalDetailsLabel.textColor = Constants.Colors.subText
 
         cell.name = habit.name
         cell.additionalDetailsText = "🎯\n\(habit.frequencyPerWeek)x/wk"
@@ -198,12 +198,12 @@ extension HabitListViewController: UICollectionViewDataSource {
         let checkInCount = getCheckInCount(forIndexPath: indexPath)
 
         cell.contentContainer.backgroundColor = checkInCount != nil ?
-            UIColor.clear :
-            Constants.Colors.listDisabledCellOverlayColor
+            Constants.Colors.clear :
+            Constants.Colors.listDisabledCellOverlay
 
         cell.backgroundColor = getCellBgColor(forIndexPath: indexPath)
-        cell.countLabel.textColor = Constants.Colors.listCheckmarkColor
-        cell.bottomBorder.backgroundColor = Constants.Colors.listBorderColor
+        cell.countLabel.textColor = Constants.Colors.listCheckmark
+        cell.bottomBorder.backgroundColor = Constants.Colors.listBorder
 
         cell.checkInCount = checkInCount ?? 0
 
@@ -236,12 +236,12 @@ extension HabitListViewController {
         let isWeekend = saturdayOffset <= 1
 
         if isWeekend {
-            return Constants.Colors.listWeekendBgColor
+            return Constants.Colors.listWeekendBg
         }
 
         return saturdayOffset % 2 == 1 ?
-            Constants.Colors.listWeekdayBgColor1 :
-            Constants.Colors.listWeekdayBgColor2
+            Constants.Colors.listWeekdayBg1 :
+            Constants.Colors.listWeekdayBg2
     }
 
     func getDateLabel(forIndexPath indexPath: IndexPath) -> String {

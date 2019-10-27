@@ -97,7 +97,7 @@ extension HabitCheckInsViewController: UITableViewDelegate, UITableViewDataSourc
         }
 
         cell.textLabel?.text = checkIn.getCheckInDateString(withFormat: .dateOnly)
-        cell.detailTextLabel?.textColor = Constants.Colors.subTextColor
+        cell.detailTextLabel?.textColor = Constants.Colors.subText
         cell.detailTextLabel?.text = subTitleText
         cell.selectionStyle = .none
 

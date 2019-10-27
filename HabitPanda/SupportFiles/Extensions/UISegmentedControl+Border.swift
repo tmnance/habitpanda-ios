@@ -61,14 +61,14 @@ extension CGSize {
 }
 
 extension UIImage {
-    static func imageWithSize(size: CGSize, color: UIColor = UIColor.white) -> UIImage? {
+    static func imageWithSize(size: CGSize, color: UIColor = Constants.Colors.clear) -> UIImage? {
         var image: UIImage? = nil
         UIGraphicsBeginImageContext(size)
         if let context = UIGraphicsGetCurrentContext() {
             context.setFillColor(color.cgColor)
-            context.addRect(CGRect(origin: CGPoint.zero, size: size));
+            context.addRect(CGRect(origin: CGPoint.zero, size: size))
             context.drawPath(using: .fill)
-            image = UIGraphicsGetImageFromCurrentImageContext();
+            image = UIGraphicsGetImageFromCurrentImageContext()
         }
         UIGraphicsEndImageContext()
         return image

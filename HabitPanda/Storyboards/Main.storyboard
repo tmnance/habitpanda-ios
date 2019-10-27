@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,10 +19,11 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jyr-tC-bAD">
                                 <rect key="frame" x="0.0" y="44" width="375" height="200"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="DcI-mt-gl4"/>
                                 </constraints>
+                                <color key="separatorColor" name="listBorder"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LinkCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LinkCell" textLabel="EbM-tP-ISd" style="IBUITableViewCellStyleDefault" id="lZd-d7-a2C">
                                         <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
@@ -45,11 +47,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0.1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s79-pV-edE">
                                 <rect key="frame" x="313" y="626" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="subText"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="mainViewBg"/>
                         <constraints>
                             <constraint firstItem="XuP-Ua-u4T" firstAttribute="trailing" secondItem="s79-pV-edE" secondAttribute="trailing" constant="20" id="Bjg-UW-b7b"/>
                             <constraint firstItem="XuP-Ua-u4T" firstAttribute="trailing" secondItem="jyr-tC-bAD" secondAttribute="trailing" id="Jv4-Jq-v1d"/>
@@ -208,7 +210,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="mainViewBg"/>
                         <constraints>
                             <constraint firstItem="0Bq-Ye-pFD" firstAttribute="leading" secondItem="z4F-4g-3z2" secondAttribute="leading" id="C9R-hJ-jUB"/>
                             <constraint firstItem="z4F-4g-3z2" firstAttribute="bottom" secondItem="0Bq-Ye-pFD" secondAttribute="bottom" id="KXp-SW-lZK"/>
@@ -235,7 +237,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lP0-5K-fTF">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="tHt-rH-1aI" customClass="CheckInGridCollectionViewLayout" customModule="HabitPanda" customModuleProvider="target"/>
                                 <cells/>
                             </collectionView>
@@ -253,11 +255,10 @@ No habits found</string>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the + button above to create your first habit!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPF-NP-FKv">
                                         <rect key="frame" x="0.0" y="61.5" width="335" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" name="subText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="xPF-NP-FKv" secondAttribute="trailing" id="Qjh-lY-tPB"/>
                                     <constraint firstItem="xPF-NP-FKv" firstAttribute="top" secondItem="LgL-fQ-1FT" secondAttribute="bottom" constant="4" id="fOP-QT-a8X"/>
@@ -268,7 +269,7 @@ No habits found</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="mainViewBg"/>
                         <constraints>
                             <constraint firstItem="0xe-lA-JWz" firstAttribute="bottom" secondItem="lP0-5K-fTF" secondAttribute="bottom" id="2Re-Ni-IN8"/>
                             <constraint firstItem="jtG-Nm-bkM" firstAttribute="leading" secondItem="0xe-lA-JWz" secondAttribute="leading" constant="20" id="HPi-R4-1Kc"/>
@@ -329,7 +330,7 @@ No habits found</string>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(e.g. &quot;Go to the gym&quot;, &quot;Make the bed&quot;)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDl-0r-9NF">
                                                         <rect key="frame" x="0.0" y="33" width="335" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="subText"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36C-KM-kEN">
@@ -369,7 +370,7 @@ No habits found</string>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(how often do you aim to perform this activity / behavior)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8g-I2-Agl">
                                                         <rect key="frame" x="0.0" y="33" width="335" height="31.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="subText"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minValue="1" maxValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="ynS-jc-hNl">
@@ -437,7 +438,7 @@ No habits found</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="mainViewBg"/>
                         <constraints>
                             <constraint firstItem="Cws-Y4-UrX" firstAttribute="trailing" secondItem="oSY-Mv-gpm" secondAttribute="trailing" id="1c8-qv-81X"/>
                             <constraint firstItem="oSY-Mv-gpm" firstAttribute="leading" secondItem="Cws-Y4-UrX" secondAttribute="leading" id="BFm-Bx-Plx"/>
@@ -540,7 +541,7 @@ No habits found</string>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(which days should this reminder be sent)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbl-7A-Awd">
                                                         <rect key="frame" x="0.0" y="33" width="280" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="subText"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="xIx-Ov-qYc" userLabel="Frequency Option Segmented Control">
@@ -569,9 +570,7 @@ No habits found</string>
                                                                             <constraint firstAttribute="height" constant="46" id="gQg-Rh-WJK"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <state key="normal" title="Sun">
-                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
+                                                                        <state key="normal" title="Sun"/>
                                                                         <connections>
                                                                             <action selector="frequencyDayButtonPressed:" destination="i6e-vT-HmM" eventType="touchUpInside" id="AaZ-Io-wJs"/>
                                                                         </connections>
@@ -582,9 +581,7 @@ No habits found</string>
                                                                             <constraint firstAttribute="height" constant="46" id="95u-Zq-QFN"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <state key="normal" title="Mon">
-                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
+                                                                        <state key="normal" title="Mon"/>
                                                                         <connections>
                                                                             <action selector="frequencyDayButtonPressed:" destination="i6e-vT-HmM" eventType="touchUpInside" id="v8v-ec-eDz"/>
                                                                         </connections>
@@ -595,9 +592,7 @@ No habits found</string>
                                                                             <constraint firstAttribute="height" constant="46" id="G7X-o2-516"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <state key="normal" title="Tue">
-                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
+                                                                        <state key="normal" title="Tue"/>
                                                                         <connections>
                                                                             <action selector="frequencyDayButtonPressed:" destination="i6e-vT-HmM" eventType="touchUpInside" id="LlV-F3-LWM"/>
                                                                         </connections>
@@ -608,9 +603,7 @@ No habits found</string>
                                                                             <constraint firstAttribute="height" constant="46" id="fsA-za-y9G"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <state key="normal" title="Wed">
-                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
+                                                                        <state key="normal" title="Wed"/>
                                                                         <connections>
                                                                             <action selector="frequencyDayButtonPressed:" destination="i6e-vT-HmM" eventType="touchUpInside" id="DEW-DU-pLD"/>
                                                                         </connections>
@@ -626,9 +619,7 @@ No habits found</string>
                                                                             <constraint firstAttribute="height" constant="46" id="g2l-iU-hzF"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <state key="normal" title="Thu">
-                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
+                                                                        <state key="normal" title="Thu"/>
                                                                         <connections>
                                                                             <action selector="frequencyDayButtonPressed:" destination="i6e-vT-HmM" eventType="touchUpInside" id="dC0-on-n3m"/>
                                                                         </connections>
@@ -639,9 +630,7 @@ No habits found</string>
                                                                             <constraint firstAttribute="height" constant="46" id="hSp-g6-BbA"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <state key="normal" title="Fri">
-                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
+                                                                        <state key="normal" title="Fri"/>
                                                                         <connections>
                                                                             <action selector="frequencyDayButtonPressed:" destination="i6e-vT-HmM" eventType="touchUpInside" id="a8Z-8A-gqy"/>
                                                                         </connections>
@@ -652,9 +641,7 @@ No habits found</string>
                                                                             <constraint firstAttribute="height" constant="46" id="XoG-vc-jwc"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <state key="normal" title="Sat">
-                                                                            <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
+                                                                        <state key="normal" title="Sat"/>
                                                                         <connections>
                                                                             <action selector="frequencyDayButtonPressed:" destination="i6e-vT-HmM" eventType="touchUpInside" id="bvB-Hy-9Yg"/>
                                                                         </connections>
@@ -728,7 +715,7 @@ No habits found</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="mainViewBg"/>
                         <constraints>
                             <constraint firstItem="2my-mH-2Nc" firstAttribute="bottom" secondItem="VKj-YG-eQ8" secondAttribute="bottom" id="0BP-8D-qp7"/>
                             <constraint firstItem="VKj-YG-eQ8" firstAttribute="leading" secondItem="2my-mH-2Nc" secondAttribute="leading" id="0UK-5e-2MS"/>
@@ -827,7 +814,6 @@ No habits found</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="D8p-px-UpE" secondAttribute="bottom" id="LRv-Lj-bGu"/>
                                     <constraint firstItem="D8p-px-UpE" firstAttribute="top" secondItem="mM1-Dr-TW4" secondAttribute="bottom" constant="10" id="Mui-lS-BfN"/>
@@ -839,7 +825,7 @@ No habits found</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="mainViewBg"/>
                         <constraints>
                             <constraint firstItem="Ri9-VI-lHF" firstAttribute="leading" secondItem="dao-8c-CPD" secondAttribute="leading" id="Mu3-3F-cHh"/>
                             <constraint firstItem="dao-8c-CPD" firstAttribute="trailing" secondItem="Ri9-VI-lHF" secondAttribute="trailing" id="QXe-mH-8Ew"/>
@@ -896,18 +882,21 @@ No habits found</string>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1OB-iz-fUR">
                                                                 <rect key="frame" x="20" y="0.0" width="81" height="44"/>
+                                                                <color key="backgroundColor" name="checkInButtonBg"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="81" id="LhY-Hv-UV6"/>
                                                                     <constraint firstAttribute="height" constant="44" id="eam-2F-dsD"/>
                                                                 </constraints>
                                                                 <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                                                <state key="normal" title="Check In!"/>
+                                                                <state key="normal" title="Check In!">
+                                                                    <color key="titleColor" name="checkInButtonText"/>
+                                                                </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                         <real key="value" value="1"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="value" name="checkInButtonBorder"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                         <real key="value" value="15"/>
@@ -1004,7 +993,7 @@ No habits found</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="mainViewBg"/>
                         <constraints>
                             <constraint firstItem="lz8-OO-UFb" firstAttribute="bottom" secondItem="6q9-1E-NrY" secondAttribute="bottom" id="Aky-JK-U0v"/>
                             <constraint firstItem="6q9-1E-NrY" firstAttribute="leading" secondItem="lz8-OO-UFb" secondAttribute="leading" id="W82-fA-WfR"/>
@@ -1043,13 +1032,13 @@ No habits found</string>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oa2-Dx-AiQ" customClass="DesignableButton" customModule="HabitPanda" customModuleProvider="target">
                                 <rect key="frame" x="20" y="310" width="335" height="46"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="deleteButtonBg"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="ZnJ-lM-E0q"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <state key="normal" title="Delete Habit">
-                                    <color key="titleColor" red="0.91545593739999997" green="0.29308891300000001" blue="0.20751205089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" name="deleteButtonText"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1059,7 +1048,7 @@ No habits found</string>
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.91545593739999997" green="0.29308891300000001" blue="0.20751205089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" name="deleteButtonBorder"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1195,7 +1184,7 @@ No habits found</string>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(reminders will trigger app notifications on the specified days and times)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ya2-Z8-7r6">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="31.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" name="subText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AKw-mv-ZNd" userLabel="Reminder Times Table View">
@@ -1273,9 +1262,38 @@ No habits found</string>
             <point key="canvasLocation" x="725" y="2056"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="checkInButtonBg">
+            <color red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="checkInButtonBorder">
+            <color red="0.67000000000000004" green="0.67000000000000004" blue="0.67000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="checkInButtonText">
+            <color red="0.098039215686274508" green="0.45882352941176469" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="deleteButtonBg">
+            <color red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="deleteButtonBorder">
+            <color red="0.9137254901960784" green="0.29411764705882354" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="deleteButtonText">
+            <color red="0.9137254901960784" green="0.29411764705882354" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="listBorder">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mainViewBg">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="subText">
+            <color red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="amN-ro-xZK"/>
+        <segue reference="JuT-O6-V0K"/>
         <segue reference="6Ns-8H-oGp"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.058823529411764705" green="0.45882352941176469" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <color key="tintColor" name="tint"/>
 </document>
