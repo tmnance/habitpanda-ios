@@ -6,7 +6,7 @@ PODS:
   - PopupDialog (1.1.1):
     - DynamicBlurView (~> 4.0)
   - SwipeCellKit (2.7.1)
-  - Toast-Swift (5.0.0)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Charts (~> 3.4)
@@ -27,7 +27,7 @@ SPEC CHECKSUMS:
   DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
-  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
 PODFILE CHECKSUM: f46b4c4452379b60d38db78a64822b1dfc7479c1
 

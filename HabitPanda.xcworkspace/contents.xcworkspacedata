@@ -7,11 +7,4 @@
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
-   <Group
-      location = "group:scripts"
-      name = "scripts">
-      <FileRef
-         location = "group:nine41.swift">
-      </FileRef>
-   </Group>
 </Workspace>
