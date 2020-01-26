@@ -153,7 +153,7 @@ extension HabitSummaryViewController {
 // MARK: - UI Update Methods
 extension HabitSummaryViewController {
     func updateChartData() {
-        guard let firstCheckInDate = delegateViewModel.getFirstCheckIn()?.createdAt else {
+        guard let firstCheckInDate = delegateViewModel.getFirstCheckIn()?.checkInDate else {
             // no checkins found
             chartView.data = nil
             return

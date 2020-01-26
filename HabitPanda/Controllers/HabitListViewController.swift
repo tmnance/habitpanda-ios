@@ -149,7 +149,6 @@ extension HabitListViewController: UICollectionViewDataSource {
 
     func collectionViewHeader(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-//            withReuseIdentifier: "\(CheckInGridHeaderCell.self)",
             withReuseIdentifier: "\(CheckInGridHeaderCell.self)",
             for: indexPath
         ) as! CheckInGridHeaderCell
@@ -197,9 +196,7 @@ extension HabitListViewController: UICollectionViewDataSource {
 
         let checkInCount = getCheckInCount(forIndexPath: indexPath)
 
-        cell.contentContainer.backgroundColor = checkInCount != nil ?
-            Constants.Colors.clear :
-            Constants.Colors.listDisabledCellOverlay
+        cell.contentContainer.backgroundColor = getCellContainerBgColor(forIndexPath: indexPath)
 
         cell.backgroundColor = getCellBgColor(forIndexPath: indexPath)
         cell.countLabel.textColor = Constants.Colors.listCheckmark
@@ -252,6 +249,15 @@ extension HabitListViewController {
     func getCheckInCount(forIndexPath indexPath: IndexPath) -> Int? {
         let habit = getHabit(forIndexPath: indexPath)
         return viewModel.getCheckInCount(forHabit: habit, forDateOffset: indexPath.row - 1)
+    }
+
+    func getCellContainerBgColor(forIndexPath indexPath: IndexPath) -> UIColor {
+        let habit = getHabit(forIndexPath: indexPath)
+        let isBeforeHabitCreatedAt =
+            indexPath.row - 1 <= viewModel.getCreatedAtOffset(forHabit: habit)
+        return isBeforeHabitCreatedAt ?
+            Constants.Colors.listDisabledCellOverlay :
+            Constants.Colors.clear
     }
 }
 
