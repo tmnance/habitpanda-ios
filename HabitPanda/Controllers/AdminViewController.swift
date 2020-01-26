@@ -11,54 +11,129 @@ import CoreData
 import UserNotifications
 
 class AdminViewController: UIViewController {
+    struct AdminAction {
+        let name: String
+        let action: () -> Void
+
+        init(name: String, action: @escaping () -> Void) {
+            self.name = name
+            self.action = action
+        }
+    }
+
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var notificationsReportText: UILabel!
+    @IBOutlet weak var actionsTableView: UITableView!
 
     var isLoading = false
     var pendingRequests: [UNNotificationRequest] = []
     var deliveredNotifications: [UNNotification] = []
     var reminders: [Reminder] = []
 
+    lazy var actions = [
+        AdminAction(
+            name: "Remove all pending notifications",
+            action: {
+                NotificationHelper.removeAllPendingNotifications()
+                self.loadNotificationData()
+                ToastHelper.makeToast("Pending notifications removed", state: .info)
+            }
+        ),
+        AdminAction(
+            name: "Remove all sent notifications",
+            action: {
+                NotificationHelper.removeAllDeliveredNotifications()
+                self.loadNotificationData()
+                ToastHelper.makeToast("Sent notifications removed", state: .info)
+            }
+        ),
+        AdminAction(
+            name: "Remove orphaned sent notifications",
+            action: {
+                ReminderNotificationService.removeOrphanedDeliveredNotifications()
+                self.loadNotificationData()
+                ToastHelper.makeToast("Orphaned sent notifications removed", state: .info)
+            }
+        ),
+        AdminAction(
+            name: "(Re)set all notifications",
+            action: {
+                ReminderNotificationService.refreshNotificationsForAllReminders()
+                self.loadNotificationData()
+                ToastHelper.makeToast("All notifications refreshed", state: .info)
+            }
+        ),
+        AdminAction(
+            name: "Send test notification",
+            action: {
+                ReminderNotificationService.sendTestNotification()
+                ToastHelper.makeToast("Test notification sent", state: .info)
+            }
+        ),
+        AdminAction(
+            name: "Seed test data",
+            action: {
+                self.seedTestData()
+            }
+        ),
+        AdminAction(
+            name: "Delete all data",
+            action: {
+                self.deleteAllData()
+            }
+        ),
+    ]
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupStylesAndBindings()
         loadNotificationData()
         loadRemindersData()
 
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         print("NotificationHelper.isGranted = \(NotificationHelper.isGranted)")
     }
+}
 
-    @IBAction func adminButtonPressed(_ sender: UIButton) {
-        switch sender.tag {
-        case 0:
-            NotificationHelper.removeAllPendingNotifications()
-            loadNotificationData()
-            ToastHelper.makeToast("Pending notifications removed", state: .info)
-        case 1:
-            NotificationHelper.removeAllDeliveredNotifications()
-            loadNotificationData()
-            ToastHelper.makeToast("Sent notifications removed", state: .info)
-        case 2:
-            ReminderNotificationService.removeOrphanedDeliveredNotifications()
-            loadNotificationData()
-            ToastHelper.makeToast("Orphaned sent notifications removed", state: .info)
-        case 3:
-            ReminderNotificationService.refreshNotificationsForAllReminders()
-            loadNotificationData()
-            ToastHelper.makeToast("All notifications refreshed", state: .info)
-        case 4:
-            ReminderNotificationService.sendTestNotification()
-            ToastHelper.makeToast("Test notification sent", state: .info)
-        case 5:
-            seedTestData()
-        default:
-            print("Unrecognized")
-        }
-        updateUI()
+
+// MARK: - Setup Methods
+extension AdminViewController {
+    func setupStylesAndBindings() {
+        actionsTableView.delegate = self
+        actionsTableView.dataSource = self
+        actionsTableView.separatorStyle = .none
     }
 }
 
 
+// MARK: - Tableview Datasource Methods
+extension AdminViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return actions.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "ActionCell",
+            for: indexPath
+        )
+        let action = actions[indexPath.row]
+
+        cell.textLabel?.text = action.name
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let action = actions[indexPath.row]
+
+        actionsTableView.deselectRow(at: indexPath, animated: true)
+        action.action()
+    }
+}
+
+
+// MARK: - UI Update Methods
 extension AdminViewController {
     func loadNotificationData() {
         var loadingNum = 2
@@ -199,7 +274,27 @@ extension AdminViewController {
         alert.addAction(UIAlertAction(title: "Confirm", style: .destructive) { (action) in
             self.createSeedTestHabits()
             ReminderNotificationService.refreshNotificationsForAllReminders()
+            self.loadNotificationData()
             ToastHelper.makeToast("Test data seeded", state: .info)
+        })
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alert, animated: true, completion: nil)
+    }
+
+    func deleteAllData() {
+        let alert = UIAlertController(
+            title: "Delete All Data",
+            message: "Warning: this will clear all existing data",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Confirm", style: .destructive) { (action) in
+            self.deleteAllHabits()
+            ReminderNotificationService.refreshNotificationsForAllReminders()
+            self.loadNotificationData()
+            ToastHelper.makeToast("All habit data deleted", state: .info)
         })
 
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

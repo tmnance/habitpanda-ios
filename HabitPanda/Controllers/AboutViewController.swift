@@ -25,7 +25,7 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var linksTableViewHeightLayout: NSLayoutConstraint!
     @IBOutlet weak var appVersionLabel: UILabel!
 
-    let cellHeight: CGFloat = 46.0
+//    let cellHeight: CGFloat = 46.0
     var links = [
         AboutLink(
             name: "Website",
@@ -67,8 +67,8 @@ extension AboutViewController {
         linksTableView.dataSource = self
         linksTableView.isScrollEnabled = false
 
-        linksTableViewHeightLayout.constant =
-            CGFloat(tableView(linksTableView, numberOfRowsInSection: 0)) * cellHeight
+//        linksTableViewHeightLayout.constant =
+//            CGFloat(tableView(linksTableView, numberOfRowsInSection: 0)) * cellHeight
     }
 }
 
@@ -106,9 +106,9 @@ extension AboutViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeight
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return cellHeight
+//    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let link = links[indexPath.row]
