@@ -372,7 +372,8 @@ extension AdminViewController {
                     byAdding: .second,
                     value: i,
                     to: createdAtDate
-                )!
+                )!,
+                withOrder: i
             )
 
             Array(seedHabit["checkInHistory"] as? String ?? "").reversed().enumerated()
@@ -409,13 +410,15 @@ extension AdminViewController {
     func createSeedHabit(
         withName name: String,
         withFrequencyPerWeek frequencyPerWeek: Int,
-        forDate date: Date
+        forDate date: Date,
+        withOrder order: Int
     ) -> Habit {
         let habitToSave = Habit(context: context)
         habitToSave.createdAt = date
         habitToSave.uuid = UUID()
         habitToSave.name = name
         habitToSave.frequencyPerWeek = Int32(frequencyPerWeek)
+        habitToSave.order = Int32(order)
 
         return habitToSave
     }

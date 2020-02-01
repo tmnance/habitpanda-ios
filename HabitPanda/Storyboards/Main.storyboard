@@ -9,6 +9,83 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Reorder Habits-->
+        <scene sceneID="ZOx-x8-fkb">
+            <objects>
+                <viewController id="Qah-gu-4eg" userLabel="Reorder Habits" customClass="HabitEditListViewController" customModule="HabitPanda" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nCl-vE-0bm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tyJ-Rp-VFx">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HabitCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HabitCell" textLabel="mkS-Kl-UFA" style="IBUITableViewCellStyleDefault" id="eWh-J7-EVU">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eWh-J7-EVU" id="hvU-QU-oRB">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mkS-Kl-UFA">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="1TI-kT-Wcl" firstAttribute="bottom" secondItem="tyJ-Rp-VFx" secondAttribute="bottom" id="3MU-JJ-96Z"/>
+                            <constraint firstItem="1TI-kT-Wcl" firstAttribute="trailing" secondItem="tyJ-Rp-VFx" secondAttribute="trailing" id="7Zi-NZ-4Rh"/>
+                            <constraint firstItem="tyJ-Rp-VFx" firstAttribute="top" secondItem="1TI-kT-Wcl" secondAttribute="top" id="YrF-5v-gsG"/>
+                            <constraint firstItem="tyJ-Rp-VFx" firstAttribute="leading" secondItem="1TI-kT-Wcl" secondAttribute="leading" id="uvM-ab-OY8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1TI-kT-Wcl"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Reorder Habits" id="QRC-kI-ZmI" userLabel="Reorder Habits">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6SD-SV-wOe">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="Qah-gu-4eg" id="cGX-jZ-EUS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="WE6-g3-3pO">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="Qah-gu-4eg" id="AdA-5f-aFY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="habitsTableView" destination="tyJ-Rp-VFx" id="pJ9-mb-x8J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kgy-Nc-m2P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2671" y="-681"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="X1s-Fo-ba1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Mk-Wf-uxl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="m6h-cW-A6X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Qah-gu-4eg" kind="relationship" relationship="rootViewController" id="iVg-lk-KvS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3h5-6l-NaW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1487" y="-681"/>
+        </scene>
         <!--About-->
         <scene sceneID="g6E-VM-teN">
             <objects>
@@ -239,11 +316,18 @@ No habits found</string>
                                 <segue destination="Udq-Ds-jzW" kind="show" identifier="goToAbout" id="Ur3-wh-dMA"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Maf-hO-ccE">
-                            <connections>
-                                <segue destination="q3o-ZB-uWy" kind="presentation" identifier="goToAddHabit" modalPresentationStyle="fullScreen" id="JuT-O6-V0K"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="Maf-hO-ccE">
+                                <connections>
+                                    <segue destination="q3o-ZB-uWy" kind="presentation" identifier="goToAddHabit" modalPresentationStyle="fullScreen" id="JuT-O6-V0K"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="⇅" id="oWm-pd-lW6" userLabel="Reorder">
+                                <connections>
+                                    <segue destination="5Mk-Wf-uxl" kind="presentation" identifier="goToEditHabits" modalPresentationStyle="fullScreen" id="OkQ-0v-OpH"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="lP0-5K-fTF" id="VlB-Sa-50v"/>

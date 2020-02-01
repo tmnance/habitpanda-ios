@@ -31,4 +31,43 @@ public class Habit: NSManagedObject {
 
         return habits
     }
+
+    public static func getCount() -> Int {
+        let context = (UIApplication.shared.delegate as! AppDelegate)
+            .persistentContainer.viewContext
+        var count = 0
+
+        let request: NSFetchRequest<Habit> = Habit.fetchRequest()
+
+        do {
+            count = try context.count(for: request)
+        } catch {
+            print("Error fetching data from context, \(error)")
+        }
+
+        return count
+    }
+
+    public static func fixHabitOrder() {
+        let context = (UIApplication.shared.delegate as! AppDelegate)
+            .persistentContainer.viewContext
+        let habits = Habit.getAll(sortedBy: [("order", .asc), ("createdAt", .asc)])
+        guard habits.count > 0 else {
+            return
+        }
+
+        var order = 0
+
+        habits.forEach { (habit) in
+            let habitToSave = habit
+            habitToSave.order = Int32(order)
+            order += 1
+        }
+
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context, \(error)")
+        }
+    }
 }

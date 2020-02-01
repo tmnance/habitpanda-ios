@@ -6,9 +6,12 @@
 //  Copyright © 2019 Tim Nance. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CoreData
 
 class HabitListViewModel {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     let numDates = 30
 
     var habits: Box<[Habit]> = Box([])
@@ -29,6 +32,30 @@ class HabitListViewModel {
 
     init() {
         loadData()
+    }
+}
+
+
+// MARK: - Save Data Methods
+extension HabitListViewModel {
+    func updateHabitOrder() {
+        guard habits.value.count > 0 else {
+            return
+        }
+
+        var order = 0
+
+        habits.value.forEach { (habit) in
+            let habitToSave = habit
+            habitToSave.order = Int32(order)
+            order += 1
+        }
+
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context, \(error)")
+        }
     }
 }
 

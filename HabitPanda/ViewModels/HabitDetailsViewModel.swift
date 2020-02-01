@@ -42,6 +42,7 @@ extension HabitDetailsViewModel {
         if isNew {
             habitToSave.createdAt = Date()
             habitToSave.uuid = UUID()
+            habitToSave.order = Int32(Habit.getCount() - 1)
         }
 
         habitToSave.name = name.value
@@ -64,6 +65,7 @@ extension HabitDetailsViewModel {
 
         do {
             try context.save()
+            Habit.fixHabitOrder()
             ReminderNotificationService.refreshNotificationsForAllReminders()
             ReminderNotificationService.removeOrphanedDeliveredNotifications()
         } catch {
