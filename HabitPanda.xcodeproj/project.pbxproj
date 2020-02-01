@@ -25,6 +25,7 @@
 		1C47C9FB227E4B8E00985F1C /* ReminderAddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */; };
 		1C47C9FD227F211700985F1C /* ReminderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9FC227F211700985F1C /* ReminderDetailsViewModel.swift */; };
 		1C5F464522B037D1003EBABE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5F464422B037D1003EBABE /* AboutViewController.swift */; };
+		1C80B0AD23DE79FD008CB84B /* HabitEditListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C80B0AC23DE79FD008CB84B /* HabitEditListViewController.swift */; };
 		1C90EB90226A8CDF007065D1 /* EditableTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB8F226A8CDF007065D1 /* EditableTimeCell.swift */; };
 		1C90EB92226A8E6A007065D1 /* EditableTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C90EB91226A8E6A007065D1 /* EditableTimeCell.xib */; };
 		1C90EB94226A92A7007065D1 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90EB93226A92A7007065D1 /* Reminder.swift */; };
@@ -80,6 +81,7 @@
 		1C47C9FA227E4B8E00985F1C /* ReminderAddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderAddEditViewController.swift; sourceTree = "<group>"; };
 		1C47C9FC227F211700985F1C /* ReminderDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDetailsViewModel.swift; sourceTree = "<group>"; };
 		1C5F464422B037D1003EBABE /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		1C80B0AC23DE79FD008CB84B /* HabitEditListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditListViewController.swift; sourceTree = "<group>"; };
 		1C90EB8F226A8CDF007065D1 /* EditableTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTimeCell.swift; sourceTree = "<group>"; };
 		1C90EB91226A8E6A007065D1 /* EditableTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditableTimeCell.xib; sourceTree = "<group>"; };
 		1C90EB93226A92A7007065D1 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				1CBBABD5227A4F4300DB8F8E /* HabitAddEditViewController.swift */,
 				1CA300A7228F500A00F5D08C /* HabitCheckInsViewController.swift */,
 				1CAC679C22725D3600B41338 /* HabitDetailsViewController.swift */,
+				1C80B0AC23DE79FD008CB84B /* HabitEditListViewController.swift */,
 				1C12735322610DC80058D942 /* HabitListViewController.swift */,
 				1CBBABCC227919C700DB8F8E /* HabitRemindersViewController.swift */,
 				1CBBABCA2279195D00DB8F8E /* HabitSummaryViewController.swift */,
@@ -469,6 +472,7 @@
 				1CD554B222A07B3C004440B1 /* DateValueFormatter.swift in Sources */,
 				1CAC67A42273869900B41338 /* UIView+Border.swift in Sources */,
 				1CBBABD32279297500DB8F8E /* Constants.swift in Sources */,
+				1C80B0AD23DE79FD008CB84B /* HabitEditListViewController.swift in Sources */,
 				1C977B4E2295DECA006F3E6C /* RoutingService.swift in Sources */,
 				1CA300A8228F500A00F5D08C /* HabitCheckInsViewController.swift in Sources */,
 				1C3BD56F229B1398004AAA2B /* CheckInGridContentCell.swift in Sources */,

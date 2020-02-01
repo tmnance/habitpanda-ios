@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Constants {
+public struct Constants {
     struct Colors {
         static let clear = UIColor.clear
         static let label = UIColor(named: "label")!
@@ -55,5 +55,9 @@ struct Constants {
 
     struct TimePicker {
         static let minuteInterval = 5
+    }
+
+    public enum SortDir: String {
+        case asc, desc
     }
 }
