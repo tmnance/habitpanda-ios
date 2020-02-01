@@ -46,7 +46,7 @@ extension HabitListViewModel {
         }
 
         BoxHelper.processBeforeListenerInvocation {
-            habits.value = Habit.getAll(sortedBy: "createdAt")
+            habits.value = Habit.getAll(sortedBy: [("order", .asc), ("createdAt", .asc)])
             let checkIns = CheckIn.getAll(
                 forHabitUUIDs: habits.value.map { $0.uuid! },
                 fromStartDate: startDate

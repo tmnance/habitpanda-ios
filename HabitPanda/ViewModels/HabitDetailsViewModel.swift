@@ -129,7 +129,7 @@ extension HabitDetailsViewModel {
         }
 
         let checkIns = CheckIn.getAll(
-            sortedBy: "checkInDate",
+            sortedBy: [("checkInDate", .asc)],
             forHabitUUIDs: [selectedHabit.uuid!],
             withLimit: 1
         )
@@ -161,7 +161,7 @@ extension HabitDetailsViewModel {
             to: startDate
         )!
         let checkIns = CheckIn.getAll(
-            sortedBy: "checkInDate",
+            sortedBy: [("checkInDate", .asc)],
             forHabitUUIDs: [selectedHabit.uuid!],
             fromStartDate: startDateIncludingWindow,
             toEndDate: endDate

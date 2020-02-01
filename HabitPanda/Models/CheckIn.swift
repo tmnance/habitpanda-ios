@@ -32,7 +32,7 @@ public class CheckIn: NSManagedObject {
     }
 
     public static func getAll(
-        sortedBy sortKey: String = "checkInDate",
+        sortedBy sortKeys: [(String, Constants.SortDir)] = [("checkInDate", .asc)],
         forHabitUUIDs habitUUIDs: [UUID]? = nil,
         fromStartDate startDate: Date? = nil,
         toEndDate endDate: Date? = nil,
@@ -58,9 +58,9 @@ public class CheckIn: NSManagedObject {
         }
 
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-        request.sortDescriptors = [
-            NSSortDescriptor(key: sortKey, ascending: true)
-        ]
+        request.sortDescriptors = sortKeys.map {
+            NSSortDescriptor(key: $0.0, ascending: $0.1 == Constants.SortDir.asc)
+        }
 
         if let limit = limit {
             request.fetchLimit = limit
