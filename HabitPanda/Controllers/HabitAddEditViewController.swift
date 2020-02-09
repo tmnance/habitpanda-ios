@@ -42,7 +42,10 @@ extension HabitAddEditViewController {
         }
 
         viewModel.name.bind { [unowned self] in
-            self.nameInputField.text = $0
+            // don't want to reset cursor position while editing
+            if self.nameInputField.text != $0 {
+                self.nameInputField.text = $0
+            }
             self.validateInput()
         }
 
