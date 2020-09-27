@@ -117,8 +117,14 @@ extension HabitDetailsViewModel {
 
 // MARK: - Frequency Methods
 extension HabitDetailsViewModel {
-    func getFrequencyPerWeekDisplayText() -> String {
-        return "\(frequencyPerWeek.value) time\(frequencyPerWeek.value == 1 ? "" : "s") / week"
+    func getFrequencyPerWeekDisplayText(
+        usingOverflowValue overflowValue: Int? = nil
+    ) -> String {
+        var displayValue = "\(frequencyPerWeek.value)"
+        if let overflowValue = overflowValue {
+            displayValue = "\(overflowValue)+"
+        }
+        return "\(displayValue) time\(frequencyPerWeek.value == 1 ? "" : "s") / week"
     }
 }
 

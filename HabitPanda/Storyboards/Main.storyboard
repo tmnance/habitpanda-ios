@@ -395,7 +395,7 @@ No habits found</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04a-hQ-2HX" userLabel="Frequency Container">
-                                                <rect key="frame" x="20" y="159" width="335" height="131.5"/>
+                                                <rect key="frame" x="20" y="159" width="335" height="131"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habit Target Frequency 🎯" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shi-QH-GcA">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="29"/>
@@ -409,36 +409,57 @@ No habits found</string>
                                                         <color key="textColor" name="subText"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minValue="1" maxValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="ynS-jc-hNl">
-                                                        <rect key="frame" x="18" y="101.5" width="299" height="31"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="I4n-6y-pHv"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <action selector="frequencySliderChanged:" destination="Aa1-59-79r" eventType="valueChanged" id="J9d-Bm-aXF"/>
-                                                        </connections>
-                                                    </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 times / week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjW-r2-d02">
-                                                        <rect key="frame" x="0.0" y="72.5" width="335" height="21"/>
+                                                        <rect key="frame" x="0.0" y="72.5" width="335" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="som-92-D4t" userLabel="Frequency Slider Value StackView">
+                                                        <rect key="frame" x="20" y="101" width="295" height="30"/>
+                                                        <subviews>
+                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minValue="1" maxValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="ynS-jc-hNl">
+                                                                <rect key="frame" x="-2" y="0.0" width="244" height="31"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="I4n-6y-pHv"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <action selector="frequencySliderChanged:" destination="Aa1-59-79r" eventType="valueChanged" id="J9d-Bm-aXF"/>
+                                                                </connections>
+                                                            </slider>
+                                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfI-LQ-OM5" userLabel="Frequency Overflow Input Field">
+                                                                <rect key="frame" x="250" y="0.0" width="45" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="45" id="S8A-mY-fF1"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                                        <integer key="value" value="2"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="XwD-aW-o3S"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="ynS-jc-hNl" secondAttribute="bottom" id="8aT-xh-GRf"/>
-                                                    <constraint firstItem="ynS-jc-hNl" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" constant="20" id="8dI-j9-Fq0"/>
-                                                    <constraint firstItem="ynS-jc-hNl" firstAttribute="top" secondItem="WjW-r2-d02" secondAttribute="bottom" constant="8" id="8rR-A1-apH"/>
                                                     <constraint firstItem="k8g-I2-Agl" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="JZ8-Zk-SfR"/>
                                                     <constraint firstAttribute="trailing" secondItem="WjW-r2-d02" secondAttribute="trailing" id="KgT-4L-GiB"/>
+                                                    <constraint firstItem="som-92-D4t" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" constant="20" id="NHb-95-OqJ"/>
+                                                    <constraint firstItem="som-92-D4t" firstAttribute="top" secondItem="WjW-r2-d02" secondAttribute="bottom" constant="8" id="Q0s-zt-Qv1"/>
                                                     <constraint firstItem="shi-QH-GcA" firstAttribute="top" secondItem="04a-hQ-2HX" secondAttribute="top" id="YEA-rE-k1J"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ynS-jc-hNl" secondAttribute="trailing" constant="20" id="dZ0-Ss-krs"/>
                                                     <constraint firstItem="k8g-I2-Agl" firstAttribute="top" secondItem="shi-QH-GcA" secondAttribute="bottom" constant="4" id="eWP-LN-NSi"/>
                                                     <constraint firstItem="shi-QH-GcA" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="gUK-w8-ZK2"/>
                                                     <constraint firstItem="WjW-r2-d02" firstAttribute="leading" secondItem="04a-hQ-2HX" secondAttribute="leading" id="hnz-NU-dIy"/>
                                                     <constraint firstItem="WjW-r2-d02" firstAttribute="top" secondItem="k8g-I2-Agl" secondAttribute="bottom" constant="8" id="khC-SO-atG"/>
+                                                    <constraint firstAttribute="trailing" secondItem="som-92-D4t" secondAttribute="trailing" constant="20" id="q20-c5-fae"/>
                                                     <constraint firstAttribute="trailing" secondItem="k8g-I2-Agl" secondAttribute="trailing" id="qNQ-C6-w4D"/>
+                                                    <constraint firstAttribute="bottom" secondItem="som-92-D4t" secondAttribute="bottom" id="ule-9W-bGO"/>
                                                     <constraint firstAttribute="trailing" secondItem="shi-QH-GcA" secondAttribute="trailing" id="vpI-bx-2Tg"/>
                                                 </constraints>
                                             </view>
@@ -496,6 +517,7 @@ No habits found</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="frequencyOverflowInputField" destination="JfI-LQ-OM5" id="RKc-gO-2RR"/>
                         <outlet property="frequencySlider" destination="ynS-jc-hNl" id="7bN-Wl-rp6"/>
                         <outlet property="frequencySliderLabel" destination="WjW-r2-d02" id="0gy-gD-oDd"/>
                         <outlet property="nameInputField" destination="36C-KM-kEN" id="DNQ-3b-GpG"/>
