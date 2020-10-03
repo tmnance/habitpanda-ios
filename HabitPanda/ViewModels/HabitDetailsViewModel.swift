@@ -186,7 +186,7 @@ extension HabitDetailsViewModel {
             toEndDate: endDate
         )
 
-        let startDateOffsetHasCheckInMap = getStartDateOffsetHasCheckInMap(
+        let startDateOffsetCheckInCountMap = getStartDateOffsetCheckInCountMap(
             fromStartDate: startDate,
             forCheckIns: checkIns
         )
@@ -196,11 +196,9 @@ extension HabitDetailsViewModel {
 
         for startDateOffset in (1 - dayWindow)..<intervalDayCount {
             if startDateOffset >= 1 {
-                rollingSum -= (
-                    startDateOffsetHasCheckInMap[startDateOffset - dayWindow] ?? false
-                ) ? 1 : 0
+                rollingSum -= startDateOffsetCheckInCountMap[startDateOffset - dayWindow] ?? 0
             }
-            rollingSum += (startDateOffsetHasCheckInMap[startDateOffset] ?? false) ? 1 : 0
+            rollingSum += startDateOffsetCheckInCountMap[startDateOffset] ?? 0
             // skip over negative
             if startDateOffset >= 0 {
                 checkInFrequencyRollingAverageData.append(Double(rollingSum))
@@ -210,11 +208,11 @@ extension HabitDetailsViewModel {
         return checkInFrequencyRollingAverageData
     }
 
-    private func getStartDateOffsetHasCheckInMap(
+    private func getStartDateOffsetCheckInCountMap(
         fromStartDate startDate: Date,
         forCheckIns checkIns: [CheckIn]
-    ) -> [Int: Bool] {
-        var startDateOffsetHasCheckInMap: [Int: Bool] = [:]
+    ) -> [Int: Int] {
+        var startDateOffsetCheckInCountMap: [Int: Int] = [:]
 
         checkIns.forEach{ (checkIn) in
             let checkInDate = checkIn.checkInDate!.stripTime()
@@ -223,9 +221,9 @@ extension HabitDetailsViewModel {
                 from: startDate,
                 to: checkInDate
             ).day ?? 0
-            startDateOffsetHasCheckInMap[startDateOffset] = true
+            startDateOffsetCheckInCountMap[startDateOffset] = (startDateOffsetCheckInCountMap[startDateOffset] ?? 0) + 1
         }
 
-        return startDateOffsetHasCheckInMap
+        return startDateOffsetCheckInCountMap
     }
 }

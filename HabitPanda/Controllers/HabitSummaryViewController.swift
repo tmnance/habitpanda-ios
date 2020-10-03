@@ -97,10 +97,10 @@ extension HabitSummaryViewController {
             0,
             min(targetFrequencyPerWeek, chartData.min()!) - 1
         )
-        let maxY = min(
-            7,
-            max(chartData.max()!, targetFrequencyPerWeek) + 1
-        )
+        let maxY = { () -> Double in
+            let maxTemp = max(chartData.max()!, targetFrequencyPerWeek)
+            return maxTemp == 7 ? 7 : maxTemp + 1
+        }()
 
         let targetLine = ChartLimitLine(
             limit: targetFrequencyPerWeek,
@@ -109,7 +109,7 @@ extension HabitSummaryViewController {
         targetLine.lineWidth = 2
         targetLine.lineColor = Constants.Colors.tint2
         targetLine.lineDashLengths = [10, 10]
-        targetLine.labelPosition = targetFrequencyPerWeek >= maxY ? .bottomRight : .topRight
+        targetLine.labelPosition = targetFrequencyPerWeek >= maxY - 1 ? .bottomRight : .topRight
         targetLine.valueFont = .systemFont(ofSize: 12)
         targetLine.valueTextColor = Constants.Colors.subText
 
