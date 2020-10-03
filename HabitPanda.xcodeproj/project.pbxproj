@@ -56,11 +56,11 @@
 		1CDB388F22624BBE00C86277 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB388E22624BBE00C86277 /* Habit.swift */; };
 		1CF697BD229C784200766011 /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF697BC229C784200766011 /* ToastHelper.swift */; };
 		1CF697BF229DC30800766011 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF697BE229DC30800766011 /* DateHelper.swift */; };
-		4E62082982CE4D84B0901FBE /* Pods_HabitPanda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04892BB89431780B7C3882AE /* Pods_HabitPanda.framework */; };
+		E256DC0CADA65DE4839DE076 /* Pods_HabitPanda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7DB83BBF5181675CE6CD47 /* Pods_HabitPanda.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		04892BB89431780B7C3882AE /* Pods_HabitPanda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitPanda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B7DB83BBF5181675CE6CD47 /* Pods_HabitPanda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitPanda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C0315BE2285010A00B1E6F4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C0315BF2285010A00B1E6F4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1C0315C32285025A00B1E6F4 /* ReminderNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderNotificationService.swift; sourceTree = "<group>"; };
@@ -112,8 +112,8 @@
 		1CDB388E22624BBE00C86277 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		1CF697BC229C784200766011 /* ToastHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastHelper.swift; sourceTree = "<group>"; };
 		1CF697BE229DC30800766011 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
-		3CCD34975B17DB9A0E5FD317 /* Pods-HabitPanda.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPanda.debug.xcconfig"; path = "Target Support Files/Pods-HabitPanda/Pods-HabitPanda.debug.xcconfig"; sourceTree = "<group>"; };
-		C24FC85B23A11D916B95A4B6 /* Pods-HabitPanda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPanda.release.xcconfig"; path = "Target Support Files/Pods-HabitPanda/Pods-HabitPanda.release.xcconfig"; sourceTree = "<group>"; };
+		3BD3FE36141ABC0B9DFC525C /* Pods-HabitPanda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPanda.release.xcconfig"; path = "Target Support Files/Pods-HabitPanda/Pods-HabitPanda.release.xcconfig"; sourceTree = "<group>"; };
+		FE916314765FD5D09601789A /* Pods-HabitPanda.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPanda.debug.xcconfig"; path = "Target Support Files/Pods-HabitPanda/Pods-HabitPanda.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E62082982CE4D84B0901FBE /* Pods_HabitPanda.framework in Frameworks */,
+				E256DC0CADA65DE4839DE076 /* Pods_HabitPanda.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +152,7 @@
 				1C12735022610DC80058D942 /* HabitPanda */,
 				1C12734F22610DC80058D942 /* Products */,
 				EE42AF9E19124127BB090C35 /* Pods */,
-				A5BEBC754349D0D3246BBB30 /* Frameworks */,
+				3A092BEA5058BEA28A9597F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -307,10 +307,10 @@
 			path = Formatters;
 			sourceTree = "<group>";
 		};
-		A5BEBC754349D0D3246BBB30 /* Frameworks */ = {
+		3A092BEA5058BEA28A9597F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				04892BB89431780B7C3882AE /* Pods_HabitPanda.framework */,
+				0B7DB83BBF5181675CE6CD47 /* Pods_HabitPanda.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -318,8 +318,8 @@
 		EE42AF9E19124127BB090C35 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3CCD34975B17DB9A0E5FD317 /* Pods-HabitPanda.debug.xcconfig */,
-				C24FC85B23A11D916B95A4B6 /* Pods-HabitPanda.release.xcconfig */,
+				FE916314765FD5D09601789A /* Pods-HabitPanda.debug.xcconfig */,
+				3BD3FE36141ABC0B9DFC525C /* Pods-HabitPanda.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -331,11 +331,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1C12736022610DCA0058D942 /* Build configuration list for PBXNativeTarget "HabitPanda" */;
 			buildPhases = (
-				142C575B387265E40AF198F6 /* [CP] Check Pods Manifest.lock */,
+				B46B8A6C09FDFA3F6D616DAB /* [CP] Check Pods Manifest.lock */,
 				1C12734A22610DC80058D942 /* Sources */,
 				1C12734B22610DC80058D942 /* Frameworks */,
 				1C12734C22610DC80058D942 /* Resources */,
-				F79010CCBB9940DE091EF4EF /* [CP] Embed Pods Frameworks */,
+				E5B646FC980E647D91DC4B15 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,7 +353,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Tim Nance";
 				TargetAttributes = {
 					1C12734D22610DC80058D942 = {
@@ -397,7 +397,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		142C575B387265E40AF198F6 /* [CP] Check Pods Manifest.lock */ = {
+		B46B8A6C09FDFA3F6D616DAB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -419,7 +419,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F79010CCBB9940DE091EF4EF /* [CP] Embed Pods Frameworks */ = {
+		E5B646FC980E647D91DC4B15 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -517,6 +517,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -578,6 +579,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -609,14 +611,14 @@
 		};
 		1C12736122610DCA0058D942 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CCD34975B17DB9A0E5FD317 /* Pods-HabitPanda.debug.xcconfig */;
+			baseConfigurationReference = FE916314765FD5D09601789A /* Pods-HabitPanda.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 4B74LG3RTF;
 				INFOPLIST_FILE = HabitPanda/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -631,14 +633,14 @@
 		};
 		1C12736222610DCA0058D942 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C24FC85B23A11D916B95A4B6 /* Pods-HabitPanda.release.xcconfig */;
+			baseConfigurationReference = 3BD3FE36141ABC0B9DFC525C /* Pods-HabitPanda.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 4B74LG3RTF;
 				INFOPLIST_FILE = HabitPanda/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
