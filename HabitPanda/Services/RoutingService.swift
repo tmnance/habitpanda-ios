@@ -20,7 +20,7 @@ struct RoutingService {
         }
     }
 
-    public static func navigateToHabit(_ habit: Habit) {
+    public static func navigateToHabit(_ habit: Habit, andEdit isEdit: Bool = false) {
         clearAllViews() {
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let habitDetailsViewController =
@@ -30,6 +30,13 @@ struct RoutingService {
             habitDetailsViewController.selectedHabit = habit
 
             getRootViewController().pushViewController(habitDetailsViewController, animated: false)
+
+            if isEdit {
+                habitDetailsViewController.performSegue(
+                    withIdentifier: "goToEditHabit",
+                    sender: habitDetailsViewController
+                )
+            }
         }
     }
 

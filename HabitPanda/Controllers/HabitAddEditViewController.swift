@@ -17,7 +17,7 @@ class HabitAddEditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var frequencyOverflowInputField: UITextField!
     
     private var viewModel = HabitDetailsViewModel()
-    let frequencySliderMaxValueBeforeOverflow = 7
+    let frequencySliderOverflowThreshold = 8
     let allowFrequencySliderOverflow = true
 
     override func viewDidLoad() {
@@ -37,8 +37,23 @@ extension HabitAddEditViewController {
         nameInputField.addTarget(
             self,
             action: #selector(self.updateName),
-            for: UIControl.Event.editingChanged
+            for: .editingChanged
         )
+
+        frequencySlider.addTarget(
+            self,
+            action: #selector(onSliderValChanged(slider:event:)),
+            for: .valueChanged
+        )
+
+        frequencyOverflowInputField.delegate = self
+        frequencyOverflowInputField.addTarget(
+            self,
+            action: #selector(self.updateFrequencyOverflow),
+            for: .editingChanged
+        )
+
+        hideSliderOverflowField()
 
         viewModel.interactionMode.bind { [unowned self] (_) in
             self.updateInteractionMode()
@@ -53,75 +68,71 @@ extension HabitAddEditViewController {
         }
 
         viewModel.frequencyPerWeek.bind { [unowned self] in
-            if allowFrequencySliderOverflow {
-                if !frequencyOverflowInputField.isHidden && $0 < self.frequencySliderMaxValueBeforeOverflow {
-                    hideSliderOverflowField()
-                }
-                else if !frequencyOverflowInputField.isHidden && $0 > self.frequencySliderMaxValueBeforeOverflow {
-                    showSliderOverflowField()
-                }
+            if !isSliderOverflowActive() {
+                self.frequencySlider.value = Float(
+                    $0 > self.frequencySliderOverflowThreshold ? self.frequencySliderOverflowThreshold :
+                        $0
+                )
             }
-
-            self.frequencySlider.value = Float(
-                $0 > self.frequencySliderMaxValueBeforeOverflow ? self.frequencySliderMaxValueBeforeOverflow : $0
-            )
-            self.frequencySliderLabel.text = isSliderOverflowing() ?
-                self.viewModel.getFrequencyPerWeekDisplayText(
-                    usingOverflowValue: self.frequencySliderMaxValueBeforeOverflow
-                ) :
-                self.viewModel.getFrequencyPerWeekDisplayText()
+            updateFrequencyDisplayText()
+            validateInput()
         }
         
-        frequencyOverflowInputField.delegate = self
-        frequencyOverflowInputField.addTarget(self, action: #selector(self.editingChanged), for: .editingChanged)
-
-        hideSliderOverflowField()
+        viewModel.setOnDataLoad { [unowned self] in
+            if (allowFrequencySliderOverflow &&
+                viewModel.frequencyPerWeek.value >= frequencySliderOverflowThreshold
+            ) {
+                showSliderOverflowField()
+                frequencyOverflowInputField.text = "\(viewModel.frequencyPerWeek.value)"
+            } else {
+                hideSliderOverflowField()
+            }
+        }
     }
 }
 
 
-// MARK: - Slider Overflow Methods
+// MARK: - Frequency Slider and Overflow Methods
 extension HabitAddEditViewController {
+    func updateFrequencyDisplayText() {
+        self.frequencySliderLabel.text =
+            viewModel.frequencyPerWeek.value >= frequencySliderOverflowThreshold ?
+                self.viewModel.getFrequencyPerWeekDisplayText(
+                    usingOverflowValue: frequencySliderOverflowThreshold
+                ) :
+                self.viewModel.getFrequencyPerWeekDisplayText()
+    }
+
+    func isSliderOverflowActive() -> Bool {
+        return !frequencyOverflowInputField.isHidden
+    }
+
     func showSliderOverflowField(andDoFocusInputField doFocusInputField: Bool = false) {
         guard allowFrequencySliderOverflow else {
             hideSliderOverflowField()
             return
         }
-        guard !isSliderOverflowing() else {
+        guard !isSliderOverflowActive() else {
             return
         }
         frequencyOverflowInputField.isHidden = false
-        frequencySlider.maximumValue = Float(frequencySliderMaxValueBeforeOverflow)
         if doFocusInputField {
             frequencyOverflowInputField.becomeFirstResponder()
         }
-    }
-    func isSliderOverflowing() -> Bool {
-        return !frequencyOverflowInputField.isHidden
+        updateFrequencyDisplayText()
+        validateInput()
     }
 
     func hideSliderOverflowField() {
         frequencyOverflowInputField.isHidden = true
         frequencySlider.maximumValue = Float(
-            allowFrequencySliderOverflow ? frequencySliderMaxValueBeforeOverflow + 1 : frequencySliderMaxValueBeforeOverflow
+            allowFrequencySliderOverflow ? frequencySliderOverflowThreshold : frequencySliderOverflowThreshold - 1
         )
         frequencyOverflowInputField.text = ""
         self.view.endEditing(true)
+        validateInput()
     }
 
-    func updateSliderOverflow() {
-        guard allowFrequencySliderOverflow else {
-            hideSliderOverflowField()
-            return
-        }
-        
-        let frequency = self.frequencySlider.value
-        
-        frequencySlider.maximumValue = Float(frequencySliderMaxValueBeforeOverflow + 1)
-        if frequencyOverflowInputField.isHidden && Int(frequency) > frequencySliderMaxValueBeforeOverflow {
-        }
-    }
-    
     func textField(
         _ textField: UITextField,
        shouldChangeCharactersIn range: NSRange,
@@ -130,24 +141,55 @@ extension HabitAddEditViewController {
         guard textField == frequencyOverflowInputField else {
             return true
         }
-        if (textField.text!.count >= 2
-            && !string.isEmpty) {
+        if (textField.text!.count >= 2 && !string.isEmpty) {
             return false
         }
-        let invalidCharacters
-            = CharacterSet(charactersIn: "0123456789").inverted
+        let invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
         return (string.rangeOfCharacter(from: invalidCharacters) == nil)
     }
 
-    @objc private func editingChanged(_ textField: UITextField) {
+    @objc func onSliderValChanged(slider: UISlider, event: UIEvent) {
+        if let touchEvent = event.allTouches?.first {
+            switch touchEvent.phase {
+            case .ended:
+                var value = Int(slider.value.rounded())
+                if allowFrequencySliderOverflow {
+                    if !isSliderOverflowActive() && value >= frequencySliderOverflowThreshold {
+                        value = frequencySliderOverflowThreshold
+                        showSliderOverflowField(andDoFocusInputField: true)
+                    } else if isSliderOverflowActive() && value < frequencySliderOverflowThreshold {
+                        hideSliderOverflowField()
+                    }
+                }
+                if !isSliderOverflowActive() {
+                    viewModel.frequencyPerWeek.value = value
+                }
+            default:
+                break
+            }
+        }
+    }
+
+    @objc private func updateFrequencyOverflow(_ textField: UITextField) {
         guard textField == frequencyOverflowInputField else {
             return
         }
         if let num = Int(textField.text!) {
             textField.text = "\(num)"
+            if num > 0 {
+                viewModel.frequencyPerWeek.value = num
+            }
         } else {
             textField.text = ""
         }
+        self.validateInput()
+    }
+
+    @IBAction func frequencySliderChanged(_ sender: UISlider) {
+        let value = Int(sender.value.rounded())
+        // reassigning the value here causes the slider to snap to descrete integer values
+        sender.value = Float(value)
+        viewModel.frequencyPerWeek.value = value
     }
 }
 
@@ -204,7 +246,8 @@ extension HabitAddEditViewController {
     }
 
     func isValidInput() -> Bool {
-        return viewModel.name.value.count > 0
+        return viewModel.name.value.count > 0 && (!isSliderOverflowActive() || Int(frequencyOverflowInputField.text ?? "") ?? 0 > 0
+        )
     }
 }
 
@@ -266,20 +309,5 @@ extension HabitAddEditViewController {
 extension HabitAddEditViewController {
     @objc func updateName() {
         viewModel.name.value = nameInputField.text!
-    }
-}
-
-
-// MARK: - Frequency Methods
-extension HabitAddEditViewController {
-    @IBAction func frequencySliderChanged(_ sender: UISlider) {
-        var value = Int(sender.value)
-        if allowFrequencySliderOverflow && value > frequencySliderMaxValueBeforeOverflow {
-            value = frequencySliderMaxValueBeforeOverflow
-            showSliderOverflowField(andDoFocusInputField: true)
-        }
-        // reassigning the value here causes the slider to snap to descrete integer values
-        sender.value = Float(value)
-        viewModel.frequencyPerWeek.value = value
     }
 }

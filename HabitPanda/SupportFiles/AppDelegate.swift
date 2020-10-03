@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupNotificationCenter()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // DEBUG - auto open first habit in edit mode
+//            if let firstHabit = Habit.getAll().first {
+//                RoutingService.navigateToHabit(firstHabit, andEdit: true)
+//            }
+//        }
         return true
     }
 

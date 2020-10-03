@@ -19,13 +19,22 @@ class HabitDetailsViewModel {
     var name: Box<String> = Box("")
     var frequencyPerWeek: Box<Int> = Box(Constants.Habit.defaultFrequencyPerWeek)
     var interactionMode: Box<ViewInteractionMode> = Box(.add)
+    private var onDataLoad: (() -> Void)? = nil
     var selectedHabit: Habit? {
         didSet {
             if let habit = selectedHabit {
                 name.value = habit.name!
                 frequencyPerWeek.value = Int(habit.frequencyPerWeek)
+                onDataLoad?()
             }
             interactionMode.value = selectedHabit == nil ? .add : .edit
+        }
+    }
+    
+    func setOnDataLoad(_ fn: (() -> Void)?) {
+        onDataLoad = fn
+        if selectedHabit != nil {
+            onDataLoad?()
         }
     }
 }
@@ -121,10 +130,12 @@ extension HabitDetailsViewModel {
         usingOverflowValue overflowValue: Int? = nil
     ) -> String {
         var displayValue = "\(frequencyPerWeek.value)"
+        var isPlural = frequencyPerWeek.value != 1
         if let overflowValue = overflowValue {
             displayValue = "\(overflowValue)+"
+            isPlural = overflowValue != 1
         }
-        return "\(displayValue) time\(frequencyPerWeek.value == 1 ? "" : "s") / week"
+        return "\(displayValue) time\(isPlural ? "s" : "") / week"
     }
 }
 
