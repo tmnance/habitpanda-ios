@@ -19,13 +19,22 @@ class HabitDetailsViewModel {
     var name: Box<String> = Box("")
     var frequencyPerWeek: Box<Int> = Box(Constants.Habit.defaultFrequencyPerWeek)
     var interactionMode: Box<ViewInteractionMode> = Box(.add)
+    private var onDataLoad: (() -> Void)? = nil
     var selectedHabit: Habit? {
         didSet {
             if let habit = selectedHabit {
                 name.value = habit.name!
                 frequencyPerWeek.value = Int(habit.frequencyPerWeek)
+                onDataLoad?()
             }
             interactionMode.value = selectedHabit == nil ? .add : .edit
+        }
+    }
+    
+    func setOnDataLoad(_ fn: (() -> Void)?) {
+        onDataLoad = fn
+        if selectedHabit != nil {
+            onDataLoad?()
         }
     }
 }
@@ -117,8 +126,16 @@ extension HabitDetailsViewModel {
 
 // MARK: - Frequency Methods
 extension HabitDetailsViewModel {
-    func getFrequencyPerWeekDisplayText() -> String {
-        return "\(frequencyPerWeek.value) time\(frequencyPerWeek.value == 1 ? "" : "s") / week"
+    func getFrequencyPerWeekDisplayText(
+        usingOverflowValue overflowValue: Int? = nil
+    ) -> String {
+        var displayValue = "\(frequencyPerWeek.value)"
+        var isPlural = frequencyPerWeek.value != 1
+        if let overflowValue = overflowValue {
+            displayValue = "\(overflowValue)+"
+            isPlural = overflowValue != 1
+        }
+        return "\(displayValue) time\(isPlural ? "s" : "") / week"
     }
 }
 
@@ -169,7 +186,7 @@ extension HabitDetailsViewModel {
             toEndDate: endDate
         )
 
-        let startDateOffsetHasCheckInMap = getStartDateOffsetHasCheckInMap(
+        let startDateOffsetCheckInCountMap = getStartDateOffsetCheckInCountMap(
             fromStartDate: startDate,
             forCheckIns: checkIns
         )
@@ -179,11 +196,9 @@ extension HabitDetailsViewModel {
 
         for startDateOffset in (1 - dayWindow)..<intervalDayCount {
             if startDateOffset >= 1 {
-                rollingSum -= (
-                    startDateOffsetHasCheckInMap[startDateOffset - dayWindow] ?? false
-                ) ? 1 : 0
+                rollingSum -= startDateOffsetCheckInCountMap[startDateOffset - dayWindow] ?? 0
             }
-            rollingSum += (startDateOffsetHasCheckInMap[startDateOffset] ?? false) ? 1 : 0
+            rollingSum += startDateOffsetCheckInCountMap[startDateOffset] ?? 0
             // skip over negative
             if startDateOffset >= 0 {
                 checkInFrequencyRollingAverageData.append(Double(rollingSum))
@@ -193,11 +208,11 @@ extension HabitDetailsViewModel {
         return checkInFrequencyRollingAverageData
     }
 
-    private func getStartDateOffsetHasCheckInMap(
+    private func getStartDateOffsetCheckInCountMap(
         fromStartDate startDate: Date,
         forCheckIns checkIns: [CheckIn]
-    ) -> [Int: Bool] {
-        var startDateOffsetHasCheckInMap: [Int: Bool] = [:]
+    ) -> [Int: Int] {
+        var startDateOffsetCheckInCountMap: [Int: Int] = [:]
 
         checkIns.forEach{ (checkIn) in
             let checkInDate = checkIn.checkInDate!.stripTime()
@@ -206,9 +221,9 @@ extension HabitDetailsViewModel {
                 from: startDate,
                 to: checkInDate
             ).day ?? 0
-            startDateOffsetHasCheckInMap[startDateOffset] = true
+            startDateOffsetCheckInCountMap[startDateOffset] = (startDateOffsetCheckInCountMap[startDateOffset] ?? 0) + 1
         }
 
-        return startDateOffsetHasCheckInMap
+        return startDateOffsetCheckInCountMap
     }
 }
