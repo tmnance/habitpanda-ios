@@ -253,9 +253,9 @@ extension HabitListViewController {
 
     func getCellContainerBgColor(forIndexPath indexPath: IndexPath) -> UIColor {
         let habit = getHabit(forIndexPath: indexPath)
-        let isBeforeHabitCreatedAt =
-            indexPath.row - 1 <= viewModel.getCreatedAtOffset(forHabit: habit)
-        return isBeforeHabitCreatedAt ?
+        let isBeforeHabitFirstCheckIn =
+            indexPath.row - 1 <= viewModel.getFirstCheckInOffset(forHabit: habit)
+        return isBeforeHabitFirstCheckIn ?
             Constants.Colors.listDisabledCellOverlay :
             Constants.Colors.clear
     }

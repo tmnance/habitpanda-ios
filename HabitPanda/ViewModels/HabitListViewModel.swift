@@ -25,10 +25,9 @@ class HabitListViewModel {
     }
 
     typealias CheckInGridOffsetMap = [Int: Int]
-    var habitCheckInGridOffsetMap: [UUID: CheckInGridOffsetMap] = [:]
-    var habitCreatedAtOffsetMap: [UUID: Int] = [:]
-    var habitMinCheckInOffsetMap: [UUID: Int] = [:]
-    var habitEarliestCheckInMap: [UUID: Date] = [:]
+    private var habitCheckInGridOffsetMap: [UUID: CheckInGridOffsetMap] = [:]
+    private var habitCreatedAtOffsetMap: [UUID: Int] = [:]
+    private var habitFirstCheckInOffsetMap: [UUID: Int?] = [:]
 
     init() {
         loadData()
@@ -74,26 +73,26 @@ extension HabitListViewModel {
 
         BoxHelper.processBeforeListenerInvocation {
             habits.value = Habit.getAll(sortedBy: [("order", .asc), ("createdAt", .asc)])
-            let checkIns = CheckIn.getAll(
-                forHabitUUIDs: habits.value.map { $0.uuid! },
-                fromStartDate: startDate
-            )
 
-            buildHabitCheckInMaps(forCheckIns: checkIns)
+            buildHabitCheckInMaps()
             habits.value.forEach{ (habit) in
-                let createdAtOffset = Calendar.current.dateComponents(
-                    [.day],
-                    from: startDate,
-                    to: habit.createdAt!
-                ).day ?? 0
-                let minCheckInOffset = Calendar.current.dateComponents(
-                    [.day],
-                    from: startDate,
-                    to: habitEarliestCheckInMap[habit.uuid!] ?? startDate
-                ).day ?? 0
+                habitCreatedAtOffsetMap[habit.uuid!] =
+                    (Calendar.current.dateComponents(
+                        [.day],
+                        from: startDate,
+                        to: habit.createdAt!
+                    ).day ?? 0) - 1
 
-                habitCreatedAtOffsetMap[habit.uuid!] = createdAtOffset - 1
-                habitMinCheckInOffsetMap[habit.uuid!] = minCheckInOffset - 1
+                if let firstCheckInDate = habit.getFirstCheckInDate() {
+                    habitFirstCheckInOffsetMap[habit.uuid!] =
+                        (Calendar.current.dateComponents(
+                            [.day],
+                            from: startDate,
+                            to: firstCheckInDate
+                        ).day ?? 0) - 1
+                } else {
+                    habitFirstCheckInOffsetMap[habit.uuid!] = nil
+                }
             }
         }
     }
@@ -102,9 +101,13 @@ extension HabitListViewModel {
 
 // MARK: - Check-In Grid Helper Methods
 extension HabitListViewModel {
-    func buildHabitCheckInMaps(forCheckIns checkIns: [CheckIn]) {
+    func buildHabitCheckInMaps() {
         habitCheckInGridOffsetMap = [:]
-        habitEarliestCheckInMap = [:]
+
+        let checkIns = CheckIn.getAll(
+            forHabitUUIDs: habits.value.map { $0.uuid! },
+            fromStartDate: startDate
+        )
 
         checkIns.forEach{ (checkIn) in
             let habitUUID = checkIn.habit!.uuid!
@@ -119,21 +122,25 @@ extension HabitListViewModel {
                 habitCheckInGridOffsetMap[habitUUID] ?? [:]
             habitCheckInGridOffsetMap[habitUUID]![dateOffset] =
                 (habitCheckInGridOffsetMap[habitUUID]![dateOffset] ?? 0) + 1
-            habitEarliestCheckInMap[habitUUID] =
-                habitEarliestCheckInMap[habitUUID] ?? date
         }
     }
 
     func getCheckInCount(forHabit habit: Habit, forDateOffset dateOffset: Int) -> Int? {
         let uuid = habit.uuid!
-        guard habitMinCheckInOffsetMap[uuid] ?? 0 < dateOffset else {
+        guard (habitFirstCheckInOffsetMap[uuid] ?? 0) ?? 0 < dateOffset else {
             return nil
         }
         return habitCheckInGridOffsetMap[uuid]?[dateOffset] ?? 0
     }
-
+    
     func getCreatedAtOffset(forHabit habit: Habit) -> Int {
         let uuid = habit.uuid!
         return habitCreatedAtOffsetMap[uuid]!
+    }
+    
+    func getFirstCheckInOffset(forHabit habit: Habit) -> Int {
+        let uuid = habit.uuid!
+        // if no check ins, represent today's offset
+        return (habitFirstCheckInOffsetMap[uuid] ?? nil) ?? (numDates - 2)
     }
 }
