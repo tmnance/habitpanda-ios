@@ -9,7 +9,7 @@ target 'HabitPanda' do
   use_frameworks!
 
   # Pods for HabitPanda
-  pod 'Charts', '~> 3.5	'
+  pod 'Charts', '~> 3.5'
   pod 'PopupDialog', '~> 1.1'
   pod 'SwipeCellKit', '~> 2.7'
   pod 'Toast-Swift', '~> 5.0'
