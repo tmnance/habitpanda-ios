@@ -313,10 +313,10 @@ extension AdminViewController {
                 "checkInHistory": "    X      X      X "
             ],
             [
-                "name": "Go for a morning walk",
+                "name": "Do some form of exercise",
                 "frequencyPerWeek": 5,
                 //                 98765432109876543210
-                "checkInHistory": " XXX X  X X X X X XX"
+                "checkInHistory": " XXX X  X X X X 2 XX"
             ],
             [
                 "name": "Have a no-TV night",
@@ -378,13 +378,26 @@ extension AdminViewController {
 
             Array(seedHabit["checkInHistory"] as? String ?? "").reversed().enumerated()
                 .forEach{ (dayOffset, checkInState) in
-                    if checkInState != " " {
+                    let checkInCount: Int = {
+                        switch checkInState {
+                        case " ":
+                            return 0
+                        case "X":
+                            return 1
+                        default:
+                            return Int("\(checkInState)") ?? 0
+                        }
+                    }()
+
+                    if checkInCount > 0 {
                         let checkInDate = Calendar.current.date(
                             byAdding: .day,
                             value: -1 * dayOffset,
                             to: Date()
                         )!
-                        let _ = createSeedCheckIn(forHabit: newHabit, forDate: checkInDate)
+                        (0..<checkInCount).forEach{ _ in
+                            let _ = createSeedCheckIn(forHabit: newHabit, forDate: checkInDate)
+                        }
                     }
                 }
 

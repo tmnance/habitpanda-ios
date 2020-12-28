@@ -70,4 +70,12 @@ public class Habit: NSManagedObject {
             print("Error saving context, \(error)")
         }
     }
+
+    func getFirstCheckInDate() -> Date? {
+        let checkIns = CheckIn.getAll(
+            forHabitUUIDs: [uuid!],
+            withLimit: 1
+        )
+        return checkIns.first?.checkInDate!.stripTime()
+    }
 }
