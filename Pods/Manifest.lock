@@ -1,7 +1,7 @@
 PODS:
-  - Charts (3.5.0):
-    - Charts/Core (= 3.5.0)
-  - Charts/Core (3.5.0)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - DynamicBlurView (4.1.0)
   - PopupDialog (1.1.1):
     - DynamicBlurView (~> 4.0)
@@ -23,12 +23,12 @@ SPEC REPOS:
     - Toast-Swift
 
 SPEC CHECKSUMS:
-  Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: c21688d3b2934a38b3b44865314e308bdd56fb69
+PODFILE CHECKSUM: 3cd51d036266367a8bffb3aa40c6beb520b8a306
 
-COCOAPODS: 1.10.0.rc.1
+COCOAPODS: 1.11.2
