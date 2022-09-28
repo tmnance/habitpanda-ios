@@ -33,6 +33,7 @@ extension DateDayPicker {
             pickerWidth + (pickerWidth - pickerHeight),
             containerView.frame.width
         )
+        let newPickerHeight = containerView.frame.height
         let newX = (newPickerWidth - pickerWidth) / -2
         let y = self.frame.origin.y
 
@@ -44,7 +45,7 @@ extension DateDayPicker {
             x: newX,
             y: y,
             width: newPickerWidth,
-            height: pickerHeight
+            height: newPickerHeight
         )
     }
 

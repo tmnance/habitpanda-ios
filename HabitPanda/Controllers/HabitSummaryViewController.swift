@@ -109,7 +109,7 @@ extension HabitSummaryViewController {
         targetLine.lineWidth = 2
         targetLine.lineColor = Constants.Colors.tint2
         targetLine.lineDashLengths = [10, 10]
-        targetLine.labelPosition = targetFrequencyPerWeek >= maxY - 1 ? .bottomRight : .topRight
+        targetLine.labelPosition = targetFrequencyPerWeek >= maxY - 1 ? .rightBottom : .rightTop
         targetLine.valueFont = .systemFont(ofSize: 12)
         targetLine.valueTextColor = Constants.Colors.subText
 
@@ -181,7 +181,7 @@ extension HabitSummaryViewController {
         setupLineChartDataSetStyles(line1)
 
         let data = LineChartData()
-        data.addDataSet(line1)
+        data.append(line1)
 
         chartView.data = data
     }
