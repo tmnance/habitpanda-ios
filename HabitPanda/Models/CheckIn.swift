@@ -47,7 +47,9 @@ public class CheckIn: NSManagedObject {
 
         if let habitUUIDs = habitUUIDs {
             let uuidArgs = habitUUIDs.map { $0.uuidString as CVarArg }
-            predicates.append(NSPredicate(format: "habit.uuid IN %@", uuidArgs))
+            if uuidArgs.count > 0 {
+                predicates.append(NSPredicate(format: "habit.uuid IN %@", argumentArray: [uuidArgs]))
+            }
         }
 
         if let startDate = startDate {

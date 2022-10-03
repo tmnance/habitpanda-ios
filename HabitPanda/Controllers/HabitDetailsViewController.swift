@@ -64,10 +64,11 @@ class HabitDetailsViewController: UIViewController {
         updateUI()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    // not sure if this is needed?
+    override func beginAppearanceTransition(_ isAppearing: Bool, animated: Bool) {
+        super.beginAppearanceTransition(isAppearing, animated: animated)
         if let vc = currentTabVC {
-            vc.viewWillDisappear(animated)
+            vc.beginAppearanceTransition(isAppearing, animated: animated)
         }
     }
 

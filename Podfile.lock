@@ -1,15 +1,17 @@
 PODS:
-  - Charts (3.6.0):
-    - Charts/Core (= 3.6.0)
-  - Charts/Core (3.6.0)
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
+    - SwiftAlgorithms (~> 1.0)
   - DynamicBlurView (4.1.0)
   - PopupDialog (1.1.1):
     - DynamicBlurView (~> 4.0)
+  - SwiftAlgorithms (1.0.0)
   - SwipeCellKit (2.7.1)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
-  - Charts (~> 3.5)
+  - Charts (~> 4.1)
   - PopupDialog (~> 1.1)
   - SwipeCellKit (~> 2.7)
   - Toast-Swift (~> 5.0)
@@ -19,16 +21,18 @@ SPEC REPOS:
     - Charts
     - DynamicBlurView
     - PopupDialog
+    - SwiftAlgorithms
     - SwipeCellKit
     - Toast-Swift
 
 SPEC CHECKSUMS:
-  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  Charts: 354f86803d11d9c35de280587fef50d1af063978
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 3cd51d036266367a8bffb3aa40c6beb520b8a306
+PODFILE CHECKSUM: ef0a034bbfbd64c730f6afd8892ac363ed4e3f5e
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

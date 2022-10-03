@@ -61,6 +61,9 @@ class CheckInGridCollectionViewLayout: UICollectionViewLayout {
     }
 
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard collectionViewHasContent() else {
+            return nil
+        }
         return itemAttributes[indexPath.section][indexPath.row]
     }
 
