@@ -73,16 +73,63 @@ class AdminViewController: UIViewController {
         AdminAction(
             name: "Seed test data",
             action: {
-                self.seedTestData()
+                self.showConfirmPrompt(
+                    title: "Confirm Seed Data",
+                    message: "Warning: seeding test data will clear all existing data"
+                ) {
+                    self.createSeedTestHabits()
+                    ReminderNotificationService.refreshNotificationsForAllReminders()
+                    self.loadNotificationData()
+                    ToastHelper.makeToast("Test data seeded", state: .info)
+                }
             }
         ),
         AdminAction(
             name: "Delete all data",
             action: {
-                self.deleteAllData()
+                self.showConfirmPrompt(
+                    title: "Delete All Data",
+                    message: "Warning: this will clear all existing data"
+                ) {
+                    self.deleteAllHabits()
+                    ReminderNotificationService.refreshNotificationsForAllReminders()
+                    self.loadNotificationData()
+                    ToastHelper.makeToast("All habit data deleted", state: .info)
+                }
+            }
+        ),
+        AdminAction(
+            name: "Export current data",
+            action: {
+                self.exportCurrentData()
+                ToastHelper.makeToast("Current data exported to clipboard", state: .info)
+            }
+        ),
+        AdminAction(
+            name: "Import data",
+            action: {
+                self.showConfirmPrompt(
+                    title: "Import data from clipboard",
+                    message: "Warning: this will clear all existing data"
+                ) {
+                    if self.importData() {
+                        ToastHelper.makeToast("Data imported from clipboard", state: .info)
+                        ReminderNotificationService.refreshNotificationsForAllReminders()
+                        self.loadNotificationData()
+                    } else {
+                        ToastHelper.makeToast("Unable to import data from clipboard", state: .info)
+                    }
+                }
             }
         ),
     ]
+
+    func showConfirmPrompt(title: String, message: String, confirmCallback: @escaping () -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Confirm", style: .destructive) { _ in confirmCallback() })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -263,49 +310,12 @@ extension AdminViewController {
 }
 
 
+// MARK: - Data Seed/Delete Methods
 extension AdminViewController {
-    func seedTestData() {
-        let alert = UIAlertController(
-            title: "Confirm Seed Data",
-            message: "Warning: seeding test data will clear all existing data",
-            preferredStyle: .alert
-        )
-
-        alert.addAction(UIAlertAction(title: "Confirm", style: .destructive) { (action) in
-            self.createSeedTestHabits()
-            ReminderNotificationService.refreshNotificationsForAllReminders()
-            self.loadNotificationData()
-            ToastHelper.makeToast("Test data seeded", state: .info)
-        })
-
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        present(alert, animated: true, completion: nil)
-    }
-
-    func deleteAllData() {
-        let alert = UIAlertController(
-            title: "Delete All Data",
-            message: "Warning: this will clear all existing data",
-            preferredStyle: .alert
-        )
-
-        alert.addAction(UIAlertAction(title: "Confirm", style: .destructive) { (action) in
-            self.deleteAllHabits()
-            ReminderNotificationService.refreshNotificationsForAllReminders()
-            self.loadNotificationData()
-            ToastHelper.makeToast("All habit data deleted", state: .info)
-        })
-
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        present(alert, animated: true, completion: nil)
-    }
-
     func createSeedTestHabits() {
         deleteAllHabits()
 
-        let seedHabits:[[String:Any]] = [
+        let seedHabits: [[String:Any]] = [
             [
                 "name": "Call mom",
                 "frequencyPerWeek": 1,
@@ -365,15 +375,15 @@ extension AdminViewController {
         )!
 
         seedHabits.enumerated().forEach{ (i, seedHabit) in
-            let newHabit = createSeedHabit(
-                withName: seedHabit["name"] as? String ?? "",
-                withFrequencyPerWeek: seedHabit["frequencyPerWeek"] as? Int ?? 1,
-                forDate: Calendar.current.date(
+            let newHabit = createHabit(
+                name: seedHabit["name"] as? String ?? "",
+                frequencyPerWeek: seedHabit["frequencyPerWeek"] as? Int ?? 1,
+                createdAt: Calendar.current.date(
                     byAdding: .second,
                     value: i,
                     to: createdAtDate
                 )!,
-                withOrder: i
+                order: i
             )
 
             Array(seedHabit["checkInHistory"] as? String ?? "").reversed().enumerated()
@@ -396,18 +406,22 @@ extension AdminViewController {
                             to: Date()
                         )!
                         (0..<checkInCount).forEach{ _ in
-                            let _ = createSeedCheckIn(forHabit: newHabit, forDate: checkInDate)
+                            let _ = createCheckIn(habit: newHabit, createdAt: checkInDate)
                         }
                     }
                 }
 
             if let seedReminders = seedHabit["reminders"] as? [[String:Any]] {
                 seedReminders.forEach{ (seedReminder) in
-                    let _ = createSeedReminder(
-                        forHabit: newHabit,
-                        withHour: seedReminder["hour"] as? Int ?? 0,
-                        withMinute: seedReminder["minute"] as? Int ?? 0,
-                        withFrequencyDays: seedReminder["frequencyDays"] as? String ?? ""
+                    let frequencyDays = Array(seedReminder["frequencyDays"] as? String ?? "")
+                        .enumerated()
+                        .filter { $0.1 != " " }
+                        .map { $0.0 as Int }
+                    let _ = createReminder(
+                        habit: newHabit,
+                        hour: seedReminder["hour"] as? Int ?? 0,
+                        minute: seedReminder["minute"] as? Int ?? 0,
+                        frequencyDays: frequencyDays
                     )
                 }
             }
@@ -420,15 +434,16 @@ extension AdminViewController {
         }
     }
 
-    func createSeedHabit(
-        withName name: String,
-        withFrequencyPerWeek frequencyPerWeek: Int,
-        forDate date: Date,
-        withOrder order: Int
+    func createHabit(
+        uuid: UUID? = nil,
+        name: String,
+        frequencyPerWeek: Int,
+        createdAt: Date,
+        order: Int
     ) -> Habit {
         let habitToSave = Habit(context: context)
-        habitToSave.createdAt = date
-        habitToSave.uuid = UUID()
+        habitToSave.createdAt = createdAt
+        habitToSave.uuid = uuid ?? UUID()
         habitToSave.name = name
         habitToSave.frequencyPerWeek = Int32(frequencyPerWeek)
         habitToSave.order = Int32(order)
@@ -436,32 +451,37 @@ extension AdminViewController {
         return habitToSave
     }
 
-    func createSeedCheckIn(forHabit habit: Habit, forDate date: Date) -> CheckIn {
+    func createCheckIn(
+        uuid: UUID? = nil,
+        habit: Habit,
+        createdAt: Date,
+        checkInDate: Date? = nil
+    ) -> CheckIn {
         let checkInToSave = CheckIn(context: context)
-        checkInToSave.createdAt = date
-        checkInToSave.uuid = UUID()
+        checkInToSave.createdAt = createdAt
+        checkInToSave.uuid = uuid ?? UUID()
         checkInToSave.habit = habit
-        checkInToSave.checkInDate = date.stripTime()
+        checkInToSave.checkInDate = checkInDate ?? createdAt.stripTime()
         checkInToSave.isSuccess = true
 
         return checkInToSave
     }
 
-    func createSeedReminder(
-        forHabit habit: Habit,
-        withHour hour: Int,
-        withMinute minute: Int,
-        withFrequencyDays frequencyDays: String
-        ) -> Reminder {
+    func createReminder(
+        uuid: UUID? = nil,
+        habit: Habit,
+        createdAt: Date? = nil,
+        hour: Int,
+        minute: Int,
+        frequencyDays: [Int]
+    ) -> Reminder {
         let reminderToSave = Reminder(context: context)
-        reminderToSave.createdAt = Date()
-        reminderToSave.uuid = UUID()
+        reminderToSave.createdAt = createdAt ?? Date()
+        reminderToSave.uuid = uuid ?? UUID()
         reminderToSave.habit = habit
-
         reminderToSave.hour = Int32(hour)
         reminderToSave.minute = Int32(minute)
-        reminderToSave.frequencyDays =
-            Array(frequencyDays).enumerated().filter{ $0.1 != " " }.map{ $0.0 as NSNumber }
+        reminderToSave.frequencyDays = frequencyDays.map { $0 as NSNumber }
 
         return reminderToSave
     }
@@ -474,5 +494,130 @@ extension AdminViewController {
         } catch {
             print("Error saving context, \(error)")
         }
+    }
+}
+
+
+// MARK: - Data Export Methods
+extension AdminViewController {
+    struct ExportHabit: Codable {
+        let uuid: String
+        let createdAt: Int
+        let name: String
+        let order: Int
+        let frequencyPerWeek: Int
+        let checkIns: [ExportCheckIn]
+        let reminders: [ExportReminder]
+
+        init(habit: Habit) {
+            self.uuid = habit.uuid!.uuidString
+            self.createdAt = Int(habit.createdAt!.timeIntervalSince1970)
+            self.name = habit.name!
+            self.order = Int(habit.order)
+            self.frequencyPerWeek = Int(habit.frequencyPerWeek)
+            self.checkIns = (habit.checkIns as? Set<CheckIn> ?? [])
+                .sorted { $0.createdAt! < $1.createdAt! }
+                .map { ExportCheckIn(checkIn: $0) }
+            self.reminders = (habit.reminders as? Set<Reminder> ?? [])
+                .sorted { $0.createdAt! < $1.createdAt! }
+                .map { ExportReminder(reminder: $0) }
+        }
+    }
+
+    struct ExportCheckIn: Codable {
+        let uuid: String
+        let createdAt: Int
+        let checkInDate: Int
+        let isSuccess: Bool
+
+        init(checkIn: CheckIn) {
+            self.uuid = checkIn.uuid!.uuidString
+            self.createdAt = Int(checkIn.createdAt!.timeIntervalSince1970)
+            self.checkInDate = Int(checkIn.checkInDate!.timeIntervalSince1970)
+            self.isSuccess = checkIn.isSuccess
+        }
+    }
+
+    struct ExportReminder: Codable {
+        let uuid: String
+        let createdAt: Int
+        let isEnabled: Bool
+        let hour: Int
+        let minute: Int
+        let frequencyDays: [Int]
+
+        init(reminder: Reminder) {
+            self.uuid = reminder.uuid!.uuidString
+            self.createdAt = Int(reminder.createdAt!.timeIntervalSince1970)
+            self.isEnabled = reminder.isEnabled
+            self.hour = Int(reminder.hour)
+            self.minute = Int(reminder.minute)
+            self.frequencyDays = (reminder.frequencyDays ?? []).map { Int(truncating: $0) }
+        }
+    }
+
+    func exportCurrentData() {
+        let exportData: [ExportHabit] = Habit.getAll(sortedBy: [("order", .asc), ("createdAt", .asc)])
+            .map { ExportHabit(habit: $0) }
+        let jsonEncoder = JSONEncoder()
+
+        do {
+            let jsonData = try jsonEncoder.encode(exportData)
+            let jsonString = String(data: jsonData, encoding: .utf8) ?? ""
+            let pasteboard = UIPasteboard.general
+            pasteboard.string = jsonString
+        } catch {
+            print("Error exporting context, \(error)")
+        }
+    }
+
+    func importData() -> Bool {
+        let pasteboard = UIPasteboard.general
+        guard let importString = pasteboard.string else { return false }
+        guard let jsonString = importString.data(using: .utf8) else { return false }
+        let importedHabits: [ExportHabit] = {
+            do {
+                return try JSONDecoder().decode([ExportHabit].self, from: jsonString)
+            } catch {
+                return []
+            }
+        }()
+        guard importedHabits.count > 0 else { return false }
+
+        deleteAllHabits()
+
+        importedHabits.forEach{ habit in
+            let newHabit = createHabit(
+                uuid: UUID(uuidString: habit.uuid),
+                name: habit.name,
+                frequencyPerWeek: habit.frequencyPerWeek,
+                createdAt: Date(timeIntervalSince1970: Double(habit.createdAt)),
+                order: habit.order
+            )
+            habit.checkIns.forEach { checkIn in
+                let _ = createCheckIn(
+                    uuid: UUID(uuidString: checkIn.uuid),
+                    habit: newHabit,
+                    createdAt: Date(timeIntervalSince1970: Double(checkIn.createdAt)),
+                    checkInDate: Date(timeIntervalSince1970: Double(checkIn.checkInDate))
+                )
+            }
+            habit.reminders.forEach { reminder in
+                let _ = createReminder(
+                    habit: newHabit,
+                    hour: reminder.hour,
+                    minute: reminder.minute,
+                    frequencyDays: reminder.frequencyDays
+                )
+            }
+        }
+
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context, \(error)")
+        }
+
+        return true
     }
 }
